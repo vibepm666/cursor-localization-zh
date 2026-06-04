@@ -1,6 +1,6 @@
 {
   "description": "Cursor 通用界面主词典。修改后重新运行 Cursor_Localization_Tool.py 注入生效。",
-  "updatedAt": "2026-06-03",
+  "updatedAt": "2026-06-04",
   "sections": [
     {
       "id": "左侧导航栏",
@@ -5141,6 +5141,10 @@
           "提交"
         ],
         [
+          "Commit is unavailable until there are reviewable changes",
+          "存在可审查的更改后才可提交"
+        ],
+        [
           "Commit message",
           "提交信息"
         ],
@@ -6085,6 +6089,10 @@
         [
           "Select All",
           "全选"
+        ],
+        [
+          "Find All References",
+          "查找所有引用"
         ],
         [
           "Copy Image",
