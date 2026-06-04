@@ -23,6 +23,15 @@ Cursor **官方目前尚未提供**中文界面或汉化包。常见做法是安
 - **维护成本低**：Cursor 小版本更新后若有个别位置变回英文，再运行一次启动脚本即可，一般无需重装软件。
 - **其它说明**：日常点得到的界面大多已是中文；个别菜单、动态文案或新版本新增词条可能仍为英文，可在词典中补充后重新注入。Agent 对话与模型生成内容不属于界面汉化范围。
 
+## 界面截图
+
+<img width="2002" height="1360" alt="Cursor exe_20260604_000934" src="https://github.com/user-attachments/assets/b043419d-3ab1-4d26-a36a-9618694df310" />
+
+<img width="2000" height="1360" alt="Cursor exe_20260604_000214" src="https://github.com/user-attachments/assets/3cd64d40-3d3b-435e-8a46-7bfa17c06434" />
+
+<img width="2000" height="1360" alt="Cursor exe_20260604_001901" src="https://github.com/user-attachments/assets/d06f3f34-6896-470a-a75d-192cbdf268b5" />
+
+
 ## 如何使用
 
 1. 下载并解压汉化工具（内含 `启动汉化_Win.bat` / `启动汉化_Mac.sh` 等）。
