@@ -1,0 +1,398 @@
+{
+  "description": "下拉框/快速选择/悬停等文本节点片段替换（FanYi_XiaLa_WenBen、TiHuan_WenBenJieDian_SuiPian）。修改后重新运行 Cursor_Localization_Tool.py 注入生效。",
+  "updatedAt": "2026-06-03",
+  "entries": [
+    [
+      "Reset to default",
+      "恢复默认"
+    ],
+    [
+      "Inherit from parent",
+      "继承父级"
+    ],
+    [
+      "Upgrade to unlock premium models",
+      "升级以解锁高级模型"
+    ],
+    [
+      "Premium models are only available on paid plans.",
+      "高级模型仅在付费计划中可用。"
+    ],
+    [
+      "Balanced quality and speed, recommended for most tasks",
+      "质量与速度均衡，适合大多数任务"
+    ],
+    [
+      "Changes waiting to be confirmed",
+      "等待确认的更改"
+    ],
+    [
+      "Pending Changes",
+      "待确认更改"
+    ],
+    [
+      "All Changes",
+      "全部更改"
+    ],
+    [
+      "Latest",
+      "最新"
+    ],
+    [
+      "Diff Against...",
+      "差异对比..."
+    ],
+    [
+      "Agent Changes",
+      "智能体更改"
+    ],
+    [
+      "Keep",
+      "保留"
+    ],
+    [
+      "Did the agent understand what you wanted?",
+      "智能体是否理解您的需求？"
+    ],
+    [
+      "Misunderstood task",
+      "误解了任务"
+    ],
+    [
+      "Ignored constraint",
+      "忽略了约束"
+    ],
+    [
+      "Wrong scope",
+      "范围不对"
+    ],
+    [
+      "Was the response easy to read and use?",
+      "回复是否易于阅读和使用？"
+    ],
+    [
+      "Visually hard to read",
+      "视觉上难以阅读"
+    ],
+    [
+      "Wrote too much",
+      "写得过多"
+    ],
+    [
+      "Explanation not trustworthy",
+      "解释不可信"
+    ],
+    [
+      "Anything else?",
+      "还有其他反馈吗？"
+    ],
+    [
+      "Add a comment...",
+      "添加评论..."
+    ],
+    [
+      "Bring your VS Code setup to Cursor.",
+      "将 VS Code 配置带到 Cursor。"
+    ],
+    [
+      "Import VS Code Configuration",
+      "导入 VS Code 配置"
+    ],
+    [
+      "Importing... This can take a minute",
+      "正在导入…这可能需要一分钟。"
+    ],
+    [
+      "Import your settings and extensions for a seamless start.",
+      "导入设置与扩展，即可无缝上手。"
+    ],
+    [
+      "Bring your VS Code setup to Cursor",
+      "将 VS Code 配置带到 Cursor"
+    ],
+    [
+      "Import your settings and extensions for a seamless start",
+      "导入设置与扩展，即可无缝上手"
+    ],
+    [
+      "Want to launch Cursor from the command line?",
+      "要从命令行启动 Cursor 吗？"
+    ],
+    [
+      "You can add the `code` or `cursor` commands now",
+      "您现在即可添加 `code` 或 `cursor` 命令"
+    ],
+    [
+      "or later with Ctrl+Shift+P and typing",
+      "；也可稍后按 Ctrl+Shift+P，输入"
+    ],
+    [
+      "'install code command'.",
+      "「install code command」。"
+    ],
+    [
+      "'install code command'",
+      "「install code command」"
+    ],
+    [
+      "Never show again",
+      "不再显示"
+    ],
+    [
+      "Install 'cursor'",
+      "安装「cursor」"
+    ],
+    [
+      "Install 'code'",
+      "安装「code」"
+    ],
+    [
+      " context used",
+      " 上下文已用"
+    ],
+    [
+      "Upgrade to Pro",
+      "升级到专业版"
+    ],
+    [
+      "Stop & send right away",
+      "停止并立即发送"
+    ],
+    [
+      "Stop &amp; send right away",
+      "停止并立即发送"
+    ],
+    [
+      "停止 & send right away",
+      "停止并立即发送"
+    ],
+    [
+      "停止 &amp; send right away",
+      "停止并立即发送"
+    ],
+    [
+      "& send right away",
+      "并立即发送"
+    ],
+    [
+      "&amp; send right away",
+      "并立即发送"
+    ],
+    [
+      "Send after current message",
+      "在当前消息之后发送"
+    ],
+    [
+      " Extra 高",
+      " 超高"
+    ],
+    [
+      " Extra High",
+      " 超高"
+    ],
+    [
+      " Medium",
+      " 中等"
+    ],
+    [
+      " Fast",
+      " 快速"
+    ],
+    [
+      " Low",
+      " 低"
+    ],
+    [
+      "Remove Marketplace",
+      "移除市场"
+    ],
+    [
+      "Import from GitHub/GitLab",
+      "从 GitHub/GitLab 导入"
+    ],
+    [
+      "Add Symbol to Current Chat",
+      "将符号添加到当前对话"
+    ],
+    [
+      "Add Symbol to New Chat",
+      "将符号添加到新对话"
+    ],
+    [
+      "Create Rule",
+      "创建规则"
+    ],
+    [
+      "Create Rule from Selection",
+      "从选区创建规则"
+    ],
+    [
+      "Open as Text Editor",
+      "以文本编辑器打开"
+    ],
+    [
+      "Compare as Text",
+      "以文本方式比较"
+    ],
+    [
+      "Open with Markdown Editor (WYSIWYG)",
+      "使用 Markdown 编辑器（所见即所得）打开"
+    ],
+    [
+      "Claude Code: Open",
+      "Claude Code：已打开"
+    ],
+    [
+      "Claude Code: Closed",
+      "Claude Code：已关闭"
+    ],
+    [
+      "Configure Keybinding",
+      "配置键绑定"
+    ],
+    [
+      "Hide 'Claude Code'",
+      "隐藏「Claude Code」"
+    ],
+    [
+      "Hide Badge",
+      "隐藏徽章"
+    ],
+    [
+      "Hide 'Screenshot text localization'",
+      "隐藏「截图文本本地化」"
+    ],
+    [
+      "Move To",
+      "移动到"
+    ],
+    [
+      "Close Settings",
+      "关闭设置"
+    ],
+    [
+      "Archive, Unread",
+      "归档、未读"
+    ],
+    [
+      "Open in New Tab",
+      "在新标签页中打开"
+    ],
+    [
+      "Restore",
+      "恢复"
+    ],
+    [
+      "Pin",
+      "固定"
+    ],
+    [
+      "Delete",
+      "删除"
+    ],
+    [
+      "Rename",
+      "重命名"
+    ],
+    [
+      "Keep All",
+      "全部保留"
+    ],
+    [
+      "Undo All",
+      "全部撤销"
+    ],
+    [
+      "Search Agents...",
+      "搜索智能体..."
+    ],
+    [
+      "Rename Chat",
+      "重命名对话"
+    ],
+    [
+      "Show entire file",
+      "显示整个文件"
+    ],
+    [
+      "Open Cursor to view the agent's output.",
+      "打开 Cursor 以查看智能体输出。"
+    ],
+    [
+      "Open Cursor to view the agent's output",
+      "打开 Cursor 以查看智能体输出"
+    ],
+    [
+      "You've hit your usage limit",
+      "您已达到用量上限"
+    ],
+    [
+      "Switch Models",
+      "切换模型"
+    ],
+    [
+      "Get Cursor Pro for more Agent usage, unlimited Tab, and more.",
+      "升级到 Cursor Pro 以获取更多 Agent 用量、无限 Tab 等。"
+    ],
+    [
+      "Archive Prior Chats",
+      "归档较早的对话"
+    ],
+    [
+      "All Branch Changes",
+      "所有分支更改"
+    ],
+    [
+      "No Uncommitted Changes",
+      "无未提交的更改"
+    ],
+    [
+      "Commit & Push",
+      "提交并推送"
+    ],
+    [
+      "Commit & Create PR",
+      "提交并创建 PR"
+    ],
+    [
+      "Push",
+      "推送"
+    ],
+    [
+      "Cursor Docs",
+      "Cursor 文档"
+    ],
+    [
+      "Contact Us",
+      "联系我们"
+    ],
+    [
+      "Branch Name",
+      "分支名称"
+    ],
+    [
+      "Mobile",
+      "移动端"
+    ],
+    [
+      "Search actions...",
+      "搜索操作..."
+    ],
+    [
+      "Search or enter URL",
+      "搜索或输入 URL"
+    ],
+    [
+      "Show Bookmark Bar",
+      "显示书签栏"
+    ],
+    [
+      "Favorites, Recents",
+      "收藏、最近"
+    ],
+    [
+      "Draft: ",
+      "草稿："
+    ]
+  ]
+}

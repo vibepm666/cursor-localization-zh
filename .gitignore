@@ -1,0 +1,11 @@
+__pycache__/
+_lookup_tmp*.py
+*.py[cod]
+*.bak
+Cursor_Localization.js
+cursor_hanhua.js
+workbench.html
+product.json
+_t.js
+_Cursor_Localization_preview.js
+.DS_Store

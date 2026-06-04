@@ -1,0 +1,806 @@
+{
+  "description": "动态文本正则替换（MoShi_FanYi）。",
+  "updatedAt": "2026-06-03",
+  "patterns": [
+    {
+      "regex": "^(\\d+) requests? remaining$",
+      "flags": "i",
+      "replacement": "$1 次请求剩余"
+    },
+    {
+      "regex": "^(\\d+) of (\\d+) requests?$",
+      "flags": "i",
+      "replacement": "$1 / $2 次请求"
+    },
+    {
+      "regex": "^(\\d+) premium requests?$",
+      "flags": "i",
+      "replacement": "$1 次高级请求"
+    },
+    {
+      "regex": "^(\\d+) files? indexed$",
+      "flags": "i",
+      "replacement": "$1 个文件已索引"
+    },
+    {
+      "regex": "^Indexing (\\d+) files?$",
+      "flags": "i",
+      "replacement": "正在索引 $1 个文件"
+    },
+    {
+      "regex": "^(\\d+) errors?$",
+      "flags": "i",
+      "replacement": "$1 个错误"
+    },
+    {
+      "regex": "^(\\d+) warnings?$",
+      "flags": "i",
+      "replacement": "$1 个警告"
+    },
+    {
+      "regex": "^Version (.+)$",
+      "flags": "i",
+      "replacement": "版本 $1"
+    },
+    {
+      "regex": "^(\\d+) tools?$",
+      "flags": "i",
+      "replacement": "$1 个工具"
+    },
+    {
+      "regex": "^(\\d+) resources?$",
+      "flags": "i",
+      "replacement": "$1 个资源"
+    },
+    {
+      "regex": "^(\\d+) prompts?$",
+      "flags": "i",
+      "replacement": "$1 个提示词"
+    },
+    {
+      "regex": "^Skills? (\\d+)$",
+      "flags": "i",
+      "replacement": "技能 $1"
+    },
+    {
+      "regex": "^(\\d+) skills?$",
+      "flags": "i",
+      "replacement": "$1 个技能"
+    },
+    {
+      "regex": "^No Local Changes$",
+      "flags": "i",
+      "replacement": "没有本地更改"
+    },
+    {
+      "regex": "^No Uncommitted Changes$",
+      "flags": "i",
+      "replacement": "无未提交的更改"
+    },
+    {
+      "regex": "^(\\d+) Uncommitted Changes$",
+      "flags": "i",
+      "replacement": "$1 项未提交的更改"
+    },
+    {
+      "regex": "^(\\d+) Uncommitted Change$",
+      "flags": "i",
+      "replacement": "$1 项未提交的更改"
+    },
+    {
+      "regex": "^(\\d+) unmodified lines?$",
+      "flags": "i",
+      "replacement": "$1 行未修改"
+    },
+    {
+      "regex": "^(\\d+) Local Changes$",
+      "flags": "i",
+      "replacement": "$1 个本地更改"
+    },
+    {
+      "regex": "^(\\d+) Pending Changes$",
+      "flags": "i",
+      "replacement": "$1 项待确认更改"
+    },
+    {
+      "regex": "^(\\d+) Pending Change$",
+      "flags": "i",
+      "replacement": "$1 项待确认更改"
+    },
+    {
+      "regex": "^(\\d+) of (\\d+)$",
+      "flags": "i",
+      "replacement": "$1 / $2"
+    },
+    {
+      "regex": "^(\\d+) Changes$",
+      "flags": "i",
+      "replacement": "$1 个更改"
+    },
+    {
+      "regex": "^Keep\\s+Ctrl",
+      "flags": "i",
+      "replacement": "保留 Ctrl"
+    },
+    {
+      "regex": "^Undo\\s+Ctrl",
+      "flags": "i",
+      "replacement": "撤销 Ctrl"
+    },
+    {
+      "regex": "^Keep File$",
+      "flags": "i",
+      "replacement": "保留文件"
+    },
+    {
+      "regex": "^Undo File$",
+      "flags": "i",
+      "replacement": "撤销文件"
+    },
+    {
+      "regex": "^Review Next File$",
+      "flags": "i",
+      "replacement": "审查下一个文件"
+    },
+    {
+      "regex": "^Accept all changes$",
+      "flags": "i",
+      "replacement": "接受所有更改"
+    },
+    {
+      "regex": "^Keep all changes$",
+      "flags": "i",
+      "replacement": "保留所有更改"
+    },
+    {
+      "regex": "^Keep changes$",
+      "flags": "i",
+      "replacement": "保留更改"
+    },
+    {
+      "regex": "^Keep change$",
+      "flags": "i",
+      "replacement": "保留更改"
+    },
+    {
+      "regex": "^Composer (.+) Fast$",
+      "flags": "i",
+      "replacement": "Composer $1 快速"
+    },
+    {
+      "regex": "^(.+?) Extra High$",
+      "flags": "i",
+      "replacement": "$1 超高"
+    },
+    {
+      "regex": "^(.+?) Medium$",
+      "flags": "i",
+      "replacement": "$1 中等"
+    },
+    {
+      "regex": "^(.+?) Fast$",
+      "flags": "i",
+      "replacement": "$1 快速"
+    },
+    {
+      "regex": "^(.+?) High$",
+      "flags": "i",
+      "replacement": "$1 高"
+    },
+    {
+      "regex": "^(.+?) Low$",
+      "flags": "i",
+      "replacement": "$1 低"
+    },
+    {
+      "regex": "^Editor Window\\s*↗?$",
+      "flags": "i",
+      "replacement": "编辑器窗口 ↗"
+    },
+    {
+      "regex": "^Plan New Idea\\s*⇧?\\s*Tab$",
+      "flags": "i",
+      "replacement": "规划新想法 ⇧ Tab"
+    },
+    {
+      "regex": "^Resets on (.+)$",
+      "flags": "i",
+      "replacement": "将于 $1 重置"
+    },
+    {
+      "regex": "^(.+)% Auto and (.+)% API used$",
+      "flags": "i",
+      "replacement": "$1% Auto 已用，$2% API 已用"
+    },
+    {
+      "regex": "^Unlock Agent (.+)x usage and more$",
+      "flags": "i",
+      "replacement": "解锁 Agent $1 倍用量及更多"
+    },
+    {
+      "regex": "^Updated (.+) ago$",
+      "flags": "i",
+      "replacement": "$1前更新"
+    },
+    {
+      "regex": "^(\\d+) seconds? ago$",
+      "flags": "i",
+      "replacement": "$1 秒前"
+    },
+    {
+      "regex": "^(\\d+) minutes? ago$",
+      "flags": "i",
+      "replacement": "$1 分钟前"
+    },
+    {
+      "regex": "^(\\d+) hours? ago$",
+      "flags": "i",
+      "replacement": "$1 小时前"
+    },
+    {
+      "regex": "^(\\d+) days? ago$",
+      "flags": "i",
+      "replacement": "$1 天前"
+    },
+    {
+      "regex": "^Reason: Not in allowlist: (.+)$",
+      "flags": "i",
+      "replacement": "原因：不在白名单中：$1"
+    },
+    {
+      "regex": "^Autorun mode$",
+      "flags": "i",
+      "replacement": "自动运行模式"
+    },
+    {
+      "regex": "^Auto-Run Mode Disabled by Team Admin$",
+      "flags": "i",
+      "replacement": "自动运行模式已被团队管理员禁用"
+    },
+    {
+      "regex": "^Auto-Run Mode Controlled by Team Admin$",
+      "flags": "i",
+      "replacement": "自动运行模式由团队管理员控制"
+    },
+    {
+      "regex": "^Auto-Run Mode Controlled by Team Admin \\(Sandbox Enabled\\)$",
+      "flags": "i",
+      "replacement": "自动运行模式由团队管理员控制（沙盒已启用）"
+    },
+    {
+      "regex": "^Enabled by Run Everything Auto-Run Mode:\\s*Agent bypasses approval prompts for tools including Web Search\\.?$",
+      "flags": "i",
+      "replacement": "由“全部运行”自动运行模式启用：智能体会跳过包括网页搜索在内的工具审批提示"
+    },
+    {
+      "regex": "^Jump back to the Agents Window to keep working across repos\\.?$",
+      "flags": "i",
+      "replacement": "返回智能体窗口以继续跨仓库工作。"
+    },
+    {
+      "regex": "^Custom cron: (.+)$",
+      "flags": "i",
+      "replacement": "自定义 Cron：$1"
+    },
+    {
+      "regex": "^(.+) at (.+)$",
+      "flags": "i",
+      "replacement": "$1 于 $2"
+    },
+    {
+      "regex": "^Automatically index any new folders with fewer than (\\d+) files$",
+      "flags": "i",
+      "replacement": "自动索引文件数少于 $1 的新文件夹"
+    },
+    {
+      "regex": "^Embed codebase for improved contextual understanding and knowledge\\.\\s*Embeddings and metadata are stored in the cloud, but all code is stored locally\\.?$",
+      "flags": "i",
+      "replacement": "嵌入代码库以提高上下文理解和知识。嵌入向量和元数据存储在云端，但所有代码都存储在本地。"
+    },
+    {
+      "regex": "^Use with caution\\.\\s*Skip symlinks during\\s*\\.?cursorignore file discovery\\.\\s*Only enable if your repository has many\\s*symlinks and all\\s*\\.?cursorignore files are reachable without them\\.\\s*Changing this setting will require a restart of\\s*Cursor\\.?$",
+      "flags": "i",
+      "replacement": "谨慎使用。在 .cursorignore 文件发现期间跳过符号链接。仅在您的仓库有很多符号链接且所有 .cursorignore 文件无需它们即可访问时启用。更改此设置需要重启 Cursor。"
+    },
+    {
+      "regex": "^[\\u26A0\\uFE0F\\u26A0]?\\s*Use with caution\\.\\s*Skip symlinks during\\s*\\.?cursorignore file discovery\\.\\s*Only enable if your repository has many symlinks and all\\s*\\.?cursorignore files are reachable without them\\s*\\(controlled by admin\\)\\.\\s*Changing this setting will require a restart of\\s*Cursor\\.?$",
+      "flags": "iu",
+      "replacement": "⚠️ 谨慎使用。在 .cursorignore 文件发现期间跳过符号链接。仅在您的仓库有很多符号链接且所有 .cursorignore 文件无需它们即可访问时启用（由管理员控制）。更改此设置需要重启 Cursor。"
+    },
+    {
+      "regex": "^[\\u26A0\\uFE0F\\u26A0]?\\s*Use with caution\\.\\s*Skip symlinks during\\s*\\.?cursorignore file discovery\\.\\s*Only enable if your repository has many symlinks and all\\s*\\.?cursorignore files are reachable without them\\.\\s*Changing this setting will require a restart of\\s*Cursor\\.?$",
+      "flags": "iu",
+      "replacement": "⚠️ 谨慎使用。在 .cursorignore 文件发现期间跳过符号链接。仅在您的仓库有很多符号链接且所有 .cursorignore 文件无需它们即可访问时启用。更改此设置需要重启 Cursor。"
+    },
+    {
+      "regex": "^(\\d+) hooks?$",
+      "flags": "i",
+      "replacement": "$1 个钩子"
+    },
+    {
+      "regex": "^(\\d+) automations?$",
+      "flags": "i",
+      "replacement": "$1 个自动化"
+    },
+    {
+      "regex": "^(\\d+) rules?$",
+      "flags": "i",
+      "replacement": "$1 条规则"
+    },
+    {
+      "regex": "^(\\d+) commands?$",
+      "flags": "i",
+      "replacement": "$1 个命令"
+    },
+    {
+      "regex": "^(\\d+) subagents?$",
+      "flags": "i",
+      "replacement": "$1 个子智能体"
+    },
+    {
+      "regex": "^Disable for (.+)$",
+      "flags": "i",
+      "replacement": "禁用 $1"
+    },
+    {
+      "regex": "^Chat History \\((.+)\\)$",
+      "flags": "",
+      "replacement": "聊天历史 ($1)"
+    },
+    {
+      "regex": "^Show (\\d+) more$",
+      "flags": "i",
+      "replacement": "再显示 $1 条"
+    },
+    {
+      "regex": "^\\((.+) remaining\\)$",
+      "flags": "",
+      "replacement": "（剩余 $1）"
+    },
+    {
+      "regex": "^Configured Hooks \\((\\d+)\\)$",
+      "flags": "",
+      "replacement": "已配置的钩子 ($1)"
+    },
+    {
+      "regex": "^files$",
+      "flags": "i",
+      "replacement": "个文件"
+    },
+    {
+      "regex": "^(\\d+) files?$",
+      "flags": "i",
+      "replacement": "$1 个文件"
+    },
+    {
+      "regex": "^(\\d+) Files$",
+      "flags": "i",
+      "replacement": "$1 个文件"
+    },
+    {
+      "regex": "^(\\d+) 文件s$",
+      "flags": "i",
+      "replacement": "$1 个文件"
+    },
+    {
+      "regex": "^Stop \\((.+)\\)$",
+      "flags": "",
+      "replacement": "停止 ($1)"
+    },
+    {
+      "regex": "^Stop\\s+(.+)$",
+      "flags": "i",
+      "replacement": "停止 $1"
+    },
+    {
+      "regex": "^Stop$",
+      "flags": "i",
+      "replacement": "停止"
+    },
+    {
+      "regex": "^Add to Chat \\((.+)\\)$",
+      "flags": "",
+      "replacement": "添加到聊天 ($1)"
+    },
+    {
+      "regex": "^Quick Edit \\((.+)\\)$",
+      "flags": "",
+      "replacement": "快速编辑 ($1)"
+    },
+    {
+      "regex": "^Switch Agent Mode \\((.+)\\)$",
+      "flags": "",
+      "replacement": "切换智能体模式 ($1)"
+    },
+    {
+      "regex": "^Using image$",
+      "flags": "i",
+      "replacement": "使用图像"
+    },
+    {
+      "regex": "^Using video$",
+      "flags": "i",
+      "replacement": "使用视频"
+    },
+    {
+      "regex": "^Attached image$",
+      "flags": "",
+      "replacement": "附加图片"
+    },
+    {
+      "regex": "^Attached image (\\d+)$",
+      "flags": "",
+      "replacement": "附加图片 $1"
+    },
+    {
+      "regex": "^Using (\\d+) images?$",
+      "flags": "i",
+      "replacement": "使用 $1 张图片"
+    },
+    {
+      "regex": "^Using (\\d+) videos?$",
+      "flags": "i",
+      "replacement": "使用 $1 个视频"
+    },
+    {
+      "regex": "^Using 1 image$",
+      "flags": "i",
+      "replacement": "使用 1 张图片"
+    },
+    {
+      "regex": "^Using 1 video$",
+      "flags": "i",
+      "replacement": "使用 1 个视频"
+    },
+    {
+      "regex": "^免费版\\s+免费版$",
+      "flags": "i",
+      "replacement": "免费版"
+    },
+    {
+      "regex": " \\((\\d+) days?\\)$",
+      "flags": "i",
+      "replacement": "（$1 天）"
+    },
+    {
+      "regex": "\\((\\d+) days?\\)$",
+      "flags": "i",
+      "replacement": "（$1 天）"
+    },
+    {
+      "regex": "^Review Changes \\((.+)\\)$",
+      "flags": "",
+      "replacement": "审查更改 ($1)"
+    },
+    {
+      "regex": "^Review: (.+)$",
+      "flags": "",
+      "replacement": "审查：$1"
+    },
+    {
+      "regex": "^Review: Cursor skill localization$",
+      "flags": "i",
+      "replacement": "审查：Cursor 技能汉化"
+    },
+    {
+      "regex": "^审查[:：] Cursor skill localization$",
+      "flags": "",
+      "replacement": "审查：Cursor 技能汉化"
+    },
+    {
+      "regex": "^All Automations \\((\\d+)\\)$",
+      "flags": "",
+      "replacement": "全部自动化 ($1)"
+    },
+    {
+      "regex": "^All Agents \\((\\d+)\\)$",
+      "flags": "",
+      "replacement": "全部智能体 ($1)"
+    },
+    {
+      "regex": "^Click to open (.+) at line (\\d+)$",
+      "flags": "",
+      "replacement": "点击打开 $1 第 $2 行"
+    },
+    {
+      "regex": "^Awaiting approval to edit (.+)$",
+      "flags": "",
+      "replacement": "等待批准编辑 $1"
+    },
+    {
+      "regex": "^Copy Request \\(([0-9a-f-]+)\\)$",
+      "flags": "i",
+      "replacement": "复制请求 ($1)"
+    },
+    {
+      "regex": "^You've used (\\d+)% of your included usage$",
+      "flags": "i",
+      "replacement": "您已使用包含用量的 $1%"
+    },
+    {
+      "regex": "^You're approaching your usage limit$",
+      "flags": "i",
+      "replacement": "您的用量即将达到上限"
+    },
+    {
+      "regex": "^You've hit your usage limit$",
+      "flags": "i",
+      "replacement": "您已达到用量上限"
+    },
+    {
+      "regex": "^Get Cursor Pro for more Agent usage, unlimited Tab, and more\\.?$",
+      "flags": "i",
+      "replacement": "升级到 Cursor Pro 以获取更多 Agent 用量、无限 Tab 等。"
+    },
+    {
+      "regex": "^Get Cursor Pro for more Agent usage, Cloud Agents, and more\\.?$",
+      "flags": "i",
+      "replacement": "升级到 Cursor Pro 以获取更多智能体用量、云端智能体等。"
+    },
+    {
+      "regex": "^Done • (.+)$",
+      "flags": "",
+      "replacement": "完成 • $1"
+    },
+    {
+      "regex": "^Open Cursor to view the agent's output\\.?$",
+      "flags": "i",
+      "replacement": "打开 Cursor 以查看智能体输出。"
+    },
+    {
+      "regex": "^Inspecta server started on port (\\d+)$",
+      "flags": "i",
+      "replacement": "Inspecta 服务器已在端口 $1 启动"
+    },
+    {
+      "regex": "^Claude Code: Open$",
+      "flags": "i",
+      "replacement": "Claude Code：已打开"
+    },
+    {
+      "regex": "^Claude Code: Closed$",
+      "flags": "i",
+      "replacement": "Claude Code：已关闭"
+    },
+    {
+      "regex": "^(\\d+)%\\s+Full$",
+      "flags": "i",
+      "replacement": "$1% 已满"
+    },
+    {
+      "regex": "^(\\d+)% · ([\\d,.]+(?:[KMB])?) \\/ ([\\d,.]+[KMB]?) context used$",
+      "flags": "i",
+      "replacement": "$1% · $2 / $3 上下文已用"
+    },
+    {
+      "regex": "^(\\d+)%\\s+context$",
+      "flags": "i",
+      "replacement": "$1% 上下文"
+    },
+    {
+      "regex": "^(\\d+)\\s+files$",
+      "flags": "i",
+      "replacement": "$1 个文件"
+    },
+    {
+      "regex": "^(\\d+)\\s+文件s$",
+      "flags": "i",
+      "replacement": "$1 个文件"
+    },
+    {
+      "regex": "^Toggle Agents \\((.+)\\)$",
+      "flags": "",
+      "replacement": "切换智能体 ($1)"
+    },
+    {
+      "regex": "^Toggle Agents Side Bar \\((.+)\\)$",
+      "flags": "",
+      "replacement": "切换智能体侧栏 ($1)"
+    },
+    {
+      "regex": "^Show Agents Side Bar \\((.+)\\)$",
+      "flags": "",
+      "replacement": "显示智能体侧栏 ($1)"
+    },
+    {
+      "regex": "^Toggle Primary Side Bar \\((.+)\\)$",
+      "flags": "",
+      "replacement": "切换主侧边栏 ($1)"
+    },
+    {
+      "regex": "^Go Back \\((.+)\\)$",
+      "flags": "",
+      "replacement": "返回 ($1)"
+    },
+    {
+      "regex": "^Go Forward \\((.+)\\)$",
+      "flags": "",
+      "replacement": "前进 ($1)"
+    },
+    {
+      "regex": "^Navigate back \\((.+)\\)$",
+      "flags": "",
+      "replacement": "后退 ($1)"
+    },
+    {
+      "regex": "^Navigate forward \\((.+)\\)$",
+      "flags": "",
+      "replacement": "前进 ($1)"
+    },
+    {
+      "regex": "^Go to File \\((.+)\\)$",
+      "flags": "",
+      "replacement": "转到文件 ($1)"
+    },
+    {
+      "regex": "^Hide Panel \\((.+)\\)$",
+      "flags": "",
+      "replacement": "隐藏面板 ($1)"
+    },
+    {
+      "regex": "^Configure Keybinding (.+)$",
+      "flags": "",
+      "replacement": "配置键绑定 $1"
+    },
+    {
+      "regex": "^Hide '(.+)'$",
+      "flags": "",
+      "replacement": "隐藏「$1」"
+    },
+    {
+      "regex": "^Hide drop shadow$",
+      "flags": "i",
+      "replacement": "隐藏外阴影"
+    },
+    {
+      "regex": "^Show drop shadow$",
+      "flags": "i",
+      "replacement": "显示外阴影"
+    },
+    {
+      "regex": "^Hide inner shadow$",
+      "flags": "i",
+      "replacement": "隐藏内阴影"
+    },
+    {
+      "regex": "^Show inner shadow$",
+      "flags": "i",
+      "replacement": "显示内阴影"
+    },
+    {
+      "regex": "^Hide layer blur$",
+      "flags": "i",
+      "replacement": "隐藏图层模糊"
+    },
+    {
+      "regex": "^Show layer blur$",
+      "flags": "i",
+      "replacement": "显示图层模糊"
+    },
+    {
+      "regex": "^Hide backdrop blur$",
+      "flags": "i",
+      "replacement": "隐藏背景模糊"
+    },
+    {
+      "regex": "^Show backdrop blur$",
+      "flags": "i",
+      "replacement": "显示背景模糊"
+    },
+    {
+      "regex": "^Reveal in File Explorer \\((.+)\\)$",
+      "flags": "",
+      "replacement": "在文件资源管理器中显示 ($1)"
+    },
+    {
+      "regex": "^Open in Browser \\((.+)\\)$",
+      "flags": "",
+      "replacement": "在浏览器中打开 ($1)"
+    },
+    {
+      "regex": "^Switch Model \\((.+)\\)$",
+      "flags": "",
+      "replacement": "切换模型 ($1)"
+    },
+    {
+      "regex": "^New Tab \\((.+)\\)$",
+      "flags": "",
+      "replacement": "新建标签页 ($1)"
+    },
+    {
+      "regex": "^New Agent \\((.+)\\)$",
+      "flags": "",
+      "replacement": "新建智能体 ($1)"
+    },
+    {
+      "regex": "^\\[Alt\\]\\s*Replace Agent$",
+      "flags": "i",
+      "replacement": "[Alt] 替换智能体"
+    },
+    {
+      "regex": "^Enter Full Screen \\((.+)\\)$",
+      "flags": "",
+      "replacement": "进入全屏 ($1)"
+    },
+    {
+      "regex": "^Exit Full Screen \\((.+)\\)$",
+      "flags": "",
+      "replacement": "退出全屏 ($1)"
+    },
+    {
+      "regex": "^Voice Input \\((.+)\\)$",
+      "flags": "",
+      "replacement": "语音输入 ($1)"
+    },
+    {
+      "regex": "^Fixed Width \\((.+)\\)$",
+      "flags": "",
+      "replacement": "固定宽度 ($1)"
+    },
+    {
+      "regex": "^Last updated (.+)$",
+      "flags": "i",
+      "replacement": "最后更新 $1"
+    },
+    {
+      "regex": "^Created by (.+)$",
+      "flags": "i",
+      "replacement": "由 $1 创建"
+    },
+    {
+      "regex": "^(\\d+)w ago$",
+      "flags": "i",
+      "replacement": "$1 周前"
+    },
+    {
+      "regex": "^(\\d+)mo ago$",
+      "flags": "i",
+      "replacement": "$1 个月前"
+    },
+    {
+      "regex": "^(\\d+)d ago$",
+      "flags": "i",
+      "replacement": "$1 天前"
+    },
+    {
+      "regex": "^(\\d+)h ago$",
+      "flags": "i",
+      "replacement": "$1 小时前"
+    },
+    {
+      "regex": "^(\\d+)m ago$",
+      "flags": "i",
+      "replacement": "$1 分钟前"
+    },
+    {
+      "regex": "^Mine (\\d+)$",
+      "flags": "i",
+      "replacement": "我的 $1"
+    },
+    {
+      "regex": "^Team (\\d+)$",
+      "flags": "i",
+      "replacement": "团队 $1"
+    },
+    {
+      "regex": "^Successful · (\\d+)d$",
+      "flags": "i",
+      "replacement": "成功 · $1天"
+    },
+    {
+      "regex": "^Failed · (\\d+)d$",
+      "flags": "i",
+      "replacement": "失败 · $1天"
+    },
+    {
+      "regex": "^Draft: (.+)$",
+      "flags": "i",
+      "replacement": "草稿：$1"
+    },
+    {
+      "regex": "^New Agent in (.+)$",
+      "flags": "",
+      "replacement": "在 $1 中新建智能体"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "description": "Cursor 设置页 MCP 自动运行说明、Agent 域名白名单等专用片段（FanYi_Cursor_SheZhi_MiaoShu）。修改后重新运行 Cursor_Localization_Tool.py 注入生效。",
+  "updatedAt": "2026-06-02",
+  "symlink": {
+    "zh": "⚠️ 谨慎使用。在 .cursorignore 文件发现期间跳过符号链接。仅在您的仓库有很多符号链接且所有 .cursorignore 文件无需它们即可访问时启用",
+    "zhAdmin": "⚠️ 谨慎使用。在 .cursorignore 文件发现期间跳过符号链接。仅在您的仓库有很多符号链接且所有 .cursorignore 文件无需它们即可访问时启用（由管理员控制）",
+    "tail": "。更改此设置需要重启 Cursor。"
+  },
+  "mcpEntries": [
+    ["MCP tools that can run automatically.", "可以自动运行的 MCP 工具。"],
+    ["MCP tools that can run automatically", "可以自动运行的 MCP 工具"],
+    ["Format:", "格式："],
+    [" for all tools from a server,", " 表示某服务器的所有工具，"],
+    [" for all tools from a server", " 表示某服务器的所有工具"],
+    [" for a tool from any server,", " 表示任意服务器的某工具，"],
+    [" for a tool from any server", " 表示任意服务器的某工具"],
+    [", or '*:*' for all tools from all servers", "，或 '*:*' 表示所有服务器的所有工具"]
+  ],
+  "domainEntries": [
+    ["Domains that Agent can fetch from automatically.", "Agent 可以自动获取的域名。"],
+    ["Domains that Agent can fetch from automatically", "Agent 可以自动获取的域名"],
+    ["Use '*' for all domains,", "使用 '*' 表示所有域名，"],
+    ["Use '*' for all domains", "使用 '*' 表示所有域名"],
+    ["'*.example.com' for wildcard subdomains.", "'*.example.com' 表示通配子域名。"],
+    ["'*.example.com' for wildcard subdomains", "'*.example.com' 表示通配子域名"],
+    ["Reason: Not in allowlist:", "原因：不在白名单中："],
+    ["Will allow:", "将允许："]
+  ]
+}

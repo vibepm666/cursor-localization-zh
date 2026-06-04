@@ -1,0 +1,593 @@
+{
+  "description": "Cursor 插件市场/市场页专用翻译。修改后重新运行 Cursor_Localization_Tool.py 注入生效。",
+  "updatedAt": "2026-06-03",
+  "pluginNames": {
+    "Datadog": "监控观测",
+    "Slack": "团队协作",
+    "Figma": "设计协作",
+    "Linear": "项目管理",
+    "linear": "项目管理",
+    "Twilio": "通信服务",
+    "Vantage": "云成本管理",
+    "Azure": "微软云",
+    "Temporal": "工作流编排",
+    "typescript-lsp": "TypeScript 语言服务",
+    "terraform": "Terraform 基础设施",
+    "telegram": "Telegram 通知",
+    "swift-lsp": "Swift 语言服务",
+    "skill-creator": "技能创建器",
+    "session-report": "会话报告",
+    "serena": "语义代码分析",
+    "security-guidance": "安全指导",
+    "rust-analyzer-lsp": "Rust 语言服务",
+    "ruby-lsp": "Ruby 语言服务",
+    "ralph-loop": "自循环实验",
+    "pyright-lsp": "Python 语言服务",
+    "pr-review-toolkit": "PR 评审工具包",
+    "plugin-dev": "插件开发工具包",
+    "playwright": "浏览器自动化",
+    "playground": "交互式演示",
+    "php-lsp": "PHP 语言服务",
+    "lua-lsp": "Lua 语言服务",
+    "mcp-server-dev": "MCP 服务开发",
+    "mcp-tunnels": "MCP 隧道",
+    "math-olympiad": "数学竞赛",
+    "claude-plugins-official": "Claude 官方插件"
+  },
+  "skillNames": {
+    "ddconfig": "配置 Datadog",
+    "ddsetup": "初始化 Datadog",
+    "ddtoolsets": "管理 Datadog 工具集",
+    "session-report": "生成会话报告",
+    "skill-creator": "创建技能",
+    "plugin-dev": "插件开发",
+    "security-guidance": "安全指导",
+    "frontend-qa": "前端质检"
+  },
+  "nameStems": {
+    "typescript": "TypeScript",
+    "javascript": "JavaScript",
+    "swift": "Swift",
+    "rust": "Rust",
+    "ruby": "Ruby",
+    "php": "PHP",
+    "python": "Python",
+    "pyright": "Python",
+    "lua": "Lua",
+    "terraform": "Terraform",
+    "telegram": "Telegram",
+    "playwright": "Playwright",
+    "azure": "Azure",
+    "security": "安全",
+    "guidance": "指导",
+    "plugin": "插件",
+    "plugins": "插件",
+    "dev": "开发",
+    "server": "服务",
+    "creator": "创建器",
+    "report": "报告",
+    "session": "会话",
+    "review": "评审",
+    "toolkit": "工具包",
+    "tool": "工具",
+    "mcp": "MCP",
+    "lsp": "语言服务",
+    "analyzer": "分析器",
+    "browser": "浏览器",
+    "automation": "自动化",
+    "playground": "演示环境",
+    "loop": "循环",
+    "tunnels": "隧道",
+    "math": "数学",
+    "olympiad": "竞赛",
+    "linear": "Linear"
+  },
+  "uiLabels": {
+    "Results": "结果",
+    "No Result": "无结果",
+    "No Results": "无结果",
+    "View source code": "查看源代码",
+    "Try a different search term or browse by category": "尝试其他搜索词或按分类浏览",
+    "Browse Marketplace": "浏览市场",
+    "Add to Cursor": "添加到 Cursor",
+    "Add for Myself": "为自己添加",
+    "Add to Project": "添加到项目",
+    "Installing...": "正在安装...",
+    "Private": "私有",
+    "Try in Chat": "在对话中试用",
+    "Verified by Cursor": "经 Cursor 验证",
+    "Get": "获取",
+    "Search skills, rules, subagents": "搜索技能、规则与子智能体",
+    "Search or Paste Link": "搜索或粘贴链接",
+    "claude-plugins-official": "Claude 官方插件源",
+    "Remove Marketplace": "移除市场"
+  },
+  "uiFragments": [
+    [
+      "Last updated ",
+      "最后更新 "
+    ],
+    [
+      "View source code",
+      "查看源代码"
+    ],
+    [
+      "1w ago",
+      "1 周前"
+    ],
+    [
+      "2w ago",
+      "2 周前"
+    ],
+    [
+      "3w ago",
+      "3 周前"
+    ],
+    [
+      "4w ago",
+      "4 周前"
+    ],
+    [
+      "1mo ago",
+      "1 个月前"
+    ],
+    [
+      "2mo ago",
+      "2 个月前"
+    ],
+    [
+      "3mo ago",
+      "3 个月前"
+    ],
+    [
+      "1d ago",
+      "1 天前"
+    ],
+    [
+      "2d ago",
+      "2 天前"
+    ],
+    [
+      "3d ago",
+      "3 天前"
+    ],
+    [
+      "1h ago",
+      "1 小时前"
+    ],
+    [
+      "2h ago",
+      "2 小时前"
+    ],
+    [
+      "1m ago",
+      "1 分钟前"
+    ]
+  ],
+  "patterns": [
+    {
+      "regex": "^Last updated (.+)$",
+      "flags": "i",
+      "replace": "最后更新 "
+    },
+    {
+      "regex": "^Created by (.+)$",
+      "flags": "i",
+      "replace": "由  创建"
+    }
+  ],
+  "descriptionFragments": [
+    [
+      "Generate an explorable HTML report of Claude Code session usage",
+      "生成可浏览的 Claude Code 会话用量 HTML 报告"
+    ],
+    [
+      "Generate an explorable HTML rep",
+      "生成可浏览的 HTML 报告"
+    ],
+    [
+      "Generate an explor",
+      "生成可浏览的"
+    ],
+    [
+      "tokens, cache efficiency, subagents, skills, and the most expensive prompts",
+      "包括 token、缓存效率、子智能体、技能以及最昂贵的提示词"
+    ],
+    [
+      "from local ~/.claude/projects transcripts.",
+      "数据来自本地 ~/.claude/projects 转录记录。"
+    ],
+    [
+      "TypeScript/JavaScript language server",
+      "TypeScript/JavaScript 语言服务器"
+    ],
+    [
+      "TypeScript/JavaScript language ser",
+      "TypeScript/JavaScript 语言服务器"
+    ],
+    [
+      "TypeScript/JavaScript language se",
+      "TypeScript/JavaScript 语言服务器"
+    ],
+    [
+      "Swift language server",
+      "Swift 语言服务器"
+    ],
+    [
+      "Swift language serv",
+      "Swift 语言服务器"
+    ],
+    [
+      "Rust language server",
+      "Rust 语言服务器"
+    ],
+    [
+      "Rust language serv",
+      "Rust 语言服务器"
+    ],
+    [
+      "Ruby language server",
+      "Ruby 语言服务器"
+    ],
+    [
+      "Ruby language serv",
+      "Ruby 语言服务器"
+    ],
+    [
+      "Python language server",
+      "Python 语言服务器"
+    ],
+    [
+      "Python language se",
+      "Python 语言服务器"
+    ],
+    [
+      "PHP language server",
+      "PHP 语言服务器"
+    ],
+    [
+      "Lua language server",
+      "Lua 语言服务器"
+    ],
+    [
+      "Lua language serv",
+      "Lua 语言服务器"
+    ],
+    [
+      "language server for code intelligence",
+      "用于代码智能的语言服务器"
+    ],
+    [
+      "language server for code inte",
+      "用于代码智能的语言服务器"
+    ],
+    [
+      "for enhanced code intelligence",
+      "用于增强代码智能"
+    ],
+    [
+      "enhanced code intelligence",
+      "增强代码智能"
+    ],
+    [
+      "Semantic code analysis MCP server",
+      "语义代码分析 MCP 服务器"
+    ],
+    [
+      "Semantic code analysis MCP serve",
+      "语义代码分析 MCP 服务器"
+    ],
+    [
+      "Semantic code analysis MCP serve...",
+      "语义代码分析 MCP 服务器..."
+    ],
+    [
+      "Use Datadog directly in Cursor through a preconfigured Datadog MCP server.",
+      "通过预配置的 Datadog MCP 服务器直接在 Cursor 中使用 Datadog。"
+    ],
+    [
+      "Use Datadog directly in Cursor through a preconfigured Datadog MCP server",
+      "通过预配置的 Datadog MCP 服务器直接在 Cursor 中使用 Datadog"
+    ],
+    [
+      "Query logs, metrics, traces, dashboards, and more through natural conversation.",
+      "通过自然语言对话查询日志、指标、链路追踪、仪表盘等内容。"
+    ],
+    [
+      "This plugin is in preview.",
+      "此插件处于预览阶段。"
+    ],
+    [
+      "Slack MCP server.",
+      "Slack MCP 服务器。"
+    ],
+    [
+      "Search channels, send messages, and perform operations",
+      "搜索频道、发送消息并执行操作"
+    ],
+    [
+      "Search channels, send messages",
+      "搜索频道、发送消息"
+    ],
+    [
+      "Plugin that includes the Figma MCP server and Skills for common",
+      "包含 Figma MCP 服务器和常用技能的插件"
+    ],
+    [
+      "Plugin that includes the Figma MCP server and Skills for common workflows",
+      "包含 Figma MCP 服务器和常用技能工作流的插件"
+    ],
+    [
+      " for common workflows",
+      " 的常用工作流"
+    ],
+    [
+      "workflows",
+      "工作流"
+    ],
+    [
+      "Cursor Plugin for Linear",
+      "Linear 的 Cursor 插件"
+    ],
+    [
+      "Linear issue tracking integration",
+      "Linear 议题跟踪集成"
+    ],
+    [
+      "Linear issue tracking integration.",
+      "Linear 议题跟踪集成。"
+    ],
+    [
+      "enables AI assistants to manage issues",
+      "让 AI 助手能够管理议题"
+    ],
+    [
+      "Twilio Skills and MCP provide procedural knowledge for AI coding",
+      "Twilio 技能和 MCP 为 AI 编码提供流程化知识"
+    ],
+    [
+      "Twilio Skills and MCP provide procedural knowledge",
+      "Twilio 技能和 MCP 提供流程化知识"
+    ],
+    [
+      "Query cloud costs, manage cost reports, budgets, alerts, and recommendations",
+      "查询云成本，管理成本报告、预算、告警和建议"
+    ],
+    [
+      "Query cloud costs, manage cost reports",
+      "查询云成本，管理成本报告"
+    ],
+    [
+      "Microsoft Azure MCP and Skills integration for cloud resource management",
+      "用于云资源管理的 Microsoft Azure MCP 与技能集成"
+    ],
+    [
+      "Microsoft Azure MCP and Skills integration",
+      "Microsoft Azure MCP 与技能集成"
+    ],
+    [
+      "Comprehensive skill for the entire Temporal lifecycle",
+      "覆盖整个 Temporal 生命周期的综合技能"
+    ],
+    [
+      "Configures or troubleshoots the Datadog MCP server",
+      "配置或排查 Datadog MCP 服务器"
+    ],
+    [
+      "Configures or troubleshoots the Datadog MCP server plugin-datadog-datadog.",
+      "配置或排查 Datadog MCP 服务器 plugin-datadog-datadog。"
+    ],
+    [
+      "Use when the user wants to change the Datadog domain, switch organizations",
+      "当用户想更改 Datadog 域名、切换组织时使用"
+    ],
+    [
+      "First-time initialization of the Datadog MCP server",
+      "首次初始化 Datadog MCP 服务器"
+    ],
+    [
+      "First-time initialization of the Datadog MCP server plugin-datadog-datadog.",
+      "首次初始化 Datadog MCP 服务器 plugin-datadog-datadog。"
+    ],
+    [
+      "When fulfilling requests that involve Datadog, use MCP tools",
+      "处理涉及 Datadog 的请求时，使用 MCP 工具"
+    ],
+    [
+      "Manages toolsets for the Datadog MCP server",
+      "管理 Datadog MCP 服务器的工具集"
+    ],
+    [
+      "Manages toolsets for the Datadog MCP server plugin-datog-datadog.",
+      "管理 Datadog MCP 服务器 plugin-datog-datadog 的工具集。"
+    ],
+    [
+      "Manages toolsets for the Datadog MCP server plugin-datadog-datadog.",
+      "管理 Datadog MCP 服务器 plugin-datadog-datadog 的工具集。"
+    ],
+    [
+      "Use when the user wants to view, enable, or disable toolsets",
+      "当用户想查看、启用或禁用工具集时使用"
+    ],
+    [
+      "The Terraform MCP Server provides",
+      "Terraform MCP 服务器提供"
+    ],
+    [
+      "The Terraform MCP Server provide",
+      "Terraform MCP 服务器提供"
+    ],
+    [
+      "Telegram channel for Claude Code",
+      "Claude Code 的 Telegram 频道"
+    ],
+    [
+      "Telegram channel for Claude Code...",
+      "Claude Code 的 Telegram 频道..."
+    ],
+    [
+      "Telegram channel f",
+      "Claude Code 的 Telegram 频道"
+    ],
+    [
+      "Create new skills, improve existing",
+      "创建新技能、改进现有技能"
+    ],
+    [
+      "Create new skills, improve existing...",
+      "创建新技能、改进现有技能..."
+    ],
+    [
+      "Create new skills, i",
+      "创建新技能、改进现有技能"
+    ],
+    [
+      "Security reminder hook that warns",
+      "会发出警告的安全提醒钩子"
+    ],
+    [
+      "Security reminder hook that warns...",
+      "会发出警告的安全提醒钩子..."
+    ],
+    [
+      "Security reminder hook that warn",
+      "会发出警告的安全提醒钩子"
+    ],
+    [
+      "Security review for Claude-generated",
+      "对 Claude 生成内容进行安全审查"
+    ],
+    [
+      "Security review for Claude-gene",
+      "对 Claude 生成内容进行安全审查"
+    ],
+    [
+      "Continuous self-referential AI loops",
+      "连续自引用 AI 循环"
+    ],
+    [
+      "Continuous self-referential AI loo...",
+      "连续自引用 AI 循环..."
+    ],
+    [
+      "Continuous self-referential AI loo",
+      "连续自引用 AI 循环"
+    ],
+    [
+      "for interactive",
+      "用于交互"
+    ],
+    [
+      "for interacti",
+      "用于交互"
+    ],
+    [
+      "Comprehensive PR review agents",
+      "全面的 PR 评审智能体"
+    ],
+    [
+      "Comprehensive PR review agents ...",
+      "全面的 PR 评审智能体..."
+    ],
+    [
+      "specializing in",
+      "专长于"
+    ],
+    [
+      "specializi",
+      "专长于"
+    ],
+    [
+      "Browser automation and end-to-end",
+      "浏览器自动化和端到端"
+    ],
+    [
+      "Browser automation and end-to-e",
+      "浏览器自动化和端到端"
+    ],
+    [
+      "end-to-end testing",
+      "端到端测试"
+    ],
+    [
+      "testing",
+      "测试"
+    ],
+    [
+      "Creates interactive HTML playground",
+      "创建交互式 HTML 演示环境"
+    ],
+    [
+      "Creates interactive HTML playgro",
+      "创建交互式 HTML 演示环境"
+    ],
+    [
+      "Plugin development toolkit with skills",
+      "带技能的插件开发工具包"
+    ],
+    [
+      "Plugin development toolkit with s...",
+      "带技能的插件开发工具包..."
+    ],
+    [
+      "Plugin development toolkit with s",
+      "带技能的插件开发工具包"
+    ],
+    [
+      "Skills for designing and building MCP",
+      "用于设计和构建 MCP 的技能"
+    ],
+    [
+      "Connect Claude to a private MCP",
+      "将 Claude 连接到私有 MCP"
+    ],
+    [
+      "Connect Claude to a private MC",
+      "将 Claude 连接到私有 MCP"
+    ],
+    [
+      "Solve competition math",
+      "解答竞赛数学"
+    ],
+    [
+      "Solve competition math (IMO, P",
+      "解答竞赛数学（IMO、Putnam 等）"
+    ],
+    [
+      "Generate an explorable HTML repo",
+      "生成可浏览的 HTML 仓库报告"
+    ],
+    [
+      "server for code intelligence",
+      "代码智能服务器"
+    ],
+    [
+      "and the most expensive prompts",
+      "以及最昂贵的提示词"
+    ],
+    [
+      "cache efficiency",
+      "缓存效率"
+    ],
+    [
+      "subagents",
+      "子智能体"
+    ],
+    [
+      "session usage",
+      "会话用量"
+    ],
+    [
+      "Last updated ",
+      "最后更新 "
+    ],
+    [
+      "View source code",
+      "查看源代码"
+    ],
+    [
+      "Try a different search term or browse by category",
+      "尝试其他搜索词或按分类浏览"
+    ]
+  ]
+}

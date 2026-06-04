@@ -1,0 +1,230 @@
+{
+  "description": "设置页等长句的部分匹配替换（TiHuan_BuFen_WenBen）。修改后重新运行 Cursor_Localization_Tool.py 注入生效。",
+  "updatedAt": "2026-06-03",
+  "entries": [
+    [
+      "Embed codebase for improved contextual understanding and knowledge.",
+      "嵌入代码库以提升上下文理解与知识检索。"
+    ],
+    [
+      "Embed codebase for improved contextual understanding and knowledge",
+      "嵌入代码库以提升上下文理解与知识检索"
+    ],
+    [
+      "Automatically index any new folders with fewer than 50,000 files",
+      "自动索引文件数少于 50,000 的新增文件夹"
+    ],
+    [
+      "Automatically index any new folders with fewer than",
+      "自动索引文件数少于"
+    ],
+    [
+      "Embeddings and metadata are stored in the ",
+      "嵌入向量和元数据存储在"
+    ],
+    [
+      "Embeddings and metadata are stored in ",
+      "嵌入向量和元数据存储在"
+    ],
+    [
+      ", but all code is stored locally.",
+      "，但所有代码都存储在本地。"
+    ],
+    [
+      "but all code is stored locally.",
+      "但所有代码都存储在本地。"
+    ],
+    [
+      "Auto Resume",
+      "自动恢复"
+    ],
+    [
+      "Continue Prompt",
+      "继续提示"
+    ],
+    [
+      "Auto Store",
+      "自动存储"
+    ],
+    [
+      "Partial Matches",
+      "部分匹配"
+    ],
+    [
+      "Natural Language Search",
+      "自然语言搜索"
+    ],
+    [
+      "Natural Language 搜索",
+      "自然语言搜索"
+    ],
+    [
+      "Automation Profile",
+      "自动化配置文件"
+    ],
+    [
+      "Focus on Command Execution",
+      "命令执行时聚焦"
+    ],
+    [
+      "Preserve Cursor Position",
+      "保留光标位置"
+    ],
+    [
+      "You can put in",
+      "您可以填写自己的"
+    ],
+    [
+      "your Anthropic key",
+      "Anthropic key"
+    ],
+    [
+      "your OpenAI key",
+      "OpenAI key"
+    ],
+    [
+      "your Google AI Studio key",
+      "Google AI Studio key"
+    ],
+    [
+      "to use OpenAI models at cost.",
+      "来按成本价使用 OpenAI 模型。"
+    ],
+    [
+      "to use Claude at cost. When enabled, this key will be used for all models beginning with \"claude-\".",
+      "来按成本价使用 Claude。启用后，此 key 将用于所有以 \"claude-\" 开头的模型。"
+    ],
+    [
+      "to use Google models at-cost.",
+      "来按成本价使用 Google 模型。"
+    ],
+    [
+      "Add a custom MCP tool here or configure project-specific tools in",
+      "在此添加自定义 MCP 工具，或在以下位置配置项目专用工具："
+    ],
+    [
+      "Cursor skill localization",
+      "Cursor 技能汉化"
+    ],
+    [
+      "skill localization",
+      "技能汉化"
+    ],
+    [
+      "MCP tools that can run automatically.",
+      "可以自动运行的 MCP 工具。"
+    ],
+    [
+      "MCP tools that can run automatically",
+      "可以自动运行的 MCP 工具"
+    ],
+    [
+      "Format:",
+      "格式："
+    ],
+    [
+      " for all tools from a server,",
+      " 表示某服务器的所有工具，"
+    ],
+    [
+      " for all tools from a server",
+      " 表示某服务器的所有工具"
+    ],
+    [
+      " for a tool from any server,",
+      " 表示任意服务器的某工具，"
+    ],
+    [
+      " for a tool from any server",
+      " 表示任意服务器的某工具"
+    ],
+    [
+      ", or '*:*' for all tools from all servers",
+      "，或 '*:*' 表示所有服务器的所有工具"
+    ],
+    [
+      "Domains that Agent can fetch from automatically.",
+      "Agent 可以自动获取的域名。"
+    ],
+    [
+      "Domains that Agent can fetch from automatically",
+      "Agent 可以自动获取的域名"
+    ],
+    [
+      "Use '*' for all domains,",
+      "使用 '*' 表示所有域名，"
+    ],
+    [
+      "Use '*' for all domains",
+      "使用 '*' 表示所有域名"
+    ],
+    [
+      "'*.example.com' for wildcard subdomains.",
+      "'*.example.com' 表示通配子域名。"
+    ],
+    [
+      "'*.example.com' for wildcard subdomains",
+      "'*.example.com' 表示通配子域名"
+    ],
+    [
+      "Reason: Not in allowlist:",
+      "原因：不在白名单中："
+    ],
+    [
+      "Will allow:",
+      "将允许："
+    ],
+    [
+      "Your prompts, edits and other usage data will be stored and trained on by Cursor to improve the product.",
+      "您的提示词、编辑内容和其他使用数据将由 Cursor 存储并用于训练，以改进产品。"
+    ],
+    [
+      "Your prompts, edits and other usage data will be stored and trained on by Cursor to improve the product",
+      "您的提示词、编辑内容和其他使用数据将由 Cursor 存储并用于训练，以改进产品"
+    ],
+    [
+      "You haven't marked any dialogs as 'Don't ask again'.",
+      "您尚未将任何对话框标记为「不再询问」。"
+    ],
+    [
+      "You haven't marked any dialogs as \"Don't ask again\".",
+      "您尚未将任何对话框标记为「不再询问」。"
+    ],
+    [
+      "You haven't marked any dialogs as 'Don't ask again'. Any hidden dialogs will appear here to manage.",
+      "您尚未将任何对话框标记为「不再询问」。已隐藏的对话框将显示在此处以供管理。"
+    ],
+    [
+      "You haven't marked any dialogs as \"Don't ask again\". Any hidden dialogs will appear here to manage.",
+      "您尚未将任何对话框标记为「不再询问」。已隐藏的对话框将显示在此处以供管理。"
+    ],
+    [
+      "Reset 'Don't Ask Again' Dialogs",
+      "重置「不再询问」对话框"
+    ],
+    [
+      "Reset \"Don't Ask Again\" Dialogs",
+      "重置「不再询问」对话框"
+    ],
+    [
+      "See warnings and tips that you've hidden",
+      "查看您已隐藏的警告和提示"
+    ],
+    [
+      "Any hidden dialogs will appear here to manage.",
+      "已隐藏的对话框将显示在此处以供管理。"
+    ],
+    [
+      "marked any dialogs as 'Don't ask again'",
+      "将任何对话框标记为「不再询问」"
+    ],
+    [
+      "You haven't marked any dialogs as \"Don't ask again\".",
+      "您尚未将任何对话框标记为「不再询问」。"
+    ],
+    [
+      "marked any dialogs as \"Don't ask again\"",
+      "将任何对话框标记为「不再询问」"
+    ]
+  ]
+}
