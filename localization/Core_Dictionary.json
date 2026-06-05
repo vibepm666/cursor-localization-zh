@@ -5569,6 +5569,10 @@
           "关闭窗格"
         ],
         [
+          "Close Pane (Ctrl+F4)",
+          "关闭窗格 (Ctrl+F4)"
+        ],
+        [
           "Browse Files",
           "浏览文件"
         ],
@@ -6347,6 +6351,10 @@
           "关闭标签页"
         ],
         [
+          "Close Tab (Ctrl+W)",
+          "关闭标签页 (Ctrl+W)"
+        ],
+        [
           "Close Running Tab?",
           "关闭运行中的标签页？"
         ],
@@ -6359,8 +6367,16 @@
           "关闭其他"
         ],
         [
+          "Close Others (Alt+W)",
+          "关闭其他 (Alt+W)"
+        ],
+        [
           "Close to the Right",
           "关闭右侧"
+        ],
+        [
+          "Close to the Right (Alt+Shift+W)",
+          "关闭右侧 (Alt+Shift+W)"
         ],
         [
           "Close Saved",
@@ -6369,6 +6385,10 @@
         [
           "Close All",
           "关闭全部"
+        ],
+        [
+          "Close All (Ctrl+K Ctrl+W)",
+          "关闭全部 (Ctrl+K Ctrl+W)"
         ],
         [
           "Close Other Tabs",
@@ -6431,12 +6451,8 @@
           "在新标签页中打开"
         ],
         [
-          "Open in new tab",
-          "在新标签页中打开"
-        ],
-        [
-          "Open in New Tab",
-          "在新标签页中打开"
+          "Open in New Tab (Ctrl+Enter)",
+          "在新标签页中打开 (Ctrl+Enter)"
         ],
         [
           "Keep All",
@@ -6451,8 +6467,16 @@
           "固定到侧栏"
         ],
         [
+          "Pin to sidebar (Ctrl+Alt+P)",
+          "固定到侧栏 (Ctrl+Alt+P)"
+        ],
+        [
           "Unpin from sidebar",
           "从侧栏取消固定"
+        ],
+        [
+          "Unpin from sidebar (Ctrl+Alt+U)",
+          "从侧栏取消固定 (Ctrl+Alt+U)"
         ],
         [
           "Open chat in a new tab",
@@ -6549,6 +6573,14 @@
         [
           "Open Chat History",
           "打开聊天历史"
+        ],
+        [
+          "Open Chat History (Ctrl+Alt+')",
+          "打开聊天历史 (Ctrl+Alt+')"
+        ],
+        [
+          "Open Chat History (Ctrl+Alt+\\\")",
+          "打开聊天历史 (Ctrl+Alt+\\\")"
         ],
         [
           "Open chat history",
