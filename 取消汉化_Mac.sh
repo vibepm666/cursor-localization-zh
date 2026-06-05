@@ -35,17 +35,23 @@ if [[ "$(uname -s)" == "Darwin" && -z "${CURSOR_INSTALL_DIR:-}" && -d "/Applicat
   export CURSOR_INSTALL_DIR="/Applications/Cursor.app"
 fi
 
-mapfile -t _CURSOR_PATHS < <("$PYTHON_CMD" -c "
+# 解析 workbench.html 与安装目录（Python 输出两行）。
+# 注意：macOS 默认 /bin/bash 是 3.2，不支持 mapfile/readarray。
+_CURSOR_PATHS=()
+while IFS= read -r _line; do
+  _CURSOR_PATHS+=("$_line")
+done < <(SCRIPT_DIR_ENV="$SCRIPT_DIR" "$PYTHON_CMD" -c '
 import os, sys
-sys.path.insert(0, '${SCRIPT_DIR}')
-os.chdir('${SCRIPT_DIR}')
+script_dir = os.environ["SCRIPT_DIR_ENV"]
+sys.path.insert(0, script_dir)
+os.chdir(script_dir)
 import Cursor_Localization_Tool as t
 print(t.HuoQu_HTML_LuJing())
 print(t.CURSOR_AN_ZHUANG_LU_JING)
-")
+')
 WORKBENCH_HTML="${_CURSOR_PATHS[0]:-}"
 CURSOR_INSTALL_DIR="${_CURSOR_PATHS[1]:-${CURSOR_INSTALL_DIR:-}}"
-unset _CURSOR_PATHS
+unset _CURSOR_PATHS _line
 
 if [[ ! -f "$WORKBENCH_HTML" ]]; then
   echo "[错误] 未找到工作台文件 (workbench.html):"

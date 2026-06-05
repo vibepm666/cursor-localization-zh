@@ -1,6 +1,6 @@
 {
   "description": "Cursor 通用界面主词典。修改后重新运行 Cursor_Localization_Tool.py 注入生效。",
-  "updatedAt": "2026-06-04",
+  "updatedAt": "2026-06-05",
   "sections": [
     {
       "id": "左侧导航栏",
@@ -1699,6 +1699,30 @@
           "启用后，Ctrl + Enter 发送对话，Enter 插入换行"
         ],
         [
+          "Submit with ⌘ + Enter",
+          "使用 ⌘ + Enter 提交"
+        ],
+        [
+          "Submit with ⌘+Enter",
+          "使用 ⌘+Enter 提交"
+        ],
+        [
+          "Send with ⌘ + Enter",
+          "使用 ⌘ + Enter 发送"
+        ],
+        [
+          "When enabled, ⌘ + Enter submits chat and Enter inserts a newline",
+          "启用后，⌘ + Enter 提交对话，Enter 插入换行"
+        ],
+        [
+          "When enabled, ⌘ + Enter sends chat and Enter inserts a newline",
+          "启用后，⌘ + Enter 发送对话，Enter 插入换行"
+        ],
+        [
+          "When enabled, ⌘+Enter submits chat and Enter inserts a newline",
+          "启用后，⌘+Enter 提交对话，Enter 插入换行"
+        ],
+        [
           "Max Tab Count",
           "最大标签页数"
         ],
@@ -2039,6 +2063,14 @@
           "查找问题"
         ],
         [
+          "Review changes against main.",
+          "对照 main 审查更改"
+        ],
+        [
+          "Review changes against main",
+          "对照 main 审查更改"
+        ],
+        [
           "Start Agent Review",
           "启动 Agent 审查"
         ],
@@ -2319,6 +2351,14 @@
         [
           "Accept the next word of a suggestion via Ctrl+RightArrow",
           "通过 Ctrl+右箭头 接受建议的下一个词"
+        ],
+        [
+          "Accept the next word of a suggestion via ⌘→",
+          "通过 ⌘→ 接受建议的下一个词"
+        ],
+        [
+          "Accept the next word of a suggestion via Cmd+RightArrow",
+          "通过 Cmd+右箭头 接受建议的下一个词"
         ],
         [
           "Suggestions While Commenting",
@@ -3381,6 +3421,14 @@
         [
           "Use `/create-hook` to control and extend the agent loop with custom scripts",
           "使用 `/create-hook` 通过自定义脚本控制和扩展智能体循环"
+        ],
+        [
+          "superpowers config",
+          "Superpowers 配置"
+        ],
+        [
+          "sessionStart",
+          "会话开始"
         ]
       ]
     },
@@ -3613,8 +3661,24 @@
           "在终端中显示 Ctrl+K 提示"
         ],
         [
+          "Show a hint for ⌘K in the Terminal",
+          "在终端中显示 ⌘K 提示"
+        ],
+        [
+          "Show a hint for ⌘ K in the Terminal",
+          "在终端中显示 ⌘ K 提示"
+        ],
+        [
           "Preview Box for Terminal Ctrl+K",
           "终端 Ctrl+K 预览框"
+        ],
+        [
+          "Preview Box for Terminal ⌘K",
+          "终端 ⌘K 预览框"
+        ],
+        [
+          "Preview Box for Terminal ⌘ K",
+          "终端 ⌘ K 预览框"
         ],
         [
           "Use a preview box instead of directly streaming into the Shell",
@@ -4575,6 +4639,18 @@
         [
           "Close",
           "关闭"
+        ],
+        [
+          "Your Cursor installation appears to be corrupt. Please reinstall.",
+          "您的 Cursor 安装似乎已损坏。请重新安装。"
+        ],
+        [
+          "Your Cursor installation appears to be corrupt.",
+          "您的 Cursor 安装似乎已损坏。"
+        ],
+        [
+          "Please reinstall",
+          "请重新安装"
         ],
         [
           "Search",
@@ -6719,6 +6795,10 @@
         [
           "Search actions...",
           "搜索操作..."
+        ],
+        [
+          "Extract all hard-coded strings (experimental)",
+          "提取全部硬编码字符串（实验性）"
         ],
         [
           "Search files, actions, agents...",
