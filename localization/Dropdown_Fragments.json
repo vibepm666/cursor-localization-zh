@@ -1,6 +1,6 @@
 {
   "description": "下拉框/快速选择/悬停等文本节点片段替换（FanYi_XiaLa_WenBen、TiHuan_WenBenJieDian_SuiPian）。修改后重新运行 Cursor_Localization_Tool.py 注入生效。",
-  "updatedAt": "2026-06-03",
+  "updatedAt": "2026-06-06",
   "entries": [
     [
       "Reset to default",
@@ -123,8 +123,24 @@
       "您现在即可添加 `code` 或 `cursor` 命令"
     ],
     [
+      "You can add the `code` or `cursor` command now",
+      "您现在即可添加 `code` 或 `cursor` 命令"
+    ],
+    [
       "or later with Ctrl+Shift+P and typing",
       "；也可稍后按 Ctrl+Shift+P，输入"
+    ],
+    [
+      "or later with Ctrl+Shift+P and typing 「install code command」。",
+      "；也可稍后按 Ctrl+Shift+P，输入「install code command」。"
+    ],
+    [
+      ", or later with Ctrl+Shift+P and typing 「install code command」。",
+      "；也可稍后按 Ctrl+Shift+P，输入「install code command」。"
+    ],
+    [
+      "or later with Cmd+Shift+P and typing 「install code command」。",
+      "；也可稍后按 Cmd+Shift+P，输入「install code command」。"
     ],
     [
       "'install code command'.",

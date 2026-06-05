@@ -1,6 +1,6 @@
 {
   "description": "Cursor 通用界面主词典。修改后重新运行 Cursor_Localization_Tool.py 注入生效。",
-  "updatedAt": "2026-06-05",
+  "updatedAt": "2026-06-06",
   "sections": [
     {
       "id": "左侧导航栏",
@@ -1045,6 +1045,38 @@
           "您现在即可添加 code 或 cursor 命令；也可稍后按 Ctrl+Shift+P，输入「install code command」进行安装。"
         ],
         [
+          "You can add the `code` or `cursor` command now, or later with Ctrl+Shift+P and typing 'install code command'.",
+          "您现在即可添加 `code` 或 `cursor` 命令；也可稍后按 Ctrl+Shift+P，输入「install code command」进行安装。"
+        ],
+        [
+          "You can add the `code` or `cursor` command now, or later with Ctrl+Shift+P and typing 「install code command」。",
+          "您现在即可添加 `code` 或 `cursor` 命令；也可稍后按 Ctrl+Shift+P，输入「install code command」进行安装。"
+        ],
+        [
+          "You can add the `code` or `cursor` commands now, or later with Ctrl+Shift+P and typing 「install code command」。",
+          "您现在即可添加 `code` 或 `cursor` 命令；也可稍后按 Ctrl+Shift+P，输入「install code command」进行安装。"
+        ],
+        [
+          "You can add the `code` or `cursor` commands now, or later with Cmd+Shift+P and typing 'install code command'.",
+          "您现在即可添加 `code` 或 `cursor` 命令；也可稍后按 Cmd+Shift+P，输入「install code command」进行安装。"
+        ],
+        [
+          "You can add the `code` or `cursor` command now, or later with Cmd+Shift+P and typing 「install code command」。",
+          "您现在即可添加 `code` 或 `cursor` 命令；也可稍后按 Cmd+Shift+P，输入「install code command」进行安装。"
+        ],
+        [
+          "or later with Ctrl+Shift+P and typing 「install code command」。",
+          "；也可稍后按 Ctrl+Shift+P，输入「install code command」。"
+        ],
+        [
+          "or later with Ctrl+Shift+P and typing 'install code command'.",
+          "；也可稍后按 Ctrl+Shift+P，输入「install code command」。"
+        ],
+        [
+          ", or later with Ctrl+Shift+P and typing 「install code command」。",
+          "；也可稍后按 Ctrl+Shift+P，输入「install code command」。"
+        ],
+        [
           "Never show again",
           "不再显示"
         ],
@@ -2069,6 +2101,14 @@
         [
           "Review changes against main",
           "对照 main 审查更改"
+        ],
+        [
+          "Review diffs vs. main.",
+          "对照 main 查看差异。"
+        ],
+        [
+          "Review diffs vs. main",
+          "对照 main 查看差异"
         ],
         [
           "Start Agent Review",
