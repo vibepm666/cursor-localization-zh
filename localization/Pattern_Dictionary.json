@@ -1,6 +1,6 @@
 {
   "description": "动态文本正则替换（MoShi_FanYi）。",
-  "updatedAt": "2026-06-07",
+  "updatedAt": "2026-06-08",
   "patterns": [
     {
       "regex": "^(\\d+) requests? remaining$",
@@ -513,6 +513,11 @@
       "replacement": "复制请求 ($1)"
     },
     {
+      "regex": "^Copy request \\(([0-9a-f-]+)\\)$",
+      "flags": "i",
+      "replacement": "复制请求 ($1)"
+    },
+    {
       "regex": "^You've used (\\d+)% of your included usage$",
       "flags": "i",
       "replacement": "您已使用包含用量的 $1%"
@@ -806,6 +811,36 @@
       "regex": "^(.+) is not supported$",
       "flags": "i",
       "replacement": "$1 不受支持"
+    },
+    {
+      "regex": "^(\\d+k) context window$",
+      "flags": "i",
+      "replacement": "$1 上下文窗口"
+    },
+    {
+      "regex": "^(\\d+M) context window$",
+      "flags": "i",
+      "replacement": "$1 上下文窗口"
+    },
+    {
+      "regex": "^(.+?) \\(Fast\\)$",
+      "flags": "",
+      "replacement": "$1（快速）"
+    },
+    {
+      "regex": "^(.+?) \\(Thinking\\)$",
+      "flags": "",
+      "replacement": "$1（思考）"
+    },
+    {
+      "regex": "^([\\d,.]+(?:K|M)?)\\s+tokens$",
+      "flags": "i",
+      "replacement": "$1 token"
+    },
+    {
+      "regex": "^([\\d,.]+(?:K|M)?)\\s+out of\\s+([\\d,.]+(?:K|M)?)\\s+tokens$",
+      "flags": "i",
+      "replacement": "$1 / $2 token"
     }
   ]
 }

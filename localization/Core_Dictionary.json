@@ -1,6 +1,6 @@
 {
   "description": "Cursor 通用界面主词典。修改后重新运行 Cursor_Localization_Tool.py 注入生效。",
-  "updatedAt": "2026-06-07",
+  "updatedAt": "2026-06-08",
   "sections": [
     {
       "id": "左侧导航栏",
@@ -339,6 +339,10 @@
         [
           "Enable on-demand usage to go beyond your plan's included usage. Requires a paid plan.",
           "启用按需用量以超出计划包含的用量。需要付费计划。"
+        ],
+        [
+          "On-demand limit saved successfully",
+          "按需限额已成功保存"
         ],
         [
           "Monthly Limit",
@@ -3649,6 +3653,10 @@
           "计算索引"
         ],
         [
+          "Setting up indexing",
+          "正在设置索引"
+        ],
+        [
           "Pause Indexing",
           "暂停索引"
         ],
@@ -3831,6 +3839,10 @@
         [
           "Embed codebase for improved contextual understanding and knowledge. Embeddings and metadata are stored in the cloud, but all code is stored locally.",
           "嵌入代码库以提高上下文理解和知识。嵌入向量和元数据存储在云端，但所有代码都存储在本地。"
+        ],
+        [
+          "ConnectError: [aborted] Client network socket disconnected before secure TLS connection was established",
+          "连接错误：[已中止] 网络在建立安全连接前断开，请检查网络后重试"
         ]
       ]
     },
@@ -4255,6 +4267,190 @@
         [
           "Enable Natural Language Search",
           "启用自然语言搜索"
+        ],
+        [
+          "Options",
+          "选项"
+        ],
+        [
+          "Thinking",
+          "思考"
+        ],
+        [
+          "Does the model use thinking to generate its response?",
+          "模型是否使用思考来生成回复？"
+        ],
+        [
+          "Effort",
+          "强度"
+        ],
+        [
+          "Max",
+          "最大"
+        ],
+        [
+          "Context size the model has available.",
+          "模型可用的上下文大小。"
+        ],
+        [
+          "Context size the model has available",
+          "模型可用的上下文大小"
+        ],
+        [
+          "Reasoning",
+          "推理"
+        ],
+        [
+          "Low",
+          "低"
+        ],
+        [
+          "Medium",
+          "中等"
+        ],
+        [
+          "High",
+          "高"
+        ],
+        [
+          "Extra High",
+          "超高"
+        ],
+        [
+          "Significantly faster but consumes more usage",
+          "明显更快，但会消耗更多用量"
+        ],
+        [
+          "2.5x more expensive, but faster speeds.",
+          "费用为 2.5 倍，但速度更快。"
+        ],
+        [
+          "2.5x more expensive, but faster speeds",
+          "费用为 2.5 倍，但速度更快"
+        ],
+        [
+          "2x more expensive, but significantly faster speeds.",
+          "费用为 2 倍，但速度显著更快。"
+        ],
+        [
+          "2x more expensive, but significantly faster speeds",
+          "费用为 2 倍，但速度显著更快"
+        ],
+        [
+          "2x more expensive, but faster speeds.",
+          "费用为 2 倍，但速度更快。"
+        ],
+        [
+          "2x more expensive, but faster speeds",
+          "费用为 2 倍，但速度更快"
+        ],
+        [
+          "Effort the model uses to generate its response.",
+          "模型生成回复所使用的强度。"
+        ],
+        [
+          "Reasoning effort the model uses to generate its response.",
+          "模型生成回复所使用的推理强度。"
+        ],
+        [
+          "Our latest and most intelligent model, great for complex tasks.",
+          "我们最新、最智能的模型，非常适合复杂任务。"
+        ],
+        [
+          "Our latest and most intelligent model, great for complex tasks",
+          "我们最新、最智能的模型，非常适合复杂任务"
+        ],
+        [
+          "OpenAI's latest flagship model. Great for complex tasks.",
+          "OpenAI 最新旗舰模型，非常适合复杂任务。"
+        ],
+        [
+          "Anthropic's smartest model, great for difficult tasks.",
+          "Anthropic 最智能的模型，非常适合困难任务。"
+        ],
+        [
+          "Anthropic's most powerful model,",
+          "Anthropic 最强大模型，"
+        ],
+        [
+          "Anthropic's most powerful model, great for difficult tasks.",
+          "Anthropic 最强大模型，非常适合困难任务。"
+        ],
+        [
+          "Reasoning model from Moonshot AI with thinking capabilities.",
+          "来自 Moonshot AI 的推理模型，具备思考能力。"
+        ],
+        [
+          "200k context window",
+          "200k 上下文窗口"
+        ],
+        [
+          "300k context window",
+          "300k 上下文窗口"
+        ],
+        [
+          "272k context window",
+          "272k 上下文窗口"
+        ],
+        [
+          "262k context window",
+          "262k 上下文窗口"
+        ],
+        [
+          "*Version: medium reasoning effort*",
+          "*版本：中等推理强度*"
+        ],
+        [
+          "*Version: medium effort*",
+          "*版本：中等强度*"
+        ],
+        [
+          "*Version: high effort*",
+          "*版本：高强度*"
+        ],
+        [
+          "*Version: low effort*",
+          "*版本：低强度*"
+        ],
+        [
+          "*Version: extra high effort*",
+          "*版本：超高强度*"
+        ],
+        [
+          "Version: medium reasoning effort",
+          "版本：中等推理强度"
+        ],
+        [
+          "Version: medium effort",
+          "版本：中等强度"
+        ],
+        [
+          "Version: high effort",
+          "版本：高强度"
+        ],
+        [
+          "Version: low effort",
+          "版本：低强度"
+        ],
+        [
+          "Version: extra high effort",
+          "版本：超高强度"
+        ],
+        [
+          "Google's latest flagship model, great for daily use.",
+          "Google 最新旗舰模型，非常适合日常使用。"
+        ],
+        [
+          "Google's latest flagship model, great for daily use",
+          "Google 最新旗舰模型，非常适合日常使用"
+        ],
+        [
+          "*Version: preview*",
+          "*版本：预览版*"
+        ],
+        [
+          "Version: preview",
+          "版本：预览版"
         ]
       ]
     },
@@ -8493,6 +8689,10 @@
           "上下文用量"
         ],
         [
+          "Context Usage",
+          "上下文用量"
+        ],
+        [
           "Show context usage.",
           "显示上下文用量。"
         ],
@@ -8567,6 +8767,34 @@
         [
           "Unable to reach the model provider",
           "无法连接到模型提供商"
+        ],
+        [
+          "Provider Error",
+          "模型提供商错误"
+        ],
+        [
+          "We're having trouble connecting to the model provider. This might be temporary - please try again in a moment.",
+          "连接模型提供商时遇到问题。这可能是暂时性的，请稍后重试。"
+        ],
+        [
+          "We're having trouble connecting to the model provider. This might be temporary - please try again in a moment",
+          "连接模型提供商时遇到问题。这可能是暂时性的，请稍后重试"
+        ],
+        [
+          "Copy request",
+          "复制请求"
+        ],
+        [
+          "Model not available",
+          "模型不可用"
+        ],
+        [
+          "This model provider is not supported in your region. Visit https://cursor.com/docs/account/regions for more information.",
+          "此模型提供商在您所在的地区不受支持。请访问 https://cursor.com/docs/account/regions 了解更多信息。"
+        ],
+        [
+          "This model provider is not supported in your region. Visit https://cursor.com/docs/account/regions for more information",
+          "此模型提供商在您所在的地区不受支持。请访问 https://cursor.com/docs/account/regions 了解更多信息"
         ]
       ]
     },

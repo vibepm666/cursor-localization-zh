@@ -1,6 +1,6 @@
 {
   "description": "设置页等长句的部分匹配替换（TiHuan_BuFen_WenBen）。修改后重新运行 Cursor_Localization_Tool.py 注入生效。",
-  "updatedAt": "2026-06-03",
+  "updatedAt": "2026-06-08",
   "entries": [
     [
       "Embed codebase for improved contextual understanding and knowledge.",
@@ -225,6 +225,58 @@
     [
       "marked any dialogs as \"Don't ask again\"",
       "将任何对话框标记为「不再询问」"
+    ],
+    [
+      "context window",
+      "上下文窗口"
+    ],
+    [
+      "great for complex tasks.",
+      "非常适合复杂任务。"
+    ],
+    [
+      "great for difficult tasks.",
+      "非常适合困难任务。"
+    ],
+    [
+      "with thinking capabilities.",
+      "具备思考能力。"
+    ],
+    [
+      "great for daily use.",
+      "非常适合日常使用。"
+    ],
+    [
+      " tokens",
+      " token"
+    ],
+    [
+      "2x more expensive, but",
+      "费用为 2 倍，但"
+    ],
+    [
+      "significantly faster speeds.",
+      "速度显著更快。"
+    ],
+    [
+      "most powerful model,",
+      "最强大模型，"
+    ],
+    [
+      "We're having trouble connecting to the model provider.",
+      "连接模型提供商时遇到问题。"
+    ],
+    [
+      "This might be temporary - please try again in a moment.",
+      "这可能是暂时性的，请稍后重试。"
+    ],
+    [
+      "This model provider is not supported in your region.",
+      "此模型提供商在您所在的地区不受支持。"
+    ],
+    [
+      "Visit https://cursor.com/docs/account/regions for more information.",
+      "请访问 https://cursor.com/docs/account/regions 了解更多信息。"
     ]
   ]
 }
