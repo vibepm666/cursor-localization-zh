@@ -1,6 +1,6 @@
 {
   "description": "Cursor 通用界面主词典。修改后重新运行 Cursor_Localization_Tool.py 注入生效。",
-  "updatedAt": "2026-06-06",
+  "updatedAt": "2026-06-07",
   "sections": [
     {
       "id": "左侧导航栏",
@@ -463,6 +463,26 @@
         [
           "Your prompts, edits and other usage data will be stored and trained on by Cursor to improve the product. Prompts and limited telemetry may also be shared with model providers when you explicitly select their models.",
           "您的提示词、编辑内容和其他使用数据将由 Cursor 存储并用于训练，以改进产品。当您明确选择模型提供商的模型时，提示词和有限的遥测数据也可能会与该模型提供商共享。"
+        ],
+        [
+          "Prompts and limited telemetry may also be shared with model providers when you explicitly select their models.",
+          "当您明确选择模型提供商的模型时，提示词和有限的遥测数据也可能会与该模型提供商共享。"
+        ],
+        [
+          "Prompts and limited telemetry may also be shared with model providers",
+          "提示词和有限的遥测数据也可能会与模型提供商共享"
+        ],
+        [
+          "when you explicitly select their models.",
+          "当您明确选择它们的模型时。"
+        ],
+        [
+          "limited telemetry",
+          "有限的遥测数据"
+        ],
+        [
+          "shared with model providers",
+          "与模型提供商共享"
         ],
         [
           "When enabled, none of your code will ever be stored by us.",
@@ -2207,6 +2227,22 @@
           "将拉取请求标记为使用 Cursor 制作"
         ],
         [
+          "PR Preferences",
+          "PR 偏好设置"
+        ],
+        [
+          "Preferred PR destination",
+          "首选 PR 打开位置"
+        ],
+        [
+          "Choose where PR links open across web, the desktop app and IDE.",
+          "选择在网页、桌面应用和 IDE 中打开 PR 链接的位置。"
+        ],
+        [
+          "Choose where PR links open across web, the desktop app and IDE",
+          "选择在网页、桌面应用和 IDE 中打开 PR 链接的位置"
+        ],
+        [
           "Git",
           "Git"
         ],
@@ -3019,6 +3055,22 @@
         [
           "Tools",
           "工具"
+        ],
+        [
+          "Manage View",
+          "管理视图"
+        ],
+        [
+          "Authentication",
+          "身份验证"
+        ],
+        [
+          "Wait for MCP Authentication",
+          "等待 MCP 身份验证"
+        ],
+        [
+          "Wait indefinitely to authenticate when prompted. When off, skip authentication prompts after 30 seconds.",
+          "收到提示时无限期等待身份验证。关闭后，30 秒后将跳过身份验证提示。"
         ],
         [
           "Resources",
@@ -5219,6 +5271,26 @@
         [
           "Group by",
           "分组方式"
+        ],
+        [
+          "Group By",
+          "分组方式"
+        ],
+        [
+          "Sort By",
+          "排序方式"
+        ],
+        [
+          "Sort by",
+          "排序方式"
+        ],
+        [
+          "Most Used",
+          "最常使用"
+        ],
+        [
+          "Scope",
+          "作用域"
         ],
         [
           "Workspace",
@@ -8491,6 +8563,10 @@
         [
           "New Chat with Selections",
           "使用选区新建对话"
+        ],
+        [
+          "Unable to reach the model provider",
+          "无法连接到模型提供商"
         ]
       ]
     },

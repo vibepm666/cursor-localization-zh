@@ -1,6 +1,6 @@
 {
   "description": "动态文本正则替换（MoShi_FanYi）。",
-  "updatedAt": "2026-06-03",
+  "updatedAt": "2026-06-07",
   "patterns": [
     {
       "regex": "^(\\d+) requests? remaining$",
@@ -801,6 +801,11 @@
       "regex": "^New Agent in (.+)$",
       "flags": "",
       "replacement": "在 $1 中新建智能体"
+    },
+    {
+      "regex": "^(.+) is not supported$",
+      "flags": "i",
+      "replacement": "$1 不受支持"
     }
   ]
 }
