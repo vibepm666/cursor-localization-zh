@@ -337,6 +337,10 @@
           "按需用量在达到使用限额后消耗，采用后付费方式计费。"
         ],
         [
+          "On-demand usage is consumed after a usage limit is reached, and is billed in arrears.",
+          "按需用量在达到使用限额后消耗，采用后付费方式计费。"
+        ],
+        [
           "Enable on-demand usage to go beyond your plan's included usage. Requires a paid plan.",
           "启用按需用量以超出计划包含的用量。需要付费计划。"
         ],
@@ -959,6 +963,18 @@
         [
           "Workspace history",
           "工作区历史记录"
+        ],
+        [
+          "Do you want to save your workspace configuration as a file?",
+          "是否要将工作区配置保存为文件？"
+        ],
+        [
+          "Save your workspace if you plan to open it again.",
+          "若计划再次打开，请保存工作区。"
+        ],
+        [
+          "Always discard untitled workspaces without asking",
+          "始终直接丢弃未命名工作区，不再询问"
         ],
         [
           "Do you want to continue?",
@@ -2365,6 +2381,22 @@
           "暂停 Cursor Tab"
         ],
         [
+          "Temporarily disable Cursor Tab suggestions for a specified duration. You can unsnooze at any time.",
+          "在指定时长内暂时禁用 Cursor Tab 建议。您可以随时取消暂停。"
+        ],
+        [
+          "Temporarily disable Cursor Tab suggestions for a specified duration. You can unsnooze at any time",
+          "在指定时长内暂时禁用 Cursor Tab 建议。您可以随时取消暂停"
+        ],
+        [
+          "You can unsnooze at any time.",
+          "您可以随时取消暂停。"
+        ],
+        [
+          "You can unsnooze at any time",
+          "您可以随时取消暂停"
+        ],
+        [
           "Model",
           "模型"
         ],
@@ -2895,6 +2927,14 @@
           "删除规则"
         ],
         [
+          "This action cannot be undone.",
+          "此操作无法撤销。"
+        ],
+        [
+          "This action cannot be undone",
+          "此操作无法撤销"
+        ],
+        [
           "Skills",
           "技能"
         ],
@@ -2961,6 +3001,22 @@
         [
           "No Commands Yet",
           "暂无命令"
+        ],
+        [
+          "Loading Rules...",
+          "正在加载规则..."
+        ],
+        [
+          "Loading Skills...",
+          "正在加载技能..."
+        ],
+        [
+          "Loading Commands...",
+          "正在加载命令..."
+        ],
+        [
+          "Loading Subagents...",
+          "正在加载子智能体..."
         ],
         [
           "New Command",
@@ -4861,6 +4917,14 @@
           "保存"
         ],
         [
+          "Don't Save",
+          "不保存"
+        ],
+        [
+          "Don\u2019t Save",
+          "不保存"
+        ],
+        [
           "Save File",
           "保存文件"
         ],
@@ -5075,6 +5139,10 @@
         [
           "Loading...",
           "加载中..."
+        ],
+        [
+          "Saving...",
+          "正在保存..."
         ],
         [
           "Loading",
@@ -8653,6 +8721,10 @@
         [
           "View image",
           "查看图片"
+        ],
+        [
+          "Failed to add image. The image format is not supported.",
+          "添加图片失败。不支持该图片格式。"
         ],
         [
           "View attachment",

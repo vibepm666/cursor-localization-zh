@@ -277,6 +277,18 @@
     [
       "Visit https://cursor.com/docs/account/regions for more information.",
       "请访问 https://cursor.com/docs/account/regions 了解更多信息。"
+    ],
+    [
+      "Current workspace:",
+      "当前工作区："
+    ],
+    [
+      "This action cannot be undone.",
+      "此操作无法撤销。"
+    ],
+    [
+      "This action cannot be undone",
+      "此操作无法撤销"
     ]
   ]
 }

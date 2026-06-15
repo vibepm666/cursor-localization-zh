@@ -283,11 +283,6 @@
       "replacement": "自定义 Cron：$1"
     },
     {
-      "regex": "^(.+) at (.+)$",
-      "flags": "i",
-      "replacement": "$1 于 $2"
-    },
-    {
       "regex": "^Automatically index any new folders with fewer than (\\d+) files$",
       "flags": "i",
       "replacement": "自动索引文件数少于 $1 的新文件夹"
@@ -351,6 +346,21 @@
       "regex": "^Show (\\d+) more$",
       "flags": "i",
       "replacement": "再显示 $1 条"
+    },
+    {
+      "regex": "^Show all \\((\\d+) more\\)$",
+      "flags": "i",
+      "replacement": "显示全部（还有 $1 项）"
+    },
+    {
+      "regex": "^Current workspace: (.+)$",
+      "flags": "",
+      "replacement": "当前工作区：$1"
+    },
+    {
+      "regex": "^Are you sure you want to delete [\"'](.+?)[\"']\\? This action cannot be undone\\.?$",
+      "flags": "",
+      "replacement": "确定要删除「$1」吗？此操作无法撤销。"
     },
     {
       "regex": "^\\((.+) remaining\\)$",

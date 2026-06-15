@@ -1606,6 +1606,8 @@
             ['Discard all changes up to this checkpoint?', '放弃截至此检查点的所有更改？'],
             ['You can always undo this later.', '您随时都可以撤销此操作。'],
             ['You can always undo this later. Note: Notebook cells are not supported for reverting.', '您随时都可以撤销此操作。注意：Notebook 单元格不支持还原。'],
+            ['This action cannot be undone.', '此操作无法撤销。'],
+            ['This action cannot be undone', '此操作无法撤销'],
             ["Don't ask again", '不再询问']
         ];
         var scopes = document.querySelectorAll('.ui-dialog, .ui-alert-dialog, [class*="ui-dialog"]');
