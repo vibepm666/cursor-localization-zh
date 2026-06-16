@@ -317,6 +317,7 @@
         ['Unarchive', '取消归档'],
         ['Fork Chat', '分叉对话'],
         ['Fork Conversation', '分叉对话'],
+        ['Export Chat', '导出对话'],
         ['Copy Message', '复制消息'],
         ['Copy Messages', '复制消息'],
         ['Copy Branch Name', '复制分支名称'],
@@ -397,7 +398,11 @@
         ['View image', '查看图片'],
         ['Remove from queue', '从队列移除'],
         ['Revert last change', '撤销上次更改'],
-        ['Queued', '已排队']
+        ['Queued', '已排队'],
+        ['Show conversation', '显示对话'],
+        ['Send follow-up', '发送后续消息'],
+        ['Select Model', '选择模型'],
+        ['Modes, skills, MCPs and more', '模式、技能、MCP 等']
     ];
 
     var DuiHua_JieMian_Attr_Only_HINTS = [
@@ -1608,6 +1613,10 @@
             ['You can always undo this later. Note: Notebook cells are not supported for reverting.', '您随时都可以撤销此操作。注意：Notebook 单元格不支持还原。'],
             ['This action cannot be undone.', '此操作无法撤销。'],
             ['This action cannot be undone', '此操作无法撤销'],
+            ['Something went wrong.', '出错了。'],
+            ['Something went wrong', '出错了'],
+            ['An unexpected error occurred. Reload the window to try again.', '发生意外错误。请重新加载窗口后重试。'],
+            ['Copy Error', '复制错误'],
             ["Don't ask again", '不再询问']
         ];
         var scopes = document.querySelectorAll('.ui-dialog, .ui-alert-dialog, [class*="ui-dialog"]');
@@ -1668,6 +1677,9 @@
         var hints = [
             ['Sign in', '登录'],
             ['Log in', '登录'],
+            ['Sign Up', '注册'],
+            ['Sign up', '注册'],
+            ['The best way to code with AI', '与 AI 协作编程的最佳方式'],
             ['Log in to use Cursor AI features', '登录以使用 Cursor AI 功能'],
             ['Open Project', '打开项目'],
             ['Clone Repository', '克隆仓库'],

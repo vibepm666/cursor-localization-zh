@@ -363,6 +363,21 @@
       "replacement": "确定要删除「$1」吗？此操作无法撤销。"
     },
     {
+      "regex": "^Worked for (\\d+)s$",
+      "flags": "i",
+      "replacement": "已运行 $1 秒"
+    },
+    {
+      "regex": "^Worked for (\\d+)m$",
+      "flags": "i",
+      "replacement": "已运行 $1 分钟"
+    },
+    {
+      "regex": "^Worked for (\\d+)m (\\d+)s$",
+      "flags": "i",
+      "replacement": "已运行 $1 分 $2 秒"
+    },
+    {
       "regex": "^\\((.+) remaining\\)$",
       "flags": "",
       "replacement": "（剩余 $1）"

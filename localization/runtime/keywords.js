@@ -7,7 +7,8 @@
             'use subagents to break down tasks'
         ],
         HUAN_YING: [
-            'Sign in', 'Log in', 'Open Project', 'Clone Repository', 'Connect via SSH',
+            'Sign in', 'Log in', 'Sign Up', 'Sign up', 'The best way to code with AI',
+            'Open Project', 'Clone Repository', 'Connect via SSH',
             'Click to import all local VS Code extensions', "don't show again", 'Log in to use Cursor AI features',
             'Repositories', 'Message Cursor', 'Browse Files', 'No workspace folder open',
             'Close Pane', 'Unable to load automations', "Let's kick something off"

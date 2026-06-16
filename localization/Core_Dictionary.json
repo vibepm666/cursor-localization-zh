@@ -145,6 +145,18 @@
           "登录"
         ],
         [
+          "Sign Up",
+          "注册"
+        ],
+        [
+          "Sign up",
+          "注册"
+        ],
+        [
+          "The best way to code with AI",
+          "与 AI 协作编程的最佳方式"
+        ],
+        [
           "Sign Out",
           "退出登录"
         ],
@@ -4165,6 +4177,10 @@
           "切换模型"
         ],
         [
+          "Select Model",
+          "选择模型"
+        ],
+        [
           "Switch Models",
           "切换模型"
         ],
@@ -5541,6 +5557,14 @@
           "分组方式"
         ],
         [
+          "Display",
+          "显示"
+        ],
+        [
+          "Filter by",
+          "筛选"
+        ],
+        [
           "Sort By",
           "排序方式"
         ],
@@ -5571,6 +5595,14 @@
         [
           "Environment",
           "环境"
+        ],
+        [
+          "Branch",
+          "分支"
+        ],
+        [
+          "Machine",
+          "机器"
         ],
         [
           "Collapse All",
@@ -5615,6 +5647,10 @@
         [
           "Fork Chat",
           "分叉对话"
+        ],
+        [
+          "Export Chat",
+          "导出对话"
         ],
         [
           "Fork Conversation",
@@ -5667,6 +5703,30 @@
         [
           "Needs Attention",
           "需要关注"
+        ],
+        [
+          "Working",
+          "进行中"
+        ],
+        [
+          "PR Draft",
+          "PR 草稿"
+        ],
+        [
+          "PR Open",
+          "PR 已打开"
+        ],
+        [
+          "PR Merged",
+          "PR 已合并"
+        ],
+        [
+          "PR Closed",
+          "PR 已关闭"
+        ],
+        [
+          "Completed",
+          "完成"
         ],
         [
           "Merged",
@@ -5811,6 +5871,18 @@
         [
           "Bugbot Autofix",
           "Bugbot 自动修复"
+        ],
+        [
+          "Bugbot",
+          "Bugbot"
+        ],
+        [
+          "Slack",
+          "Slack"
+        ],
+        [
+          "GitHub / GitLab",
+          "GitHub / GitLab"
         ],
         [
           "Frontend QA",
@@ -7887,10 +7959,6 @@
           "纯色"
         ],
         [
-          "Linear",
-          "线性"
-        ],
-        [
           "Radial",
           "径向"
         ],
@@ -8801,6 +8869,30 @@
           "对话"
         ],
         [
+          "Show conversation",
+          "显示对话"
+        ],
+        [
+          "Send follow-up",
+          "发送后续消息"
+        ],
+        [
+          "Created via Desktop",
+          "通过桌面端创建"
+        ],
+        [
+          "Created via Web",
+          "通过网页端创建"
+        ],
+        [
+          "Created via Mobile",
+          "通过移动端创建"
+        ],
+        [
+          "Created via CLI",
+          "通过命令行创建"
+        ],
+        [
           "Full",
           "已满"
         ],
@@ -9075,6 +9167,22 @@
           "重新加载窗口"
         ],
         [
+          "Something went wrong.",
+          "出错了。"
+        ],
+        [
+          "Something went wrong",
+          "出错了"
+        ],
+        [
+          "An unexpected error occurred. Reload the window to try again.",
+          "发生意外错误。请重新加载窗口后重试。"
+        ],
+        [
+          "Copy Error",
+          "复制错误"
+        ],
+        [
           "Developer: Open Logs Folder",
           "开发者：打开日志文件夹"
         ],
@@ -9143,6 +9251,10 @@
         [
           "Add agents, context, tools...",
           "添加智能体、上下文、工具..."
+        ],
+        [
+          "Modes, skills, MCPs and more",
+          "模式、技能、MCP 等"
         ],
         [
           "Tell Cursor to use subagents to break down tasks, do work in parallel, and preserve context",
