@@ -26,6 +26,11 @@ if [[ -z "$PYTHON_CMD" ]]; then
   exit 1
 fi
 
+if ! "$PYTHON_CMD" --version >/dev/null 2>&1; then
+  echo "[错误] $PYTHON_CMD 无法正常运行，请检查 Python 安装。"
+  exit 1
+fi
+
 if [[ ! -f "$HANHUA_SCRIPT" ]]; then
   echo "[错误] 未找到汉化脚本: $HANHUA_SCRIPT"
   exit 1

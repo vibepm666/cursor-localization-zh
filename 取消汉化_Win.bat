@@ -28,6 +28,9 @@ set "WORKBENCH_HTML=!CURSOR_INSTALL_DIR!\resources\app\out\vs\code\electron-sand
 if not exist "!HANHUA_SCRIPT!" goto :NoScript
 if not exist "!WORKBENCH_HTML!" goto :NoWorkbench
 
+call :CheckPython
+if errorlevel 1 call :WaitKey & exit /b 1
+
 findstr /c:"%INJECTION_MARKER_NEW%" "!WORKBENCH_HTML!" >nul 2>&1
 if errorlevel 1 findstr /c:"%INJECTION_MARKER_OLD%" "!WORKBENCH_HTML!" >nul 2>&1
 if errorlevel 1 goto :NotInjected
@@ -105,4 +108,42 @@ set "PFX86=%PROGRAMFILES(X86)%"
 if not defined CURSOR_INSTALL_DIR if exist "%LOCALAPPDATA%\Programs\Cursor\Cursor.exe" if exist "%LOCALAPPDATA%\Programs\Cursor\resources\app" set "CURSOR_INSTALL_DIR=%LOCALAPPDATA%\Programs\Cursor"
 if not defined CURSOR_INSTALL_DIR if exist "%PROGRAMFILES%\Cursor\Cursor.exe" if exist "%PROGRAMFILES%\Cursor\resources\app" set "CURSOR_INSTALL_DIR=%PROGRAMFILES%\Cursor"
 if not defined CURSOR_INSTALL_DIR if exist "!PFX86!\Cursor\Cursor.exe" if exist "!PFX86!\Cursor\resources\app" set "CURSOR_INSTALL_DIR=!PFX86!\Cursor"
+exit /b 0
+
+:CheckPython
+where python >nul 2>&1
+if errorlevel 1 (
+    echo [错误] 未找到 python 命令，恢复脚本需要 Python 3 环境。
+    call :ShowPythonInstallTip
+    exit /b 1
+)
+for /f "delims=" %%P in ('where python 2^>nul') do (
+    echo %%P | findstr /i /c:"Microsoft\WindowsApps" /c:"microsoft\windowsapps" >nul 2>&1
+    if not errorlevel 1 (
+        echo [错误] 检测到 Windows Store 的 Python 占位程序，无法运行恢复脚本。
+        echo [路径] %%P
+        call :ShowPythonInstallTip
+        exit /b 1
+    )
+    goto :PythonPathOk
+)
+:PythonPathOk
+python --version >nul 2>&1
+if errorlevel 1 (
+    echo [错误] python 命令无法正常运行，请安装真正的 Python 3。
+    call :ShowPythonInstallTip
+    exit /b 1
+)
+exit /b 0
+
+:ShowPythonInstallTip
+echo.
+echo [原因] 系统可能只有 Microsoft Store 的应用执行别名，执行 python 时会打开商店或无输出。
+echo [排查] 在 CMD 或 PowerShell 运行: where python
+echo        若路径包含 Microsoft\WindowsApps，表示尚未安装真正的 Python。
+echo [安装] 任选其一:
+echo        1. 官网 https://www.python.org/downloads/ （安装时勾选 Add python.exe to PATH）
+echo        2. 命令 winget install Python.Python.3.12
+echo [可选] 设置 - 应用 - 高级应用设置 - 应用执行别名，关闭 python.exe / python3.exe 商店快捷方式。
+echo [验证] 安装后重新打开终端，运行 python --version 应显示 Python 3.x。
 exit /b 0

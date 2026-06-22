@@ -34,6 +34,10 @@ Cursor 官方目前尚未提供中文界面或汉化包。常见做法是安装 
 
 ## 如何使用
 
+### 环境要求
+
+汉化工具依赖 **Python 3.8+**（Windows 通过 `启动汉化_Win.bat` 调用，Mac/Linux 通过 shell 脚本调用）。
+
 1. 下载并解压汉化工具（内含 `启动汉化_Win.bat` / `启动汉化_Mac.sh` 等）。
 2. **Windows**：双击 `启动汉化_Win.bat`。**Mac / Linux**：在终端执行 `启动汉化_Mac.sh`。
 3. 脚本会安装语言包并注入汉化，按提示可选打开 Cursor。
@@ -151,6 +155,7 @@ localStorage.setItem('Cursor_Localization_Market_Online_Translate', '1')  // 开
 
 | 现象 | 处理 |
 | --- | --- |
+| 运行脚本报错 / 弹出 Microsoft Store / 汉化无输出 | 多半是 **未安装真正的 Python**，仅有 Windows「应用执行别名」占位程序。运行 `where python`，若路径为 `...\Microsoft\WindowsApps\python.exe` 即属此情况。从 [python.org](https://www.python.org/downloads/) 安装 Python 3（勾选 **Add python.exe to PATH**），或 `winget install Python.Python.3.12`；安装后重开终端，用 `python --version` 验证。可选：在 **设置 → 应用 → 高级应用设置 → 应用执行别名** 关闭 `python.exe` / `python3.exe` 商店快捷方式 |
 | 更新 Cursor 后汉化没了 | 再运行一次启动汉化脚本即可 |
 | 汉化没生效 / 汉化无效 | 确认已**完全退出并重启** Cursor；可用 `node -c` 检查生成的 JS 语法 |
 | 菜单仍是英文 | `Ctrl+Shift+P`（Mac：`Cmd+Shift+P`）→ **Configure Display Language** → **中文(简体) / zh-cn** → 再完全重启；若无该选项，安装 **Chinese (Simplified) Language Pack** 后重试 |

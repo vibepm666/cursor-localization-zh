@@ -6,6 +6,7 @@ Cursor 汉化工具
 用法：
   python Cursor_Localization_Tool.py           安装语言包 + 注入/更新汉化
   python Cursor_Localization_Tool.py --restore  恢复原始文件
+  python Cursor_Localization_Tool.py --check-python  检查 Python 环境（排查 Windows Store 占位程序）
 
   Windows：启动汉化_Win.bat / 取消汉化_Win.bat
   macOS/Linux：./启动汉化_Mac.sh / ./取消汉化_Mac.sh
@@ -42,6 +43,59 @@ def Shi_MacOS():
 def Shi_Windows():
     """是否为 Windows。"""
     return sys.platform == "win32"
+
+
+def _Shi_Windows_Store_Python_ZhanWei(KeZhiXing_LuJing):
+    """判断可执行路径是否为 Windows Store 应用执行别名占位程序。"""
+    if not KeZhiXing_LuJing:
+        return False
+    LuJing_XiaoXie = os.path.normcase(os.path.abspath(KeZhiXing_LuJing))
+    return (
+        os.path.join("microsoft", "windowsapps") in LuJing_XiaoXie
+        or LuJing_XiaoXie.endswith(os.path.join("windowsapps", "python.exe"))
+        or LuJing_XiaoXie.endswith(os.path.join("windowsapps", "python3.exe"))
+    )
+
+
+def DaYin_Python_AnZhuang_TiShi():
+    """输出 Python 未正确安装时的排查与安装说明。"""
+    print("\n[错误] 未检测到可用的 Python 3 环境。")
+    if Shi_Windows():
+        print("[原因] 系统可能只有 Microsoft Store 的 Python 占位程序（应用执行别名），")
+        print("       无法实际运行汉化脚本；执行 python 时可能弹出应用商店或无输出。")
+        print("[排查] 在 PowerShell 或 CMD 中运行: where python")
+        print("       若路径包含 Microsoft\\WindowsApps，即表示尚未安装真正的 Python。")
+        print("[安装] 任选其一：")
+        print("       1. 官网: https://www.python.org/downloads/ （安装时勾选 Add python.exe to PATH）")
+        print("       2. 命令: winget install Python.Python.3.12")
+        print("[可选] 设置 → 应用 → 高级应用设置 → 应用执行别名，")
+        print("       关闭 python.exe / python3.exe 的商店快捷方式，避免与真实安装冲突。")
+    else:
+        print("[安装] 请先安装 Python 3，例如: brew install python3")
+    print("[验证] 安装后重新打开终端，运行: python --version")
+    print("       应显示 Python 3.x，且 where python / which python 不应指向 WindowsApps。")
+
+
+def JianCha_Python_HuanJing(TuiChu=True):
+    """
+    检查当前 Python 是否可用（排除 Windows Store 占位程序）。
+    TuiChu 为 True 时检查失败则 sys.exit(1)。
+    返回 True 表示环境可用。
+    """
+    if _Shi_Windows_Store_Python_ZhanWei(sys.executable):
+        DaYin_Python_AnZhuang_TiShi()
+        if TuiChu:
+            sys.exit(1)
+        return False
+
+    if sys.version_info < (3, 8):
+        print(f"\n[错误] 需要 Python 3.8 或更高版本，当前: {sys.version.split()[0]}")
+        DaYin_Python_AnZhuang_TiShi()
+        if TuiChu:
+            sys.exit(1)
+        return False
+
+    return True
 
 
 def HuoQu_Workbench_MuLu_LuJing(GenMuLu):
@@ -1291,6 +1345,7 @@ def HuiFu_YuanShi():
 
 def ZhuChengXu():
     """主程序入口"""
+    JianCha_Python_HuanJing()
     print("=" * 60)
     print("  Cursor 汉化工具")
     print(f"  时间: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
@@ -1346,4 +1401,8 @@ def ZhuChengXu():
 
 
 if __name__ == '__main__':
+    if len(sys.argv) > 1 and sys.argv[1] == '--check-python':
+        JianCha_Python_HuanJing()
+        print("[检查] Python 环境正常:", sys.executable)
+        sys.exit(0)
     ZhuChengXu()
