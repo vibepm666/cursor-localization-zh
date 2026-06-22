@@ -4033,6 +4033,10 @@
           "已复制"
         ],
         [
+          "Copied!",
+          "已复制！"
+        ],
+        [
           "Show Logs",
           "显示日志"
         ],
@@ -4139,6 +4143,10 @@
         [
           "Add model",
           "添加模型"
+        ],
+        [
+          "No models found",
+          "未找到模型"
         ],
         [
           "Remove Model",
@@ -7771,6 +7779,18 @@
           "连接错误"
         ],
         [
+          "Connection failed. Please try again, or contact support if the issue persists.",
+          "连接失败。请重试，或在问题持续存在时联系支持。"
+        ],
+        [
+          "Connection failed. Please try again, or contact support if the issue persists",
+          "连接失败。请重试，或在问题持续存在时联系支持"
+        ],
+        [
+          "Resume",
+          "继续"
+        ],
+        [
           "You've hit your usage limit",
           "您已达到用量上限"
         ],
@@ -8946,6 +8966,10 @@
         ],
         [
           "Copy request",
+          "复制请求"
+        ],
+        [
+          "Copy Request",
           "复制请求"
         ],
         [
