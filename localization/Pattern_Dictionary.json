@@ -1,6 +1,6 @@
 {
   "description": "动态文本正则替换（MoShi_FanYi）。",
-  "updatedAt": "2026-06-08",
+  "updatedAt": "2026-07-09",
   "patterns": [
     {
       "regex": "^(\\d+) requests? remaining$",
@@ -558,6 +558,41 @@
       "replacement": "您已达到用量上限"
     },
     {
+      "regex": "^Total usage limit reached$",
+      "flags": "i",
+      "replacement": "已达到总用量上限"
+    },
+    {
+      "regex": "^You've reached your monthly limit\\. Set a new on-demand limit to continue\\.?$",
+      "flags": "i",
+      "replacement": "您已达到本月用量上限。请设置新的按需用量限额以继续使用。"
+    },
+    {
+      "regex": "^Opening (.+) in Cursor Browser$",
+      "flags": "i",
+      "replacement": "正在 Cursor 浏览器中打开 $1"
+    },
+    {
+      "regex": "^(\\d+) background terminals? are still running$",
+      "flags": "i",
+      "replacement": "$1 个后台终端仍在运行"
+    },
+    {
+      "regex": "^(\\d+) background terminals?$",
+      "flags": "i",
+      "replacement": "$1 个后台终端"
+    },
+    {
+      "regex": "^Stopping now will kill the background terminals?\\.?$",
+      "flags": "i",
+      "replacement": "立即停止将终止后台终端。"
+    },
+    {
+      "regex": "^(\\d+) tools? enabled$",
+      "flags": "i",
+      "replacement": "已启用 $1 个工具"
+    },
+    {
       "regex": "^Get Cursor Pro for more Agent usage, unlimited Tab, and more\\.?$",
       "flags": "i",
       "replacement": "升级到 Cursor Pro 以获取更多 Agent 用量、无限 Tab 等。"
@@ -853,9 +888,34 @@
       "replacement": "$1（快速）"
     },
     {
+      "regex": "^(.+?) \\(fast\\)$",
+      "flags": "",
+      "replacement": "$1（快速）"
+    },
+    {
+      "regex": "^(\\d+)% off through (.+?)\\.?$",
+      "flags": "i",
+      "replacement": "$1% 折扣，截至 $2"
+    },
+    {
       "regex": "^(.+?) \\(Thinking\\)$",
       "flags": "",
       "replacement": "$1（思考）"
+    },
+    {
+      "regex": "^(.+) are moving to Customize$",
+      "flags": "i",
+      "replacement": "$1 已迁移至「自定义」"
+    },
+    {
+      "regex": "^Customize is the new home for managing this page\\.?$",
+      "flags": "i",
+      "replacement": "「自定义」现已成为此页面的管理入口"
+    },
+    {
+      "regex": "^Open Customize$",
+      "flags": "i",
+      "replacement": "打开自定义"
     },
     {
       "regex": "^([\\d,.]+(?:K|M)?)\\s+tokens$",

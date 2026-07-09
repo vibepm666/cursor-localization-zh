@@ -65,21 +65,38 @@ Windows 双击 `取消汉化_Win.bat`；Mac / Linux 运行 `取消汉化_Mac.sh`
 
 默认自动检测 Cursor 安装位置，一般无需修改。
 
-非默认安装时，可设置环境变量后运行脚本：
+**Windows**：Cursor 装在非默认路径时，用记事本打开 `启动汉化_Win.bat`（取消汉化时改 `取消汉化_Win.bat`），在 `cd /d "%~dp0"` 后面增加一行：
+
+```bat
+set CURSOR_INSTALL_DIR=D:\Program Files\cursor
+```
+
+路径需指向**含 `Cursor.exe` 的安装文件夹**。若用户数据目录也不在默认位置，可额外设置（一般不用改）：
+
+```bat
+set CURSOR_USER_DATA_DIR=C:\Users\你的用户名\AppData\Roaming\Cursor
+```
+
+**macOS / Linux**：在 `启动汉化_Mac.sh`（或 `取消汉化_Mac.sh`）开头增加：
+
+```bash
+export CURSOR_INSTALL_DIR="/Applications/Cursor.app"
+```
+
+也可在运行前临时指定：`export CURSOR_INSTALL_DIR="/Applications/Cursor.app"` 后再执行脚本。用户数据目录可选：
+
+```bash
+export CURSOR_USER_DATA_DIR="$HOME/Library/Application Support/Cursor"
+```
+
+保存后重新运行启动脚本。
+
+也可通过环境变量 `CURSOR_INSTALL_DIR`、`CURSOR_USER_DATA_DIR` 覆盖（见下表），由 `Cursor_Localization_Tool.py` 优先读取：
 
 | 变量 | 含义 |
 | --- | --- |
 | `CURSOR_INSTALL_DIR` | 安装根目录（含 `Cursor.exe` 或 `Cursor.app`） |
-| `CURSOR_USER_DATA_DIR` | 用户数据目录（默认 `%APPDATA%\Cursor`） |
-
-也可在 `Cursor_Localization_Tool.py` 顶部 **用户配置区域** 写死路径，例如：
-
-```python
-CURSOR_AN_ZHUANG_LU_JING = r"D:\你的路径\Cursor"   # 含 Cursor.exe 的安装文件夹
-CURSOR_SHU_JU_LU_JING = r"C:\Users\你的用户名\AppData\Roaming\Cursor"  # 一般可不动
-```
-
-保存后重新运行启动脚本。
+| `CURSOR_USER_DATA_DIR` | 用户数据目录（默认 `%APPDATA%\Cursor` 或 macOS `~/Library/Application Support/Cursor`） |
 
 ## 文件说明
 
@@ -153,14 +170,29 @@ localStorage.setItem('Cursor_Localization_Market_Online_Translate', '1')  // 开
 
 ## 常见问题
 
+- **更新 Cursor 后汉化失效了**：重新再运行一次汉化脚本即可。
+- **已经执行汉化但是没有生效**：确认已完全重启了 Cursor。
+- **汉化后顶部菜单仍是英文**：按 `Ctrl+Shift+P`（Mac 用 `Cmd+Shift+P`）→ 输入「Configure Display Language」→ 选 **中文(简体) / zh-cn** → 再完全重启一次。如果没有 **中文(简体)** 选项，在扩展市场中搜索并安装 **Chinese (Simplified) Language Pack** 后重新设置。
+- **执行脚本找不到 Cursor**：一般是因为 Cursor 未装在默认目录中。用记事本打开 `启动汉化_Win.bat`（取消汉化时改 `取消汉化_Win.bat`），在 `cd /d "%~dp0"` 后面增加一行，指定 Cursor 安装目录，保存后重新运行启动脚本。
+
+```bat
+set CURSOR_INSTALL_DIR=D:\Program Files\cursor
+```
+
+Mac / Linux 可在 `启动汉化_Mac.sh` 开头增加 `export CURSOR_INSTALL_DIR="/Applications/Cursor.app"`，详见上文「路径配置」。
+
+- **执行脚本时仍然出错**：直接将汉化脚本拖入 Cursor 对话框，发送以下提示词：
+
+```
+我需要安装这个汉化工具，汉化时出现了报错，帮我检查并重新执行脚本，我安装目录是：XXX
+```
+
+### 其它情况
+
 | 现象 | 处理 |
 | --- | --- |
 | 运行脚本报错 / 弹出 Microsoft Store / 汉化无输出 | 多半是 **未安装真正的 Python**，仅有 Windows「应用执行别名」占位程序。运行 `where python`，若路径为 `...\Microsoft\WindowsApps\python.exe` 即属此情况。从 [python.org](https://www.python.org/downloads/) 安装 Python 3（勾选 **Add python.exe to PATH**），或 `winget install Python.Python.3.12`；安装后重开终端，用 `python --version` 验证。可选：在 **设置 → 应用 → 高级应用设置 → 应用执行别名** 关闭 `python.exe` / `python3.exe` 商店快捷方式 |
-| 更新 Cursor 后汉化没了 | 再运行一次启动汉化脚本即可 |
-| 汉化没生效 / 汉化无效 | 确认已**完全退出并重启** Cursor；可用 `node -c` 检查生成的 JS 语法 |
-| 菜单仍是英文 | `Ctrl+Shift+P`（Mac：`Cmd+Shift+P`）→ **Configure Display Language** → **中文(简体) / zh-cn** → 再完全重启；若无该选项，安装 **Chinese (Simplified) Language Pack** 后重试 |
-| 装在非默认路径 / 脚本找不到 Cursor | 在 `Cursor_Localization_Tool.py` 用户配置区域填写安装路径与数据目录（见上文「路径配置」） |
-| 提示 installation appears to be corrupt | 重新运行 `python Cursor_Localization_Tool.py` |
+| 提示 installation appears to be corrupt / 安装已损坏 | 先运行 `修复校验_Win.bat` 或 `python Cursor_Localization_Tool.py --fix-checksum`；若提示权限不足，Windows 请**以管理员身份运行**启动/修复脚本；完成后完全重启 Cursor |
 | 标准菜单仍是英文（语言包未装上） | 确认网络可访问 VS Code 市场并重跑脚本；或手动将匹配版本的 VSIX 重命名为 `VSCode-language-pack-zh-hans.vsix` 放入根目录后重跑 |
 | 语言包自动安装失败 | 命令面板运行 **Extensions: Install from VSIX...** 安装根目录 VSIX，再运行 **Configure Display Language** 选 **zh-cn**，重启 Cursor |
 | 离线环境 | 从 [语言包市场页](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hans) 下载与 Cursor 内置 VS Code 主版本一致的 VSIX（如 `1.105.1` 对应 `1.105.x`），重命名后放入根目录 |

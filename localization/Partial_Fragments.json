@@ -1,6 +1,6 @@
 {
   "description": "设置页等长句的部分匹配替换（TiHuan_BuFen_WenBen）。修改后重新运行 Cursor_Localization_Tool.py 注入生效。",
-  "updatedAt": "2026-06-08",
+  "updatedAt": "2026-07-09",
   "entries": [
     [
       "Embed codebase for improved contextual understanding and knowledge.",
@@ -245,6 +245,54 @@
     [
       "great for daily use.",
       "非常适合日常使用。"
+    ],
+    [
+      "great for everyday use.",
+      "非常适合日常使用。"
+    ],
+    [
+      "great for everyday use",
+      "非常适合日常使用"
+    ],
+    [
+      "mid-size model class,",
+      "中型模型系列，"
+    ],
+    [
+      "large model class,",
+      "大型模型系列，"
+    ],
+    [
+      "special data retention policies.",
+      "特殊的数据保留策略。"
+    ],
+    [
+      "Early access preview.",
+      "抢先体验预览版。"
+    ],
+    [
+      "per-turn controls and safety fallbacks.",
+      "逐轮控制与安全回退机制。"
+    ],
+    [
+      "fast and efficient model",
+      "快速高效的模型"
+    ],
+    [
+      "long-running agentic coding tasks.",
+      "长时智能体编码任务。"
+    ],
+    [
+      "are moving to Customize",
+      "已迁移至「自定义」"
+    ],
+    [
+      "is the new home for managing this page",
+      "现已成为此页面的管理入口"
+    ],
+    [
+      "inside Cursor or in the default browser",
+      "在 Cursor 内或默认浏览器中"
     ],
     [
       " tokens",

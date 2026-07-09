@@ -4,6 +4,8 @@
         GONG_NENG_TUI_GUANG: [
             'multitask', 'Parallelize', 'Get Unblocked', 'Coordinate parallel', 'Try now in Cursor',
             'Cloud Agents, and more', 'unlimited Tab', 'Refactor code generator', "You've hit your usage limit",
+            'Total usage limit reached', 'on-demand limit', 'Upgrade to Pro+', 'Set new limit',
+            'Smartest Model Yet', '50% Off Through', 'Try Grok',
             'use subagents to break down tasks'
         ],
         HUAN_YING: [
@@ -25,6 +27,7 @@
         UPGRADE_TI_SHI: [
             'Upgrade for extended', 'Upgrade to Pro', 'extended limits', 'upgrade-pro',
             'Cloud Agents, and more', 'usage limit', 'unlimited Tab', "You've hit your usage limit",
+            'Total usage limit reached', 'on-demand limit', 'Upgrade to Pro+', 'Set new limit',
             'Get Cursor Pro for more Agent usage'
         ],
         ZHI_NENG_TI_FAN_KUI: [
@@ -54,7 +57,8 @@
         ],
         LIU_LAN_QI_CUO_WU: [
             'Connection Failed', 'Restart Browser', 'Show Details', 'browser-error', 'canvas-error-view',
-            'Enter a URL above', 'instruct the Agent', 'Browser', 'ERR_CONNECTION'
+            'Enter a URL above', 'instruct the Agent', 'Browser', 'ERR_CONNECTION',
+            'Cursor Browser', "Don't Open", 'Opening '
         ],
         DUI_LIE: [
             'Queued', 'Send now', 'Edit queued', 'Editing queued', 'Remove from queue', 'Attached image'

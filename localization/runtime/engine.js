@@ -1648,6 +1648,16 @@
         if (!QuanJu_BaoHan_GuanJianCi_BiaoQian('GONG_NENG_TUI_GUANG')) return;
         var hints = [
             ["You've hit your usage limit", '您已达到用量上限'],
+            ['Total usage limit reached', '已达到总用量上限'],
+            ["You've reached your monthly limit. Set a new on-demand limit to continue.", '您已达到本月用量上限。请设置新的按需用量限额以继续使用。'],
+            ["You've reached your monthly limit. Set a new on-demand limit to continue", '您已达到本月用量上限。请设置新的按需用量限额以继续使用'],
+            ['Upgrade to Pro+', '升级到 Pro+'],
+            ['Set new limit', '设置新限额'],
+            ["Cursor's Smartest Model Yet", 'Cursor 迄今最智能的模型'],
+            ['Trained jointly with SpaceXAI, Grok 4.5 can handle long-running tasks beyond coding', '与 SpaceXAI 联合训练，Grok 4.5 可处理超出编码范围的长时任务'],
+            ['50% Off Through July 14', '7 月 14 日前五折优惠'],
+            ['Get double the usage for the first week across desktop, web, iOS, CLI, and SDK', '首周在桌面端、网页、iOS、CLI 和 SDK 上享双倍用量'],
+            ['Try Grok 4.5', '试用 Grok 4.5'],
             ['Get Cursor Pro for more Agent usage, unlimited Tab, and more.', '升级到 Cursor Pro 以获取更多 Agent 用量、无限 Tab 等。'],
             ['Get Cursor Pro for more Agent usage, unlimited Tab, and more', '升级到 Cursor Pro 以获取更多 Agent 用量、无限 Tab 等。'],
             ['Get Cursor Pro for more Agent usage, Cloud Agents, and more.', '升级到 Cursor Pro 以获取更多智能体用量、云端智能体等。'],
@@ -1786,6 +1796,11 @@
         var hints = [
             ["You've hit your usage limit", '您已达到用量上限'],
             ["You're approaching your usage limit", '您的用量即将达到上限'],
+            ['Total usage limit reached', '已达到总用量上限'],
+            ["You've reached your monthly limit. Set a new on-demand limit to continue.", '您已达到本月用量上限。请设置新的按需用量限额以继续使用。'],
+            ["You've reached your monthly limit. Set a new on-demand limit to continue", '您已达到本月用量上限。请设置新的按需用量限额以继续使用'],
+            ['Upgrade to Pro+', '升级到 Pro+'],
+            ['Set new limit', '设置新限额'],
             ['Get Cursor Pro for more Agent usage, unlimited Tab, and more.', '升级到 Cursor Pro 以获取更多 Agent 用量、无限 Tab 等。'],
             ['Get Cursor Pro for more Agent usage, unlimited Tab, and more', '升级到 Cursor Pro 以获取更多 Agent 用量、无限 Tab 等。'],
             ['Get Cursor Pro for more Agent usage, Cloud Agents, and more.', '升级到 Cursor Pro 以获取更多智能体用量、云端智能体等。'],
@@ -2653,6 +2668,13 @@
         if (!hasBrowserUi && !QuanJu_BaoHan_GuanJianCi_BiaoQian('LIU_LAN_QI_CUO_WU')) return;
         var hints = [
             ['Connection Failed', '连接失败'],
+            ['Connection Error', '连接错误'],
+            ['Connection failed. Please try again, or contact support if the issue persists.', '连接失败。请重试，或在问题持续存在时联系支持。'],
+            ['Connection failed. Please try again, or contact support if the issue persists', '连接失败。请重试，或在问题持续存在时联系支持'],
+            ["Don't Open", '不要打开'],
+            ['Open in Cursor Browser', '在 Cursor 浏览器中打开'],
+            ['Open in External Browser', '在外部浏览器中打开'],
+            ['Copy Link', '复制链接'],
             ['Restart Browser', '重启浏览器'],
             ['Reload', '重新加载'],
             ['Show Details', '显示详情'],
