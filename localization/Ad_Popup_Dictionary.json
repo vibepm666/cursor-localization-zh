@@ -129,6 +129,11 @@
     ["Tools & MCPs are moving to Customize", "工具与 MCP 已迁移至「自定义」"],
     ["Hooks are moving to Customize", "Hooks 已迁移至「自定义」"],
     ["Customize is the new home for managing this page", "「自定义」现已成为此页面的管理入口"],
-    ["Open Customize", "打开自定义"]
+    ["Open Customize", "打开自定义"],
+    ["Review your code", "审查您的代码"],
+    ["You just committed. Want a quick review?", "您刚刚提交了更改。要快速审查一下吗？"],
+    ["Run a local Bugbot review of your latest changes to catch issues before they ship.", "对最新更改运行本地 Bugbot 审查，在发布前捕获问题。"],
+    ["Run a local Bugbot review of your latest changes to catch issues before they ship", "对最新更改运行本地 Bugbot 审查，在发布前捕获问题"],
+    ["Review my code", "审查我的代码"]
   ]
 }
