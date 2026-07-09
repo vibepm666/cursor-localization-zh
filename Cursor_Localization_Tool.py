@@ -810,20 +810,59 @@ def ZhaDao_Workbench_JiaoYan_Jian(Product):
     return MuBiao_Jian
 
 
+def HuoQu_JiaoYan_WenJian_LuJing(AppGenMuLu, Key):
+    """将 product.json checksum 键映射为磁盘上的实际文件路径。"""
+    XiangDui = Key.replace('\\', '/').lstrip('/')
+    HouXuan = [
+        os.path.join(AppGenMuLu, 'out', XiangDui.replace('/', os.sep)),
+        os.path.join(AppGenMuLu, XiangDui.replace('/', os.sep)),
+    ]
+    for LuJing in HouXuan:
+        if os.path.isfile(LuJing):
+            return LuJing
+    return HouXuan[0]
+
+
+def JiSuan_SuoYou_JiaoYan_Zhi(AppGenMuLu, Product):
+    """根据当前磁盘文件重算 product.json.checksums 中的全部校验值。"""
+    Checksums = Product.get('checksums')
+    if not isinstance(Checksums, dict):
+        return {}, [], []
+
+    GengXin = {}
+    BuPiPei = []
+    QueShao = []
+    for Key, CunChu_HaXi in Checksums.items():
+        LuJing = HuoQu_JiaoYan_WenJian_LuJing(AppGenMuLu, Key)
+        if not os.path.isfile(LuJing):
+            QueShao.append(Key)
+            continue
+        ShiJi_HaXi = JiSuan_WenJian_JiaoYan_HaXi(LuJing)
+        GengXin[Key] = ShiJi_HaXi
+        if CunChu_HaXi != ShiJi_HaXi:
+            BuPiPei.append(Key)
+    return GengXin, BuPiPei, QueShao
+
+
 def TiHuan_Product_JiaoYan_Zhi(YuanShi_WenBen, Product, MuBiao_Jian, HaXi_Zhi):
-    """更新 checksum 值；优先正则替换以保留 product.json 原有格式。"""
+    """更新单个 checksum 值；优先正则替换以保留 product.json 原有格式。"""
+    if isinstance(MuBiao_Jian, str):
+        MuBiao_Dict = {MuBiao_Jian: HaXi_Zhi}
+    else:
+        MuBiao_Dict = dict(MuBiao_Jian)
+
     Checksums = Product.get('checksums')
     if not isinstance(Checksums, dict):
         return YuanShi_WenBen, False
 
-    for Key in MuBiao_Jian:
-        Checksums[Key] = HaXi_Zhi
+    for Key, Value in MuBiao_Dict.items():
+        Checksums[Key] = Value
 
     XinWenBen = YuanShi_WenBen
-    for Key in MuBiao_Jian:
+    for Key, Value in MuBiao_Dict.items():
         MoShi = re.compile(r'("' + re.escape(Key) + r'"\s*:\s*")([^"]*)(")')
         if MoShi.search(XinWenBen):
-            XinWenBen = MoShi.sub(r'\1' + HaXi_Zhi + r'\3', XinWenBen, count=1)
+            XinWenBen = MoShi.sub(r'\1' + Value + r'\3', XinWenBen, count=1)
         else:
             XinWenBen = json.dumps(Product, ensure_ascii=False, indent=2)
             if not XinWenBen.endswith('\n'):
@@ -834,11 +873,13 @@ def TiHuan_Product_JiaoYan_Zhi(YuanShi_WenBen, Product, MuBiao_Jian, HaXi_Zhi):
 
 
 def YanZheng_JiaoYan_Zhi(LuJing_Product, LuJing_Html, MuBiao_Jian):
-    """写入后验证 product.json 中的 checksum 与 workbench.html 实际内容一致。"""
+    """写入后验证 product.json 中的 checksum 与磁盘文件一致。"""
     try:
         with open(LuJing_Product, 'r', encoding='utf-8') as WenJian:
             Product = json.load(WenJian)
         Checksums = Product.get('checksums') or {}
+        if isinstance(MuBiao_Jian, dict):
+            return all(Checksums.get(Key) == Value for Key, Value in MuBiao_Jian.items())
         ShiJi_HaXi = JiSuan_WenJian_JiaoYan_HaXi(LuJing_Html)
         return all(Checksums.get(Key) == ShiJi_HaXi for Key in MuBiao_Jian)
     except (OSError, json.JSONDecodeError, TypeError):
@@ -982,8 +1023,9 @@ def ZhuRu_HTML():
 
 
 def GengXin_JiaoYan_Zhi():
-    """更新 product.json 中 workbench.html 的校验哈希值"""
-    LuJing_Product = os.path.join(HuoQu_App_GenMuLu_LuJing(CURSOR_AN_ZHUANG_LU_JING), "product.json")
+    """更新 product.json 中全部 checksum 校验哈希值"""
+    AppGenMuLu = HuoQu_App_GenMuLu_LuJing(CURSOR_AN_ZHUANG_LU_JING)
+    LuJing_Product = os.path.join(AppGenMuLu, "product.json")
     LuJing_Html = HuoQu_HTML_LuJing()
 
     if not os.path.isfile(LuJing_Product):
@@ -993,8 +1035,6 @@ def GengXin_JiaoYan_Zhi():
     if not os.path.isfile(LuJing_Html):
         print(f"[警告] 未找到 workbench.html: {LuJing_Html}")
         return False
-
-    HaXi_Zhi = JiSuan_WenJian_JiaoYan_HaXi(LuJing_Html)
 
     LuJing_Product_BeiFen = LuJing_Product + BEI_FEN_HOU_ZHUI
     if not os.path.isfile(LuJing_Product_BeiFen):
@@ -1011,16 +1051,27 @@ def GengXin_JiaoYan_Zhi():
         print(f"[警告] 无法读取/解析 product.json: {CuoWu}")
         return False
 
-    MuBiao_Jian = ZhaDao_Workbench_JiaoYan_Jian(Product)
-    if not MuBiao_Jian:
+    GengXin_Dict, BuPiPei_LieBiao, QueShao_LieBiao = JiSuan_SuoYou_JiaoYan_Zhi(AppGenMuLu, Product)
+    if not GengXin_Dict:
         Checksums = Product.get('checksums') if isinstance(Product.get('checksums'), dict) else {}
         ShiLi = list(Checksums.keys())[:8]
-        print("[警告] product.json 中未找到 workbench.html 的校验条目")
+        print("[警告] product.json 中未找到可更新的 checksum 条目")
         if ShiLi:
             print(f"[提示] checksums 示例键: {', '.join(ShiLi)}")
         return False
 
-    XinWenBen, YiGengXin = TiHuan_Product_JiaoYan_Zhi(YuanShi_WenBen, Product, MuBiao_Jian, HaXi_Zhi)
+    if QueShao_LieBiao:
+        print(f"[警告] 有 {len(QueShao_LieBiao)} 个 checksum 文件未找到，已跳过")
+
+    if BuPiPei_LieBiao:
+        print(f"[校验] 检测到 {len(BuPiPei_LieBiao)} 项 checksum 不一致，正在同步...")
+        for Key in BuPiPei_LieBiao:
+            BiaoJi = "workbench.html" if Key.endswith("workbench.html") else os.path.basename(Key.replace('\\', '/'))
+            print(f"  - {BiaoJi}")
+    else:
+        print("[校验] 所有 checksum 已与当前文件一致，仍执行写入确认")
+
+    XinWenBen, YiGengXin = TiHuan_Product_JiaoYan_Zhi(YuanShi_WenBen, Product, GengXin_Dict, None)
     if not YiGengXin:
         print("[警告] 未能写入 product.json 校验值")
         return False
@@ -1036,8 +1087,8 @@ def GengXin_JiaoYan_Zhi():
         print(f"[错误] 无法写入 product.json: {CuoWu}")
         return False
 
-    if YanZheng_JiaoYan_Zhi(LuJing_Product, LuJing_Html, MuBiao_Jian):
-        print(f"[校验] 已更新 product.json 中 {len(MuBiao_Jian)} 项 workbench 校验值")
+    if YanZheng_JiaoYan_Zhi(LuJing_Product, LuJing_Html, GengXin_Dict):
+        print(f"[校验] 已更新 product.json 中 {len(GengXin_Dict)} 项 checksum")
         return True
 
     print("[警告] 校验值已写入但验证未通过；若启动仍提示损坏，请重新运行本脚本或 --fix-checksum")
