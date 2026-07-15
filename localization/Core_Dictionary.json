@@ -429,6 +429,42 @@
           "隐私"
         ],
         [
+          "Profile",
+          "个人资料"
+        ],
+        [
+          "Create your public profile",
+          "创建您的公开资料"
+        ],
+        [
+          "Claim a handle to get a profile page showing your token, model, and agent usage.",
+          "领取一个用户名，获取展示您的 token、模型和智能体用量的个人主页。"
+        ],
+        [
+          "Claim a handle to get a profile page showing your token, model, and agent usage",
+          "领取一个用户名，获取展示您的 token、模型和智能体用量的个人主页"
+        ],
+        [
+          "Claim handle",
+          "领取用户名"
+        ],
+        [
+          "Startup",
+          "启动"
+        ],
+        [
+          "Tips",
+          "提示"
+        ],
+        [
+          "Show rotating tips on the empty screen",
+          "在空白屏幕上显示轮播提示"
+        ],
+        [
+          "Show rotating tips on the empty screen.",
+          "在空白屏幕上显示轮播提示。"
+        ],
+        [
           "Privacy Mode",
           "隐私模式"
         ],
@@ -483,6 +519,14 @@
         [
           "Your prompts, edits and other usage data will be stored and trained on by Cursor to improve the product.",
           "您的提示词、编辑内容和其他使用数据将由 Cursor 存储并用于训练，以改进产品。"
+        ],
+        [
+          "Your codebase, prompts, edits and other usage data will be stored and trained on by Cursor to improve the product.",
+          "您的代码库、提示词、编辑内容和其他使用数据将由 Cursor 存储并用于训练，以改进产品。"
+        ],
+        [
+          "Your codebase, prompts, edits and other usage data will be stored and trained on by Cursor to improve the product",
+          "您的代码库、提示词、编辑内容和其他使用数据将由 Cursor 存储并用于训练，以改进产品"
         ],
         [
           "Your prompts, edits and other usage data will be stored and trained on by Cursor to improve the product. Prompts and limited telemetry may also be shared with model providers when you explicitly select their models.",
@@ -2659,6 +2703,54 @@
           "云端智能体不可用"
         ],
         [
+          "Default Environment",
+          "默认环境"
+        ],
+        [
+          "Where new agents start by default",
+          "新智能体默认的启动环境"
+        ],
+        [
+          "Where new agents start by default.",
+          "新智能体默认的启动环境。"
+        ],
+        [
+          "Last used",
+          "上次使用"
+        ],
+        [
+          "Last Used",
+          "上次使用"
+        ],
+        [
+          "Remote Control",
+          "远程控制"
+        ],
+        [
+          "Allow agents on this machine to be controlled remotely from mobile and web",
+          "允许从手机和网页远程控制此计算机上的智能体"
+        ],
+        [
+          "Allow agents on this machine to be controlled remotely from mobile and web.",
+          "允许从手机和网页远程控制此计算机上的智能体。"
+        ],
+        [
+          "Keep This Computer Awake",
+          "保持此电脑唤醒"
+        ],
+        [
+          "Prevent sleep when this computer is plugged in and Remote Control is enabled",
+          "当此电脑已插电且启用远程控制时阻止休眠"
+        ],
+        [
+          "Prevent sleep when this computer is plugged in and Remote Control is enabled.",
+          "当此电脑已插电且启用远程控制时阻止休眠。"
+        ],
+        [
+          "Context and Tools",
+          "上下文与工具"
+        ],
+        [
           "Cloud Agents require a Git repository in an open folder.",
           "云端智能体需要在打开的文件夹中有 Git 仓库。"
         ],
@@ -2793,6 +2885,54 @@
         [
           "Unable to load automations",
           "无法加载自动化"
+        ],
+        [
+          "Author",
+          "作者"
+        ],
+        [
+          "Inactive",
+          "未激活"
+        ],
+        [
+          "Untitled",
+          "未命名"
+        ],
+        [
+          "Edit Details",
+          "编辑详情"
+        ],
+        [
+          "Duplicate",
+          "创建副本"
+        ],
+        [
+          "Copy as JSON",
+          "复制为 JSON"
+        ],
+        [
+          "Triggers",
+          "触发器"
+        ],
+        [
+          "Add Trigger",
+          "添加触发器"
+        ],
+        [
+          "Select repository",
+          "选择仓库"
+        ],
+        [
+          "Test run",
+          "测试运行"
+        ],
+        [
+          "Memories",
+          "记忆"
+        ],
+        [
+          "Type @ for tools, / for commands...",
+          "输入 @ 使用工具，/ 使用命令..."
         ],
         [
           "Send to Cloud",
@@ -3005,6 +3145,10 @@
         [
           "Use Rules to guide agent behavior, like enforcing best practices or coding standards. Rules can be applied always, by file path, or manually.",
           "使用规则来指导智能体行为，如强制执行最佳实践或编码标准。规则可以始终应用、按文件路径应用或手动应用。"
+        ],
+        [
+          "Home workspace guidance",
+          "主页工作区指南"
         ],
         [
           "Style request, response language, tone...",
@@ -3269,12 +3413,24 @@
           "此工作区中可用的服务器。"
         ],
         [
+          "Servers available from Home.",
+          "主页中可用的服务器。"
+        ],
+        [
+          "Servers available from Home",
+          "主页中可用的服务器"
+        ],
+        [
           "User MCP Servers",
           "用户 MCP 服务器"
         ],
         [
           "No User MCP Tools",
           "暂无用户 MCP 工具"
+        ],
+        [
+          "No Home MCP Tools",
+          "暂无主页 MCP 工具"
         ],
         [
           "Add a custom MCP tool here or configure project-specific tools",
@@ -3323,6 +3479,14 @@
         [
           "Add a custom MCP tool in your user MCP config.",
           "在用户 MCP 配置中添加自定义 MCP 工具。"
+        ],
+        [
+          "Add a custom MCP tool in your Home MCP config.",
+          "在主页 MCP 配置中添加自定义 MCP 工具。"
+        ],
+        [
+          "Add a custom MCP tool in your Home MCP config",
+          "在主页 MCP 配置中添加自定义 MCP 工具"
         ],
         [
           "Add Custom MCP",
@@ -3405,6 +3569,18 @@
           "导出对话记录"
         ],
         [
+          "Copy Transcript",
+          "复制对话记录"
+        ],
+        [
+          "Copy ID",
+          "复制 ID"
+        ],
+        [
+          "Copy Branch",
+          "复制分支"
+        ],
+        [
           "Copy Message",
           "复制消息"
         ],
@@ -3417,8 +3593,20 @@
           "复制路径"
         ],
         [
+          "Copy Path of Active File",
+          "复制活动文件路径"
+        ],
+        [
           "Copy Relative Path",
           "复制相对路径"
+        ],
+        [
+          "Copy Relative Path of Active File",
+          "复制活动文件相对路径"
+        ],
+        [
+          "Set Log Level...",
+          "设置日志级别..."
         ],
         [
           "Copy Request ID",
@@ -4069,6 +4257,22 @@
         [
           "Extend Cursor with Skills, Rules, Agents, Hooks, and MCPs",
           "通过技能、规则、智能体、钩子和 MCP 扩展 Cursor"
+        ],
+        [
+          "Extend Cursor with Plugins",
+          "通过插件扩展 Cursor"
+        ],
+        [
+          "Plugins bundle rules, skills, subagents, commands, MCP servers, and hooks into one installable package.",
+          "插件将规则、技能、子智能体、命令、MCP 服务器和钩子打包为一个可安装的包。"
+        ],
+        [
+          "Plugins bundle rules, skills, subagents, commands, MCP servers, and hooks into one installable package",
+          "插件将规则、技能、子智能体、命令、MCP 服务器和钩子打包为一个可安装的包"
+        ],
+        [
+          "Search Plugins for User...",
+          "搜索用户插件..."
         ],
         [
           "Search or Paste Link",
@@ -5849,6 +6053,22 @@
           "仓库"
         ],
         [
+          "Grouping",
+          "分组"
+        ],
+        [
+          "Ordering",
+          "排序"
+        ],
+        [
+          "Filters",
+          "筛选"
+        ],
+        [
+          "Created",
+          "创建时间"
+        ],
+        [
           "Updated",
           "更新时间"
         ],
@@ -5907,6 +6127,10 @@
         [
           "Fork Chat",
           "分叉对话"
+        ],
+        [
+          "Fork",
+          "分叉"
         ],
         [
           "Export Chat",
@@ -6007,6 +6231,38 @@
         [
           "This PC",
           "此电脑"
+        ],
+        [
+          "On This PC",
+          "此电脑上"
+        ],
+        [
+          "No Repo",
+          "无仓库"
+        ],
+        [
+          "Search folders, repos...",
+          "搜索文件夹、仓库..."
+        ],
+        [
+          "Search This PC...",
+          "搜索此电脑..."
+        ],
+        [
+          "Select Multiple",
+          "多选"
+        ],
+        [
+          "Use Existing...",
+          "使用现有..."
+        ],
+        [
+          "Use Existing",
+          "使用现有"
+        ],
+        [
+          "Recently Used",
+          "最近使用"
         ],
         [
           "Desktop",
@@ -7601,6 +7857,18 @@
           "搜索文件、操作、智能体..."
         ],
         [
+          "Search agents, files, actions...",
+          "搜索智能体、文件、操作..."
+        ],
+        [
+          "Recent Agents",
+          "最近智能体"
+        ],
+        [
+          "Agent Mode",
+          "智能体模式"
+        ],
+        [
           "Plan, Build, / for commands, @ for context",
           "计划、构建，输入 / 调用命令，输入 @ 添加上下文"
         ],
@@ -8265,6 +8533,10 @@
         [
           "Cursor's Smartest Model Yet",
           "Cursor 迄今最智能的模型"
+        ],
+        [
+          "Introducing Grok 4.5, Cursor's most powerful model yet",
+          "隆重推出 Grok 4.5，Cursor 迄今最强的模型"
         ],
         [
           "Trained jointly with SpaceXAI, Grok 4.5 can handle long-running tasks beyond coding",
@@ -9521,6 +9793,22 @@
         [
           "Group by Environment",
           "按环境分组"
+        ],
+        [
+          "Group by Workspace",
+          "按工作区分组"
+        ],
+        [
+          "Clear Filter",
+          "清除筛选"
+        ],
+        [
+          "Change Filter",
+          "更改筛选"
+        ],
+        [
+          "Select",
+          "选择"
         ],
         [
           "Recent Files",

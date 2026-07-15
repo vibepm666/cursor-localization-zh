@@ -51,6 +51,182 @@
       "保留"
     ],
     [
+      "Keep This Computer Awake",
+      "保持此电脑唤醒"
+    ],
+    [
+      "No Repo",
+      "无仓库"
+    ],
+    [
+      "On This PC",
+      "此电脑上"
+    ],
+    [
+      "Search folders, repos...",
+      "搜索文件夹、仓库..."
+    ],
+    [
+      "Search This PC...",
+      "搜索此电脑..."
+    ],
+    [
+      "Select Multiple",
+      "多选"
+    ],
+    [
+      "Use Existing...",
+      "使用现有..."
+    ],
+    [
+      "Grouping",
+      "分组"
+    ],
+    [
+      "Ordering",
+      "排序"
+    ],
+    [
+      "Filters",
+      "筛选"
+    ],
+    [
+      "Created",
+      "创建时间"
+    ],
+    [
+      "Default Environment",
+      "默认环境"
+    ],
+    [
+      "Last used",
+      "上次使用"
+    ],
+    [
+      "Remote Control",
+      "远程控制"
+    ],
+    [
+      "Context and Tools",
+      "上下文与工具"
+    ],
+    [
+      "Search agents, files, actions...",
+      "搜索智能体、文件、操作..."
+    ],
+    [
+      "Recent Agents",
+      "最近智能体"
+    ],
+    [
+      "Agent Mode",
+      "智能体模式"
+    ],
+    [
+      "Copy Path of Active File",
+      "复制活动文件路径"
+    ],
+    [
+      "Copy Relative Path of Active File",
+      "复制活动文件相对路径"
+    ],
+    [
+      "Set Log Level...",
+      "设置日志级别..."
+    ],
+    [
+      "Group by Workspace",
+      "按工作区分组"
+    ],
+    [
+      "Clear Filter",
+      "清除筛选"
+    ],
+    [
+      "Change Filter",
+      "更改筛选"
+    ],
+    [
+      "Select",
+      "选择"
+    ],
+    [
+      "Author",
+      "作者"
+    ],
+    [
+      "Inactive",
+      "未激活"
+    ],
+    [
+      "Untitled",
+      "未命名"
+    ],
+    [
+      "Edit Details",
+      "编辑详情"
+    ],
+    [
+      "Duplicate",
+      "创建副本"
+    ],
+    [
+      "Copy as JSON",
+      "复制为 JSON"
+    ],
+    [
+      "Triggers",
+      "触发器"
+    ],
+    [
+      "Add Trigger",
+      "添加触发器"
+    ],
+    [
+      "Select repository",
+      "选择仓库"
+    ],
+    [
+      "Test run",
+      "测试运行"
+    ],
+    [
+      "Memories",
+      "记忆"
+    ],
+    [
+      "Extend Cursor with Plugins",
+      "通过插件扩展 Cursor"
+    ],
+    [
+      "Fork",
+      "分叉"
+    ],
+    [
+      "Copy ID",
+      "复制 ID"
+    ],
+    [
+      "Copy Branch",
+      "复制分支"
+    ],
+    [
+      "Copy Transcript",
+      "复制对话记录"
+    ],
+    [
+      "Search Plugins for User...",
+      "搜索用户插件..."
+    ],
+    [
+      "Plugins bundle rules, skills, subagents, commands, MCP servers, and hooks into one installable package.",
+      "插件将规则、技能、子智能体、命令、MCP 服务器和钩子打包为一个可安装的包。"
+    ],
+    [
+      "Type @ for tools, / for commands...",
+      "输入 @ 使用工具，/ 使用命令..."
+    ],
+    [
       "Did the agent understand what you wanted?",
       "智能体是否理解您的需求？"
     ],

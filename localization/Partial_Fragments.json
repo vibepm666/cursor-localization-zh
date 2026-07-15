@@ -179,6 +179,10 @@
       "您的提示词、编辑内容和其他使用数据将由 Cursor 存储并用于训练，以改进产品。"
     ],
     [
+      "Your codebase, prompts, edits and other usage data will be stored and trained on by Cursor to improve the product.",
+      "您的代码库、提示词、编辑内容和其他使用数据将由 Cursor 存储并用于训练，以改进产品。"
+    ],
+    [
       "Your prompts, edits and other usage data will be stored and trained on by Cursor to improve the product",
       "您的提示词、编辑内容和其他使用数据将由 Cursor 存储并用于训练，以改进产品"
     ],
