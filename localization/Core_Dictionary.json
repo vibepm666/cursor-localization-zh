@@ -1,6 +1,6 @@
 {
   "description": "Cursor 通用界面主词典。修改后重新运行 Cursor_Localization_Tool.py 注入生效。",
-  "updatedAt": "2026-07-09",
+  "updatedAt": "2026-07-15",
   "sections": [
     {
       "id": "左侧导航栏",
@@ -5497,6 +5497,10 @@
           "所有分支更改"
         ],
         [
+          "Branch Commits",
+          "分支提交"
+        ],
+        [
           "All commits",
           "所有提交"
         ],
@@ -5643,6 +5647,10 @@
         [
           "Find in Diff",
           "在差异中查找"
+        ],
+        [
+          "Find in Changes",
+          "在更改中查找"
         ],
         [
           "Refresh Changes",
@@ -6765,6 +6773,10 @@
         [
           "Open Editor Window",
           "打开编辑器窗口"
+        ],
+        [
+          "Open IDE",
+          "打开 IDE"
         ],
         [
           "Exit",
@@ -7991,6 +8003,10 @@
           "您已达到用量上限"
         ],
         [
+          "Usage limit reached",
+          "已达用量上限"
+        ],
+        [
           "Total usage limit reached",
           "已达到总用量上限"
         ],
@@ -8001,6 +8017,26 @@
         [
           "You've reached your monthly limit. Set a new on-demand limit to continue",
           "您已达到本月用量上限。请设置新的按需用量限额以继续使用"
+        ],
+        [
+          "You've reached your limit. Responses may be slower. Upgrade for more usage.",
+          "您已达到用量上限。响应可能会变慢。升级以获取更多用量。"
+        ],
+        [
+          "You've reached your limit. Responses may be slower. Upgrade to Pro+ for 3x more usage.",
+          "您已达到用量上限。响应可能会变慢。升级到 Pro+ 可获得 3 倍用量。"
+        ],
+        [
+          "Get faster responses",
+          "获得更快响应"
+        ],
+        [
+          "Increase limits for faster responses",
+          "提高限额以获得更快响应"
+        ],
+        [
+          "You're out of usage. Switch to Auto, or ask your admin to increase your limit to continue.",
+          "您的用量已用尽。请切换到自动，或联系管理员提高限额以继续使用。"
         ],
         [
           "Upgrade to Pro+",

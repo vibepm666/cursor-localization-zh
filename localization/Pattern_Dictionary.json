@@ -78,6 +78,56 @@
       "replacement": "无未提交的更改"
     },
     {
+      "regex": "^Branch Commits$",
+      "flags": "i",
+      "replacement": "分支提交"
+    },
+    {
+      "regex": "^Find in Changes$",
+      "flags": "i",
+      "replacement": "在更改中查找"
+    },
+    {
+      "regex": "^Open IDE$",
+      "flags": "i",
+      "replacement": "打开 IDE"
+    },
+    {
+      "regex": "^Add Symbol to Current Chat\\.\\.\\.?$",
+      "flags": "i",
+      "replacement": "将符号添加到当前对话..."
+    },
+    {
+      "regex": "^Add Symbol to Current Chat$",
+      "flags": "i",
+      "replacement": "将符号添加到当前对话"
+    },
+    {
+      "regex": "^Add Symbol to New Chat\\.\\.\\.?$",
+      "flags": "i",
+      "replacement": "将符号添加到新对话..."
+    },
+    {
+      "regex": "^Add Symbol to New Chat$",
+      "flags": "i",
+      "replacement": "将符号添加到新对话"
+    },
+    {
+      "regex": "^Create Rule$",
+      "flags": "i",
+      "replacement": "创建规则"
+    },
+    {
+      "regex": "^Insert Table of Contents$",
+      "flags": "i",
+      "replacement": "插入目录"
+    },
+    {
+      "regex": "^Insert Table$",
+      "flags": "i",
+      "replacement": "插入表格"
+    },
+    {
       "regex": "^(\\d+) Uncommitted Changes$",
       "flags": "i",
       "replacement": "$1 项未提交的更改"

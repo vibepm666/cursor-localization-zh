@@ -247,6 +247,14 @@
       "从选区创建规则"
     ],
     [
+      "Insert Table",
+      "插入表格"
+    ],
+    [
+      "Insert Table of Contents",
+      "插入目录"
+    ],
+    [
       "Open as Text Editor",
       "以文本编辑器打开"
     ],
@@ -365,6 +373,22 @@
     [
       "No Uncommitted Changes",
       "无未提交的更改"
+    ],
+    [
+      "Branch Commits",
+      "分支提交"
+    ],
+    [
+      "Find in Changes",
+      "在更改中查找"
+    ],
+    [
+      "Find in Diff",
+      "在差异中查找"
+    ],
+    [
+      "Open IDE",
+      "打开 IDE"
     ],
     [
       "Commit & Push",

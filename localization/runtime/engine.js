@@ -84,7 +84,9 @@
     function Shi_CaiDan_QuYu(el) {
         if (!el) return false;
         try {
-            return !!(el.closest('.monaco-menu, .monaco-menu-container, .context-view, [role="menubar"]'));
+            return !!(el.closest(
+                '.monaco-menu, .monaco-menu-container, .context-view, [role="menu"], [role="menubar"]'
+            ));
         } catch (e) { return false; }
     }
 
@@ -93,14 +95,23 @@
         var pel = node.parentElement;
         if (!pel || !Shi_CaiDan_QuYu(pel)) return false;
         try {
-            if (pel.closest('.keybinding, .submenu-indicator')) return false;
+            if (pel.closest('.keybinding, .submenu-indicator, .monaco-keybinding')) return false;
             if (pel.classList && pel.classList.contains('codicon')) return false;
             if (pel.closest('.action-label')) return true;
-            var item = pel.closest('a.action-menu-item, .action-item, [role="menuitem"]');
+            var item = pel.closest('a.action-menu-item, .action-item, [role="menuitem"], li.action-item');
             if (!item) return false;
             if (pel.querySelector && pel.querySelector('.codicon, .keybinding, .submenu-indicator, .action-label')) return false;
             return true;
         } catch (e) { return false; }
+    }
+
+    function ChaZhao_CaiDan_Hint(text, hints) {
+        if (!text || !hints) return null;
+        var norm = GuiYiHua_WenBen(text);
+        for (var j = 0; j < hints.length; j++) {
+            if (norm === hints[j][0] || text === hints[j][0]) return hints[j][1];
+        }
+        return ChaZhao_FanYi(text) || ChaZhao_FanYi(norm) || TiHuan_BuFen_WenBen(norm);
     }
 
     function GengXin_CaiDan_BiaoQian(labelEl, tr) {
@@ -111,55 +122,64 @@
         return true;
     }
 
+    function FanYi_CaiDan_WenBen_JieDian(root, hints) {
+        if (!root) return;
+        var walker;
+        try {
+            walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+        } catch (e) { return; }
+        var tnode;
+        while ((tnode = walker.nextNode())) {
+            if (!Shi_CaiDan_WenBen_JieDian(tnode)) continue;
+            var raw = (tnode.textContent || '').trim();
+            if (!raw || raw.length > 160) continue;
+            var tr = ChaZhao_CaiDan_Hint(raw, hints);
+            if (tr && tr !== raw) tnode.textContent = tr;
+        }
+    }
+
     function FanYi_BianJiQi_CaiDan_TiaoMu(root) {
         if (!root) return;
         var hints = BianJiQi_CaiDan_HINTS;
-        var labels = root.querySelectorAll('.action-label');
+        var labels = root.querySelectorAll('.action-label, [class*="action-label"], .monaco-action-bar .label');
         for (var i = 0; i < labels.length; i++) {
             var el = labels[i];
             if (el.closest('.view-lines')) continue;
-            var row = el.closest('a.action-menu-item, .action-item, [role="menuitem"]');
+            var row = el.closest('a.action-menu-item, .action-item, [role="menuitem"], li.action-item');
             if (row) FanYi_ShuXing(row);
+            FanYi_ShuXing(el);
             GengXin_CaiDan_WenBen(el, hints);
         }
-        var items = root.querySelectorAll('a.action-menu-item, .action-item, [role="menuitem"]');
+        var items = root.querySelectorAll('a.action-menu-item, .action-item, [role="menuitem"], li.action-item');
         for (var j = 0; j < items.length; j++) {
             FanYi_ShuXing(items[j]);
         }
+        FanYi_CaiDan_WenBen_JieDian(root, hints);
     }
 
     function FanYi_Monaco_CaiDan(root) {
         if (!root) return;
-        var labels = root.querySelectorAll('.action-label');
+        var labels = root.querySelectorAll('.action-label, [class*="action-label"]');
         for (var i = 0; i < labels.length; i++) {
             var el = labels[i];
             if (el.closest('.view-lines')) continue;
-            var row = el.closest('a.action-menu-item, .action-item, [role="menuitem"]');
+            var row = el.closest('a.action-menu-item, .action-item, [role="menuitem"], li.action-item');
             if (row) FanYi_ShuXing(row);
+            FanYi_ShuXing(el);
             GengXin_CaiDan_WenBen(el, BianJiQi_CaiDan_HINTS);
             var raw = (el.textContent || '').trim();
             if (!raw || raw.length > 160) continue;
-            var tr = ChaZhao_FanYi(raw) || ChaZhao_FanYi(GuiYiHua_WenBen(raw)) || TiHuan_BuFen_WenBen(raw);
+            var tr = ChaZhao_CaiDan_Hint(raw, BianJiQi_CaiDan_HINTS);
             if (tr) GengXin_CaiDan_BiaoQian(el, tr);
         }
-        var items = root.querySelectorAll('a.action-menu-item, .action-item, [role="menuitem"]');
+        var items = root.querySelectorAll('a.action-menu-item, .action-item, [role="menuitem"], li.action-item');
         for (var j = 0; j < items.length; j++) {
             var item = items[j];
-            if (item.querySelector('.action-label')) continue;
             FanYi_ShuXing(item);
-            var walker;
-            try {
-                walker = document.createTreeWalker(item, NodeFilter.SHOW_TEXT, null);
-            } catch (e) { continue; }
-            var tnode;
-            while ((tnode = walker.nextNode())) {
-                if (!Shi_CaiDan_WenBen_JieDian(tnode)) continue;
-                var raw2 = (tnode.textContent || '').trim();
-                if (!raw2 || raw2.length > 160) continue;
-                var tr2 = ChaZhao_FanYi(raw2) || ChaZhao_FanYi(GuiYiHua_WenBen(raw2)) || TiHuan_BuFen_WenBen(raw2);
-                if (tr2 && tr2 !== raw2) tnode.textContent = tr2;
-            }
+            if (item.querySelector('.action-label, [class*="action-label"]')) continue;
+            FanYi_CaiDan_WenBen_JieDian(item, BianJiQi_CaiDan_HINTS);
         }
+        FanYi_CaiDan_WenBen_JieDian(root, BianJiQi_CaiDan_HINTS);
     }
 
     var CaiDan_FanYi_Timer = null;
@@ -350,7 +370,14 @@
         ['Accept all changes', '接受所有更改'],
         ['Keep all changes', '保留所有更改'],
         ['Keep changes', '保留更改'],
-        ['Review Next File', '审查下一个文件']
+        ['Review Next File', '审查下一个文件'],
+        ['No Uncommitted Changes', '无未提交的更改'],
+        ['Branch Commits', '分支提交'],
+        ['Find in Changes', '在更改中查找'],
+        ['Find in Diff', '在差异中查找'],
+        ['Refresh Changes', '刷新更改'],
+        ['Ignore Whitespace', '忽略空白字符'],
+        ['Word Wrap', '自动换行']
     ];
 
     var Agent_BianGeng_Pending_HINTS = [
@@ -450,14 +477,8 @@
         if (!el || el.closest('.view-lines')) return;
         FanYi_ShuXing(el);
         var text = GuiYiHua_WenBen(el.textContent || '');
-        if (!text || text.length > 120) return;
-        for (var j = 0; j < hints.length; j++) {
-            if (text === hints[j][0]) {
-                GengXin_CaiDan_BiaoQian(el, hints[j][1]);
-                return;
-            }
-        }
-        var tr = ChaZhao_FanYi(text) || TiHuan_BuFen_WenBen(text);
+        if (!text || text.length > 160) return;
+        var tr = ChaZhao_CaiDan_Hint(text, hints);
         if (tr && tr !== text) GengXin_CaiDan_BiaoQian(el, tr);
     }
 
@@ -1390,10 +1411,15 @@
             if (el.querySelector('input, textarea, select, button, [role="button"], [role="switch"], [contenteditable="true"]')) return false;
             var xiala = el.closest('[role="combobox"], .monaco-select-box, [class*="select-box"]');
             if (xiala && (el === xiala || el.childElementCount > 0)) return false;
-            var caiDan = el.closest('.monaco-menu, .context-view, [role="menubar"]');
+            var caiDan = el.closest('.monaco-menu, .context-view, [role="menu"], [role="menubar"]');
             if (caiDan) {
-                var shiBiaoQian = el.classList && el.classList.contains('action-label');
-                if (!shiBiaoQian) return false;
+                var shiBiaoQian = el.classList && (
+                    el.classList.contains('action-label') ||
+                    (el.className && String(el.className).indexOf('action-label') >= 0)
+                );
+                var shiYeZi = !el.querySelector || !el.querySelector('*');
+                var shiCaiDanXiang = !!(el.closest && el.closest('[role="menuitem"], a.action-menu-item, li.action-item'));
+                if (!shiBiaoQian && !(shiYeZi && shiCaiDanXiang)) return false;
             }
         } catch (e) {}
         var parent = el.parentElement;
@@ -1648,9 +1674,15 @@
         if (!QuanJu_BaoHan_GuanJianCi_BiaoQian('GONG_NENG_TUI_GUANG')) return;
         var hints = [
             ["You've hit your usage limit", '您已达到用量上限'],
+            ['Usage limit reached', '已达用量上限'],
             ['Total usage limit reached', '已达到总用量上限'],
             ["You've reached your monthly limit. Set a new on-demand limit to continue.", '您已达到本月用量上限。请设置新的按需用量限额以继续使用。'],
             ["You've reached your monthly limit. Set a new on-demand limit to continue", '您已达到本月用量上限。请设置新的按需用量限额以继续使用'],
+            ["You've reached your limit. Responses may be slower. Upgrade for more usage.", '您已达到用量上限。响应可能会变慢。升级以获取更多用量。'],
+            ["You've reached your limit. Responses may be slower. Upgrade to Pro+ for 3x more usage.", '您已达到用量上限。响应可能会变慢。升级到 Pro+ 可获得 3 倍用量。'],
+            ['Get faster responses', '获得更快响应'],
+            ['Increase limits for faster responses', '提高限额以获得更快响应'],
+            ["You're out of usage. Switch to Auto, or ask your admin to increase your limit to continue.", '您的用量已用尽。请切换到自动，或联系管理员提高限额以继续使用。'],
             ['Upgrade to Pro+', '升级到 Pro+'],
             ['Set new limit', '设置新限额'],
             ["Cursor's Smartest Model Yet", 'Cursor 迄今最智能的模型'],
@@ -1796,9 +1828,15 @@
         var hints = [
             ["You've hit your usage limit", '您已达到用量上限'],
             ["You're approaching your usage limit", '您的用量即将达到上限'],
+            ['Usage limit reached', '已达用量上限'],
             ['Total usage limit reached', '已达到总用量上限'],
             ["You've reached your monthly limit. Set a new on-demand limit to continue.", '您已达到本月用量上限。请设置新的按需用量限额以继续使用。'],
             ["You've reached your monthly limit. Set a new on-demand limit to continue", '您已达到本月用量上限。请设置新的按需用量限额以继续使用'],
+            ["You've reached your limit. Responses may be slower. Upgrade for more usage.", '您已达到用量上限。响应可能会变慢。升级以获取更多用量。'],
+            ["You've reached your limit. Responses may be slower. Upgrade to Pro+ for 3x more usage.", '您已达到用量上限。响应可能会变慢。升级到 Pro+ 可获得 3 倍用量。'],
+            ['Get faster responses', '获得更快响应'],
+            ['Increase limits for faster responses', '提高限额以获得更快响应'],
+            ["You're out of usage. Switch to Auto, or ask your admin to increase your limit to continue.", '您的用量已用尽。请切换到自动，或联系管理员提高限额以继续使用。'],
             ['Upgrade to Pro+', '升级到 Pro+'],
             ['Set new limit', '设置新限额'],
             ['Get Cursor Pro for more Agent usage, unlimited Tab, and more.', '升级到 Cursor Pro 以获取更多 Agent 用量、无限 Tab 等。'],

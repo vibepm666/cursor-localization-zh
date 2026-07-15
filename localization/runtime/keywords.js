@@ -4,6 +4,8 @@
         GONG_NENG_TUI_GUANG: [
             'multitask', 'Parallelize', 'Get Unblocked', 'Coordinate parallel', 'Try now in Cursor',
             'Cloud Agents, and more', 'unlimited Tab', 'Refactor code generator', "You've hit your usage limit",
+            'Usage limit reached', 'Get faster responses', 'Responses may be slower',
+            'Increase limits for faster', 'out of usage', 'ask your admin',
             'Total usage limit reached', 'on-demand limit', 'Upgrade to Pro+', 'Set new limit',
             'Smartest Model Yet', '50% Off Through', 'Try Grok',
             'use subagents to break down tasks'
@@ -27,6 +29,8 @@
         UPGRADE_TI_SHI: [
             'Upgrade for extended', 'Upgrade to Pro', 'extended limits', 'upgrade-pro',
             'Cloud Agents, and more', 'usage limit', 'unlimited Tab', "You've hit your usage limit",
+            'Usage limit reached', 'Get faster responses', 'Responses may be slower',
+            'Increase limits for faster', 'out of usage', 'ask your admin',
             'Total usage limit reached', 'on-demand limit', 'Upgrade to Pro+', 'Set new limit',
             'Get Cursor Pro for more Agent usage'
         ],
@@ -36,7 +40,8 @@
         ],
         AGENT_GENG_GAI: [
             'All Changes', 'Pending Changes', 'Changes waiting to be confirmed', 'Keep Ctrl', ' of ',
-            'Undo File', 'Keep File', 'Accept all changes', 'Keep all changes', 'Keep changes', 'Review Next File'
+            'Undo File', 'Keep File', 'Accept all changes', 'Keep all changes', 'Keep changes', 'Review Next File',
+            'No Uncommitted Changes', 'Branch Commits', 'Find in Changes', 'Refresh Changes'
         ],
         TI_JI_CAI_DAN: [
             'Files & Folders', 'Past Chats', 'Terminals', 'Mentions', 'Branch (Diff with Main)',

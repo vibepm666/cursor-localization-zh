@@ -862,7 +862,8 @@ def TiHuan_Product_JiaoYan_Zhi(YuanShi_WenBen, Product, MuBiao_Jian, HaXi_Zhi):
     for Key, Value in MuBiao_Dict.items():
         MoShi = re.compile(r'("' + re.escape(Key) + r'"\s*:\s*")([^"]*)(")')
         if MoShi.search(XinWenBen):
-            XinWenBen = MoShi.sub(r'\1' + Value + r'\3', XinWenBen, count=1)
+            # 用函数替换，避免 Value 以数字开头时 `\1`+`3...` 被解析成无效分组 `\13`
+            XinWenBen = MoShi.sub(lambda m, v=Value: m.group(1) + v + m.group(3), XinWenBen, count=1)
         else:
             XinWenBen = json.dumps(Product, ensure_ascii=False, indent=2)
             if not XinWenBen.endswith('\n'):
