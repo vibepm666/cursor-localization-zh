@@ -128,6 +128,8 @@
     ["Inside Cursor", "在 Cursor 内"],
     ["Code Block Word Wrap", "代码块自动换行"],
     ["Wrap long lines in Agent chat code blocks", "在智能体对话代码块中对长行自动换行"],
+    ["Wrap long lines in Agent conversation code blocks", "在智能体对话代码块中对长行自动换行"],
+    ["Wrap long lines in Agent conversation code blocks.", "在智能体对话代码块中对长行自动换行。"],
     ["Open Agents Window on Startup", "启动时打开智能体窗口"],
     ["Open the Agents Window by default when Cursor launches", "启动 Cursor 时默认打开智能体窗口"],
     ["Plugins are moving to Customize", "插件已迁移至「自定义」"],

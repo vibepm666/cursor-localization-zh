@@ -55,6 +55,10 @@
           "网络"
         ],
         [
+          "Browser & Network",
+          "浏览器与网络"
+        ],
+        [
           "Marketplace",
           "市场"
         ],
@@ -1249,6 +1253,10 @@
           "内联编辑与终端"
         ],
         [
+          "Terminal and Editing",
+          "终端与编辑"
+        ],
+        [
           "Cmd+K: Escape focuses the editor when you have a diff",
           "Cmd+K：有差异时按 Escape 聚焦编辑器"
         ],
@@ -1595,6 +1603,26 @@
           "自动运行"
         ],
         [
+          "Execution and Approvals",
+          "执行与审批"
+        ],
+        [
+          "Task Models",
+          "任务模型"
+        ],
+        [
+          "Explore Subagent Model",
+          "探索子智能体模型"
+        ],
+        [
+          "Choose the model used by the Explore subagent for initial research",
+          "选择 Explore 子智能体用于初步研究的模型"
+        ],
+        [
+          "Choose the model used by the Explore subagent for initial research.",
+          "选择 Explore 子智能体用于初步研究的模型。"
+        ],
+        [
           "Auto-Run Mode",
           "自动运行模式"
         ],
@@ -1772,6 +1800,14 @@
         ],
         [
           "Wrap long lines in Agent chat code blocks.",
+          "在智能体对话代码块中对长行自动换行。"
+        ],
+        [
+          "Wrap long lines in Agent conversation code blocks",
+          "在智能体对话代码块中对长行自动换行"
+        ],
+        [
+          "Wrap long lines in Agent conversation code blocks.",
           "在智能体对话代码块中对长行自动换行。"
         ],
         [
@@ -2343,6 +2379,10 @@
           "浏览器"
         ],
         [
+          "Browser & Network",
+          "浏览器与网络"
+        ],
+        [
           "Inspect Element",
           "检查元素"
         ],
@@ -2399,8 +2439,20 @@
           "提交关键词"
         ],
         [
+          "Voice Submit Keywords",
+          "语音提交关键词"
+        ],
+        [
           "Custom keywords that trigger auto-submit in voice mode. Only single words (no spaces) are allowed. Punctuation and capitalization are ignored.",
           "在语音模式下触发自动提交的自定义关键词。仅允许单个词语（无空格）。忽略标点和大小写。"
+        ],
+        [
+          "Custom words that submit a voice prompt. Spaces and punctuation are ignored.",
+          "用于提交语音提示的自定义词语。忽略空格与标点。"
+        ],
+        [
+          "Custom words that submit a voice prompt. Spaces and punctuation are ignored",
+          "用于提交语音提示的自定义词语。忽略空格与标点"
         ]
       ]
     },
@@ -3829,8 +3881,20 @@
           "分层 Cursor 忽略"
         ],
         [
+          "Ignore Files",
+          "忽略文件"
+        ],
+        [
           "Apply .cursorignore files to all subdirectories. Changing this setting will require a restart of Cursor.",
           "将 .cursorignore 文件应用到所有子目录。更改此设置需要重启 Cursor。"
+        ],
+        [
+          "Apply .cursorignore files to all subdirectories. Changing this setting requires restarting Cursor.",
+          "将 .cursorignore 文件应用到所有子目录。更改此设置需要重启 Cursor。"
+        ],
+        [
+          "Apply .cursorignore files to all subdirectories. Changing this setting requires restarting Cursor",
+          "将 .cursorignore 文件应用到所有子目录。更改此设置需要重启 Cursor"
         ],
         [
           "Ignore Files in .cursorignore",
@@ -5501,6 +5565,38 @@
           "分支提交"
         ],
         [
+          "BRANCHES",
+          "分支"
+        ],
+        [
+          "Branches",
+          "分支"
+        ],
+        [
+          "REMOTES",
+          "远程"
+        ],
+        [
+          "Remotes",
+          "远程"
+        ],
+        [
+          "TAGS",
+          "标签"
+        ],
+        [
+          "Tags",
+          "标签"
+        ],
+        [
+          "STASHES",
+          "贮藏"
+        ],
+        [
+          "Stashes",
+          "贮藏"
+        ],
+        [
           "All commits",
           "所有提交"
         ],
@@ -6299,6 +6395,10 @@
         [
           "Approvals & Execution for commands, MCP and more",
           "命令、MCP 等的审批与执行"
+        ],
+        [
+          "Execution and Approvals",
+          "执行与审批"
         ],
         [
           "Run Mode",
