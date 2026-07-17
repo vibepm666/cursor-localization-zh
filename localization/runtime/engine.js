@@ -303,6 +303,7 @@
     var TongYong_CaiDan_HINTS = [
         ['Copy', '复制'],
         ['Select All', '全选'],
+        ['Search with Google', '使用 Google 搜索'],
         ['Cut', '剪切'],
         ['Paste', '粘贴']
     ];
@@ -1716,6 +1717,13 @@
             ['50% Off Through July 14', '7 月 14 日前五折优惠'],
             ['Get double the usage for the first week across desktop, web, iOS, CLI, and SDK', '首周在桌面端、网页、iOS、CLI 和 SDK 上享双倍用量'],
             ['Try Grok 4.5', '试用 Grok 4.5'],
+            ['Extending 50% Off Cursor Grok 4.5', '延长 Cursor Grok 4.5 五折优惠'],
+            ["We're extending the Cursor Grok 4.5 promotion for another week. Enjoy double usage through July 21 across desktop, web, iOS, CLI, and our SDK.", '我们将 Cursor Grok 4.5 促销活动再延长一周。截至 7 月 21 日，在桌面端、网页、iOS、CLI 和 SDK 上享双倍用量。'],
+            ['High Load', '高负载'],
+            ["We're experiencing high demand for Cursor Grok 4.5 right now. Please switch to Auto, another model, or try again in a few moments.", '当前 Cursor Grok 4.5 需求量很大。请切换到 Auto、其他模型，或稍后再试。'],
+            ['Extension host terminated unexpectedly 3 times within the last 5 minutes.', '扩展宿主在过去 5 分钟内意外终止了 3 次。'],
+            ['Restart Extension Host', '重启扩展宿主'],
+            ['Start Extension Bisect', '启动扩展二分排查'],
             ['Get Cursor Pro for more Agent usage, unlimited Tab, and more.', '升级到 Cursor Pro 以获取更多 Agent 用量、无限 Tab 等。'],
             ['Get Cursor Pro for more Agent usage, unlimited Tab, and more', '升级到 Cursor Pro 以获取更多 Agent 用量、无限 Tab 等。'],
             ['Get Cursor Pro for more Agent usage, Cloud Agents, and more.', '升级到 Cursor Pro 以获取更多智能体用量、云端智能体等。'],

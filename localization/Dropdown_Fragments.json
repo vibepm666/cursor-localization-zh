@@ -215,6 +215,22 @@
       "复制对话记录"
     ],
     [
+      "Search with Google",
+      "使用 Google 搜索"
+    ],
+    [
+      "High Load",
+      "高负载"
+    ],
+    [
+      "Restart Extension Host",
+      "重启扩展宿主"
+    ],
+    [
+      "Start Extension Bisect",
+      "启动扩展二分排查"
+    ],
+    [
       "Search Plugins for User...",
       "搜索用户插件..."
     ],

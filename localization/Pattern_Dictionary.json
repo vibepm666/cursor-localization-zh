@@ -633,6 +633,11 @@
       "replacement": "$1 个后台终端"
     },
     {
+      "regex": "^Extension host terminated unexpectedly (\\d+) times? within the last 5 minutes\\.?$",
+      "flags": "i",
+      "replacement": "扩展宿主在过去 5 分钟内意外终止了 $1 次。"
+    },
+    {
       "regex": "^Stopping now will kill the background terminals?\\.?$",
       "flags": "i",
       "replacement": "立即停止将终止后台终端。"

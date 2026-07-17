@@ -5593,6 +5593,38 @@
           "重试"
         ],
         [
+          "High Load",
+          "高负载"
+        ],
+        [
+          "We're experiencing high demand for Cursor Grok 4.5 right now. Please switch to Auto, another model, or try again in a few moments.",
+          "当前 Cursor Grok 4.5 需求量很大。请切换到 Auto、其他模型，或稍后再试。"
+        ],
+        [
+          "We're experiencing high demand for Cursor Grok 4.5 right now. Please switch to Auto, another model, or try again in a few moments",
+          "当前 Cursor Grok 4.5 需求量很大。请切换到 Auto、其他模型，或稍后再试"
+        ],
+        [
+          "Extension host terminated unexpectedly 3 times within the last 5 minutes.",
+          "扩展宿主在过去 5 分钟内意外终止了 3 次。"
+        ],
+        [
+          "Extension host terminated unexpectedly",
+          "扩展宿主意外终止"
+        ],
+        [
+          "Restart Extension Host",
+          "重启扩展宿主"
+        ],
+        [
+          "Start Extension Bisect",
+          "启动扩展二分排查"
+        ],
+        [
+          "Search with Google",
+          "使用 Google 搜索"
+        ],
+        [
           "Learn more",
           "了解更多"
         ],
@@ -8537,6 +8569,14 @@
         [
           "Introducing Grok 4.5, Cursor's most powerful model yet",
           "隆重推出 Grok 4.5，Cursor 迄今最强的模型"
+        ],
+        [
+          "Extending 50% Off Cursor Grok 4.5",
+          "延长 Cursor Grok 4.5 五折优惠"
+        ],
+        [
+          "We're extending the Cursor Grok 4.5 promotion for another week. Enjoy double usage through July 21 across desktop, web, iOS, CLI, and our SDK.",
+          "我们将 Cursor Grok 4.5 促销活动再延长一周。截至 7 月 21 日，在桌面端、网页、iOS、CLI 和 SDK 上享双倍用量。"
         ],
         [
           "Trained jointly with SpaceXAI, Grok 4.5 can handle long-running tasks beyond coding",
