@@ -1,4 +1,4 @@
-@echo off
+﻿@echo off
 setlocal EnableExtensions EnableDelayedExpansion
 chcp 65001 >nul 2>&1
 cd /d "%~dp0"
@@ -33,7 +33,7 @@ if not exist "!HANHUA_SCRIPT!" goto :NoScript
 if not exist "!CURSOR_EXE!" goto :NoExe
 if not exist "!WORKBENCH_HTML!" goto :NoWorkbench
 
-call :CheckPython
+call :ResolvePython
 if errorlevel 1 call :WaitKey & exit /b 1
 
 call :ShowInfo
@@ -50,7 +50,7 @@ if errorlevel 1 findstr /c:"%INJECTION_MARKER_OLD%" "!WORKBENCH_HTML!" >nul 2>&1
 if errorlevel 1 goto :DoInject
 
 echo [检查] 已注入，正在更新汉化脚本...
-python "!HANHUA_SCRIPT!"
+"!PYTHON_CMD!" "!HANHUA_SCRIPT!"
 if errorlevel 1 (
     echo.
     echo [警告] 更新过程有报错
@@ -62,7 +62,7 @@ goto :AfterInject
 
 :DoInject
 echo [检查] 未注入，正在执行汉化...
-python "!HANHUA_SCRIPT!"
+"!PYTHON_CMD!" "!HANHUA_SCRIPT!"
 if errorlevel 1 (
     echo.
     echo [警告] 汉化过程有报错
@@ -136,32 +136,48 @@ set "PFX86=%PROGRAMFILES(X86)%"
 if not defined CURSOR_INSTALL_DIR if exist "%LOCALAPPDATA%\Programs\Cursor\Cursor.exe" if exist "%LOCALAPPDATA%\Programs\Cursor\resources\app" set "CURSOR_INSTALL_DIR=%LOCALAPPDATA%\Programs\Cursor"
 if not defined CURSOR_INSTALL_DIR if exist "%PROGRAMFILES%\Cursor\Cursor.exe" if exist "%PROGRAMFILES%\Cursor\resources\app" set "CURSOR_INSTALL_DIR=%PROGRAMFILES%\Cursor"
 if not defined CURSOR_INSTALL_DIR if exist "!PFX86!\Cursor\Cursor.exe" if exist "!PFX86!\Cursor\resources\app" set "CURSOR_INSTALL_DIR=!PFX86!\Cursor"
+if not defined CURSOR_INSTALL_DIR if exist "D:\Program Files\cursor\Cursor.exe" if exist "D:\Program Files\cursor\resources\app" set "CURSOR_INSTALL_DIR=D:\Program Files\cursor"
+if not defined CURSOR_INSTALL_DIR if exist "D:\Program Files\Cursor\Cursor.exe" if exist "D:\Program Files\Cursor\resources\app" set "CURSOR_INSTALL_DIR=D:\Program Files\Cursor"
 exit /b 0
 
-:CheckPython
-where python >nul 2>&1
-if errorlevel 1 (
-    echo [错误] 未找到 python 命令，汉化脚本需要 Python 3 环境。
-    call :ShowPythonInstallTip
-    exit /b 1
+:ResolvePython
+set "PYTHON_CMD="
+for %%V in (Python314 Python313 Python312 Python311 Python310) do (
+    if not defined PYTHON_CMD if exist "C:\%%V\python.exe" set "PYTHON_CMD=C:\%%V\python.exe"
+    if not defined PYTHON_CMD if exist "%LOCALAPPDATA%\Programs\Python\%%V\python.exe" set "PYTHON_CMD=%LOCALAPPDATA%\Programs\Python\%%V\python.exe"
+    if not defined PYTHON_CMD if exist "%ProgramFiles%\%%V\python.exe" set "PYTHON_CMD=%ProgramFiles%\%%V\python.exe"
 )
-for /f "delims=" %%P in ('where python 2^>nul') do (
-    echo %%P | findstr /i /c:"Microsoft\WindowsApps" /c:"microsoft\windowsapps" >nul 2>&1
-    if not errorlevel 1 (
-        echo [错误] 检测到 Windows Store 的 Python 占位程序，无法运行汉化脚本。
-        echo [路径] %%P
-        call :ShowPythonInstallTip
-        exit /b 1
+if not defined PYTHON_CMD (
+    for /f "delims=" %%P in ('where python 2^>nul') do (
+        echo %%P | findstr /i /c:"Microsoft\WindowsApps" /c:"microsoft\windowsapps" >nul 2>&1
+        if errorlevel 1 (
+            set "PYTHON_CMD=%%P"
+            goto :PythonResolved
+        )
     )
-    goto :PythonPathOk
 )
-:PythonPathOk
-python --version >nul 2>&1
-if errorlevel 1 (
-    echo [错误] python 命令无法正常运行，请安装真正的 Python 3。
+if not defined PYTHON_CMD (
+    where py >nul 2>&1
+    if not errorlevel 1 (
+        for /f "delims=" %%P in ('py -3 -c "import sys; print(sys.executable)" 2^>nul') do (
+            echo %%P | findstr /i /c:"Microsoft\WindowsApps" /c:"microsoft\windowsapps" >nul 2>&1
+            if errorlevel 1 set "PYTHON_CMD=%%P"
+        )
+    )
+)
+:PythonResolved
+if not defined PYTHON_CMD (
+    echo [错误] 未找到可用的 Python 3，汉化脚本无法运行。
     call :ShowPythonInstallTip
     exit /b 1
 )
+"!PYTHON_CMD!" --version >nul 2>&1
+if errorlevel 1 (
+    echo [错误] Python 无法正常运行: !PYTHON_CMD!
+    call :ShowPythonInstallTip
+    exit /b 1
+)
+echo [信息] Python: !PYTHON_CMD!
 exit /b 0
 
 :ShowPythonInstallTip
