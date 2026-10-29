@@ -23,13 +23,15 @@
             'Getting Started', 'Teach Cursor New Skills', 'have moved to Customize'
         ],
         YIN_YING_MOHU: [
-            'Shadow & Blur', '阴影与模糊', 'Drop shadow', 'Inner shadow', 'Layer Blur', 'Backdrop Blur',
+            'Shadow & Blur', 'Drop shadow', 'Inner shadow', 'Layer Blur', 'Backdrop Blur',
             'Add shadow or blur', 'Remove shadow', 'Adjust shadow', 'Hide drop shadow', 'Show drop shadow',
             'css-effects-type-select', 'css-inspector-section'
         ],
         SHE_JI_MIAN_BAN: [
             'Stops', 'Ellipse', 'Solid', 'Linear', 'Radial', 'Conic', 'Circle', 'Fixed Width', 'Fit contents', 'Fill container',
-            'Shadow & Blur', 'Drop shadow', 'Inner shadow', 'Layer Blur', 'Backdrop Blur', 'Add shadow or blur'
+            'Shadow & Blur', 'Drop shadow', 'Inner shadow', 'Layer Blur', 'Backdrop Blur', 'Add shadow or blur',
+            'Filter properties', 'Describe the change', 'Annotate', 'to cancel', 'to select or', 'Exit Design Mode',
+            'Responsive Design Mode'
         ],
         UPGRADE_TI_SHI: [
             'Upgrade for extended', 'Upgrade to Pro', 'extended limits', 'upgrade-pro',
@@ -50,8 +52,7 @@
         ],
         TI_JI_CAI_DAN: [
             'Files & Folders', 'Past Chats', 'Terminals', 'Mentions', 'Branch (Diff with Main)',
-            'No available options', 'Changes from current branch',
-            '文件和文件夹', '历史对话', '分支（与主分支的差异）', '提及', '暂无可用选项'
+            'No available options', 'Changes from current branch'
         ],
         ZHI_NENG_TI_MO_SHI: [
             'Switch Agent Mode', 'Switch Model', 'Multitask', 'Systematically diagnose',
@@ -65,7 +66,7 @@
         LIU_LAN_QI_GONG_JU: [
             'Take Screenshot', 'Hard Reload', 'Clear Browsing History', 'Clear Cookies', 'Clear Cache',
             'Capture Area', 'Select element', 'Show Console', 'New Tab', 'Enter Full Screen',
-            'Show Bookmark Bar', 'Inspect Element', 'Reload', 'Select All', '重新加载', '全选'
+            'Show Bookmark Bar', 'Inspect Element', 'Reload', 'Select All'
         ],
         LIU_LAN_QI_CUO_WU: [
             'Connection Failed', 'Connection failed', 'Restart Browser', 'Show Details', 'browser-error', 'canvas-error-view',
@@ -82,24 +83,27 @@
         ]
     };
 
+    // 设置页关键词。命中后才跑对应区块的修正
     var SheZhi_GuanJianCi_Biao = {
-        DAI_MA_KU: ['Embed codebase', 'Embeddings and metadata', '代码库索引', '索引新文件夹'],
-        SUO_YIN: ['50,000 files', 'index any new folders', '索引新文件夹'],
+        DAI_MA_KU: ['Embed codebase', 'Embeddings and metadata'],
+        SUO_YIN: ['50,000 files', 'index any new folders'],
         MO_XING_YE: ['OpenAI key', 'Anthropic key', 'Google AI Studio key', 'Azure OpenAI', 'AWS Bedrock', 'DeepSeek'],
         SUI_PIAN: [
             'Automation Profile', 'Natural Language Search', 'Auto Resume', 'Partial Matches', 'Continue Prompt',
-            '自动mation', 'Use with caution', 'Skip symlinks', 'cursorignore', '符号链接', 'cursor-settings',
+            'Use with caution', 'Skip symlinks', 'cursorignore', 'cursor-settings',
             "Don't Ask Again", 'Hidden Dialogs', 'hidden dialogs'
         ],
-        ZHANG_HU: ['Current Plan', 'Resets on', 'Included Usage', 'Resets', 'Window Restoration', 'Last Used Windows', 'Cursor Models', 'Other Models', 'Default Model', 'Adjust Plan', 'Usage limits reset', 'Search Cursor settings', '免费版', 'Manage', 'CURRENT']
+        ZHANG_HU: ['Current Plan', 'Resets on', 'Included Usage', 'Resets', 'Window Restoration', 'Last Used Windows', 'Cursor Models', 'Other Models', 'Default Model', 'Adjust Plan', 'Usage limits reset', 'Search Cursor settings', 'Free', '免费版', 'Manage', 'CURRENT']
     };
 
+    // 按标签查全局关键词表，判断页面是否命中
     function QuanJu_BaoHan_GuanJianCi_BiaoQian(biaoQian) {
         var words = QuanJu_GuanJianCi_Biao[biaoQian];
         if (!words || !words.length) return false;
         return QuanJu_BaoHan_GuanJianCi(words);
     }
 
+    // 按标签查设置页关键词表，判断设置区是否命中
     function QuanJu_BaoHan_GuanJianCi_SheZhi_BiaoQian(biaoQian) {
         var words = SheZhi_GuanJianCi_Biao[biaoQian];
         if (!words || !words.length) return false;

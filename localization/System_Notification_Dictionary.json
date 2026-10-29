@@ -1,0 +1,11 @@
+{
+  "description": "系统通知（Windows 通知中心 / macOS 通知）。这些文案由工作台脚本直接交给操作系统，界面注入脚本无法改写。替换 workbench.desktop.main.js 与 workbench.glass.main.js 中的唯一模板。",
+  "updatedAt": "2026-10-19",
+  "replacements": [
+    ["Done \\u2022 ${s}", "完成 • ${s}"],
+    ["Done \\u2022 ${i}", "完成 • ${i}"],
+    ["\"Agent complete\"", "\"智能体已完成\""],
+    ["\"Cloud agent complete\"", "\"云端智能体已完成\""],
+    ["\"Open Cursor to view the agent's output.\"", "\"打开 Cursor 以查看智能体输出。\""]
+  ]
+}

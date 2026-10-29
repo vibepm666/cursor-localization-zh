@@ -13,7 +13,10 @@ Cursor 官方目前尚未提供中文界面或汉化包。常见做法是安装 
 
 - **设置页**：账户、模型、规则、工具与 MCP、隐私等选项
 - **智能体窗口**：对话、命令面板、模式切换（计划 / 询问 / 调试 / 多任务）等
+- **用量与账单**：订阅用量重置提示、额外额度（Credits）、自动充值、Privacy Mode / Unify 控制台相关文案
 - **插件市场**：插件名称、简介、获取按钮及市场相关文案
+- **设计模式**：提示条、批注、属性筛选等界面文案。`background-color` 这类 CSS 属性名保持英文
+- **系统托盘与系统通知**：托盘右键菜单，以及交给操作系统的完成通知
 - **其它界面**：欢迎页、Git 变更面板、部分通知与推广弹窗等
 
 ### 主要特点
@@ -22,7 +25,7 @@ Cursor 官方目前尚未提供中文界面或汉化包。常见做法是安装 
 - **双层汉化，覆盖面更全**：通过注入脚本 + 本地词典，完整翻译 Cursor 专有界面，例如智能体侧栏、Cursor 设置（账户 / 模型 / 规则 / MCP）、插件市场、欢迎页、Git 面板及部分通知弹窗等。
 - **不改动界面逻辑，可一键还原**：主要修改工作台文件（如 `workbench.html`）；系统托盘菜单会替换主进程 `main.js` 中少量固定文案。需要英文时运行「取消汉化」脚本即可恢复；已安装的 VSCode汉化包 可保留。
 - **维护成本低**：Cursor 小版本更新后若有个别位置变回英文，再运行一次启动脚本即可，一般无需重装软件。
-- **其它说明**：日常点得到的界面大多已是中文；个别菜单、动态文案或新版本新增词条可能仍为英文，可在词典中补充后重新注入。Agent 对话与模型生成内容不属于界面汉化范围。
+- **其它说明**：日常点得到的界面大多已是中文；个别菜单、动态文案或新版本新增词条可能仍为英文，可在词典中补充后重新注入。对话输入、编辑器里的源代码，以及模型生成内容都不会被替换。
 
 ## 界面截图
 
@@ -114,6 +117,8 @@ export CURSOR_USER_DATA_DIR="$HOME/Library/Application Support/Cursor"
 | `localization/Pattern_Dictionary.json` | 动态文本正则替换规则 |
 | `localization/Ad_Popup_Dictionary.json` | 左下角推广 / 通知弹窗词典 |
 | `localization/Plugin_Marketplace_Dictionary.json` | 插件市场专用词典（注入后首次进入市场页才加载到内存） |
+| `localization/Tray_Dictionary.json` | 系统托盘右键菜单（替换 `out/main.js` 中的固定标签） |
+| `localization/System_Notification_Dictionary.json` | 系统通知（替换工作台脚本里交给操作系统的固定模板） |
 | `VSCode-language-pack-zh-hans.vsix` | 官方简体中文语言包（根目录；版本不匹配时自动从市场下载覆盖） |
 | `启动汉化_Win.bat` / `取消汉化_Win.bat` | Windows 快捷脚本 |
 | `启动汉化_Mac.sh` / `取消汉化_Mac.sh` | macOS / Linux 快捷脚本 |
@@ -129,8 +134,12 @@ export CURSOR_USER_DATA_DIR="$HOME/Library/Application Support/Cursor"
 | 动态文案（含数字等） | `localization/Pattern_Dictionary.json` | `patterns`: `{regex, flags, replacement}` |
 | 插件市场 | `localization/Plugin_Marketplace_Dictionary.json` | `pluginNames`、`descriptionFragments` 等字段 |
 | 广告弹窗 | `localization/Ad_Popup_Dictionary.json` | `entries`: `[英文, 中文]` |
+| 系统托盘 | `localization/Tray_Dictionary.json` | `replacements`: `[英文片段, 中文片段]`，须能在 `main.js` 中唯一匹配 |
+| 系统通知 | `localization/System_Notification_Dictionary.json` | `replacements`: `[英文片段, 中文片段]`，须能在工作台脚本中唯一匹配 |
 
 若词典仍放在项目根目录（旧版路径），程序也会自动识别；新路径优先。
+
+词典的键必须是界面上的英文原文。中文只写在译文里。用户自己输入的内容、编辑器源代码，以及设计模式属性列表中的 CSS 属性名保持英文，不要加进主词典。
 
 校验词典（可选）：
 
@@ -165,7 +174,9 @@ localStorage.setItem('Cursor_Localization_Market_Online_Translate', '1')  // 开
 3. 桥接 Cursor 私有扩展翻译到语言包通道
 4. 备份 `workbench.html`、`product.json`
 5. 生成 `Cursor_Localization.js` 并注入到 `workbench.html`
-6. 同步更新 `product.json` 中的文件校验值（避免「安装损坏」提示）
+6. 按 `Tray_Dictionary.json` 替换 `out/main.js` 中的托盘菜单标签
+7. 按 `System_Notification_Dictionary.json` 替换 `workbench.desktop.main.js`、`workbench.glass.main.js` 中的系统通知模板
+8. 同步更新 `product.json` 中的文件校验值（避免「安装损坏」提示）
 
 取消汉化（`--restore`）会恢复备份文件，**不会卸载**已安装的语言包扩展。
 
@@ -198,6 +209,8 @@ Mac / Linux 可在 `启动汉化_Mac.sh` 开头增加 `export CURSOR_INSTALL_DIR
 | 标准菜单仍是英文（语言包未装上） | 确认网络可访问 VS Code 市场并重跑脚本；或手动将匹配版本的 VSIX 重命名为 `VSCode-language-pack-zh-hans.vsix` 放入根目录后重跑 |
 | 语言包自动安装失败 | 命令面板运行 **Extensions: Install from VSIX...** 安装根目录 VSIX，再运行 **Configure Display Language** 选 **zh-cn**，重启 Cursor |
 | 离线环境 | 从 [语言包市场页](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hans) 下载与 Cursor 内置 VS Code 主版本一致的 VSIX（如 `1.105.1` 对应 `1.105.x`），重命名后放入根目录 |
-| 部分英文未翻译 | 在对应词典中补充条目后重新注入 |
+| 部分英文未翻译 | 在对应词典中补充条目后重新注入，并完全退出 Cursor（含托盘）再打开 |
+| 对话输入或源代码被改成中文 | 不应发生。输入框和代码行会被跳过；若仍出现，请完全退出后重跑汉化脚本 |
+| 设计模式里的 CSS 属性名仍是英文 | 预期行为。`background-color`、`margin` 等属性名保持原文，只翻译周围的界面说明 |
 | Cursor 大版本升级后语言包报错 | 重新运行汉化脚本，会自动下载与新版 Cursor 匹配的语言包 |
 | 需要恢复原版 | `取消汉化_Win.bat` 或 `--restore` |

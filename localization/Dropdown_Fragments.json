@@ -479,10 +479,6 @@
       "搜索插件、技能、MCP..."
     ],
     [
-      "Browse 市场",
-      "浏览市场"
-    ],
-    [
       "Last Agent Turn",
       "上次智能体回合"
     ],
@@ -499,7 +495,7 @@
       "创建分支并提交"
     ],
     [
-      "Create Branch, 提交并推送",
+      "Create Branch, Commit & Push",
       "创建分支、提交并推送"
     ],
     [
@@ -599,16 +595,16 @@
       "定位问题的根本原因"
     ],
     [
-      "固定point the root cause of an issue",
-      "定位问题的根本原因"
-    ],
-    [
       "Orchestrate multiple subagents in parallel",
       "并行编排多个子智能体"
     ],
     [
       "Answer questions without making edits",
       "回答问题但不进行编辑"
+    ],
+    [
+      "Includes Cursor Grok and Composer",
+      "包含 Cursor Grok 和 Composer"
     ],
     [
       "Includes Cursor Grok 4.5 and Composer 2.5",
@@ -951,14 +947,6 @@
       "停止并立即发送"
     ],
     [
-      "停止 & send right away",
-      "停止并立即发送"
-    ],
-    [
-      "停止 &amp; send right away",
-      "停止并立即发送"
-    ],
-    [
       "& send right away",
       "并立即发送"
     ],
@@ -977,10 +965,6 @@
     [
       "Send Right Away",
       "立即发送"
-    ],
-    [
-      " Extra 高",
-      " 超高"
     ],
     [
       " Extra High",
@@ -1085,6 +1069,10 @@
     [
       "Open in New Tab",
       "在新标签页中打开"
+    ],
+    [
+      "Pin to workspace",
+      "固定到工作区"
     ],
     [
       "Pin",

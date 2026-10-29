@@ -1,5 +1,6 @@
     // 通用 DOM 补丁辅助（供 XiuZheng_* 复用）
 
+    // 按提示表翻译元素的 title、aria-label 等属性
     function GengXin_Shuxing_Hints(el, hints, attrs) {
         if (!el) return;
         attrs = attrs || ['title', 'aria-label'];
@@ -20,8 +21,14 @@
         }
     }
 
+    // 按提示表或词典改写叶子文本，跳过编辑器和输入区
     function GengXin_WenBen_YeZi_Hints(el, hints, opts) {
-        if (!el || el.closest('.monaco-editor .view-lines')) return;
+        if (!el || (typeof TiaoGuo_XuanZeQi === 'string' && el.closest(TiaoGuo_XuanZeQi))) return;
+        if (typeof Shi_KongZhuangTai_TiShi === 'function' && Shi_KongZhuangTai_TiShi(el)) return;
+        if (typeof Shi_HuiFu_ZhengWen === 'function' && Shi_HuiFu_ZhengWen(el)) return;
+        if (typeof Shi_WenJianShu_MingCheng === 'function' && Shi_WenJianShu_MingCheng(el)) return;
+        if (typeof Shi_BianJiQi_QuYu === 'function' && Shi_BianJiQi_QuYu(el)) return;
+        if (typeof Shi_YongHu_ShuRu_QuYu === 'function' && Shi_YongHu_ShuRu_QuYu(el)) return;
         opts = opts || {};
         var maxLen = opts.maxLen || 120;
         var needleLen = opts.needleLen || 8;
@@ -59,6 +66,7 @@
         }
     }
 
+    // 在指定范围内翻译叶子节点的属性和文本
     function FanYi_Scope_YeZi_Hints(scope, hints, opts) {
         if (!scope || scope.closest('.monaco-editor .view-lines')) return;
         var selector = (opts && opts.selector) ||
@@ -70,6 +78,7 @@
         }
     }
 
+    // 翻译表单范围内的叶子文本，并处理占位符
     function FanYi_Scope_Form_Hints(scope, hints, opts) {
         opts = opts || {};
         opts.translatePlaceholder = true;
@@ -78,12 +87,14 @@
         FanYi_Scope_YeZi_Hints(scope, hints, opts);
     }
 
+    // 对一组范围逐个做叶子节点翻译
     function FanYi_Scope_List_Hints(scopeList, hints, opts) {
         for (var r = 0; r < scopeList.length; r++) {
             FanYi_Scope_YeZi_Hints(scopeList[r], hints, opts);
         }
     }
 
+    // 对已选出的元素列表做属性和叶子文本翻译
     function FanYi_Gen_List_Hints(roots, hints, opts) {
         for (var r = 0; r < roots.length; r++) {
             var el = roots[r];
@@ -95,6 +106,7 @@
         }
     }
 
+    // 按子串匹配提示表改写元素文本
     function FanYi_Gen_List_Substring_Hints(roots, hints, opts) {
         opts = opts || {};
         var needleLen = opts.needleLen || 16;
@@ -102,6 +114,9 @@
             var el = roots[r];
             if (!el) continue;
             if (el.closest('.monaco-editor .view-lines')) continue;
+            if (typeof Shi_HuiFu_ZhengWen === 'function' && Shi_HuiFu_ZhengWen(el)) continue;
+            if (typeof Shi_WenJianShu_MingCheng === 'function' && Shi_WenJianShu_MingCheng(el)) continue;
+            if (typeof Shi_YongHu_ShuRu_QuYu === 'function' && Shi_YongHu_ShuRu_QuYu(el)) continue;
             if (opts.skipEditor && el.closest('.monaco-editor')) continue;
             FanYi_ShuXing(el);
             var text = GuiYiHua_WenBen(el.textContent || '');
@@ -125,6 +140,7 @@
         }
     }
 
+    // 只按词典和正则翻译范围内的可见文本
     function FanYi_Scope_ZiDian_Only(scopeList, opts) {
         opts = opts || {};
         var selector = opts.selector ||
@@ -155,11 +171,13 @@
         }
     }
 
+    // 在设置根节点下按选择器收集候选元素
     function FanYi_SheZhiGen_YeZi(sheZhiGen, selector) {
         if (!sheZhiGen) return [];
         return sheZhiGen.querySelectorAll(selector || 'div, span, p, label');
     }
 
+    // 对命中条件的设置文本做片段替换
     function FanYi_SheZhiGen_SuiPian_PiPei(sheZhiGen, fragments, piPeiFn, opts) {
         if (!sheZhiGen || !fragments || !fragments.length) return;
         var all = FanYi_SheZhiGen_YeZi(sheZhiGen, opts && opts.selector);
@@ -172,6 +190,7 @@
         }
     }
 
+    // 按自定义规则改写设置页文本
     function FanYi_SheZhiGen_WenBen_GuiZe(sheZhiGen, guiZe, opts) {
         if (!sheZhiGen || !guiZe || !guiZe.length) return;
         var all = FanYi_SheZhiGen_YeZi(sheZhiGen, opts && opts.selector);
@@ -189,6 +208,7 @@
         }
     }
 
+    // 同时翻译范围内元素的属性和叶子文本
     function FanYi_Scope_Attr_And_Hints(scopes, hints, opts) {
         opts = opts || {};
         var selector = opts.selector || 'span, div, button, label';
@@ -209,11 +229,13 @@
         }
     }
 
+    // 去掉文本开头的警告符号
     function QuDiao_JingGao_FuHao(text) {
         if (!text) return '';
         return text.replace(/^[\u26A0\uFE0F\u26A0]\s*/u, '').trim();
     }
 
+    // 当前在 Cursor 设置页时返回设置根节点
     function HuoQu_Cursor_SheZhi_Gen() {
         if (!document.querySelector(
             '.cursor-settings-cell, .cursor-settings-section, [class*="cursor-settings"]'
@@ -221,6 +243,7 @@
         return HuoQu_SheZhi_Gen_JieDian();
     }
 
+    // 返回设置说明翻译用的符号链接与域名片段
     function HuoQu_Cursor_SheZhi_MiaoShu_Cfg() {
         return {
             symlinkZh: Cursor_SheZhi_Symlink_Zh,
@@ -231,6 +254,7 @@
         };
     }
 
+    // 翻译 Cursor 设置页的说明文字
     function FanYi_Cursor_SheZhi_MiaoShu(root, cfg) {
         if (!root || !cfg) return;
         var descSelector = cfg.descSelector ||
@@ -247,19 +271,19 @@
             var plain = QuDiao_JingGao_FuHao(text);
             var tr = ChaZhao_FanYi(raw) || ChaZhao_FanYi(text) || ChaZhao_FanYi(plain) ||
                 TiHuan_BuFen_WenBen(raw) || TiHuan_BuFen_WenBen(plain);
-            if (!tr && plain.indexOf('Skip symlinks during') >= 0 && plain.indexOf('Use with caution') >= 0) {
-                tr = plain.indexOf('(controlled by admin)') >= 0
+            if (!tr && plain.indexOf(SheZhi_MiaoShu_GuanJianCi.skipDuring) >= 0 && plain.indexOf(SheZhi_MiaoShu_GuanJianCi.caution) >= 0) {
+                tr = plain.indexOf(SheZhi_MiaoShu_GuanJianCi.admin) >= 0
                     ? (cfg.symlinkZhAdmin + cfg.symlinkTail)
                     : (cfg.symlinkZh + cfg.symlinkTail);
             }
-            if (!tr && plain.indexOf('MCP tools that can run automatically') >= 0) {
+            if (!tr && plain.indexOf(SheZhi_MiaoShu_GuanJianCi.mcp) >= 0) {
                 if (el.childElementCount > 0) {
                     TiHuan_WenBenJieDian_SuiPian(el, cfg.mcpFragments);
                     continue;
                 }
                 tr = TiHuan_BuFen_WenBen(raw) || TiHuan_BuFen_WenBen(plain);
             }
-            if (!tr && plain.indexOf('Domains that Agent can fetch from automatically') >= 0) {
+            if (!tr && plain.indexOf(SheZhi_MiaoShu_GuanJianCi.domain) >= 0) {
                 if (el.childElementCount > 0) {
                     TiHuan_WenBenJieDian_SuiPian(el, cfg.domainFragments);
                     continue;
@@ -267,21 +291,12 @@
                 tr = TiHuan_BuFen_WenBen(raw) || TiHuan_BuFen_WenBen(plain);
             }
             if (tr && GuiYiHua_WenBen(raw) !== GuiYiHua_WenBen(tr)) {
-                el.textContent = tr;
+                XieRu_YuanSu_WenBen(el, tr);
             }
         }
     }
 
-    function HuoQu_Cursor_SheZhi_MiaoShu_Cfg() {
-        return {
-            symlinkZh: Cursor_SheZhi_Symlink_Zh,
-            symlinkZhAdmin: Cursor_SheZhi_Symlink_ZhAdmin,
-            symlinkTail: Cursor_SheZhi_Symlink_Tail,
-            mcpFragments: Cursor_SheZhi_MCP_SuiPian,
-            domainFragments: Cursor_SheZhi_Domain_SuiPian
-        };
-    }
-
+    // 翻译 Cursor 设置页的标题和标签
     function FanYi_Cursor_SheZhi_BiaoQian(root) {
         if (!root) return;
         var labels = root.querySelectorAll(
@@ -298,12 +313,23 @@
                 if (labels[j].childElementCount > 0) {
                     TiHuan_WenBenJieDian_SuiPian(labels[j], [[lraw, ltr]]);
                 } else {
-                    labels[j].textContent = ltr;
+                    XieRu_YuanSu_WenBen(labels[j], ltr);
                 }
             }
         }
     }
 
+    // 设置说明里用来识别符号链接、MCP 和域名段落的原文
+    var SheZhi_MiaoShu_GuanJianCi = {
+        caution: 'Use with caution',
+        skip: 'Skip symlinks',
+        skipDuring: 'Skip symlinks during',
+        admin: '(controlled by admin)',
+        mcp: 'MCP tools that can run automatically',
+        domain: 'Domains that Agent can fetch from automatically'
+    };
+
+    // 「跳过符号链接」设置说明的片段替换
     var SheZhi_Symlink_SuiPian = [
         ['Use with caution.', '谨慎使用。'],
         ['Skip symlinks during', '在 .cursorignore 文件发现期间跳过符号链接。'],
@@ -311,6 +337,7 @@
         ['Changing this setting will require a restart of Cursor.', '更改此设置需要重启 Cursor。']
     ];
 
+    // 翻译跳过符号链接相关的设置说明
     function FanYi_SheZhiGen_Symlink_MiaoShu(sheZhiGen, opts) {
         if (!sheZhiGen) return;
         opts = opts || {};
@@ -324,14 +351,15 @@
             var draw = del.textContent || '';
             var dtext = GuiYiHua_WenBen(draw);
             if (!dtext || dtext.length > (opts.maxLen || 400)) continue;
-            if (dtext.indexOf('Use with caution') === -1 || dtext.indexOf('Skip symlinks') === -1) continue;
+            if (dtext.indexOf(SheZhi_MiaoShu_GuanJianCi.caution) === -1 || dtext.indexOf(SheZhi_MiaoShu_GuanJianCi.skip) === -1) continue;
             var dplain = QuDiao_JingGao_FuHao(dtext);
             var dtr = ChaZhao_FanYi(draw) || ChaZhao_FanYi(dtext) || ChaZhao_FanYi(dplain) ||
                 TiHuan_BuFen_WenBen(dplain);
-            if (dtr && GuiYiHua_WenBen(draw) !== GuiYiHua_WenBen(dtr)) del.textContent = dtr;
+            if (dtr && GuiYiHua_WenBen(draw) !== GuiYiHua_WenBen(dtr)) XieRu_YuanSu_WenBen(del, dtr);
         }
     }
 
+    // 对设置页叶子节点做片段替换
     function FanYi_SheZhiGen_Leaf_SuiPian(sheZhiGen, fragments, opts) {
         if (!sheZhiGen || !fragments || !fragments.length) return;
         opts = opts || {};
@@ -343,7 +371,7 @@
             var text = GuiYiHua_WenBen(el.textContent || '');
             if (!text || text.length > (opts.maxLen || 200)) continue;
             if (/^[a-z][\w-]*(?:\.[A-Za-z][\w-]*){1,}$/i.test(text)) continue;
-            if (text.indexOf('Use with caution') !== -1 && text.indexOf('Skip symlinks') !== -1) {
+            if (text.indexOf(SheZhi_MiaoShu_GuanJianCi.caution) !== -1 && text.indexOf(SheZhi_MiaoShu_GuanJianCi.skip) !== -1) {
                 TiHuan_WenBenJieDian_SuiPian(el, SheZhi_Symlink_SuiPian);
                 continue;
             }
@@ -351,11 +379,14 @@
         }
     }
 
+    // 判断子树遍历是否应跳过该元素
     function YingGai_TiaoGuo_FanYi_ZiShu_YuanSu(el) {
         if (!el || el.nodeType !== 1) return false;
         if (el.classList && el.classList.contains('monaco-editor')) return true;
+        if (typeof Shi_YongHu_ShuRu_QuYu === 'function' && Shi_YongHu_ShuRu_QuYu(el)) return true;
         try {
-            if (el.closest('.monaco-editor')) return true;
+            if (typeof TiaoGuo_XuanZeQi === 'string' && el.closest(TiaoGuo_XuanZeQi)) return true;
+            if (el.closest('.monaco-editor, .monaco-diff-editor, .monaco-component, .ui-code-block, .cm-editor, .cm-content, pre, code, .view-line, .sticky-widget, .code-view, .code-line, .code-content, .simple-code-render, .monaco-tokenized-source, [class*="ui-default-diff"], [class*="ui-default-code"], [data-component="embedded-file-viewer"], [data-streamdown="code-block-body"]')) return true;
             if (el.closest('webview')) return true;
             if (el.closest('.menubar, [role="menubar"], .menubar-menu-title, .menubar-menu-button')) return true;
             if (el.matches && el.matches(
@@ -365,9 +396,11 @@
         return false;
     }
 
+    // 收集工作台和浮动层作为翻译根节点
     function HuoQu_FanYi_ZiShu_Gen() {
         var roots = [];
         var seen = new Set();
+        // 去重后加入翻译根节点
         function pushRoot(el) {
             if (!el || seen.has(el)) return;
             seen.add(el);
@@ -388,6 +421,7 @@
         return roots;
     }
 
+    // 对全部翻译根节点执行子树翻译
     function FanYi_ZiShu_QuYu() {
         var roots = HuoQu_FanYi_ZiShu_Gen();
         for (var i = 0; i < roots.length; i++) {

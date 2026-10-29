@@ -1,6 +1,6 @@
 {
   "description": "动态文本正则替换（MoShi_FanYi）。",
-  "updatedAt": "2026-08-13",
+  "updatedAt": "2026-10-19",
   "patterns": [
     {
       "regex": "^(\\d+) requests? remaining$",
@@ -303,6 +303,56 @@
       "replacement": "已更改 $1 个文件"
     },
     {
+      "regex": "^Weekly usage resets on (.+) \\((\\d+) days? left\\)$",
+      "flags": "i",
+      "replacement": "每周用量将于 $1 重置（剩余 $2 天）"
+    },
+    {
+      "regex": "^Weekly usage resets on (.+) \\((\\d+) hours? and (\\d+) minutes? left\\)$",
+      "flags": "i",
+      "replacement": "每周用量将于 $1 重置（剩余 $2 小时 $3 分钟）"
+    },
+    {
+      "regex": "^Weekly usage resets on (.+) \\((\\d+) hours? left\\)$",
+      "flags": "i",
+      "replacement": "每周用量将于 $1 重置（剩余 $2 小时）"
+    },
+    {
+      "regex": "^Weekly usage resets on (.+) \\((\\d+) minutes? left\\)$",
+      "flags": "i",
+      "replacement": "每周用量将于 $1 重置（剩余 $2 分钟）"
+    },
+    {
+      "regex": "^Weekly usage resets on (.+) \\((.+)\\)$",
+      "flags": "i",
+      "replacement": "每周用量将于 $1 重置（$2）"
+    },
+    {
+      "regex": "^Usage limits reset on (.+) \\((\\d+) days? left\\)$",
+      "flags": "i",
+      "replacement": "用量限额将于 $1 重置（剩余 $2 天）"
+    },
+    {
+      "regex": "^Usage limits reset on (.+) \\((\\d+) hours? and (\\d+) minutes? left\\)$",
+      "flags": "i",
+      "replacement": "用量限额将于 $1 重置（剩余 $2 小时 $3 分钟）"
+    },
+    {
+      "regex": "^Usage limits reset on (.+) \\((\\d+) hours? left\\)$",
+      "flags": "i",
+      "replacement": "用量限额将于 $1 重置（剩余 $2 小时）"
+    },
+    {
+      "regex": "^Usage limits reset on (.+) \\((\\d+) minutes? left\\)$",
+      "flags": "i",
+      "replacement": "用量限额将于 $1 重置（剩余 $2 分钟）"
+    },
+    {
+      "regex": "^Usage limits reset on (.+) \\((.+)\\)$",
+      "flags": "i",
+      "replacement": "用量限额将于 $1 重置（$2）"
+    },
+    {
       "regex": "^Usage limits reset on (.+)$",
       "flags": "i",
       "replacement": "用量限额将于 $1 重置"
@@ -343,11 +393,6 @@
       "replacement": "AI 生成：$1%（$2 行）"
     },
     {
-      "regex": "AI 生成：\\s*([\\d.]+)%\\s*\\((\\d+)\\s*lines?\\)",
-      "flags": "i",
-      "replacement": "AI 生成：$1%（$2 行）"
-    },
-    {
       "regex": "- Tab:\\s*([\\d,]+)\\s*lines?\\s*\\(([\\d,]+)\\s*added,\\s*([\\d,]+)\\s*deleted\\)",
       "flags": "i",
       "replacement": "- Tab：$1 行（新增 $2，删除 $3）"
@@ -378,19 +423,64 @@
       "replacement": "分支：$1"
     },
     {
+      "regex": "^(\\d+\\+?) New Messages$",
+      "flags": "",
+      "replacement": "$1 条新消息"
+    },
+    {
+      "regex": "^Allow Cursor to use (.+)\\?$",
+      "flags": "",
+      "replacement": "允许 Cursor 使用 $1？"
+    },
+    {
+      "regex": "^Included in (.+)$",
+      "flags": "",
+      "replacement": "$1 已包含"
+    },
+    {
       "regex": "^Cursor Models · Includes (.+)$",
       "flags": "i",
       "replacement": "Cursor 模型 · 包含 $1"
     },
     {
-      "regex": "^Cursor 模型 · Includes (.+)$",
+      "regex": "^Checked out · Updated (\\d+)s ago$",
       "flags": "i",
-      "replacement": "Cursor 模型 · 包含 $1"
+      "replacement": "已检出 · $1 秒前更新"
     },
     {
-      "regex": "^Checked out · Updated (.+)$",
+      "regex": "^Checked out · Updated (\\d+)m ago$",
       "flags": "i",
-      "replacement": "已检出 · $1前更新"
+      "replacement": "已检出 · $1 分钟前更新"
+    },
+    {
+      "regex": "^Checked out · Updated (\\d+)h ago$",
+      "flags": "i",
+      "replacement": "已检出 · $1 小时前更新"
+    },
+    {
+      "regex": "^Checked out · Updated (\\d+)d ago$",
+      "flags": "i",
+      "replacement": "已检出 · $1 天前更新"
+    },
+    {
+      "regex": "^Checked out · Updated (\\d+) seconds? ago$",
+      "flags": "i",
+      "replacement": "已检出 · $1 秒前更新"
+    },
+    {
+      "regex": "^Checked out · Updated (\\d+) minutes? ago$",
+      "flags": "i",
+      "replacement": "已检出 · $1 分钟前更新"
+    },
+    {
+      "regex": "^Checked out · Updated (\\d+) hours? ago$",
+      "flags": "i",
+      "replacement": "已检出 · $1 小时前更新"
+    },
+    {
+      "regex": "^Checked out · Updated (\\d+) days? ago$",
+      "flags": "i",
+      "replacement": "已检出 · $1 天前更新"
     },
     {
       "regex": "^Checked out · (.+)$",
@@ -413,9 +503,44 @@
       "replacement": "解锁 Agent $1 倍用量及更多"
     },
     {
-      "regex": "^Updated (.+) ago$",
+      "regex": "^Updated (\\d+)s ago$",
       "flags": "i",
-      "replacement": "$1前更新"
+      "replacement": "$1 秒前更新"
+    },
+    {
+      "regex": "^Updated (\\d+)m ago$",
+      "flags": "i",
+      "replacement": "$1 分钟前更新"
+    },
+    {
+      "regex": "^Updated (\\d+)h ago$",
+      "flags": "i",
+      "replacement": "$1 小时前更新"
+    },
+    {
+      "regex": "^Updated (\\d+)d ago$",
+      "flags": "i",
+      "replacement": "$1 天前更新"
+    },
+    {
+      "regex": "^Updated (\\d+) seconds? ago$",
+      "flags": "i",
+      "replacement": "$1 秒前更新"
+    },
+    {
+      "regex": "^Updated (\\d+) minutes? ago$",
+      "flags": "i",
+      "replacement": "$1 分钟前更新"
+    },
+    {
+      "regex": "^Updated (\\d+) hours? ago$",
+      "flags": "i",
+      "replacement": "$1 小时前更新"
+    },
+    {
+      "regex": "^Updated (\\d+) days? ago$",
+      "flags": "i",
+      "replacement": "$1 天前更新"
     },
     {
       "regex": "^(\\d+) seconds? ago$",
@@ -598,6 +723,281 @@
       "replacement": "已运行 $1 分 $2 秒"
     },
     {
+      "regex": "^Worked for (\\d+)h$",
+      "flags": "i",
+      "replacement": "已运行 $1 小时"
+    },
+    {
+      "regex": "^Worked for (\\d+)h (\\d+)m$",
+      "flags": "i",
+      "replacement": "已运行 $1 小时 $2 分"
+    },
+    {
+      "regex": "^Worked for (\\d+)h (\\d+)m (\\d+)s$",
+      "flags": "i",
+      "replacement": "已运行 $1 小时 $2 分 $3 秒"
+    },
+    {
+      "regex": "^Waiting for (.+) to reconnect$",
+      "flags": "",
+      "replacement": "正在等待 $1 重新连接"
+    },
+    {
+      "regex": "^(\\d+) background terminals?$",
+      "flags": "",
+      "replacement": "$1 个后台终端"
+    },
+    {
+      "regex": "^(\\d+) background subagents?$",
+      "flags": "",
+      "replacement": "$1 个后台子智能体"
+    },
+    {
+      "regex": "^(\\d+) background tasks?$",
+      "flags": "",
+      "replacement": "$1 个后台任务"
+    },
+    {
+      "regex": "^Thought (\\d+(?:\\.\\d+)?)s\\s*[>\\u203a\\u276f\\u25b8\\u25b6]*$",
+      "flags": "",
+      "replacement": "已思考 $1 秒"
+    },
+    {
+      "regex": "^Thought (\\d+)m$",
+      "flags": "",
+      "replacement": "已思考 $1 分钟"
+    },
+    {
+      "regex": "^Thought (\\d+)m (\\d+)s$",
+      "flags": "",
+      "replacement": "已思考 $1 分 $2 秒"
+    },
+    {
+      "regex": "^Thought (\\d+)h$",
+      "flags": "",
+      "replacement": "已思考 $1 小时"
+    },
+    {
+      "regex": "^Thought (\\d+)h (\\d+)m$",
+      "flags": "",
+      "replacement": "已思考 $1 小时 $2 分"
+    },
+    {
+      "regex": "^Thought briefly\\s*[>\\u203a\\u276f\\u25b8\\u25b6]*$",
+      "flags": "i",
+      "replacement": "已思考片刻"
+    },
+    {
+      "regex": "^已思考\\s+briefly\\s*[>\\u203a\\u276f\\u25b8\\u25b6]*$",
+      "flags": "i",
+      "replacement": "已思考片刻"
+    },
+    {
+      "regex": "^已思考\\s+(\\d+(?:\\.\\d+)?)s\\s*[>\\u203a\\u276f\\u25b8\\u25b6]*$",
+      "flags": "",
+      "replacement": "已思考 $1 秒"
+    },
+    {
+      "regex": "^Waited briefly\\s*[>\\u203a\\u276f\\u25b8\\u25b6]*$",
+      "flags": "i",
+      "replacement": "已等待片刻"
+    },
+    {
+      "regex": "^Waited (\\d+(?:\\.\\d+)?)s$",
+      "flags": "i",
+      "replacement": "已等待 $1 秒"
+    },
+    {
+      "regex": "^Grepping (.+) in (\\S+)$",
+      "flags": "",
+      "replacement": "正在搜索 $1，于 $2"
+    },
+    {
+      "regex": "^Grepped (.+) in (\\S+)$",
+      "flags": "",
+      "replacement": "已搜索 $1，于 $2"
+    },
+    {
+      "regex": "^Grepping (.+)$",
+      "flags": "",
+      "replacement": "正在搜索 $1"
+    },
+    {
+      "regex": "^Grepped (.+)$",
+      "flags": "",
+      "replacement": "已搜索 $1"
+    },
+    {
+      "regex": "^Reading (\\S+) L(\\d+)-(\\d+)$",
+      "flags": "",
+      "replacement": "正在读取 $1 第 $2-$3 行"
+    },
+    {
+      "regex": "^Read (\\S+) L(\\d+)-(\\d+)$",
+      "flags": "",
+      "replacement": "已读取 $1 第 $2-$3 行"
+    },
+    {
+      "regex": "^Reading (\\S+)$",
+      "flags": "",
+      "replacement": "正在读取 $1"
+    },
+    {
+      "regex": "^Read (\\S+)$",
+      "flags": "",
+      "replacement": "已读取 $1"
+    },
+    {
+      "regex": "^Edited (\\S+)( \\+\\d+(?: -\\d+)?)?$",
+      "flags": "",
+      "replacement": "已编辑 $1$2"
+    },
+    {
+      "regex": "^Editing (\\S+)$",
+      "flags": "",
+      "replacement": "正在编辑 $1"
+    },
+    {
+      "regex": "^Ran (?!\\d+ commands?$)(.+)$",
+      "flags": "",
+      "replacement": "已运行 $1"
+    },
+    {
+      "regex": "^Running (.+)$",
+      "flags": "",
+      "replacement": "正在运行 $1"
+    },
+    {
+      "regex": "^Exploring (\\d+) files?, (\\d+) searches$",
+      "flags": "i",
+      "replacement": "正在探索 $1 个文件，$2 次搜索"
+    },
+    {
+      "regex": "^Explored (\\d+) files?, (\\d+) searches$",
+      "flags": "i",
+      "replacement": "已探索 $1 个文件，$2 次搜索"
+    },
+    {
+      "regex": "^explored (\\d+) files?, (\\d+) searches$",
+      "flags": "",
+      "replacement": "已探索 $1 个文件，$2 次搜索"
+    },
+    {
+      "regex": "^Exploring (\\d+) files?$",
+      "flags": "i",
+      "replacement": "正在探索 $1 个文件"
+    },
+    {
+      "regex": "^Explored (\\d+) files?$",
+      "flags": "i",
+      "replacement": "已探索 $1 个文件"
+    },
+    {
+      "regex": "^explored (\\d+) director(?:y|ies)$",
+      "flags": "i",
+      "replacement": "已探索 $1 个目录"
+    },
+    {
+      "regex": "^explored (\\d+) search(?:es)?$",
+      "flags": "i",
+      "replacement": "已探索 $1 次搜索"
+    },
+    {
+      "regex": "^explored (\\d+) fetch(?:es)?$",
+      "flags": "i",
+      "replacement": "已探索 $1 次抓取"
+    },
+    {
+      "regex": "^explored (\\d+) tools?$",
+      "flags": "i",
+      "replacement": "已探索 $1 个工具"
+    },
+    {
+      "regex": "^explored (\\d+) browser actions?$",
+      "flags": "i",
+      "replacement": "已探索 $1 次浏览器操作"
+    },
+    {
+      "regex": "^explored lints$",
+      "flags": "i",
+      "replacement": "已探索代码检查"
+    },
+    {
+      "regex": "^(\\d+) files?, (\\d+) searches$",
+      "flags": "i",
+      "replacement": "$1 个文件，$2 次搜索"
+    },
+    {
+      "regex": "^(\\d+) files?, ran (\\d+) commands?$",
+      "flags": "i",
+      "replacement": "$1 个文件，已运行 $2 条命令"
+    },
+    {
+      "regex": "^Edited (\\d+) files?$",
+      "flags": "",
+      "replacement": "已编辑 $1 个文件"
+    },
+    {
+      "regex": "^edited (\\d+) files?$",
+      "flags": "",
+      "replacement": "已编辑 $1 个文件"
+    },
+    {
+      "regex": "^(\\d+) search(?:es)?$",
+      "flags": "i",
+      "replacement": "$1 次搜索"
+    },
+    {
+      "regex": "^(\\d+) fetch(?:es)?$",
+      "flags": "i",
+      "replacement": "$1 次抓取"
+    },
+    {
+      "regex": "^(\\d+) browser actions?$",
+      "flags": "i",
+      "replacement": "$1 次浏览器操作"
+    },
+    {
+      "regex": "^(\\d+) commands?$",
+      "flags": "i",
+      "replacement": "$1 条命令"
+    },
+    {
+      "regex": "^ran (\\d+) commands?$",
+      "flags": "i",
+      "replacement": "已运行 $1 条命令"
+    },
+    {
+      "regex": "^(\\d+) images?$",
+      "flags": "i",
+      "replacement": "$1 张图片"
+    },
+    {
+      "regex": "^(\\d+) director(?:y|ies)$",
+      "flags": "i",
+      "replacement": "$1 个目录"
+    },
+    {
+      "regex": "^(\\d+) tools?$",
+      "flags": "i",
+      "replacement": "$1 个工具"
+    },
+    {
+      "regex": "^(\\d+) agents?$",
+      "flags": "i",
+      "replacement": "$1 个智能体"
+    },
+    {
+      "regex": "^(\\d+) deletes?$",
+      "flags": "i",
+      "replacement": "删除 $1 处"
+    },
+    {
+      "regex": "^lints$",
+      "flags": "i",
+      "replacement": "代码检查"
+    },
+    {
       "regex": "^\\((.+) remaining\\)$",
       "flags": "",
       "replacement": "（剩余 $1）"
@@ -619,11 +1019,6 @@
     },
     {
       "regex": "^(\\d+) Files$",
-      "flags": "i",
-      "replacement": "$1 个文件"
-    },
-    {
-      "regex": "^(\\d+) 文件s$",
       "flags": "i",
       "replacement": "$1 个文件"
     },
@@ -698,11 +1093,6 @@
       "replacement": "使用 1 个视频"
     },
     {
-      "regex": "^免费版\\s+免费版$",
-      "flags": "i",
-      "replacement": "免费版"
-    },
-    {
       "regex": " \\((\\d+) days?\\)$",
       "flags": "i",
       "replacement": "（$1 天）"
@@ -718,19 +1108,14 @@
       "replacement": "审查更改 ($1)"
     },
     {
-      "regex": "^Review: (.+)$",
-      "flags": "",
-      "replacement": "审查：$1"
-    },
-    {
       "regex": "^Review: Cursor skill localization$",
       "flags": "i",
       "replacement": "审查：Cursor 技能汉化"
     },
     {
-      "regex": "^审查[:：] Cursor skill localization$",
+      "regex": "^Review: (.+)$",
       "flags": "",
-      "replacement": "审查：Cursor 技能汉化"
+      "replacement": "审查：$1"
     },
     {
       "regex": "^All Automations \\((\\d+)\\)$",
@@ -874,11 +1259,6 @@
     },
     {
       "regex": "^(\\d+)\\s+files$",
-      "flags": "i",
-      "replacement": "$1 个文件"
-    },
-    {
-      "regex": "^(\\d+)\\s+文件s$",
       "flags": "i",
       "replacement": "$1 个文件"
     },
@@ -1196,6 +1576,221 @@
       "regex": "^([\\d,.]+(?:K|M)?)\\s+out of\\s+([\\d,.]+(?:K|M)?)\\s+tokens$",
       "flags": "i",
       "replacement": "$1 / $2 token"
+    },
+    {
+      "regex": "^Restart Cursor to install the pending update to (.+)\\.$",
+      "flags": "i",
+      "replacement": "重启 Cursor 以安装待处理的更新到 $1。"
+    },
+    {
+      "regex": "^Preview of (.+)$",
+      "flags": "",
+      "replacement": "$1 的预览"
+    },
+    {
+      "regex": "^Cursor ignores (.+), so it cannot be added to chat\\.$",
+      "flags": "",
+      "replacement": "Cursor 会忽略 $1，因此无法添加到对话。"
+    },
+    {
+      "regex": "^Cloud agent (.+)$",
+      "flags": "",
+      "replacement": "云端智能体 $1"
+    },
+    {
+      "regex": "^Trust MCP servers from (.+)\\?$",
+      "flags": "",
+      "replacement": "信任来自 $1 的 MCP 服务器？"
+    },
+    {
+      "regex": "^Error starting (.+): (.+)$",
+      "flags": "",
+      "replacement": "启动 $1 出错：$2"
+    },
+    {
+      "regex": "^Starting server (.+)$",
+      "flags": "",
+      "replacement": "正在启动服务器 $1"
+    },
+    {
+      "regex": "^Stopping server (.+)$",
+      "flags": "",
+      "replacement": "正在停止服务器 $1"
+    },
+    {
+      "regex": "^Connection state: (.+)$",
+      "flags": "",
+      "replacement": "连接状态：$1"
+    },
+    {
+      "regex": "^Cursor added: (.+)$",
+      "flags": "",
+      "replacement": "已添加 Cursor：$1"
+    },
+    {
+      "regex": "^Cursors added: (.+)$",
+      "flags": "",
+      "replacement": "已添加 Cursors：$1"
+    },
+    {
+      "regex": "^Failed to connect to the remote extension host server \\(Error: (.+)\\)$",
+      "flags": "",
+      "replacement": "无法连接到远程扩展主机服务器（错误：$1）"
+    },
+    {
+      "regex": "^Disconnect \"(.+)\" from this computer\\?$",
+      "flags": "",
+      "replacement": "断开「$1」与此电脑的连接？"
+    },
+    {
+      "regex": "^Disconnect this device from this computer\\?$",
+      "flags": "",
+      "replacement": "断开此设备与这台电脑的连接？"
+    },
+    {
+      "regex": "^Disconnect \"(.+)\" from all computers\\?$",
+      "flags": "",
+      "replacement": "从所有电脑断开「$1」？"
+    },
+    {
+      "regex": "^Disconnect this device from all computers\\?$",
+      "flags": "",
+      "replacement": "从所有电脑断开此设备？"
+    },
+    {
+      "regex": "^Waiting for approval \\xB7 code (.+)$",
+      "flags": "",
+      "replacement": "等待批准 · 验证码 $1"
+    },
+    {
+      "regex": "^Paired with this computer \\xB7 Not used yet$",
+      "flags": "",
+      "replacement": "已与此电脑配对 · 尚未使用"
+    },
+    {
+      "regex": "^Paired with this computer \\xB7 Last used (.+)$",
+      "flags": "",
+      "replacement": "已与此电脑配对 · 上次使用 $1"
+    },
+    {
+      "regex": "^Microphone (\\d+)$",
+      "flags": "",
+      "replacement": "麦克风 $1"
+    },
+    {
+      "regex": "^Actual command not found, wanted to execute (.+)$",
+      "flags": "",
+      "replacement": "未找到实际命令，要执行的是 $1"
+    },
+    {
+      "regex": "^(.+) \\(Self-Hosted Worker\\)$",
+      "flags": "",
+      "replacement": "$1（自托管工作节点）"
+    },
+    {
+      "regex": "^Self-Hosted Worker \\((.+)\\)$",
+      "flags": "",
+      "replacement": "自托管工作节点（$1）"
+    },
+    {
+      "regex": "^(.+) \\(Remote Control\\)$",
+      "flags": "",
+      "replacement": "$1（远程控制）"
+    },
+    {
+      "regex": "^Remote Control \\((.+)\\)$",
+      "flags": "",
+      "replacement": "远程控制（$1）"
+    },
+    {
+      "regex": "^New File in (.+)$",
+      "flags": "",
+      "replacement": "在 $1 中新建文件"
+    },
+    {
+      "regex": "^New Folder in (.+)$",
+      "flags": "",
+      "replacement": "在 $1 中新建文件夹"
+    },
+    {
+      "regex": "^Return to the voice chat with (.+)$",
+      "flags": "",
+      "replacement": "返回与 $1 的语音聊天"
+    },
+    {
+      "regex": "^No remote machines match [\"\\u201c](.+)[\"\\u201d]\\.$",
+      "flags": "",
+      "replacement": "没有匹配「$1」的远程计算机。"
+    },
+    {
+      "regex": "^No changes against (.+)$",
+      "flags": "",
+      "replacement": "相对 $1 没有更改"
+    },
+    {
+      "regex": "^No committed changes against (.+)$",
+      "flags": "",
+      "replacement": "相对 $1 没有已提交的更改"
+    },
+    {
+      "regex": "^Invalid internal service header Request ID: (.+)$",
+      "flags": "",
+      "replacement": "无效的内部服务标头 请求 ID：$1"
+    },
+    {
+      "regex": "^Invalid internal service header\\s*Request ID:\\s*(.+)$",
+      "flags": "i",
+      "replacement": "无效的内部服务标头 请求 ID：$1"
+    },
+    {
+      "regex": "^Spend limit (.+)$",
+      "flags": "",
+      "replacement": "消费限额 $1"
+    },
+    {
+      "regex": "^Included usage with your subscription\\. Resets (.+)\\. Used before your credits\\.$",
+      "flags": "",
+      "replacement": "订阅包含的用量。将于 $1 重置。会在额度之前使用。"
+    },
+    {
+      "regex": "^Included usage with your subscription\\. Resets (.+)\\.$",
+      "flags": "",
+      "replacement": "订阅包含的用量。将于 $1 重置。"
+    },
+    {
+      "regex": "^Resets (.+)\\.$",
+      "flags": "",
+      "replacement": "将于 $1 重置。"
+    },
+    {
+      "regex": "^\\$([\\d,.]+) remaining$",
+      "flags": "",
+      "replacement": "剩余 $$1"
+    },
+    {
+      "regex": "^(\\d+) days? left$",
+      "flags": "",
+      "replacement": "剩余 $1 天"
+    },
+    {
+      "regex": "^(\\d+) hours? and (\\d+) minutes? left$",
+      "flags": "",
+      "replacement": "剩余 $1 小时 $2 分钟"
+    },
+    {
+      "regex": "^(\\d+) hours? left$",
+      "flags": "",
+      "replacement": "剩余 $1 小时"
+    },
+    {
+      "regex": "^(\\d+) minutes? left$",
+      "flags": "",
+      "replacement": "剩余 $1 分钟"
+    },
+    {
+      "regex": "^0 minutes left$",
+      "flags": "",
+      "replacement": "剩余 0 分钟"
     }
   ]
 }

@@ -264,29 +264,29 @@ KUO_ZHAN_FAN_YI_QIAO_JIE = {
     }
 }
 
-JIAO_BEN_MU_LU = os.path.dirname(os.path.abspath(__file__))
-AD_POPUP_DICTIONARY_FILE = "Ad_Popup_Dictionary.json"
-PLUGIN_MARKETPLACE_DICTIONARY_FILE = "Plugin_Marketplace_Dictionary.json"
-LOCALIZATION_DIR = os.path.join(JIAO_BEN_MU_LU, "localization")
-CORE_DICTIONARY_FILE = os.path.join(LOCALIZATION_DIR, "Core_Dictionary.json")
-PATTERN_DICTIONARY_FILE = os.path.join(LOCALIZATION_DIR, "Pattern_Dictionary.json")
-AD_POPUP_DICTIONARY_PATH = os.path.join(LOCALIZATION_DIR, AD_POPUP_DICTIONARY_FILE)
+JIAO_BEN_MU_LU = os.path.dirname(os.path.abspath(__file__))  # 本工具脚本所在目录
+AD_POPUP_DICTIONARY_FILE = "Ad_Popup_Dictionary.json"  # 广告弹窗词典文件名
+PLUGIN_MARKETPLACE_DICTIONARY_FILE = "Plugin_Marketplace_Dictionary.json"  # 插件市场词典文件名
+LOCALIZATION_DIR = os.path.join(JIAO_BEN_MU_LU, "localization")  # 词典与运行时脚本目录
+CORE_DICTIONARY_FILE = os.path.join(LOCALIZATION_DIR, "Core_Dictionary.json")  # 界面主词典
+PATTERN_DICTIONARY_FILE = os.path.join(LOCALIZATION_DIR, "Pattern_Dictionary.json")  # 正则动态文本词典
+AD_POPUP_DICTIONARY_PATH = os.path.join(LOCALIZATION_DIR, AD_POPUP_DICTIONARY_FILE)  # 广告弹窗词典绝对路径
 PLUGIN_MARKETPLACE_DICTIONARY_PATH = os.path.join(
     LOCALIZATION_DIR, PLUGIN_MARKETPLACE_DICTIONARY_FILE
-)
-LANGUAGE_PACK_VSIX_FILE = "VSCode-language-pack-zh-hans.vsix"
-LANGUAGE_PACK_ID = "ms-ceintl.vscode-language-pack-zh-hans"
-LANGUAGE_PACK_PUBLISHER = "MS-CEINTL"
-LANGUAGE_PACK_EXTENSION = "vscode-language-pack-zh-hans"
+)  # 插件市场词典绝对路径
+LANGUAGE_PACK_VSIX_FILE = "VSCode-language-pack-zh-hans.vsix"  # 随仓库附带的简中语言包
+LANGUAGE_PACK_ID = "ms-ceintl.vscode-language-pack-zh-hans"  # 语言包扩展 ID
+LANGUAGE_PACK_PUBLISHER = "MS-CEINTL"  # 语言包发布者
+LANGUAGE_PACK_EXTENSION = "vscode-language-pack-zh-hans"  # 语言包扩展名
 LANGUAGE_PACK_BUNDLED_VERSION = "1.105.2025101509"  # 离线兜底版本号
 LANGUAGE_PACK_MARKETPLACE_QUERY = (
     "https://marketplace.visualstudio.com/_apis/public/gallery/extensionquery"
-)
+)  # 市场查询接口，用来对齐 Cursor 内置 VS Code 版本
 LANGUAGE_PACK_MARKETPLACE_DOWNLOAD = (
     "https://marketplace.visualstudio.com/_apis/public/gallery/publishers/"
     "MS-CEINTL/vsextensions/vscode-language-pack-zh-hans/{version}/vspackage"
-)
-XUAN_SHI_YU_YAN = "zh-cn"
+)  # 语言包下载地址，{version} 由运行时替换
+XUAN_SHI_YU_YAN = "zh-cn"  # 写入 locale.json 的显示语言
 
 
 def HuoQu_CiDian_WenJian_LuJing(WenJianMing, MoRenMuLu=None):
@@ -547,9 +547,9 @@ def ShengCheng_MoShi_FanYi_JS(MoShi=None):
     return "    var MoShi_FanYi = [\n" + ",\n".join(Hang) + "\n    ];"
 
 
-RUNTIME_DIR = os.path.join(LOCALIZATION_DIR, "runtime")
-PARTIAL_FRAGMENTS_FILE = os.path.join(LOCALIZATION_DIR, "Partial_Fragments.json")
-DROPDOWN_FRAGMENTS_FILE = os.path.join(LOCALIZATION_DIR, "Dropdown_Fragments.json")
+RUNTIME_DIR = os.path.join(LOCALIZATION_DIR, "runtime")  # 注入前拼接的运行时 JS 目录
+PARTIAL_FRAGMENTS_FILE = os.path.join(LOCALIZATION_DIR, "Partial_Fragments.json")  # 正文片段替换词典
+DROPDOWN_FRAGMENTS_FILE = os.path.join(LOCALIZATION_DIR, "Dropdown_Fragments.json")  # 下拉框片段替换词典
 
 
 def DuQu_Runtime_WenJian(WenJianMing):
@@ -750,7 +750,7 @@ def HuoQu_Main_JS_LuJing():
     return os.path.join(HuoQu_App_GenMuLu_LuJing(CURSOR_AN_ZHUANG_LU_JING), "out", "main.js")
 
 
-TRAY_DICTIONARY_FILE = os.path.join(LOCALIZATION_DIR, "Tray_Dictionary.json")
+TRAY_DICTIONARY_FILE = os.path.join(LOCALIZATION_DIR, "Tray_Dictionary.json")  # 系统托盘菜单词典
 
 
 def DuQu_TuoPan_TiHuan():
@@ -829,6 +829,273 @@ def HuiFu_TuoPan_HanHua():
         return False
     print(f"[托盘] 已还原 {CiShu} 处系统托盘菜单文案")
     return True
+
+
+SYSTEM_NOTIFICATION_DICTIONARY_FILE = os.path.join(LOCALIZATION_DIR, "System_Notification_Dictionary.json")  # 系统通知原文替换词典
+
+
+def HuoQu_XiTong_TongZhi_ZhuangTai_LuJing():
+    """本机已应用的通知替换表。按 Cursor 版本区分，不进仓库。"""
+    return os.path.join(CURSOR_SHU_JU_LU_JING, "cursor-localization-zh", "system-notification-state.json")
+
+
+def DuQu_XiTong_TongZhi_TiHuan():
+    """读取系统通知唯一字符串替换表 [[en, zh], ...]。"""
+    if not os.path.isfile(SYSTEM_NOTIFICATION_DICTIONARY_FILE):
+        return []
+    with open(SYSTEM_NOTIFICATION_DICTIONARY_FILE, "r", encoding="utf-8") as WenJian:
+        ShuJu = json.load(WenJian)
+    JieGuo = []
+    for Xiang in ShuJu.get("replacements") or []:
+        if isinstance(Xiang, (list, tuple)) and len(Xiang) >= 2 and Xiang[0] and Xiang[1]:
+            JieGuo.append([str(Xiang[0]), str(Xiang[1])])
+    return JieGuo
+
+
+def HuoQu_XiTong_TongZhi_JS_LieBiao():
+    """系统通知文案所在的工作台脚本。"""
+    GenMuLu = os.path.join(HuoQu_App_GenMuLu_LuJing(CURSOR_AN_ZHUANG_LU_JING), "out", "vs", "workbench")
+    return [
+        os.path.join(GenMuLu, "workbench.desktop.main.js"),
+        os.path.join(GenMuLu, "workbench.glass.main.js"),
+    ]
+
+
+def HuoQu_Cursor_ChanPin_XinXi():
+    """读取当前安装的版本与 commit，用来绑定已应用替换表。"""
+    LuJing = os.path.join(HuoQu_App_GenMuLu_LuJing(CURSOR_AN_ZHUANG_LU_JING), "product.json")
+    try:
+        with open(LuJing, "r", encoding="utf-8") as WenJian:
+            ShuJu = json.load(WenJian)
+        return {
+            "version": ShuJu.get("version") or "",
+            "commit": ShuJu.get("commit") or "",
+            "vscodeVersion": ShuJu.get("vscodeVersion") or "",
+        }
+    except (OSError, json.JSONDecodeError):
+        return {"version": "", "commit": "", "vscodeVersion": ""}
+
+
+def JiSuan_WenJian_Sha256(LuJing):
+    """计算文件 SHA-256 十六进制，用于核对工作台脚本是否仍是当时那份。"""
+    with open(LuJing, "rb") as WenJian:
+        return hashlib.sha256(WenJian.read()).hexdigest()
+
+
+def _GuiYi_TongZhi_TiHuan_Biao(YuanShi):
+    JieGuo = []
+    if not YuanShi:
+        return JieGuo
+    for Xiang in YuanShi:
+        if isinstance(Xiang, (list, tuple)) and len(Xiang) >= 2 and Xiang[0] and Xiang[1]:
+            JieGuo.append([str(Xiang[0]), str(Xiang[1])])
+    return JieGuo
+
+
+def _HeBing_TongZhi_TiHuan_Biao(*BiaoLie):
+    """合并多份替换表，同一英文可保留不同中文，供还原时新旧都查到。"""
+    JianGuo = set()
+    JieGuo = []
+    for Biao in BiaoLie:
+        for YingWen, ZhongWen in _GuiYi_TongZhi_TiHuan_Biao(Biao):
+            Jian = (YingWen, ZhongWen)
+            if Jian in JianGuo:
+                continue
+            JianGuo.add(Jian)
+            JieGuo.append([YingWen, ZhongWen])
+    return JieGuo
+
+
+def _CaiJi_WenJian_ShiJi_TiHuan(NeiRong, *BiaoLie):
+    """只收文件里实际还在的中文对照。"""
+    return [
+        [YingWen, ZhongWen]
+        for YingWen, ZhongWen in _HeBing_TongZhi_TiHuan_Biao(*BiaoLie)
+        if ZhongWen and ZhongWen in (NeiRong or "")
+    ]
+
+
+def DuQu_XiTong_TongZhi_ZhuangTai():
+    """读取上次成功写入工作台脚本的替换表。"""
+    LuJing = HuoQu_XiTong_TongZhi_ZhuangTai_LuJing()
+    if not os.path.isfile(LuJing):
+        return None
+    try:
+        with open(LuJing, "r", encoding="utf-8") as WenJian:
+            ShuJu = json.load(WenJian)
+    except (OSError, json.JSONDecodeError):
+        return None
+    if not isinstance(ShuJu, dict):
+        return None
+    ShuJu["applied"] = _HeBing_TongZhi_TiHuan_Biao(ShuJu.get("applied"), ShuJu.get("previous"))
+    return ShuJu
+
+
+def XieRu_XiTong_TongZhi_ZhuangTai(YingYongBiao, WenJianXinXi, WanZheng=True):
+    """记下各脚本里实际生效的替换表，供再注入和还原使用。"""
+    LuJing = HuoQu_XiTong_TongZhi_ZhuangTai_LuJing()
+    MuLu = os.path.dirname(LuJing)
+    try:
+        os.makedirs(MuLu, exist_ok=True)
+        ChanPin = HuoQu_Cursor_ChanPin_XinXi()
+        ShuJu = {
+            "version": 1,
+            "updatedAt": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "cursorVersion": ChanPin.get("version") or "",
+            "commit": ChanPin.get("commit") or "",
+            "vscodeVersion": ChanPin.get("vscodeVersion") or "",
+            "complete": bool(WanZheng),
+            "applied": _GuiYi_TongZhi_TiHuan_Biao(YingYongBiao),
+            "files": WenJianXinXi,
+        }
+        with open(LuJing, "w", encoding="utf-8") as WenJian:
+            json.dump(ShuJu, WenJian, ensure_ascii=False, indent=2)
+            WenJian.write("\n")
+    except OSError as CuoWu:
+        print(f"[系统通知] 无法保存已应用替换表: {CuoWu}")
+
+
+def ShanChu_XiTong_TongZhi_ZhuangTai():
+    LuJing = HuoQu_XiTong_TongZhi_ZhuangTai_LuJing()
+    if os.path.isfile(LuJing):
+        try:
+            os.remove(LuJing)
+        except OSError as CuoWu:
+            print(f"[系统通知] 无法删除已应用替换表: {CuoWu}")
+
+
+def _YingYong_TiHuan_Biao(NeiRong, Biao, FanXiang=False):
+    CiShu = 0
+    for YingWen, ZhongWen in Biao or []:
+        Yuan, MuBiao = (ZhongWen, YingWen) if FanXiang else (YingWen, ZhongWen)
+        if not Yuan or Yuan not in NeiRong:
+            continue
+        NeiRong = NeiRong.replace(Yuan, MuBiao)
+        CiShu += 1
+    return NeiRong, CiShu
+
+
+def _YingYong_XiTong_TongZhi_GengXin(NeiRong, XinBiao, JiuBiao=None):
+    """先把上次中文换成当前中文，再补英文模板。"""
+    CiShu = 0
+    XinYingShe = {YingWen: ZhongWen for YingWen, ZhongWen in (XinBiao or [])}
+    for YingWen, JiuZhong in (JiuBiao or []):
+        if not JiuZhong or JiuZhong not in NeiRong:
+            continue
+        XinZhong = XinYingShe.get(YingWen)
+        if XinZhong and XinZhong != JiuZhong:
+            NeiRong = NeiRong.replace(JiuZhong, XinZhong)
+            CiShu += 1
+        elif not XinZhong:
+            NeiRong = NeiRong.replace(JiuZhong, YingWen)
+            CiShu += 1
+    NeiRong, XinCi = _YingYong_TiHuan_Biao(NeiRong, XinBiao, FanXiang=False)
+    return NeiRong, CiShu + XinCi
+
+
+def _WenJian_Han_TongZhi_ZhongWen(NeiRong, Biao):
+    return any(ZhongWen and ZhongWen in NeiRong for _YingWen, ZhongWen in (Biao or []))
+
+
+def ZhuRu_XiTong_TongZhi_HanHua():
+    """替换工作台脚本中的系统通知固定文案。"""
+    XinBiao = DuQu_XiTong_TongZhi_TiHuan()
+    ZhuangTai = DuQu_XiTong_TongZhi_ZhuangTai()
+    JiuBiao = (ZhuangTai or {}).get("applied") or []
+    ZongCi = 0
+    WenJianXinXi = []
+    ShiJiBiao = []
+    ShiBai = False
+    for LuJing in HuoQu_XiTong_TongZhi_JS_LieBiao():
+        if not os.path.isfile(LuJing):
+            print(f"[系统通知] 未找到脚本，跳过: {LuJing}")
+            continue
+        try:
+            NeiRong, HuanHang = DuQu_WenBen_BaoLiu_HuanHang(LuJing)
+        except OSError as CuoWu:
+            print(f"[系统通知] 无法读取 {os.path.basename(LuJing)}: {CuoWu}")
+            ShiBai = True
+            continue
+        XinWenBen, CiShu = _YingYong_XiTong_TongZhi_GengXin(NeiRong, XinBiao, JiuBiao)
+        if CiShu == 0:
+            if _WenJian_Han_TongZhi_ZhongWen(NeiRong, XinBiao) or _WenJian_Han_TongZhi_ZhongWen(NeiRong, JiuBiao):
+                print(f"[系统通知] {os.path.basename(LuJing)} 已是中文，跳过")
+            else:
+                print(f"[系统通知] {os.path.basename(LuJing)} 未匹配到通知模板，跳过")
+        else:
+            try:
+                XieRu_WenBen_BaoLiu_HuanHang(LuJing, XinWenBen, HuanHang)
+            except PermissionError:
+                print(f"[错误] 无法写入 {os.path.basename(LuJing)}：权限不足")
+                TiShi_JiaoYan_QuanXian_BuZu(LuJing)
+                ShiBai = True
+                ShiJiBiao = _HeBing_TongZhi_TiHuan_Biao(ShiJiBiao, _CaiJi_WenJian_ShiJi_TiHuan(NeiRong, XinBiao, JiuBiao))
+                continue
+            except OSError as CuoWu:
+                print(f"[错误] 无法写入 {os.path.basename(LuJing)}: {CuoWu}")
+                ShiBai = True
+                ShiJiBiao = _HeBing_TongZhi_TiHuan_Biao(ShiJiBiao, _CaiJi_WenJian_ShiJi_TiHuan(NeiRong, XinBiao, JiuBiao))
+                continue
+            ZongCi += CiShu
+            NeiRong = XinWenBen
+            print(f"[系统通知] {os.path.basename(LuJing)} 已替换 {CiShu} 处")
+        ShiJiBiao = _HeBing_TongZhi_TiHuan_Biao(ShiJiBiao, _CaiJi_WenJian_ShiJi_TiHuan(NeiRong, XinBiao, JiuBiao))
+        try:
+            WenJianXinXi.append({
+                "name": os.path.basename(LuJing),
+                "sha256": JiSuan_WenJian_Sha256(LuJing),
+            })
+        except OSError:
+            pass
+    if ShiBai:
+        ShiJiBiao = _HeBing_TongZhi_TiHuan_Biao(JiuBiao, ShiJiBiao)
+        print("[系统通知] 部分脚本未更新，已按各文件实际译文记账")
+    if ShiJiBiao or JiuBiao:
+        XieRu_XiTong_TongZhi_ZhuangTai(ShiJiBiao or JiuBiao, WenJianXinXi, WanZheng=not ShiBai)
+    return (not ShiBai) and ZongCi > 0
+
+
+def HuiFu_XiTong_TongZhi_HanHua():
+    """按本机已应用的替换表把通知模板还原为英文。"""
+    ZhuangTai = DuQu_XiTong_TongZhi_ZhuangTai()
+    Biao = _HeBing_TongZhi_TiHuan_Biao(
+        (ZhuangTai or {}).get("applied"),
+        DuQu_XiTong_TongZhi_TiHuan(),
+    )
+    ChanPin = HuoQu_Cursor_ChanPin_XinXi()
+    if ZhuangTai and (
+        (ZhuangTai.get("commit") and ZhuangTai.get("commit") != ChanPin.get("commit"))
+        or (ZhuangTai.get("cursorVersion") and ZhuangTai.get("cursorVersion") != ChanPin.get("version"))
+    ):
+        print("[系统通知] 已应用表与当前 Cursor 版本不一致，仍按该表尝试还原")
+    if ZhuangTai and ZhuangTai.get("complete") is False:
+        print("[系统通知] 上次注入未全部成功，还原时会同时反查新旧译文")
+    ChengGong = True
+    for LuJing in HuoQu_XiTong_TongZhi_JS_LieBiao():
+        if not os.path.isfile(LuJing):
+            continue
+        try:
+            NeiRong, HuanHang = DuQu_WenBen_BaoLiu_HuanHang(LuJing)
+        except OSError as CuoWu:
+            print(f"[系统通知] 无法读取 {os.path.basename(LuJing)}: {CuoWu}")
+            ChengGong = False
+            continue
+        XinWenBen, CiShu = _YingYong_TiHuan_Biao(NeiRong, Biao, FanXiang=True)
+        if CiShu > 0:
+            try:
+                XieRu_WenBen_BaoLiu_HuanHang(LuJing, XinWenBen, HuanHang)
+            except OSError as CuoWu:
+                print(f"[系统通知] 无法还原 {os.path.basename(LuJing)}: {CuoWu}")
+                ChengGong = False
+                continue
+            print(f"[系统通知] 已还原 {os.path.basename(LuJing)} 的 {CiShu} 处")
+            NeiRong = XinWenBen
+        if _WenJian_Han_TongZhi_ZhongWen(NeiRong, Biao):
+            print(f"[系统通知] {os.path.basename(LuJing)} 仍有未还原的通知译文")
+            ChengGong = False
+    if ChengGong:
+        ShanChu_XiTong_TongZhi_ZhuangTai()
+    return ChengGong
 
 
 # ============================================================
@@ -1600,8 +1867,11 @@ def HuiFu_YuanShi():
         print(f"[恢复] 已手动移除注入内容")
 
     HuiFu_TuoPan_HanHua()
-
-    HuiFu_JiaoYan_Zhi()
+    if HuiFu_XiTong_TongZhi_HanHua():
+        HuiFu_JiaoYan_Zhi()
+    else:
+        print("[系统通知] 工作台脚本未能按已应用表还原，改按当前文件重算校验值")
+        GengXin_JiaoYan_Zhi()
 
     ShanChu_SuoYou_ZhuRu_JS()
 
@@ -1662,6 +1932,7 @@ def ZhuChengXu():
         XieRu_FanYi_JS()
         ShanChu_JiuBan_JS()
         ZhuRu_TuoPan_HanHua()
+        ZhuRu_XiTong_TongZhi_HanHua()
         GengXin_JiaoYan_Zhi()
         print("\n[完成] 语言包与脚本已更新！请完全退出并重启 Cursor 生效。")
         return
@@ -1670,6 +1941,7 @@ def ZhuChengXu():
     print("\n[步骤 3/4] 创建备份并写入脚本...")
     ChuangJian_BeiFen()
     XieRu_FanYi_JS()
+    ZhuRu_XiTong_TongZhi_HanHua()
 
     print("[步骤 4/4] 注入 HTML 引用...")
     ZhuRu_HTML()
