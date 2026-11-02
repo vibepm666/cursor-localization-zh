@@ -11033,6 +11033,1262 @@
           "搜索用户技能..."
         ]
       ]
+    },
+    {
+      "id": "cursor_3_27_补充",
+      "title": "Cursor 3.27 补充文案",
+      "entries": [
+        [
+          "Close (⌘W)",
+          "关闭 (⌘W)"
+        ],
+        [
+          "Split Editor Right [⌥] Split Editor Down",
+          "向右拆分编辑器 [⌥] 向下拆分编辑器"
+        ],
+        [
+          "Split Editor Right",
+          "向右拆分编辑器"
+        ],
+        [
+          "Split Editor Down",
+          "向下拆分编辑器"
+        ],
+        [
+          "More Actions...",
+          "更多操作..."
+        ],
+        [
+          "Search settings ⌘F",
+          "搜索设置 ⌘F"
+        ],
+        [
+          "Premium Plan",
+          "付费计划"
+        ],
+        [
+          "Premium",
+          "高级版"
+        ],
+        [
+          "Open Cursor Account",
+          "打开 Cursor 账户"
+        ],
+        [
+          "Hidden dialogs",
+          "已隐藏的对话框"
+        ],
+        [
+          "Cloud Agent Approval Banners While Focused",
+          "聚焦时显示云端智能体审批横幅"
+        ],
+        [
+          "Also show the approval banner while Cursor is focused; the request card in the agent conversation always shows",
+          "Cursor 聚焦时也显示审批横幅；智能体对话中的请求卡片始终显示"
+        ],
+        [
+          "Cursor is turned off in System Settings > Menu Bar > Allow in the Menu Bar",
+          "已在「系统设置 > 菜单栏 > 允许在菜单栏中显示」中关闭 Cursor"
+        ],
+        [
+          "No Problems",
+          "无问题"
+        ],
+        [
+          "Screen Reader Optimized",
+          "已启用屏幕阅读器优化"
+        ],
+        [
+          "remote",
+          "远程"
+        ],
+        [
+          "Window sharing",
+          "窗口共享"
+        ],
+        [
+          "Voice",
+          "语音"
+        ],
+        [
+          "Agent Voice",
+          "智能体语音"
+        ],
+        [
+          "Default voice for voice chats. Changing the voice plays a short sample.",
+          "语音聊天使用的默认声音。更改声音会播放一段示例。"
+        ],
+        [
+          "Choose a voice",
+          "选择声音"
+        ],
+        [
+          "Play voice sample",
+          "播放声音示例"
+        ],
+        [
+          "Speed",
+          "语速"
+        ],
+        [
+          "How quickly the voice speaks in voice chats.",
+          "语音聊天中的说话速度。"
+        ],
+        [
+          "Language",
+          "语言"
+        ],
+        [
+          "Language used in voice chats.",
+          "语音聊天使用的语言。"
+        ],
+        [
+          "Auto-detect",
+          "自动检测"
+        ],
+        [
+          "Microphone",
+          "麦克风"
+        ],
+        [
+          "Microphone used in voice chats.",
+          "语音聊天使用的麦克风。"
+        ],
+        [
+          "System Default",
+          "系统默认"
+        ],
+        [
+          "Words that send your prompt while you dictate. Voice chats ignore them.",
+          "口述时用于发送提示词的关键词。语音聊天会忽略这些词。"
+        ],
+        [
+          "submit",
+          "提交"
+        ],
+        [
+          "Remove submit",
+          "移除「提交」"
+        ],
+        [
+          "Add keyword",
+          "添加关键词"
+        ],
+        [
+          "Source Control",
+          "源代码管理"
+        ],
+        [
+          "Choose Origin (cursor.com/codebase), GitHub, or Graphite for pull request links on web and desktop",
+          "选择 Origin（cursor.com/codebase）、GitHub 或 Graphite，用于网页端和桌面端的拉取请求链接"
+        ],
+        [
+          "Worktree Cleanup",
+          "工作树清理"
+        ],
+        [
+          "Decrease",
+          "减少"
+        ],
+        [
+          "Increase",
+          "增加"
+        ],
+        [
+          "⌘Enter submits chat, Enter inserts a newline, and primary actions move to ⌥⌘Enter",
+          "⌘Enter 提交聊天，Enter 换行，主要操作移至 ⌥⌘Enter"
+        ],
+        [
+          "New Messages",
+          "新消息"
+        ],
+        [
+          "Choose the default behavior of messages sent while Agent is working",
+          "选择智能体工作时发送消息的默认行为"
+        ],
+        [
+          "Steer",
+          "引导"
+        ],
+        [
+          "Manually Sent Messages from Queue",
+          "从队列手动发送的消息"
+        ],
+        [
+          "Choose the default behavior of messages sent from the queue",
+          "选择从队列发送消息的默认行为"
+        ],
+        [
+          "Allow agent to switch to modes like Plan or Debug without asking. When off, Cursor asks first, but skips if unanswered within 15 seconds.",
+          "允许智能体未经询问就切换到计划或调试等模式。关闭后，Cursor 会先询问；若 15 秒内未回复则跳过。"
+        ],
+        [
+          "Many commands will run automatically inside the sandbox, and a classifier will run for the actions that cannot run in the sandbox. Allowlists are still respected.",
+          "许多命令会在沙箱内自动运行，无法在沙箱中运行的操作将由分类器处理。允许列表仍然有效。"
+        ],
+        [
+          "Auto-Review (with Sandbox)",
+          "自动审查（带沙箱）"
+        ],
+        [
+          "Read Access",
+          "读取权限"
+        ],
+        [
+          "Control whether agents can read files outside the workspace without approval",
+          "控制智能体是否可以在未经批准的情况下读取工作区外的文件"
+        ],
+        [
+          "Allowlist Options",
+          "允许列表选项"
+        ],
+        [
+          "You can configure Shell, MCP, Fetch, and Read allowlists for Auto mode. However, Auto works well without these.",
+          "您可以为自动模式配置 Shell、MCP、Fetch 和读取允许列表。不过不配置这些，自动模式也能良好运行。"
+        ],
+        [
+          "Automatically jump to the next diff when accepting changes with ⌘Y",
+          "使用 ⌘Y 接受更改时自动跳转到下一个差异"
+        ],
+        [
+          "Automatically parse links when pasted into Quick Edit (⌘K) input",
+          "粘贴到快速编辑（⌘K）输入框时自动解析链接"
+        ],
+        [
+          "About the default Explore model",
+          "关于默认的探索模型"
+        ],
+        [
+          "Refresh model list",
+          "刷新模型列表"
+        ],
+        [
+          "Meet Grok Bot",
+          "认识 Grok Bot"
+        ],
+        [
+          "AI teammates you can give real work to",
+          "可以交付真实工作的 AI 队友"
+        ],
+        [
+          "Get Grok Bot",
+          "获取 Grok Bot"
+        ],
+        [
+          "Browse",
+          "浏览"
+        ],
+        [
+          "Manage scope",
+          "管理范围"
+        ],
+        [
+          "Projects",
+          "项目"
+        ],
+        [
+          "New Project",
+          "新建项目"
+        ],
+        [
+          "Start from scratch",
+          "从零开始"
+        ],
+        [
+          "Deploy my prototype",
+          "部署我的原型"
+        ],
+        [
+          "Put a project on a shareable live link",
+          "将项目发布为可分享的在线链接"
+        ],
+        [
+          "Dismiss recommendation",
+          "忽略推荐"
+        ],
+        [
+          "Review my database",
+          "检查我的数据库"
+        ],
+        [
+          "Check schema, indexes, and risky access rules",
+          "检查架构、索引和有风险的访问规则"
+        ],
+        [
+          "Start with a plan",
+          "先制定计划"
+        ],
+        [
+          "Align on implementation before writing code",
+          "编写代码前先对齐实现方案"
+        ],
+        [
+          "Debug an issue",
+          "调试问题"
+        ],
+        [
+          "Find root causes and fix tricky bugs",
+          "查找根本原因并修复棘手 bug"
+        ],
+        [
+          "Hide tips",
+          "隐藏提示"
+        ],
+        [
+          "Steer a running agent without stopping it - set New Messages to Send Immediately in your Agents settings",
+          "无需停止即可引导运行中的智能体——在「智能体」设置中将「新消息」设为「立即发送」"
+        ],
+        [
+          "New Messages to Send Immediately",
+          "将新消息设为立即发送"
+        ],
+        [
+          "Show Apps",
+          "显示应用"
+        ],
+        [
+          "Chat actions",
+          "聊天操作"
+        ],
+        [
+          "Cloud, select environment",
+          "云端，选择环境"
+        ],
+        [
+          "Add agents, context, tools",
+          "添加智能体、上下文、工具"
+        ],
+        [
+          "Start voice input",
+          "开始语音输入"
+        ],
+        [
+          "Start voice chat",
+          "开始语音对话"
+        ],
+        [
+          "Plan, Build, / for skills, @ for context",
+          "规划、构建，/ 使用技能，@ 添加上下文"
+        ],
+        [
+          "Toggle Panel (⌘J)",
+          "切换面板 (⌘J)"
+        ],
+        [
+          "Steer from iOS",
+          "从 iOS 引导"
+        ]
+      ]
+    },
+    {
+      "id": "cursor_3_27_设置与自动化补充",
+      "title": "Cursor 3.27 设置与自动化补充文案",
+      "entries": [
+        [
+          "Clear Notification (⌘⌫)",
+          "清除通知 (⌘⌫)"
+        ],
+        [
+          "Info: Screen reader usage detected. Do you want to enable editor.accessibilitySupport to optimize the editor for screen reader usage?",
+          "信息：检测到屏幕阅读器使用。是否要启用 editor.accessibilitySupport 以优化编辑器的屏幕阅读器体验？"
+        ],
+        [
+          "Account menu",
+          "账户菜单"
+        ],
+        [
+          "View details",
+          "查看详情"
+        ],
+        [
+          "Contact support",
+          "联系支持"
+        ],
+        [
+          "Please try again.",
+          "请重试。"
+        ],
+        [
+          "Failed to save",
+          "保存失败"
+        ],
+        [
+          "Untitled Agent",
+          "未命名智能体"
+        ],
+        [
+          "Try different filters",
+          "尝试其他筛选条件"
+        ],
+        [
+          "Not installed",
+          "未安装"
+        ],
+        [
+          "Not run",
+          "未运行"
+        ],
+        [
+          "Unknown trigger",
+          "未知触发器"
+        ],
+        [
+          "Loading usage",
+          "正在加载用量"
+        ],
+        [
+          "Loading models...",
+          "正在加载模型..."
+        ],
+        [
+          "Loading agents from Cursor",
+          "正在从 Cursor 加载智能体"
+        ],
+        [
+          "Loading automations",
+          "正在加载自动化"
+        ],
+        [
+          "Loading on-demand limit",
+          "正在加载按需用量上限"
+        ],
+        [
+          "No models available",
+          "没有可用模型"
+        ],
+        [
+          "No automations found",
+          "未找到自动化"
+        ],
+        [
+          "No triggers found",
+          "未找到触发器"
+        ],
+        [
+          "No templates match this filter.",
+          "没有模板匹配此筛选条件。"
+        ],
+        [
+          "No unsaved changes",
+          "没有未保存的更改"
+        ],
+        [
+          "Unavailable with this app",
+          "此应用不可用"
+        ],
+        [
+          "Number field",
+          "数字字段"
+        ],
+        [
+          "Invalid MCP allowlist entries removed",
+          "已移除无效的 MCP 允许列表条目"
+        ],
+        [
+          "Invalid domain allowlist entries removed",
+          "已移除无效的域名允许列表条目"
+        ],
+        [
+          "Follow System Color Scheme",
+          "跟随系统颜色方案"
+        ],
+        [
+          "Choose which theme to use",
+          "选择要使用的主题"
+        ],
+        [
+          "Choose the theme used when your system is in dark mode",
+          "选择系统处于深色模式时使用的主题"
+        ],
+        [
+          "Choose the theme used when your system is in light mode",
+          "选择系统处于浅色模式时使用的主题"
+        ],
+        [
+          "Choose the theme used when your system is in high contrast mode",
+          "选择系统处于高对比度模式时使用的主题"
+        ],
+        [
+          "Choose the theme used when your system is in dark high contrast mode",
+          "选择系统处于深色高对比度模式时使用的主题"
+        ],
+        [
+          "Choose the theme used when your system is in light high contrast mode",
+          "选择系统处于浅色高对比度模式时使用的主题"
+        ],
+        [
+          "Manage Themes",
+          "管理主题"
+        ],
+        [
+          "Open Manage Themes",
+          "打开主题管理"
+        ],
+        [
+          "Create your own themes, tweak the vibe, and import your favorites",
+          "创建自己的主题、调整风格并导入喜爱的主题"
+        ],
+        [
+          "Window Colors",
+          "窗口颜色"
+        ],
+        [
+          "Tint hue",
+          "色调"
+        ],
+        [
+          "Tint intensity",
+          "色彩强度"
+        ],
+        [
+          "Match the active theme to your OS dark/light setting",
+          "使当前主题与操作系统的深色/浅色设置匹配"
+        ],
+        [
+          "Font Smoothing",
+          "字体平滑"
+        ],
+        [
+          "Use native macOS font anti-aliasing",
+          "使用 macOS 原生字体抗锯齿"
+        ],
+        [
+          "Search fonts",
+          "搜索字体"
+        ],
+        [
+          "Loading fonts...",
+          "正在加载字体..."
+        ],
+        [
+          "No matching fonts",
+          "没有匹配的字体"
+        ],
+        [
+          "Sample diff preview for the code font",
+          "代码字体的差异预览示例"
+        ],
+        [
+          "Chat Width",
+          "聊天宽度"
+        ],
+        [
+          "Chat width",
+          "聊天宽度"
+        ],
+        [
+          "Set the maximum width of Agent conversations",
+          "设置智能体对话的最大宽度"
+        ],
+        [
+          "You can also manage Privacy Mode in the",
+          "您也可以在以下位置管理隐私模式："
+        ],
+        [
+          "Unify dashboard",
+          "Unify 控制台"
+        ],
+        [
+          "Updating privacy settings",
+          "正在更新隐私设置"
+        ],
+        [
+          "Switch Privacy Mode?",
+          "切换隐私模式？"
+        ],
+        [
+          "Learn more about Data Sharing.",
+          "进一步了解数据共享。"
+        ],
+        [
+          "Improve Cursor for everyone. Prompts and limited telemetry may also be shared with model providers when you explicitly select their models",
+          "帮助改进 Cursor。当您明确选择模型提供方时，提示词和有限的遥测数据也可能与其共享"
+        ],
+        [
+          "Training telemetry",
+          "训练遥测"
+        ],
+        [
+          "Ask Before Quitting with Running Agents",
+          "运行中的智能体退出前询问"
+        ],
+        [
+          "Ask whether local and SSH agents keep running when you quit while they are working",
+          "询问本地和 SSH 智能体在您退出时是否继续运行"
+        ],
+        [
+          "Mark Agent commits as",
+          "将智能体提交标记为"
+        ],
+        [
+          "Run as",
+          "运行身份"
+        ],
+        [
+          "Run ownership",
+          "运行所有者"
+        ],
+        [
+          "Run summary",
+          "运行摘要"
+        ],
+        [
+          "Send after Agent finishes",
+          "智能体完成后发送"
+        ],
+        [
+          "Steer the agent without stopping it",
+          "在不停止智能体的情况下引导它"
+        ],
+        [
+          "Stop the agent and send the message",
+          "停止智能体并发送消息"
+        ],
+        [
+          "Agents Window Type",
+          "智能体窗口类型"
+        ],
+        [
+          "Type of Agents Window is managed by the molten_agents_window gate.",
+          "智能体窗口类型由 molten_agents_window 开关管理。"
+        ],
+        [
+          "Computer Use",
+          "计算机使用"
+        ],
+        [
+          "Computer action",
+          "计算机操作"
+        ],
+        [
+          "Choose Explore subagent model",
+          "选择探索子智能体模型"
+        ],
+        [
+          "Default chooses an Explore model based on availability and cost",
+          "默认根据可用性和成本选择探索模型"
+        ],
+        [
+          "Subagent model overrides will only be used in Max Mode",
+          "子智能体模型覆盖仅在 Max 模式下生效"
+        ],
+        [
+          "Max Mode required",
+          "需要 Max 模式"
+        ],
+        [
+          "MAX Only",
+          "仅 MAX"
+        ],
+        [
+          "This model is blocked by your administrator and cannot be enabled.",
+          "此模型已被管理员阻止，无法启用。"
+        ],
+        [
+          "Always Run",
+          "始终运行"
+        ],
+        [
+          "Always Run Selected",
+          "始终运行所选"
+        ],
+        [
+          "Ask for permission before running each operation",
+          "运行每个操作前请求许可"
+        ],
+        [
+          "Automatically run all operations without asking for permission",
+          "无需许可自动运行所有操作"
+        ],
+        [
+          "Automatically run operations after you approve them once",
+          "您批准一次后自动运行操作"
+        ],
+        [
+          "Automatically run operations that Auto-review classifies as safe",
+          "自动运行自动审查判定为安全的操作"
+        ],
+        [
+          "Automatically run operations that Auto-review classifies as safe, using sandboxing when possible",
+          "自动运行自动审查判定为安全的操作，并在可能时使用沙箱"
+        ],
+        [
+          "Tools will auto-run in a sandbox if possible, otherwise respect the allowlist or ask for approval",
+          "工具将尽可能在沙箱中自动运行，否则遵循允许列表或请求批准"
+        ],
+        [
+          "Run Mode Controlled by Team Admin",
+          "运行模式由团队管理员控制"
+        ],
+        [
+          "Run Mode Controlled by Team Admin (Sandbox Enabled)",
+          "运行模式由团队管理员控制（已启用沙箱）"
+        ],
+        [
+          "Use Allowlist instead",
+          "改用允许列表"
+        ],
+        [
+          "Enable Run Everything?",
+          "启用「全部运行」？"
+        ],
+        [
+          "Leave Ask Every Time?",
+          "离开「每次都询问」？"
+        ],
+        [
+          "This allows the agent to execute any tool or shell command without approval. A prompt injection or a malicious tool could delete files or exfiltrate secrets from your machine.",
+          "这允许智能体未经批准执行任何工具或 Shell 命令。提示词注入或恶意工具可能删除文件或从您的机器窃取密钥。"
+        ],
+        [
+          "Command Denylist (Deprecated)",
+          "命令拒绝列表（已弃用）"
+        ],
+        [
+          "Enabled by Run Everything Auto-Run Mode: Agent bypasses approval prompts for tools including Web Search.",
+          "由「全部运行」自动运行模式启用：智能体将绕过包括网页搜索在内的工具审批提示。"
+        ],
+        [
+          "Choose allowlist entries",
+          "选择允许列表条目"
+        ],
+        [
+          "Read Allowlist",
+          "读取允许列表"
+        ],
+        [
+          "Add commands...",
+          "添加命令..."
+        ],
+        [
+          "Add paths or globs (for example, /tmp/*)",
+          "添加路径或通配符（例如 /tmp/*）"
+        ],
+        [
+          "Always-allowed apps: Cursor can use these in any chat without asking. Remove one to be asked again.",
+          "始终允许的应用：Cursor 可在任何对话中直接使用，无需询问。移除一项后将重新询问。"
+        ],
+        [
+          "No always-allowed apps yet. Choose Always Allow when Cursor asks to use an app.",
+          "尚无始终允许的应用。当 Cursor 请求使用应用时选择「始终允许」。"
+        ],
+        [
+          "Edit Fetch Domain Allowlist, one domain per line",
+          "编辑抓取域名允许列表，每行一个域名"
+        ],
+        [
+          "Add a Custom MCP Server to ~/.cursor/mcp.json",
+          "将自定义 MCP 服务器添加到 ~/.cursor/mcp.json"
+        ],
+        [
+          "Allow CLI to access desktop agents",
+          "允许 CLI 访问桌面智能体"
+        ],
+        [
+          "Enable the cursor desktop CLI command, which lists and sends messages to agent threads open in this desktop app. Restart Cursor after changing this setting.",
+          "启用 cursor desktop CLI 命令，可列出并向此桌面应用中打开的智能体线程发送消息。更改此设置后请重启 Cursor。"
+        ],
+        [
+          "Allow agents on this computer to be controlled remotely from mobile",
+          "允许从移动设备远程控制此电脑上的智能体"
+        ],
+        [
+          "Allow cloud agents to run in your local environment.",
+          "允许云端智能体在您的本地环境中运行。"
+        ],
+        [
+          "Register eligible computers when you sign in",
+          "登录时注册符合条件的电脑"
+        ],
+        [
+          "Automatically register computers",
+          "自动注册电脑"
+        ],
+        [
+          "Unregister All",
+          "全部取消注册"
+        ],
+        [
+          "Unregistering your computers",
+          "正在取消注册您的电脑"
+        ],
+        [
+          "Remote Control settings are unavailable",
+          "远程控制设置不可用"
+        ],
+        [
+          "Saving Remote Control settings",
+          "正在保存远程控制设置"
+        ],
+        [
+          "Turn on Remote Control or register this computer to keep it awake",
+          "开启远程控制或注册此电脑以保持唤醒"
+        ],
+        [
+          "Turn on Remote Control to keep this computer awake",
+          "开启远程控制以保持此电脑唤醒"
+        ],
+        [
+          "Disable Remote Control on all of my computers",
+          "在我的所有电脑上禁用远程控制"
+        ],
+        [
+          "Disable Remote Control on all of your computers?",
+          "在所有电脑上禁用远程控制？"
+        ],
+        [
+          "This will turn off Remote Control on every computer associated with your account.",
+          "这将关闭与您账户关联的每台电脑上的远程控制。"
+        ],
+        [
+          "Remote Control runs on a cloud agent, which requires data storage that your current privacy mode disables",
+          "远程控制运行在云端智能体上，需要数据存储，而您当前的隐私模式已禁用该功能"
+        ],
+        [
+          "One of your organizations does not allow Remote Control",
+          "您的某个组织不允许远程控制"
+        ],
+        [
+          "One of your organizations does not allow automatic registration",
+          "您的某个组织不允许自动注册"
+        ],
+        [
+          "Self-Hosted Workers",
+          "自托管工作器"
+        ],
+        [
+          "Enable local self-hosted workers",
+          "启用本地自托管工作器"
+        ],
+        [
+          "Servers your cloud agents use",
+          "云端智能体使用的服务器"
+        ],
+        [
+          "Service account",
+          "服务账号"
+        ],
+        [
+          "Service account automations cannot be private",
+          "服务账号自动化不能设为私有"
+        ],
+        [
+          "Configure browser automation",
+          "配置浏览器自动化"
+        ],
+        [
+          "Extension marketplace",
+          "扩展市场"
+        ],
+        [
+          "Marketplace CDN",
+          "市场 CDN"
+        ],
+        [
+          "Agent Endpoint",
+          "智能体端点"
+        ],
+        [
+          "Client updates",
+          "客户端更新"
+        ],
+        [
+          "Cursor Network Diagnostic Results",
+          "Cursor 网络诊断结果"
+        ],
+        [
+          "Running Diagnostic",
+          "正在运行诊断"
+        ],
+        [
+          "Desktop Bridge",
+          "桌面桥接"
+        ],
+        [
+          "Control which network requests are allowed when commands run in the sandbox. Edit allowed/denied domains in sandbox.json in your workspace.",
+          "控制沙箱中运行命令时允许的网络请求。在工作区的 sandbox.json 中编辑允许/拒绝的域名。"
+        ],
+        [
+          "Sandboxed network access is disabled by your admin.",
+          "沙箱网络访问已被管理员禁用。"
+        ],
+        [
+          "Sandboxing is disabled by your admin.",
+          "沙箱已被管理员禁用。"
+        ],
+        [
+          "Sandboxed network access is controlled by your admin. You can still edit allowed/denied domains in sandbox.json in your workspace, but admin policy takes precedence.",
+          "沙箱网络访问由管理员控制。您仍可在工作区的 sandbox.json 中编辑允许/拒绝的域名，但管理员策略优先。"
+        ],
+        [
+          "Grok and Composer Usage",
+          "Grok 与 Composer 用量"
+        ],
+        [
+          "Non-Grok usage and usage beyond limits consumes additional usage.",
+          "非 Grok 用量及超出限额的用量会消耗额外用量。"
+        ],
+        [
+          "On-demand spend this period and its monthly limit",
+          "本周期按需支出及其每月上限"
+        ],
+        [
+          "Monthly limit amount",
+          "每月上限金额"
+        ],
+        [
+          "Failed to save on-demand limit",
+          "保存按需用量上限失败"
+        ],
+        [
+          "Usage past your limit is billed later as on-demand.",
+          "超出上限的用量将稍后按需计费。"
+        ],
+        [
+          "Total included usage",
+          "包含的总用量"
+        ],
+        [
+          "End of cycle",
+          "周期结束"
+        ],
+        [
+          "0 minutes left",
+          "剩余 0 分钟"
+        ],
+        [
+          "How much of your plan",
+          "您的计划用量"
+        ],
+        [
+          "API requests",
+          "API 请求"
+        ],
+        [
+          "Agent requests",
+          "智能体请求"
+        ],
+        [
+          "Cursor Tab (regional)",
+          "Cursor Tab（区域）"
+        ],
+        [
+          "PR Routing & Approval",
+          "PR 路由与批准"
+        ],
+        [
+          "Route PR Reviews and Auto-Approve",
+          "路由 PR 审查并自动批准"
+        ],
+        [
+          "Route and Approve PR Reviews",
+          "路由并批准 PR 审查"
+        ],
+        [
+          "Choose Origin (cursor.com/codebase) or GitHub for GitHub pull request links on web and desktop",
+          "为网页和桌面端的 GitHub PR 链接选择 Origin (cursor.com/codebase) 或 GitHub"
+        ],
+        [
+          "Choose whether pull requests are created on GitHub or Origin for repositories mirrored between the two",
+          "对于在两者间镜像的仓库，选择在 GitHub 还是 Origin 上创建 PR"
+        ],
+        [
+          "Set to Origin for internal dogfooding",
+          "内部试用请设为 Origin"
+        ],
+        [
+          "Review Code with Bugbot",
+          "使用 Bugbot 审查代码"
+        ],
+        [
+          "Security Reviewer",
+          "安全审查器"
+        ],
+        [
+          "Vulnerability Scanner",
+          "漏洞扫描器"
+        ],
+        [
+          "Scan Security Vulnerabilities",
+          "扫描安全漏洞"
+        ],
+        [
+          "Scan and Triage Security Vulnerabilities",
+          "扫描并分类安全漏洞"
+        ],
+        [
+          "Automatically scan repositories for security vulnerabilities.",
+          "自动扫描仓库中的安全漏洞。"
+        ],
+        [
+          "Automatically review pull requests (PRs) for bugs and issues.",
+          "自动审查 PR 中的缺陷和问题。"
+        ],
+        [
+          "Automatically review pull requests (PRs) for security vulnerabilities.",
+          "自动审查 PR 中的安全漏洞。"
+        ],
+        [
+          "Automatically assign reviewers and approve pull requests.",
+          "自动分配审查者并批准 PR。"
+        ],
+        [
+          "Assign reviewers and approve PRs.",
+          "分配审查者并批准 PR。"
+        ],
+        [
+          "Catch bugs and auto-fix before they ship.",
+          "在缺陷发布前捕获并自动修复。"
+        ],
+        [
+          "Auto-fix bugs before they ship.",
+          "在缺陷发布前自动修复。"
+        ],
+        [
+          "Security checks on every change.",
+          "对每次更改进行安全检查。"
+        ],
+        [
+          "Approve PR",
+          "批准 PR"
+        ],
+        [
+          "Dismiss PR approval",
+          "忽略 PR 批准"
+        ],
+        [
+          "Request reviewers",
+          "请求审查者"
+        ],
+        [
+          "Failed to approve PR",
+          "批准 PR 失败"
+        ],
+        [
+          "Failed to comment on PR",
+          "在 PR 中评论失败"
+        ],
+        [
+          "Failed to dismiss PR approval",
+          "忽略 PR 批准失败"
+        ],
+        [
+          "Failed to open Pull Request",
+          "打开 PR 失败"
+        ],
+        [
+          "Failed to request reviewers",
+          "请求审查者失败"
+        ],
+        [
+          "No PR threads were resolved",
+          "没有可解决的 PR 讨论"
+        ],
+        [
+          "Resolved previous PR threads",
+          "已解决之前的 PR 讨论"
+        ],
+        [
+          "Add Automation",
+          "添加自动化"
+        ],
+        [
+          "Edit Automation",
+          "编辑自动化"
+        ],
+        [
+          "Delete automation",
+          "删除自动化"
+        ],
+        [
+          "Automate repetitive tasks with always-on agents and configure Cursor",
+          "使用常驻智能体自动执行重复任务并配置 Cursor"
+        ],
+        [
+          "Automation filters",
+          "自动化筛选条件"
+        ],
+        [
+          "Automation template filters",
+          "自动化模板筛选条件"
+        ],
+        [
+          "Automation detail sections",
+          "自动化详情区块"
+        ],
+        [
+          "Create an eval to judge automation runs.",
+          "创建评估以评判自动化运行。"
+        ],
+        [
+          "New Eval",
+          "新建评估"
+        ],
+        [
+          "No Evals Yet",
+          "尚无评估"
+        ],
+        [
+          "No Runs Yet",
+          "尚无运行记录"
+        ],
+        [
+          "Search automation",
+          "搜索自动化"
+        ],
+        [
+          "Search trigger",
+          "搜索触发器"
+        ],
+        [
+          "Stop All Runs",
+          "停止所有运行"
+        ],
+        [
+          "Filter runs",
+          "筛选运行"
+        ],
+        [
+          "Cancel Run",
+          "取消运行"
+        ],
+        [
+          "Retry started. Check the run history for the new run.",
+          "已开始重试。请在运行历史中查看新的运行。"
+        ],
+        [
+          "The automation run failed",
+          "自动化运行失败"
+        ],
+        [
+          "Scheduled run",
+          "计划运行"
+        ],
+        [
+          "Webhook event",
+          "Webhook 事件"
+        ],
+        [
+          "Git event",
+          "Git 事件"
+        ],
+        [
+          "Linear event",
+          "Linear 事件"
+        ],
+        [
+          "Slack message",
+          "Slack 消息"
+        ],
+        [
+          "Microsoft Teams",
+          "Microsoft Teams"
+        ],
+        [
+          "Microsoft Teams message",
+          "Microsoft Teams 消息"
+        ],
+        [
+          "Microsoft Teams channel created",
+          "已创建 Microsoft Teams 频道"
+        ],
+        [
+          "Channel created",
+          "已创建频道"
+        ],
+        [
+          "Checks completed",
+          "检查已完成"
+        ],
+        [
+          "Creator required",
+          "需要创建者"
+        ],
+        [
+          "Only the creator can make this automation private",
+          "只有创建者可以将此自动化设为私有"
+        ],
+        [
+          "Only the creator can generate a webhook auth header for this automation because webhook requests run as the creator.",
+          "只有创建者可以为此自动化生成 Webhook 认证标头，因为 Webhook 请求以创建者身份运行。"
+        ],
+        [
+          "Only the creator can share a private automation. Team admins can still disable or delete it.",
+          "只有创建者可以共享私有自动化。团队管理员仍可禁用它或将其删除。"
+        ],
+        [
+          "Failed to read Slack channel",
+          "读取 Slack 频道失败"
+        ],
+        [
+          "Failed to read Microsoft Teams channel",
+          "读取 Microsoft Teams 频道失败"
+        ],
+        [
+          "Failed to send Slack message",
+          "发送 Slack 消息失败"
+        ],
+        [
+          "Failed to send Microsoft Teams message",
+          "发送 Microsoft Teams 消息失败"
+        ],
+        [
+          "Failed to run MCP action",
+          "运行 MCP 操作失败"
+        ],
+        [
+          "Error message:",
+          "错误消息："
+        ],
+        [
+          "Change owner",
+          "更改所有者"
+        ],
+        [
+          "Toggle automation enabled state",
+          "切换自动化启用状态"
+        ],
+        [
+          "Creation Provider",
+          "创建提供方"
+        ],
+        [
+          "Runs using your team",
+          "使用您的团队运行"
+        ],
+        [
+          "Team Default",
+          "团队默认"
+        ],
+        [
+          "Team default",
+          "团队默认"
+        ],
+        [
+          "Get Cursor for iOS",
+          "获取 iOS 版 Cursor"
+        ],
+        [
+          "Finish logging in in your browser.",
+          "请在浏览器中完成登录。"
+        ],
+        [
+          "Finish unifying",
+          "完成统一"
+        ],
+        [
+          "Sharing will activate in",
+          "共享将在以下时间激活"
+        ],
+        [
+          "Authentication UI",
+          "身份验证界面"
+        ],
+        [
+          "Authentication UI (login page)",
+          "身份验证界面（登录页）"
+        ]
+      ]
     }
   ]
 }
