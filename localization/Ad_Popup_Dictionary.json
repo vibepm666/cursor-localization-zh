@@ -255,6 +255,9 @@
     ["Align on implementation before writing code", "在编写代码前对齐实现方案"],
     ["Debug an issue", "调试问题"],
     ["Find root causes and fix tricky bugs", "找到根本原因并修复棘手的 bug"],
-    ["Voice mode lets you dictate better prompts for your agents", "语音模式让您能为智能体口述更好的提示词"]
+    ["Voice mode lets you dictate better prompts for your agents", "语音模式让您能为智能体口述更好的提示词"],
+    ["reached. It resets in", "已达。将于"],
+    ["Buy credits to keep going now, or upgrade your plan for more weekly usage.", "现在购买积分以继续使用，或升级您的套餐以获得更多每周用量。"],
+    ["Buy credits to keep going now, or upgrade your plan for more weekly usage", "现在购买积分以继续使用，或升级您的套餐以获得更多每周用量"]
   ]
 }
