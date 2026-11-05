@@ -709,6 +709,34 @@
     [
       "New Agent",
       "新建智能体"
+    ],
+    [
+      "Additional usage credits",
+      "额外用量积分"
+    ],
+    [
+      "Buy credits",
+      "购买积分"
+    ],
+    [
+      "Set auto top-up",
+      "设置自动充值"
+    ],
+    [
+      "remaining",
+      "剩余"
+    ],
+    [
+      "Monthly additional usage",
+      "每月额外用量"
+    ],
+    [
+      "Monthly additional usage limit",
+      "每月额外用量上限"
+    ],
+    [
+      "Not set",
+      "未设置"
     ]
   ]
 }
