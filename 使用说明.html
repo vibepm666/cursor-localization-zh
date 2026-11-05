@@ -363,12 +363,16 @@
 <li><strong>运行脚本报错 / 弹出 Microsoft Store / 汉化无输出</strong>：通常是未安装真正的 Python。运行 <code>where python</code>，若路径含 <code>Microsoft\WindowsApps</code>，请从 <a href="https://www.python.org/downloads/">python.org</a> 安装 Python 3 并勾选 <strong>Add python.exe to PATH</strong>，或执行 <code>winget install Python.Python.3.12</code>；安装后重开终端，用 <code>python --version</code> 确认。</li>
 <li><strong>提示「安装已损坏 / installation appears to be corrupt」</strong>：汉化会修改 <code>workbench.html</code>，Cursor 还会校验 <code>product.json</code> 中的<strong>全部</strong> checksum（约 6 个核心文件）。请运行 <code>修复校验_Win.bat</code>（Mac/Linux 用 <code>修复校验_Mac.sh</code>），或执行 <code>python Cursor_Localization_Tool.py --fix-checksum</code>。若提示权限不足，Windows 请右键<strong>以管理员身份运行</strong>；完成后完全退出并重启 Cursor。</li>
 <li><strong>汉化后顶部菜单仍是英文</strong>：按 <code>Ctrl+Shift+P</code>（Mac 用 <code>Cmd+Shift+P</code>）→ 输入「Configure Display Language」→ 选 <strong>中文(简体) / zh-cn</strong> → 再完全重启一次。如果没有中文(简体)选项，在扩展市场中搜索并“ Chinese (Simplified) Language Pack"后重新设置。</li>
-<li>用记事本打开目录中的 <code>Cursor_Localization_Tool.py</code>，在文件开头 <code>cd /d "%~dp0"</code>后面增加一行，指定 Cursor 安装目录，保存后重新运行启动脚本。</li>
-</ul>
-<pre style="white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; max-width: 100%;"><code class="language-bat" style="display: block; white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; max-width: 100%;">set CURSOR_INSTALL_DIR=D:\Program Files\cursor   # 含 Cursor.exe 的安装文件夹
+<li>用记事本打开目录中的 <code>启动汉化_Win.bat</code>，在文件开头 <code>cd /d "%~dp0"</code>后面增加一行，指定 Cursor 安装目录，保存后重新运行启动脚本。</li>
+<pre style="white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; max-width: 100%;"><code class="language-bat" style="display: block; white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; max-width: 100%;">
+set CURSOR_INSTALL_DIR=D:\Program Files\cursor   # 含 Cursor.exe 的安装文件夹
 </code></pre>
-<ul>
-<li><strong>执行脚本时仍然出错</strong>：直接将汉化脚本拖入到cursor的对话框中，发送：我需要安装这个汉化工具，汉化时出现了报错，帮我检查并重新执行脚本，我安装目录是：XXX</li>
+</li>
+<li><strong>执行脚本时仍然出错</strong>：直接将汉化脚本拖入到cursor的对话框中，发送：
+<pre style="white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; max-width: 100%;"><code class="language-bat" style="display: block; white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; max-width: 100%;">
+我需要安装这个汉化工具，汉化时出现了报错，帮我检查并重新执行脚本，我安装目录是：XXX
+</code></pre>
+</li>
 </ul>
 <hr>
 </article>

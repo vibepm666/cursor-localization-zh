@@ -1,0 +1,45 @@
+# 更新日志
+
+本项目遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/) 格式，版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
+
+---
+
+## [Unreleased]
+
+### 新增
+- 过期条目检测脚本 `check_stale_entries.py`：自动扫描 Cursor 源码，找出字典中已失效的翻译
+- 更新提示通知翻译：`New update available`、`Install Now`
+
+### 补充翻译
+按功能模块分类，共补充约 **170 条**：
+
+| 模块 | 数量 |
+|------|------|
+| 用量限制与升级弹窗 | ~20 |
+| ORIGIN / Cloud Agents 推广弹窗 | ~16 |
+| Plugins 引导弹窗 | ~5 |
+| Allowlist 安全确认弹窗 | ~8 |
+| 设置页（通用 / 计划与用量 / Voice / 对话 / 执行与审批 / 上下文与工具 / Git & PRs / 远程控制 / 工作树清理） | ~65 |
+| Computer Use | ~3 |
+| 语言下拉列表 | 28 |
+| 菜单与通用 UI（含视图菜单、侧栏菜单） | ~15 |
+| 队列消息与通知 | ~6 |
+| 右键菜单 | ~2 |
+| 高负载提示 | 1 |
+| 智能体欢迎页模板 | 9 |
+
+### 文档更新
+- README.md 新增「过期条目检测」使用说明
+- 文件说明表格新增 `check_stale_entries.py`
+
+---
+
+## [2026-07-15]
+
+### 变更
+- 核心词典结构优化，按功能模块分 section
+- 新增 `Ad_Popup_Dictionary.json` 独立维护弹窗翻译
+
+---
+
+> 更早的变更记录略。

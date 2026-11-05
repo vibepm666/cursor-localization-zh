@@ -345,6 +345,370 @@
     [
       "This action cannot be undone",
       "此操作无法撤销"
+    ],
+    [
+      "Allowlist Options",
+      "白名单选项"
+    ],
+    [
+      "You can configure Shell, MCP and Fetch allowlists for Auto mode. However, Auto works well without these.",
+      "您可以为 Auto 模式配置 Shell、MCP 和 Fetch 白名单。不过，即使不配置这些，Auto 也能正常工作。"
+    ],
+    [
+      "You can configure Shell, MCP and Fetch allowlists for Auto mode. However, Auto works well without these",
+      "您可以为 Auto 模式配置 Shell、MCP 和 Fetch 白名单。不过，即使不配置这些，Auto 也能正常工作"
+    ],
+    [
+      "New Messages",
+      "新消息"
+    ],
+    [
+      "Choose the default behavior of messages sent while Agent is working",
+      "选择智能体工作时发送消息的默认行为"
+    ],
+    [
+      "Manually Sent Messages from Queue",
+      "从队列手动发送的消息"
+    ],
+    [
+      "Choose the default behavior of messages sent from the queue",
+      "选择从队列发送消息的默认行为"
+    ],
+    [
+      "Interrupt",
+      "中断"
+    ],
+    [
+      "Allow agent to switch to modes like Plan or Debug without asking. When off, Cursor asks first, but skips if unanswered within 15 seconds.",
+      "允许智能体在不询问的情况下切换到 Plan 或 Debug 等模式。关闭时，Cursor 会先询问，但如果 15 秒内未回答则跳过。"
+    ],
+    [
+      "Allow agent to switch to modes like Plan or Debug without asking. When off, Cursor asks first, but skips if unanswered within 15 seconds",
+      "允许智能体在不询问的情况下切换到 Plan 或 Debug 等模式。关闭时，Cursor 会先询问，但如果 15 秒内未回答则跳过"
+    ],
+    [
+      "A classifier will run for each action and decide whether it's safe to execute this command. Allowlists are still respected.",
+      "分类器将针对每个操作运行，并决定执行此命令是否安全。白名单仍然有效。"
+    ],
+    [
+      "A classifier will run for each action and decide whether it's safe to execute this command. Allowlists are still respected",
+      "分类器将针对每个操作运行，并决定执行此命令是否安全。白名单仍然有效"
+    ],
+    [
+      "Auto-Review",
+      "自动审查"
+    ],
+    [
+      "Sync Skills for Cloud Agents",
+      "为云智能体同步技能"
+    ],
+    [
+      "Cursor syncs your local skills so they can be used with Cloud Agents. Turn this off to disable syncing.",
+      "Cursor 会同步您的本地技能，以便与云智能体一起使用。关闭此项即可禁用同步。"
+    ],
+    [
+      "Cursor syncs your local skills so they can be used with Cloud Agents. Turn this off to disable syncing",
+      "Cursor 会同步您的本地技能，以便与云智能体一起使用。关闭此项即可禁用同步"
+    ],
+    [
+      "Git & PRs",
+      "Git 与 PR"
+    ],
+    [
+      "Choose Origin (cursor.com/codebase), GitHub, or Graphite for pull request links on web and desktop",
+      "选择 Origin (cursor.com/codebase)、GitHub 或 Graphite 作为网页和桌面端拉取请求链接的提供方"
+    ],
+    [
+      "Premium Plan",
+      "高级套餐"
+    ],
+    [
+      "Weekly usage resets on",
+      "每周用量将于"
+    ],
+    [
+      "Get Super",
+      "升级到 Super"
+    ],
+    [
+      "Get more usage with Super",
+      "通过 Super 获得更多用量"
+    ],
+    [
+      "Included in Premium",
+      "高级版包含内容"
+    ],
+    [
+      "Weekly usage limit",
+      "每周用量上限"
+    ],
+    [
+      "Included usage with your subscription. Resets",
+      "订阅包含的用量。重置于"
+    ],
+    [
+      "Used before your credits.",
+      "优先于积分使用。"
+    ],
+    [
+      "Credits",
+      "积分"
+    ],
+    [
+      "Could not load the credit balance",
+      "无法加载积分余额"
+    ],
+    [
+      "Credits expire after two years",
+      "积分有效期为两年"
+    ],
+    [
+      "Cloud Agent Approval Banners While Focused",
+      "专注时显示云智能体审批横幅"
+    ],
+    [
+      "Also show the approval banner while Cursor is focused; the request card in the agent conversation always shows",
+      "Cursor 处于前台时也显示审批横幅；智能体对话中的请求卡片始终显示"
+    ],
+    [
+      "You can also manage Privacy Mode in the Unify dashboard",
+      "您也可以在 Unify 控制面板中管理隐私模式"
+    ],
+    [
+      "Agent Voice",
+      "智能体语音"
+    ],
+    [
+      "Default voice for voice chats. Changing the voice plays a short sample.",
+      "语音聊天的默认语音。更换语音时会播放简短示例。"
+    ],
+    [
+      "Speed",
+      "语速"
+    ],
+    [
+      "How quickly the voice speaks in voice chats.",
+      "语音聊天中语音的说话速度。"
+    ],
+    [
+      "Language",
+      "语言"
+    ],
+    [
+      "Language used in voice chats.",
+      "语音聊天中使用的语言。"
+    ],
+    [
+      "Microphone",
+      "麦克风"
+    ],
+    [
+      "Microphone used in voice chats.",
+      "语音聊天中使用的麦克风。"
+    ],
+    [
+      "Words that send your prompt while you dictate. Voice chats ignore them.",
+      "听写时发送提示词的词语。语音聊天会忽略它们。"
+    ],
+    [
+      "Auto-detect",
+      "自动检测"
+    ],
+    [
+      "Continue Interrupted Agents",
+      "继续中断的智能体"
+    ],
+    [
+      "Automatically resume working on agents and their subagents after a reload or restart",
+      "在重新加载或重启后自动恢复智能体及其子智能体的工作"
+    ],
+    [
+      "Show notifications for less urgent issues",
+      "显示不太紧急问题的通知"
+    ],
+    [
+      "Chat Width",
+      "聊天宽度"
+    ],
+    [
+      "Set the maximum width of Agent conversations",
+      "设置智能体对话的最大宽度"
+    ],
+    [
+      "Narrow",
+      "窄"
+    ],
+    [
+      "Wide",
+      "宽"
+    ],
+    [
+      "Enable Remote Control for this computer",
+      "启用此电脑的远程控制"
+    ],
+    [
+      "Connected",
+      "已连接"
+    ],
+    [
+      "Allow agents on this computer to be controlled from your other devices",
+      "允许其他设备控制此电脑上的智能体"
+    ],
+    [
+      "Automatically register computers",
+      "自动注册电脑"
+    ],
+    [
+      "Register eligible computers when you sign in",
+      "登录时自动注册符合条件的电脑"
+    ],
+    [
+      "Computer Name",
+      "电脑名称"
+    ],
+    [
+      "Change how this computer appears on other devices",
+      "更改此电脑在其他设备上的显示名称"
+    ],
+    [
+      "Disable Remote Control on all of my computers",
+      "在所有电脑上禁用远程控制"
+    ],
+    [
+      "Unregister every computer on your account; you can register any of them again later",
+      "取消注册您账户中的所有电脑；您稍后可重新注册其中任何一台"
+    ],
+    [
+      "Unregister All",
+      "全部取消注册"
+    ],
+    [
+      "Paired Devices",
+      "已配对设备"
+    ],
+    [
+      "No devices are currently paired with this computer.",
+      "当前没有设备与此电脑配对。"
+    ],
+    [
+      "Self-Hosted Workers",
+      "自托管工作节点"
+    ],
+    [
+      "Enable local self-hosted workers",
+      "启用本地自托管工作节点"
+    ],
+    [
+      "Allow cloud agents to run in your local environment.",
+      "允许云智能体在您的本地环境中运行。"
+    ],
+    [
+      "Computer Use",
+      "电脑操作"
+    ],
+    [
+      "Always-allowed apps: Cursor can use these in any chat without asking. Remove one to be asked again.",
+      "始终允许的应用：Cursor 可在任何聊天中使用这些应用而无需询问。移除后将再次询问。"
+    ],
+    [
+      "No always-allowed apps yet. Choose Always Allow when Cursor asks to use an app.",
+      "暂无始终允许的应用。当 Cursor 请求使用应用时，选择「始终允许」。"
+    ],
+    [
+      "Premium",
+      "高级版"
+    ],
+    [
+      "used",
+      "已使用"
+    ],
+    [
+      "hours and",
+      "小时"
+    ],
+    [
+      "minutes left)",
+      "分钟剩余）"
+    ],
+    [
+      "minute left)",
+      "分钟剩余）"
+    ],
+    [
+      "minutes left",
+      "分钟剩余"
+    ],
+    [
+      "minute left",
+      "分钟剩余"
+    ],
+    [
+      "expire after two years",
+      "有效期为两年"
+    ],
+    [
+      "used in voice chats.",
+      "用于语音聊天。"
+    ],
+    [
+      "used in voice chats",
+      "用于语音聊天"
+    ],
+    [
+      "System Default",
+      "系统默认"
+    ],
+    [
+      "Status chimes",
+      "状态提示音"
+    ],
+    [
+      "Play subtle tones when a task is sent, a result arrives after silence, the agent needs a decision, or an error occurs.",
+      "当任务发送、静默后收到结果、智能体需要决策或发生错误时播放轻微提示音。"
+    ],
+    [
+      "Worktree Cleanup",
+      "工作树清理"
+    ],
+    [
+      "Search Plugins, Skills, MCPs...",
+      "搜索插件、技能、MCP..."
+    ],
+    [
+      "Browse",
+      "浏览"
+    ],
+    [
+      "Guide Agent with Rules",
+      "用规则引导智能体"
+    ],
+    [
+      "Rules give Agent persistent, system-level instructions for your coding standards and workflows.",
+      "规则为智能体提供持久的系统级指令，用于编码规范和工作流。"
+    ],
+    [
+      "Create Reusable Commands",
+      "创建可复用命令"
+    ],
+    [
+      "Commands are reusable prompts you invoke with /name to standardize common workflows across your team.",
+      "命令是可复用的提示词，通过 /名称 调用，用于标准化团队的常见工作流。"
+    ],
+    [
+      "Show the Add to Chat button when selecting code",
+      "选中代码时在聊天按钮旁显示「添加到聊天」"
+    ],
+    [
+      "Show an Open worktree link in the Terminal when the Agent works in a worktree",
+      "当智能体在工作树中工作时，在终端中显示「打开工作树」链接"
+    ],
+    [
+      "Show Chat History",
+      "显示聊天历史"
+    ],
+    [
+      "New Agent",
+      "新建智能体"
     ]
   ]
 }

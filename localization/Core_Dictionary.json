@@ -5865,6 +5865,22 @@
       "title": "通用 UI 元素",
       "entries": [
         [
+          "New project",
+          "新建项目"
+        ],
+        [
+          "New Project",
+          "新建项目"
+        ],
+        [
+          "Projects",
+          "项目"
+        ],
+        [
+          "Open with Live Server",
+          "用 Live Server 打开"
+        ],
+        [
           "Save",
           "保存"
         ],
@@ -8005,6 +8021,46 @@
         [
           "About",
           "关于"
+        ],
+        [
+          "Source Control",
+          "源代码管理"
+        ],
+        [
+          "Output",
+          "输出"
+        ],
+        [
+          "Open View...",
+          "打开视图..."
+        ],
+        [
+          "Folders",
+          "资源管理器"
+        ],
+        [
+          "Outline",
+          "大纲"
+        ],
+        [
+          "Explorer",
+          "资源管理器"
+        ],
+        [
+          "Run and Debug",
+          "运行和调试"
+        ],
+        [
+          "Voice",
+          "语音"
+        ],
+        [
+          "Show Chat History",
+          "显示聊天历史"
+        ],
+        [
+          "New Agent",
+          "新建智能体"
         ]
       ]
     },

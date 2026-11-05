@@ -938,9 +938,14 @@
       "replacement": "配置键绑定 $1"
     },
     {
-      "regex": "^Hide '(.+)'$",
+      "regex": "^Hide [\"'\"](.+)[\"'\"]$",
       "flags": "",
       "replacement": "隐藏「$1」"
+    },
+    {
+      "regex": "^Show [\"'\"](.+)[\"'\"]$",
+      "flags": "",
+      "replacement": "显示「$1」"
     },
     {
       "regex": "^Hide drop shadow$",
