@@ -258,6 +258,9 @@
     ["Voice mode lets you dictate better prompts for your agents", "语音模式让您能为智能体口述更好的提示词"],
     ["reached. It resets in", "已达。将于"],
     ["Buy credits to keep going now, or upgrade your plan for more weekly usage.", "现在购买积分以继续使用，或升级您的套餐以获得更多每周用量。"],
-    ["Buy credits to keep going now, or upgrade your plan for more weekly usage", "现在购买积分以继续使用，或升级您的套餐以获得更多每周用量"]
+    ["Buy credits to keep going now, or upgrade your plan for more weekly usage", "现在购买积分以继续使用，或升级您的套餐以获得更多每周用量"],
+    ["Agent stopped retrying", "智能体已停止重试"],
+    ["The connection was interrupted repeatedly without saving progress, so the agent stopped to avoid repeating the same work. Retry to continue from the last saved state.", "连接反复中断且未保存进度，因此智能体已停止，以避免重复相同的工作。重试以从上次保存的状态继续。"],
+    ["The connection was interrupted repeatedly without saving progress, so the agent stopped to avoid repeating the same work. Retry to continue from the last saved state", "连接反复中断且未保存进度，因此智能体已停止，以避免重复相同的工作。重试以从上次保存的状态继续"]
   ]
 }
