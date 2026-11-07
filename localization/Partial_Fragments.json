@@ -785,6 +785,18 @@
     [
       "Automatically run all operations without asking",
       "自动运行所有操作而无需询问"
+    ],
+    [
+      "You have not yet added a folder to the workspace.",
+      "您尚未向工作区添加文件夹。"
+    ],
+    [
+      "You have not yet added a folder to the workspace",
+      "您尚未向工作区添加文件夹"
+    ],
+    [
+      "Open Folder",
+      "打开文件夹"
     ]
   ]
 }
