@@ -797,6 +797,14 @@
     [
       "Open Folder",
       "打开文件夹"
+    ],
+    [
+      "You can also manage Privacy Mode in the",
+      "您也可以在 中管理隐私模式"
+    ],
+    [
+      "Privacy Mode",
+      "隐私模式"
     ]
   ]
 }
