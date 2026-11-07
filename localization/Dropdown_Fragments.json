@@ -1461,6 +1461,10 @@
     [
       "Stop the agent and send the message",
       "停止智能体并发送消息"
+    ],
+    [
+      "the agent without stopping it",
+      "智能体而不中断它"
     ]
   ]
 }
