@@ -757,6 +757,34 @@
     [
       "Not set",
       "未设置"
+    ],
+    [
+      "Always Run",
+      "始终运行"
+    ],
+    [
+      "Modifying system registry settings and virtual memory paging files requires explicit user authorization.",
+      "修改系统注册表设置和虚拟内存分页文件需要用户明确授权。"
+    ],
+    [
+      "Modifying system registry settings and virtual memory paging files requires explicit user authorization",
+      "修改系统注册表设置和虚拟内存分页文件需要用户明确授权"
+    ],
+    [
+      "Change run mode",
+      "更改运行模式"
+    ],
+    [
+      "Automatically run operations after you approv",
+      "批准后自动运行操作"
+    ],
+    [
+      "Automatically run operations that Auto-review",
+      "自动运行通过自动审查的操作"
+    ],
+    [
+      "Automatically run all operations without asking",
+      "自动运行所有操作而无需询问"
     ]
   ]
 }
