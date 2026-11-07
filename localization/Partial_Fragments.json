@@ -805,6 +805,62 @@
     [
       "Privacy Mode",
       "隐私模式"
+    ],
+    [
+      "This edits a file outside your workspace.",
+      "这将编辑工作区外的文件。"
+    ],
+    [
+      "This edits a file outside your workspace",
+      "这将编辑工作区外的文件"
+    ],
+    [
+      "You can change this behavior in",
+      "您可以在 中更改此行为"
+    ],
+    [
+      "Choose how Agents run tools like command execution, MCP, and file writes.",
+      "选择智能体如何运行工具（如命令执行、MCP 和文件写入）。"
+    ],
+    [
+      "Choose how Agents run tools like command execution, MCP, and file writes",
+      "选择智能体如何运行工具（如命令执行、MCP 和文件写入）"
+    ],
+    [
+      "Learn more",
+      "了解更多"
+    ],
+    [
+      "Read Access",
+      "读取权限"
+    ],
+    [
+      "Control whether agents can read files outside the workspace without approval",
+      "控制智能体是否可以未经批准读取工作区外的文件"
+    ],
+    [
+      "Read Allowlist",
+      "读取白名单"
+    ],
+    [
+      "File paths and glob patterns agents can read without approval",
+      "智能体可以未经批准读取的文件路径和 glob 模式"
+    ],
+    [
+      "Add paths or globs (for example, /tmp/*)",
+      "添加路径或 glob 模式（例如 /tmp/*）"
+    ],
+    [
+      "Done • Gallery page modification",
+      "完成 • 图库页面修改"
+    ],
+    [
+      "Open Cursor to view the agent's output.",
+      "打开 Cursor 查看智能体的输出。"
+    ],
+    [
+      "Open Cursor to view the agent's output",
+      "打开 Cursor 查看智能体的输出"
     ]
   ]
 }
