@@ -823,6 +823,14 @@
       "这将编辑工作区外的文件"
     ],
     [
+      "This creates a file outside your workspace.",
+      "这将创建工作区外的文件。"
+    ],
+    [
+      "This creates a file outside your workspace",
+      "这将创建工作区外的文件"
+    ],
+    [
       "You can change this behavior in",
       "您可以在 中更改此行为"
     ],
