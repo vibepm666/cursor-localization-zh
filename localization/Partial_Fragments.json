@@ -359,6 +359,14 @@
       "您可以为 Auto 模式配置 Shell、MCP 和 Fetch 白名单。不过，即使不配置这些，Auto 也能正常工作"
     ],
     [
+      "You can configure Shell, MCP, Fetch, and Read allowlists for Auto mode. However, Auto works well without these.",
+      "您可以为 Auto 模式配置 Shell、MCP、Fetch 和 Read 白名单。不过，即使不配置这些，Auto 也能正常工作。"
+    ],
+    [
+      "You can configure Shell, MCP, Fetch, and Read allowlists for Auto mode. However, Auto works well without these",
+      "您可以为 Auto 模式配置 Shell、MCP、Fetch 和 Read 白名单。不过，即使不配置这些，Auto 也能正常工作"
+    ],
+    [
       "New Messages",
       "新消息"
     ],
