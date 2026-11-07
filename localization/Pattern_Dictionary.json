@@ -1,6 +1,6 @@
 {
   "description": "动态文本正则替换（MoShi_FanYi）。",
-  "updatedAt": "2026-08-13",
+  "updatedAt": "2026-11-03",
   "patterns": [
     {
       "regex": "^(\\d+) requests? remaining$",
@@ -1201,6 +1201,31 @@
       "regex": "^([\\d,.]+(?:K|M)?)\\s+out of\\s+([\\d,.]+(?:K|M)?)\\s+tokens$",
       "flags": "i",
       "replacement": "$1 / $2 token"
+    },
+    {
+      "regex": "^Agent AI Stats: (\\d+) accepted out of (\\d+) suggested, (\\d+) percent acceptance rate$",
+      "flags": "i",
+      "replacement": "智能体 AI 统计：已接受 $1 / 建议 $2（接受率 $3%）"
+    },
+    {
+      "regex": "^Tab AI Stats: (\\d+) accepted out of (\\d+) suggested, (\\d+) percent acceptance rate$",
+      "flags": "i",
+      "replacement": "Tab 统计：已接受 $1 / 建议 $2（接受率 $3%）"
+    },
+    {
+      "regex": "^(\\d+) minutes? left$",
+      "flags": "i",
+      "replacement": "剩余 $1 分钟"
+    },
+    {
+      "regex": "^(\\d+) hours? left$",
+      "flags": "i",
+      "replacement": "剩余 $1 小时"
+    },
+    {
+      "regex": "^(\\d+) days? left$",
+      "flags": "i",
+      "replacement": "剩余 $1 天"
     }
   ]
 }
