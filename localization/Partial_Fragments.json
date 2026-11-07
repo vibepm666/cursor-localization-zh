@@ -367,6 +367,14 @@
       "您可以为 Auto 模式配置 Shell、MCP、Fetch 和 Read 白名单。不过，即使不配置这些，Auto 也能正常工作"
     ],
     [
+      "Agent will ask for approval before running tools.",
+      "智能体在运行工具前会请求批准。"
+    ],
+    [
+      "Agent will ask for approval before running tools",
+      "智能体在运行工具前会请求批准"
+    ],
+    [
       "New Messages",
       "新消息"
     ],

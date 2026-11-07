@@ -1445,6 +1445,22 @@
     [
       "Vietnamese",
       "越南语"
+    ],
+    [
+      "Steer",
+      "引导"
+    ],
+    [
+      "Steer the agent without stopping it",
+      "引导智能体而不中断它"
+    ],
+    [
+      "Send after Agent finishes",
+      "在智能体完成后发送"
+    ],
+    [
+      "Stop the agent and send the message",
+      "停止智能体并发送消息"
     ]
   ]
 }
