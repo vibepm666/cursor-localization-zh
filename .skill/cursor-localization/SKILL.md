@@ -1,8 +1,6 @@
-# Cursor 汉化包维护 Skill
+# cursor-localization
 
-## 项目概述
-
-Cursor 汉化项目通过向 `workbench.html` 注入 JS 运行时脚本，配合多份 JSON 词典实现界面中文化。本 skill 用于维护和补充汉化词典。
+Cursor 汉化包维护 skill，用于维护和补充汉化词典。
 
 **项目根目录**：`D:\VibePM\tools\cursor-zh`
 **GitHub 仓库**：`https://github.com/vibepm666/cursor-localization-zh.git`
