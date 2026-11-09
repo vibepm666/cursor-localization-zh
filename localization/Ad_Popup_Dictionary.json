@@ -288,10 +288,6 @@
     ["files", "个文件"],
     ["available tools", "可用工具"],
     ["Exploring available tools", "正在探索可用工具"],
-    ["Just now", "刚刚"],
-    ["m ago", "分钟前"],
-    ["h ago", "小时前"],
-    ["d ago", "天前"],
-    ["s ago", "秒前"]
+    ["Just now", "刚刚"]
   ]
 }
