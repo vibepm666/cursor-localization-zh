@@ -1,12 +1,13 @@
 @echo off
 setlocal EnableExtensions EnableDelayedExpansion
-chcp 65001 >nul 2>&1
+chcp 936 >nul 2>&1
+set "PYTHONIOENCODING=gbk"
 cd /d "%~dp0"
-title 取消 Cursor 汉化
+title ȡ�� Cursor ����
 
 echo ============================================================
-echo   取消 Cursor 汉化
-echo   恢复工作台文件与相关文件为原始英文状态
+echo   ȡ�� Cursor ����
+echo   �ָ�����̨�ļ�������ļ�ΪԭʼӢ��״̬
 echo ============================================================
 echo.
 
@@ -35,56 +36,56 @@ findstr /c:"%INJECTION_MARKER_NEW%" "!WORKBENCH_HTML!" >nul 2>&1
 if errorlevel 1 findstr /c:"%INJECTION_MARKER_OLD%" "!WORKBENCH_HTML!" >nul 2>&1
 if errorlevel 1 goto :NotInjected
 
-echo [提示] 请先完全退出 Cursor，再执行恢复。
+echo [��ʾ] ������ȫ�˳� Cursor����ִ�лָ���
 call :ShowInstallDir
 echo.
-echo 即将执行:
-echo   恢复工作台及相关文件为原始英文状态
+echo ����ִ��:
+echo   �ָ�����̨������ļ�ΪԭʼӢ��״̬
 echo.
-set /p "CONFIRM=确认取消汉化并恢复原始文件？[Y/N]: "
+set /p "CONFIRM=ȷ��ȡ���������ָ�ԭʼ�ļ���[Y/N]: "
 if /i not "%CONFIRM%"=="Y" if /i not "%CONFIRM%"=="YES" goto :UserCancelled
 
 echo.
-echo [执行] 正在恢复原始文件...
+echo [ִ��] ���ڻָ�ԭʼ�ļ�...
 python "!HANHUA_SCRIPT!" --restore
 if errorlevel 1 goto :RestoreFailed
 
 echo.
-echo [完成] 已取消汉化。请重新启动 Cursor 以生效。
+echo [���] ��ȡ������������������ Cursor ����Ч��
 call :WaitKey
 exit /b 0
 
 :NoInstallDir
-echo [错误] 未找到 Cursor 安装目录。
-echo [提示] 请设置环境变量 CURSOR_INSTALL_DIR，或安装到常见路径。
+echo [����] δ�ҵ� Cursor ��װĿ¼��
+echo [��ʾ] �����û������� CURSOR_INSTALL_DIR����װ������·����
 call :WaitKey
 exit /b 1
 
 :NoScript
-for %%I in ("!HANHUA_SCRIPT!") do echo [错误] 未找到汉化脚本: %%~fI
+for %%I in ("!HANHUA_SCRIPT!") do echo [����] δ�ҵ������ű�: %%~fI
 call :WaitKey
 exit /b 1
 
 :NoWorkbench
-for %%I in ("!WORKBENCH_HTML!") do echo [错误] 未找到工作台文件 workbench.html: %%~fI
-echo [提示] 请检查 CURSOR_INSTALL_DIR 是否正确。
+for %%I in ("!WORKBENCH_HTML!") do echo [����] δ�ҵ�����̨�ļ� workbench.html: %%~fI
+echo [��ʾ] ���� CURSOR_INSTALL_DIR �Ƿ���ȷ��
 call :WaitKey
 exit /b 1
 
 :NotInjected
-echo [检查] 当前未检测到汉化注入，无需恢复。
+echo [���] ��ǰδ��⵽����ע�룬����ָ���
 call :ShowInstallDir
 call :WaitKey
 exit /b 0
 
 :UserCancelled
-echo [取消] 未做任何更改。
+echo [ȡ��] δ���κθ��ġ�
 call :WaitKey
 exit /b 0
 
 :RestoreFailed
 echo.
-echo [错误] 恢复失败，请查看上方输出。
+echo [����] �ָ�ʧ�ܣ���鿴�Ϸ������
 call :WaitKey
 exit /b 1
 
@@ -94,12 +95,12 @@ set "CURSOR_INSTALL_DIR="
 exit /b 0
 
 :ShowInstallDir
-for %%I in ("!CURSOR_INSTALL_DIR!") do echo [信息] 安装目录: %%~fI
+for %%I in ("!CURSOR_INSTALL_DIR!") do echo [��Ϣ] ��װĿ¼: %%~fI
 exit /b 0
 
 :WaitKey
 echo.
-echo 按任意键退出...
+echo ��������˳�...
 pause >nul
 exit /b 0
 
@@ -108,20 +109,30 @@ set "PFX86=%PROGRAMFILES(X86)%"
 if not defined CURSOR_INSTALL_DIR if exist "%LOCALAPPDATA%\Programs\Cursor\Cursor.exe" if exist "%LOCALAPPDATA%\Programs\Cursor\resources\app" set "CURSOR_INSTALL_DIR=%LOCALAPPDATA%\Programs\Cursor"
 if not defined CURSOR_INSTALL_DIR if exist "%PROGRAMFILES%\Cursor\Cursor.exe" if exist "%PROGRAMFILES%\Cursor\resources\app" set "CURSOR_INSTALL_DIR=%PROGRAMFILES%\Cursor"
 if not defined CURSOR_INSTALL_DIR if exist "!PFX86!\Cursor\Cursor.exe" if exist "!PFX86!\Cursor\resources\app" set "CURSOR_INSTALL_DIR=!PFX86!\Cursor"
+if not defined CURSOR_INSTALL_DIR call :DetectCursorOtherDrives
+exit /b 0
+
+:DetectCursorOtherDrives
+for %%D in (C D E F G H) do (
+    if not defined CURSOR_INSTALL_DIR if exist "%%D:\Program Files\Cursor\Cursor.exe" if exist "%%D:\Program Files\Cursor\resources\app" set "CURSOR_INSTALL_DIR=%%D:\Program Files\Cursor"
+    if not defined CURSOR_INSTALL_DIR if exist "%%D:\Program Files (x86)\Cursor\Cursor.exe" if exist "%%D:\Program Files (x86)\Cursor\resources\app" set "CURSOR_INSTALL_DIR=%%D:\Program Files (x86)\Cursor"
+    if not defined CURSOR_INSTALL_DIR if exist "%%D:\Cursor\Cursor.exe" if exist "%%D:\Cursor\resources\app" set "CURSOR_INSTALL_DIR=%%D:\Cursor"
+    if not defined CURSOR_INSTALL_DIR if exist "%%D:\Programs\Cursor\Cursor.exe" if exist "%%D:\Programs\Cursor\resources\app" set "CURSOR_INSTALL_DIR=%%D:\Programs\Cursor"
+)
 exit /b 0
 
 :CheckPython
 where python >nul 2>&1
 if errorlevel 1 (
-    echo [错误] 未找到 python 命令，恢复脚本需要 Python 3 环境。
+    echo [����] δ�ҵ� python ����ָ��ű���Ҫ Python 3 ������
     call :ShowPythonInstallTip
     exit /b 1
 )
 for /f "delims=" %%P in ('where python 2^>nul') do (
     echo %%P | findstr /i /c:"Microsoft\WindowsApps" /c:"microsoft\windowsapps" >nul 2>&1
     if not errorlevel 1 (
-        echo [错误] 检测到 Windows Store 的 Python 占位程序，无法运行恢复脚本。
-        echo [路径] %%P
+        echo [����] ��⵽ Windows Store �� Python ռλ�����޷����лָ��ű���
+        echo [·��] %%P
         call :ShowPythonInstallTip
         exit /b 1
     )
@@ -130,7 +141,7 @@ for /f "delims=" %%P in ('where python 2^>nul') do (
 :PythonPathOk
 python --version >nul 2>&1
 if errorlevel 1 (
-    echo [错误] python 命令无法正常运行，请安装真正的 Python 3。
+    echo [����] python �����޷��������У��밲װ������ Python 3��
     call :ShowPythonInstallTip
     exit /b 1
 )
@@ -138,12 +149,12 @@ exit /b 0
 
 :ShowPythonInstallTip
 echo.
-echo [原因] 系统可能只有 Microsoft Store 的应用执行别名，执行 python 时会打开商店或无输出。
-echo [排查] 在 CMD 或 PowerShell 运行: where python
-echo        若路径包含 Microsoft\WindowsApps，表示尚未安装真正的 Python。
-echo [安装] 任选其一:
-echo        1. 官网 https://www.python.org/downloads/ （安装时勾选 Add python.exe to PATH）
-echo        2. 命令 winget install Python.Python.3.12
-echo [可选] 设置 - 应用 - 高级应用设置 - 应用执行别名，关闭 python.exe / python3.exe 商店快捷方式。
-echo [验证] 安装后重新打开终端，运行 python --version 应显示 Python 3.x。
+echo [ԭ��] ϵͳ����ֻ�� Microsoft Store ��Ӧ��ִ�б�����ִ�� python ʱ����̵���������
+echo [�Ų�] �� CMD �� PowerShell ����: where python
+echo        ��·������ Microsoft\WindowsApps����ʾ��δ��װ������ Python��
+echo [��װ] ��ѡ��һ:
+echo        1. ���� https://www.python.org/downloads/ ����װʱ��ѡ Add python.exe to PATH��
+echo        2. ���� winget install Python.Python.3.12
+echo [��ѡ] ���� - Ӧ�� - �߼�Ӧ������ - Ӧ��ִ�б������ر� python.exe / python3.exe �̵��ݷ�ʽ��
+echo [��֤] ��װ�����´��նˣ����� python --version Ӧ��ʾ Python 3.x��
 exit /b 0

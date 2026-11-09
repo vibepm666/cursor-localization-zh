@@ -203,11 +203,15 @@ localStorage.setItem('Cursor_Localization_Market_Online_Translate', '1')  // 开
 - **已经执行汉化但是没有生效**：确认已完全重启了 Cursor。
 - **汉化后顶部菜单仍是英文**：按 `Ctrl+Shift+P`（Mac 用 `Cmd+Shift+P`）→ 输入「Configure Display Language」→ 选 **中文(简体) / zh-cn** → 再完全重启一次。如果没有 **中文(简体)** 选项，在扩展市场中搜索并安装 **Chinese (Simplified) Language Pack** 后重新设置。
 - **系统托盘右键菜单仍是英文**：托盘菜单在主进程 `main.js` 里。请**以管理员身份**重新运行汉化脚本，然后完全退出 Cursor（托盘图标也要关掉）再打开。Cursor 更新后需再运行一次。
-- **执行脚本找不到 Cursor**：一般是因为 Cursor 未装在默认目录中。用记事本打开 `启动汉化_Win.bat`（取消汉化时改 `取消汉化_Win.bat`），在 `cd /d "%~dp0"` 后面增加一行，指定 Cursor 安装目录，保存后重新运行启动脚本。
+- **执行脚本找不到 Cursor**：脚本会自动检查 `%LOCALAPPDATA%\Programs\Cursor`、`%ProgramFiles%\Cursor`、`%ProgramFiles(x86)%\Cursor`，以及 C、D、E、F、G、H 盘下的 `Program Files\Cursor`、`Program Files (x86)\Cursor`、`Cursor`、`Programs\Cursor`。若仍未找到（例如装在自定义目录），用记事本打开 `启动汉化_Win.bat`（取消汉化时改 `取消汉化_Win.bat`），在 `cd /d "%~dp0"` 后面增加一行，指定 Cursor 安装目录，保存后重新运行启动脚本。
 
 ```bat
 set CURSOR_INSTALL_DIR=D:\Program Files\cursor
 ```
+
+保存时请用记事本「另存为」并保持 **ANSI** 编码与 **Windows(CRLF)** 换行，否则 cmd 会解析出错。
+
+- **Windows 双击 `.bat` 闪退、乱码或提示「不是内部或外部命令」**：脚本被保存成了 LF 换行或 UTF-8 编码，cmd 无法正确解析中文与非 ASCII 字符。请使用仓库内原始脚本（CRLF + GBK 编码，`chcp 936`）；自行修改后务必另存为 ANSI + CRLF。
 
 Mac / Linux 可在 `启动汉化_Mac.sh` 开头增加 `export CURSOR_INSTALL_DIR="/Applications/Cursor.app"`，详见上文「路径配置」。
 

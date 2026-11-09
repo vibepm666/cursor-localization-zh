@@ -136,6 +136,22 @@ def AnZhuang_MuLu_YouXiao(GenMuLu):
     return True
 
 
+def _Windows_QiTa_PanFu_HouXuan():
+    """返回各盘符下常见的 Cursor 安装候选目录（Windows）。"""
+    HouXuan = []
+    for ZiMu in "CDEFGH":
+        PanFu = ZiMu + ":\\"
+        if not os.path.isdir(PanFu):
+            continue
+        HouXuan.extend([
+            os.path.join(PanFu, "Program Files", "Cursor"),
+            os.path.join(PanFu, "Program Files (x86)", "Cursor"),
+            os.path.join(PanFu, "Cursor"),
+            os.path.join(PanFu, "Programs", "Cursor"),
+        ])
+    return HouXuan
+
+
 def CaiCe_Cursor_AnZhuang_LuJing():
     """优先使用环境变量，否则从脚本位置和常见安装目录推断 Cursor 根目录。"""
     HuanJing = os.environ.get("CURSOR_INSTALL_DIR") or os.environ.get("CURSOR_ROOT")
@@ -156,7 +172,7 @@ def CaiCe_Cursor_AnZhuang_LuJing():
             os.path.join(os.environ.get("LOCALAPPDATA", ""), "Programs", "cursor"),
             os.path.join(os.environ.get("PROGRAMFILES", ""), "Cursor"),
             os.path.join(os.environ.get("PROGRAMFILES(X86)", ""), "Cursor"),
-        ])
+        ] + _Windows_QiTa_PanFu_HouXuan())
 
     for LuJing in HouXuan:
         if not LuJing:

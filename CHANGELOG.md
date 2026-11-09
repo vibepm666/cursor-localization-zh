@@ -6,6 +6,14 @@
 
 ## [Unreleased]
 
+### 修复
+- **Windows 批处理脚本无法双击运行**：`.bat` 原为 UTF-8 + LF 换行，cmd 解析时会丢字、把 `call :Label` 等拆成非法命令。现统一改为 **GBK(cp936) + CRLF**，`chcp` 改为 `936`，并显式设置 `PYTHONIOENCODING=gbk` 以保证 Python 输出不乱码
+- **检测不到非默认盘符的安装目录**：如 `D:\Program Files (x86)\Cursor`。批处理新增 `:DetectCursorOtherDrives`，`Cursor_Localization_Tool.py` 的 `CaiCe_Cursor_AnZhuang_LuJing()` 新增跨盘符候选扫描（C~H 盘 × `Program Files` / `Program Files (x86)` / `Cursor` / `Programs`）
+- **`修复校验_Win.bat` 必然失败**：它不传 `CURSOR_INSTALL_DIR`，Python 回退到脚本上级目录并报「未找到 product.json」。安装目录自动定位修复后已可正常执行
+
+### 文档更新
+- README / 使用说明补充「双击 `.bat` 闪退、乱码」与「找不到安装目录」的排查说明
+
 ### 新增
 - 过期条目检测脚本 `check_stale_entries.py`：自动扫描 Cursor 源码，找出字典中已失效的翻译
 

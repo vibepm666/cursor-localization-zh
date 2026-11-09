@@ -1,12 +1,13 @@
 @echo off
 setlocal EnableExtensions EnableDelayedExpansion
-chcp 65001 >nul 2>&1
+chcp 936 >nul 2>&1
+set "PYTHONIOENCODING=gbk"
 cd /d "%~dp0"
-title Cursor æ±‰åŒ–å¯åŠ¨å™¨ - by VibePM.net
+title Cursor ºº»¯Æô¶¯Æ÷ - by VibePM.net
 
 echo ============================================================
-echo   Cursor æ±‰åŒ–å¯åŠ¨å™¨ - by VibePM.net
-echo   è‡ªåŠ¨æ³¨å…¥/æ›´æ–°æ±‰åŒ–è„šæœ¬ï¼Œå¯é€‰å¯åŠ¨ Cursor
+echo   Cursor ºº»¯Æô¶¯Æ÷ - by VibePM.net
+echo   ×Ô¶¯×¢Èë/¸üÐÂºº»¯½Å±¾£¬¿ÉÑ¡Æô¶¯ Cursor
 echo ============================================================
 echo.
 
@@ -38,9 +39,9 @@ if errorlevel 1 call :WaitKey & exit /b 1
 
 call :ShowInfo
 echo.
-echo å³å°†æ‰§è¡Œ: å®‰è£…å®˜æ–¹ç®€ä½“ä¸­æ–‡è¯­è¨€åŒ…ã€æ³¨å…¥/æ›´æ–°æ±‰åŒ–è„šæœ¬å¹¶ä¿®æ”¹å·¥ä½œå°æ–‡ä»¶; å®ŒæˆåŽå¯é€‰æ‹©æ˜¯å¦è‡ªåŠ¨å¯åŠ¨ Cursor
+echo ¼´½«Ö´ÐÐ: °²×°¹Ù·½¼òÌåÖÐÎÄÓïÑÔ°ü¡¢×¢Èë/¸üÐÂºº»¯½Å±¾²¢ÐÞ¸Ä¹¤×÷Ì¨ÎÄ¼þ; Íê³Éºó¿ÉÑ¡ÔñÊÇ·ñ×Ô¶¯Æô¶¯ Cursor
 echo.
-set /p "CONFIRM=ç¡®è®¤ç»§ç»­ï¼Ÿ[Y/N]: "
+set /p "CONFIRM=È·ÈÏ¼ÌÐø£¿[Y/N]: "
 if /i not "%CONFIRM%"=="Y" if /i not "%CONFIRM%"=="YES" goto :UserCancelled
 
 echo.
@@ -49,68 +50,68 @@ findstr /c:"%INJECTION_MARKER_NEW%" "!WORKBENCH_HTML!" >nul 2>&1
 if errorlevel 1 findstr /c:"%INJECTION_MARKER_OLD%" "!WORKBENCH_HTML!" >nul 2>&1
 if errorlevel 1 goto :DoInject
 
-echo [æ£€æŸ¥] å·²æ³¨å…¥ï¼Œæ­£åœ¨æ›´æ–°æ±‰åŒ–è„šæœ¬...
+echo [¼ì²é] ÒÑ×¢Èë£¬ÕýÔÚ¸üÐÂºº»¯½Å±¾...
 python "!HANHUA_SCRIPT!"
 if errorlevel 1 (
     echo.
-    echo [è­¦å‘Š] æ›´æ–°è¿‡ç¨‹æœ‰æŠ¥é”™
+    echo [¾¯¸æ] ¸üÐÂ¹ý³ÌÓÐ±¨´í
 ) else (
     echo.
-    echo [å®Œæˆ] æ±‰åŒ–è„šæœ¬å·²æ›´æ–°
+    echo [Íê³É] ºº»¯½Å±¾ÒÑ¸üÐÂ
 )
 goto :AfterInject
 
 :DoInject
-echo [æ£€æŸ¥] æœªæ³¨å…¥ï¼Œæ­£åœ¨æ‰§è¡Œæ±‰åŒ–...
+echo [¼ì²é] Î´×¢Èë£¬ÕýÔÚÖ´ÐÐºº»¯...
 python "!HANHUA_SCRIPT!"
 if errorlevel 1 (
     echo.
-    echo [è­¦å‘Š] æ±‰åŒ–è¿‡ç¨‹æœ‰æŠ¥é”™
+    echo [¾¯¸æ] ºº»¯¹ý³ÌÓÐ±¨´í
 ) else (
     echo.
-    echo [å®Œæˆ] æ±‰åŒ–å·²å®Œæˆ
+    echo [Íê³É] ºº»¯ÒÑÍê³É
 )
 
 :AfterInject
 echo.
-set /p "START_CURSOR=æ˜¯å¦è‡ªåŠ¨å¯åŠ¨ Cursorï¼Ÿ[Y/N]: "
+set /p "START_CURSOR=ÊÇ·ñ×Ô¶¯Æô¶¯ Cursor£¿[Y/N]: "
 if /i not "%START_CURSOR%"=="Y" if /i not "%START_CURSOR%"=="YES" goto :SkipStart
 
 echo.
-echo [å¯åŠ¨] æ­£åœ¨å¯åŠ¨ Cursor...
+echo [Æô¶¯] ÕýÔÚÆô¶¯ Cursor...
 start "" "!CURSOR_EXE!" --user-data-dir="!CURSOR_USER_DIR!"
-echo [å®Œæˆ] Cursor å·²å¯åŠ¨
+echo [Íê³É] Cursor ÒÑÆô¶¯
 exit /b 0
 
 :SkipStart
-echo [è·³è¿‡] æ±‰åŒ–å·²å®Œæˆï¼Œæœªå¯åŠ¨ Cursorã€‚
+echo [Ìø¹ý] ºº»¯ÒÑÍê³É£¬Î´Æô¶¯ Cursor¡£
 call :WaitKey
 exit /b 0
 
 :NoInstallDir
-echo [é”™è¯¯] æœªæ‰¾åˆ° Cursor å®‰è£…ç›®å½•ã€‚
-echo [æç¤º] è¯·è®¾ç½® CURSOR_INSTALL_DIRï¼Œæˆ–å°† Cursor å®‰è£…åˆ°å¸¸è§è·¯å¾„ã€‚
+echo [´íÎó] Î´ÕÒµ½ Cursor °²×°Ä¿Â¼¡£
+echo [ÌáÊ¾] ÇëÉèÖÃ CURSOR_INSTALL_DIR£¬»ò½« Cursor °²×°µ½³£¼ûÂ·¾¶¡£
 call :WaitKey
 exit /b 1
 
 :NoScript
-for %%I in ("!HANHUA_SCRIPT!") do echo [é”™è¯¯] æœªæ‰¾åˆ°æ±‰åŒ–è„šæœ¬: %%~fI
+for %%I in ("!HANHUA_SCRIPT!") do echo [´íÎó] Î´ÕÒµ½ºº»¯½Å±¾: %%~fI
 call :WaitKey
 exit /b 1
 
 :NoExe
-for %%I in ("!CURSOR_EXE!") do echo [é”™è¯¯] æœªæ‰¾åˆ° Cursor.exe: %%~fI
+for %%I in ("!CURSOR_EXE!") do echo [´íÎó] Î´ÕÒµ½ Cursor.exe: %%~fI
 call :WaitKey
 exit /b 1
 
 :NoWorkbench
-for %%I in ("!WORKBENCH_HTML!") do echo [é”™è¯¯] æœªæ‰¾åˆ° workbench.html: %%~fI
-echo [æç¤º] è¯·æ£€æŸ¥ CURSOR_INSTALL_DIR æ˜¯å¦æ­£ç¡®ã€‚
+for %%I in ("!WORKBENCH_HTML!") do echo [´íÎó] Î´ÕÒµ½ workbench.html: %%~fI
+echo [ÌáÊ¾] Çë¼ì²é CURSOR_INSTALL_DIR ÊÇ·ñÕýÈ·¡£
 call :WaitKey
 exit /b 1
 
 :UserCancelled
-echo [å–æ¶ˆ] å·²å–æ¶ˆæ“ä½œã€‚
+echo [È¡Ïû] ÒÑÈ¡Ïû²Ù×÷¡£
 call :WaitKey
 exit /b 0
 
@@ -120,14 +121,14 @@ set "CURSOR_INSTALL_DIR="
 exit /b 0
 
 :ShowInfo
-for %%I in ("!CURSOR_INSTALL_DIR!") do echo [ä¿¡æ¯] å®‰è£…ç›®å½•: %%~fI
-for %%I in ("!CURSOR_USER_DIR!") do echo [ä¿¡æ¯] ç”¨æˆ·æ•°æ®: %%~fI
-for %%I in ("!WORKBENCH_HTML!") do echo [ä¿¡æ¯] Workbench: %%~fI
+for %%I in ("!CURSOR_INSTALL_DIR!") do echo [ÐÅÏ¢] °²×°Ä¿Â¼: %%~fI
+for %%I in ("!CURSOR_USER_DIR!") do echo [ÐÅÏ¢] ÓÃ»§Êý¾Ý: %%~fI
+for %%I in ("!WORKBENCH_HTML!") do echo [ÐÅÏ¢] Workbench: %%~fI
 exit /b 0
 
 :WaitKey
 echo.
-echo æŒ‰ä»»æ„é”®ç»§ç»­...
+echo °´ÈÎÒâ¼ü¼ÌÐø...
 pause >nul
 exit /b 0
 
@@ -136,20 +137,30 @@ set "PFX86=%PROGRAMFILES(X86)%"
 if not defined CURSOR_INSTALL_DIR if exist "%LOCALAPPDATA%\Programs\Cursor\Cursor.exe" if exist "%LOCALAPPDATA%\Programs\Cursor\resources\app" set "CURSOR_INSTALL_DIR=%LOCALAPPDATA%\Programs\Cursor"
 if not defined CURSOR_INSTALL_DIR if exist "%PROGRAMFILES%\Cursor\Cursor.exe" if exist "%PROGRAMFILES%\Cursor\resources\app" set "CURSOR_INSTALL_DIR=%PROGRAMFILES%\Cursor"
 if not defined CURSOR_INSTALL_DIR if exist "!PFX86!\Cursor\Cursor.exe" if exist "!PFX86!\Cursor\resources\app" set "CURSOR_INSTALL_DIR=!PFX86!\Cursor"
+if not defined CURSOR_INSTALL_DIR call :DetectCursorOtherDrives
+exit /b 0
+
+:DetectCursorOtherDrives
+for %%D in (C D E F G H) do (
+    if not defined CURSOR_INSTALL_DIR if exist "%%D:\Program Files\Cursor\Cursor.exe" if exist "%%D:\Program Files\Cursor\resources\app" set "CURSOR_INSTALL_DIR=%%D:\Program Files\Cursor"
+    if not defined CURSOR_INSTALL_DIR if exist "%%D:\Program Files (x86)\Cursor\Cursor.exe" if exist "%%D:\Program Files (x86)\Cursor\resources\app" set "CURSOR_INSTALL_DIR=%%D:\Program Files (x86)\Cursor"
+    if not defined CURSOR_INSTALL_DIR if exist "%%D:\Cursor\Cursor.exe" if exist "%%D:\Cursor\resources\app" set "CURSOR_INSTALL_DIR=%%D:\Cursor"
+    if not defined CURSOR_INSTALL_DIR if exist "%%D:\Programs\Cursor\Cursor.exe" if exist "%%D:\Programs\Cursor\resources\app" set "CURSOR_INSTALL_DIR=%%D:\Programs\Cursor"
+)
 exit /b 0
 
 :CheckPython
 where python >nul 2>&1
 if errorlevel 1 (
-    echo [é”™è¯¯] æœªæ‰¾åˆ° python å‘½ä»¤ï¼Œæ±‰åŒ–è„šæœ¬éœ€è¦ Python 3 çŽ¯å¢ƒã€‚
+    echo [´íÎó] Î´ÕÒµ½ python ÃüÁî£¬ºº»¯½Å±¾ÐèÒª Python 3 »·¾³¡£
     call :ShowPythonInstallTip
     exit /b 1
 )
 for /f "delims=" %%P in ('where python 2^>nul') do (
     echo %%P | findstr /i /c:"Microsoft\WindowsApps" /c:"microsoft\windowsapps" >nul 2>&1
     if not errorlevel 1 (
-        echo [é”™è¯¯] æ£€æµ‹åˆ° Windows Store çš„ Python å ä½ç¨‹åºï¼Œæ— æ³•è¿è¡Œæ±‰åŒ–è„šæœ¬ã€‚
-        echo [è·¯å¾„] %%P
+        echo [´íÎó] ¼ì²âµ½ Windows Store µÄ Python Õ¼Î»³ÌÐò£¬ÎÞ·¨ÔËÐÐºº»¯½Å±¾¡£
+        echo [Â·¾¶] %%P
         call :ShowPythonInstallTip
         exit /b 1
     )
@@ -158,7 +169,7 @@ for /f "delims=" %%P in ('where python 2^>nul') do (
 :PythonPathOk
 python --version >nul 2>&1
 if errorlevel 1 (
-    echo [é”™è¯¯] python å‘½ä»¤æ— æ³•æ­£å¸¸è¿è¡Œï¼Œè¯·å®‰è£…çœŸæ­£çš„ Python 3ã€‚
+    echo [´íÎó] python ÃüÁîÎÞ·¨Õý³£ÔËÐÐ£¬Çë°²×°ÕæÕýµÄ Python 3¡£
     call :ShowPythonInstallTip
     exit /b 1
 )
@@ -166,12 +177,12 @@ exit /b 0
 
 :ShowPythonInstallTip
 echo.
-echo [åŽŸå› ] ç³»ç»Ÿå¯èƒ½åªæœ‰ Microsoft Store çš„åº”ç”¨æ‰§è¡Œåˆ«åï¼Œæ‰§è¡Œ python æ—¶ä¼šæ‰“å¼€å•†åº—æˆ–æ— è¾“å‡ºã€‚
-echo [æŽ’æŸ¥] åœ¨ CMD æˆ– PowerShell è¿è¡Œ: where python
-echo        è‹¥è·¯å¾„åŒ…å« Microsoft\WindowsAppsï¼Œè¡¨ç¤ºå°šæœªå®‰è£…çœŸæ­£çš„ Pythonã€‚
-echo [å®‰è£…] ä»»é€‰å…¶ä¸€:
-echo        1. å®˜ç½‘ https://www.python.org/downloads/ ï¼ˆå®‰è£…æ—¶å‹¾é€‰ Add python.exe to PATHï¼‰
-echo        2. å‘½ä»¤ winget install Python.Python.3.12
-echo [å¯é€‰] è®¾ç½® - åº”ç”¨ - é«˜çº§åº”ç”¨è®¾ç½® - åº”ç”¨æ‰§è¡Œåˆ«åï¼Œå…³é—­ python.exe / python3.exe å•†åº—å¿«æ·æ–¹å¼ã€‚
-echo [éªŒè¯] å®‰è£…åŽé‡æ–°æ‰“å¼€ç»ˆç«¯ï¼Œè¿è¡Œ python --version åº”æ˜¾ç¤º Python 3.xã€‚
+echo [Ô­Òò] ÏµÍ³¿ÉÄÜÖ»ÓÐ Microsoft Store µÄÓ¦ÓÃÖ´ÐÐ±ðÃû£¬Ö´ÐÐ python Ê±»á´ò¿ªÉÌµê»òÎÞÊä³ö¡£
+echo [ÅÅ²é] ÔÚ CMD »ò PowerShell ÔËÐÐ: where python
+echo        ÈôÂ·¾¶°üº¬ Microsoft\WindowsApps£¬±íÊ¾ÉÐÎ´°²×°ÕæÕýµÄ Python¡£
+echo [°²×°] ÈÎÑ¡ÆäÒ»:
+echo        1. ¹ÙÍø https://www.python.org/downloads/ £¨°²×°Ê±¹´Ñ¡ Add python.exe to PATH£©
+echo        2. ÃüÁî winget install Python.Python.3.12
+echo [¿ÉÑ¡] ÉèÖÃ - Ó¦ÓÃ - ¸ß¼¶Ó¦ÓÃÉèÖÃ - Ó¦ÓÃÖ´ÐÐ±ðÃû£¬¹Ø±Õ python.exe / python3.exe ÉÌµê¿ì½Ý·½Ê½¡£
+echo [ÑéÖ¤] °²×°ºóÖØÐÂ´ò¿ªÖÕ¶Ë£¬ÔËÐÐ python --version Ó¦ÏÔÊ¾ Python 3.x¡£
 exit /b 0
