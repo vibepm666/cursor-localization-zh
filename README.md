@@ -35,7 +35,21 @@ Cursor 官方目前尚未提供中文界面或汉化包。常见做法是安装 
 
 ## 如何使用
 
-### 环境要求
+### 图形界面版（推荐，免 Python）
+
+从 [Releases](https://github.com/ChibaRie/cursor-localization-zh/releases) 下载 `CursorHanhua.exe`，双击即用：单文件、免安装、不需要 Python 环境。
+
+| 按钮 | 作用 |
+|---|---|
+| **启动汉化** | 安装/更新官方语言包，注入词典脚本，同步 `product.json` 校验值 |
+| **取消汉化** | 从备份恢复工作台文件（需二次点击确认） |
+| **修复校验** | 重新写入校验值，解决「安装已损坏」提示 |
+
+程序会自动定位 Cursor 安装目录（含 C 盘以外的盘符）；装在自定义位置时，点击顶部路径手动指定即可。运行日志实时显示引擎输出，成功/失败在状态栏与按钮对勾上反馈。
+
+> 若 Cursor 安装在 `Program Files` 且当前账号无写权限，界面会提示并给出一键「以管理员身份重启」。
+
+### 脚本版（需要 Python 3.8+）
 
 汉化工具依赖 **Python 3.8+**（Windows 通过 `启动汉化_Win.bat` 调用，Mac/Linux 通过 shell 脚本调用）。
 
@@ -119,6 +133,9 @@ export CURSOR_USER_DATA_DIR="$HOME/Library/Application Support/Cursor"
 | `启动汉化_Mac.sh` / `取消汉化_Mac.sh` | macOS / Linux 快捷脚本 |
 | `Cursor_Setting_Lookup.js` | 辅助查找设置页英文原文 |
 | `check_stale_entries.py` | 过期条目检测脚本（扫描 Cursor 源码，找出字典中已失效的翻译） |
+| `gui/app.py` | 图形界面宿主（pywebview + WebView2，桥接引擎） |
+| `gui/ui/index.html` | 图形界面（单文件 HTML/CSS/JS，深浅色自适应） |
+| `gui/build.py` | 构建 `CursorHanhua.exe`：`python gui/build.py` |
 
 ## 维护翻译
 

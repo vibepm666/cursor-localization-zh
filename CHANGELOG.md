@@ -15,7 +15,7 @@
 - README / 使用说明补充「双击 `.bat` 闪退、乱码」与「找不到安装目录」的排查说明
 
 ### 新增
-- 过期条目检测脚本 `check_stale_entries.py`：自动扫描 Cursor 源码，找出字典中已失效的翻译
+- **图形界面版**（`gui/`）：单文件 `CursorHanhua.exe`，PyInstaller 打包 + Edge WebView2 渲染，免安装、免 Python。提供启动汉化 / 取消汉化 / 修复校验，实时日志、自动定位安装目录、无写权限时一键提权；`python gui/build.py` 可重新构建
 
 ### 补充翻译
 按功能模块分类，共补充约 **170 条**：

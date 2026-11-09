@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cursor 汉化</title>
+<style>
+  :root{
+    --bg:#fcfcfb; --s1:#f5f5f3; --s2:#efefed; --s3:#e8e8e5; --s4:#dededa;
+    --fg:#1b1b19; --fg2:#5d5d58; --fg3:#92928a;
+    --accent:#2f7f6b; --accent-soft:rgba(47,127,107,.11);
+    --danger:#a84a3f; --danger-soft:rgba(168,74,63,.10);
+    --warn:#8a6a24;
+    --w-body:400; --w-ui:500; --w-strong:600;
+    --r:14px;
+    --ease-io:cubic-bezier(.215,.61,.355,1);
+    --ease-over:linear(0.000,0.426,0.643,0.763,0.836,0.883,0.915,0.938,0.954,0.966,0.975,0.982,0.986,0.990,0.993,0.994,0.996,0.997,0.998,0.998,0.999,0.999,0.999,0.999,1.000,1.000,1.000,1.000,1.000);
+    --ease-under:linear(0.000,0.081,0.274,0.514,0.748,0.943,1.083,1.164,1.194,1.185,1.150,1.105,1.058,1.018,0.988,0.970,0.963,0.963,0.969,0.978,0.987,0.995,1.001,1.005,1.007,1.007,1.006,1.005,1.003);
+    --font-ui:"Segoe UI Variable Text","Segoe UI","Microsoft YaHei UI",system-ui,-apple-system,sans-serif;
+    --font-display:"Segoe UI Variable Display","Segoe UI","Microsoft YaHei UI",system-ui,sans-serif;
+    --font-mono:"Cascadia Mono","Consolas",ui-monospace,"Microsoft YaHei UI",monospace;
+    color-scheme:light dark;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0b0b0a; --s1:#151515; --s2:#1a1a19; --s3:#20201e; --s4:#262624;
+      --fg:#e9e9e4; --fg2:#a3a39c; --fg3:#76766f;
+      --accent:#6fc2ab; --accent-soft:rgba(111,194,171,.12);
+      --danger:#d18b80; --danger-soft:rgba(209,139,128,.10);
+      --warn:#c5a266;
+      --w-body:360; --w-ui:460; --w-strong:560;
+    }
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:var(--bg); color:var(--fg);
+    font-family:var(--font-ui); font-weight:var(--w-body);
+    font-size:14px; line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    text-wrap:pretty;
+    overflow:hidden;
+    transition:background .3s var(--ease-io);
+  }
+  ::selection{background:var(--accent-soft); color:var(--fg)}
+  button{font:inherit; color:inherit; background:none; border:0; cursor:pointer; text-align:left}
+  svg.i{width:1em;height:1em;vertical-align:-0.125em;flex:none;stroke:currentColor;fill:none;
+        stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums;
+        font-feature-settings:"tnum" 1;letter-spacing:-.01em}
+  .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+
+  .shell{
+    height:100%; padding:24px 28px 14px;
+    display:grid; grid-template-rows:auto auto auto minmax(0,1fr) auto;
+    gap:20px;
+  }
+
+  /* ---------- 头部 ---------- */
+  .head{display:flex;flex-direction:column;gap:10px}
+  .title-row{display:flex;align-items:center;gap:12px}
+  h1{
+    font-family:var(--font-display); font-size:23px; font-weight:var(--w-strong);
+    letter-spacing:-.02em; line-height:1.2;
+  }
+  .chip{
+    display:inline-flex;align-items:center;gap:6px;
+    height:24px;padding:0 10px;border-radius:999px;
+    background:var(--s2); color:var(--fg2);
+    font-size:12px;font-weight:var(--w-ui);
+    transition:background .3s var(--ease-io),color .3s var(--ease-io);
+  }
+  .chip .dot{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.7}
+  .chip[data-state=on]{background:var(--accent-soft);color:var(--accent)}
+  .chip[data-state=off]{background:var(--s2);color:var(--fg2)}
+  .chip[data-state=missing]{background:var(--danger-soft);color:var(--danger)}
+  .chip.pop{animation:pop .62s var(--ease-under)}
+
+  .meta{display:flex;align-items:center;gap:10px;min-width:0}
+  .path-btn{
+    display:inline-flex;align-items:center;gap:8px;min-width:0;
+    padding:5px 10px 5px 9px;border-radius:9px;background:var(--s1);
+    color:var(--fg2);font-size:12.5px;
+    transition:background .25s var(--ease-io),color .25s var(--ease-io);
+  }
+  .path-btn:hover{background:var(--s2);color:var(--fg)}
+  .path-btn .p{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .icon-btn{
+    display:inline-grid;place-items:center;width:26px;height:26px;border-radius:7px;
+    color:var(--fg3);font-size:13px;
+    transition:background .25s var(--ease-io),color .25s var(--ease-io);
+  }
+  .icon-btn:hover{background:var(--s2);color:var(--fg)}
+
+  /* ---------- 路径编辑（grid 折叠） ---------- */
+  .fold{display:grid;grid-template-rows:0fr;transition:grid-template-rows .42s var(--ease-over)}
+  .fold.open{grid-template-rows:1fr}
+  .fold>.fold-in{overflow:hidden;min-height:0}
+  .edit-row{display:flex;gap:8px;padding-top:4px}
+  .field{
+    flex:1;min-width:0;height:34px;padding:0 12px;border-radius:9px;border:0;
+    background:var(--s1);color:var(--fg);
+    font-family:var(--font-mono);font-size:12.5px;font-variant-numeric:tabular-nums;
+    box-shadow:0 0 0 0 var(--accent-soft);
+    transition:box-shadow .3s var(--ease-io),background .3s var(--ease-io);
+    outline:none;
+  }
+  .field::placeholder{color:var(--fg3)}
+  .field:focus{
+    background:var(--s2);
+    box-shadow:0 0 0 1px var(--accent), 0 0 0 4px var(--accent-soft);
+  }
+  .btn{
+    height:34px;padding:0 14px;border-radius:9px;background:var(--s2);
+    color:var(--fg);font-size:12.5px;font-weight:var(--w-ui);
+    display:inline-flex;align-items:center;gap:6px;
+    transition:background .25s var(--ease-io),transform .42s var(--ease-over);
+  }
+  .btn:hover{background:var(--s3)}
+  .btn:active{transform:scale(.977)}
+  .btn.ghost{color:var(--fg2)}
+  .btn.ghost:hover{color:var(--fg)}
+
+  /* ---------- 提示条 ---------- */
+  .notice{
+    display:flex;align-items:center;gap:10px;
+    padding:11px 14px;border-radius:12px;background:var(--danger-soft);
+    color:var(--danger);font-size:12.5px;
+  }
+  .notice .spacer{flex:1}
+  .notice button{color:var(--danger);font-weight:var(--w-ui);text-decoration:underline;
+    text-underline-offset:3px;text-decoration-thickness:1px}
+  .notice[hidden]{display:none}
+
+  /* ---------- 三个动作 ---------- */
+  .actions{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .act{
+    position:relative;padding:15px 16px 16px;border-radius:var(--r);
+    background:var(--s1);color:var(--fg);
+    display:flex;flex-direction:column;gap:3px;
+    transition:background .28s var(--ease-io),transform .42s var(--ease-over),opacity .3s var(--ease-io);
+  }
+  .act:hover{background:var(--s2)}
+  .act:active{transform:scale(.985)}
+  .act[disabled]{opacity:.4;pointer-events:none}
+  .act.primary{background:var(--accent-soft)}
+  .act.primary:hover{background:color-mix(in srgb,var(--accent-soft) 80%,var(--accent))}
+  .act-top{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:var(--w-ui);
+    letter-spacing:-.005em}
+  .act.primary .act-top{color:var(--accent)}
+  .act-sub{font-size:12.5px;color:var(--fg2);opacity:.82;text-wrap:pretty;line-height:1.5}
+  .act .tick{
+    position:absolute;top:13px;right:13px;color:var(--accent);font-size:13px;
+    opacity:0;transform:scale(.4);
+  }
+  .act .tick.show{animation:tick .62s var(--ease-under) forwards}
+
+  /* ---------- 阶段轨 ---------- */
+  .rail{display:flex;flex-direction:column;gap:10px}
+  .steps{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;list-style:none}
+  .steps li{position:relative;padding-top:17px}
+  .steps li::before{
+    content:"";position:absolute;top:4px;left:0;right:0;height:1.5px;background:var(--s3);
+    transition:background .45s var(--ease-io);
+  }
+  .steps li:first-child::before{left:4px}
+  .steps li:last-child::before{right:4px}
+  .steps li[data-s=active]::before{background:color-mix(in srgb,var(--accent) 45%,var(--s3))}
+  .steps li[data-s=done]::before{background:var(--accent)}
+  .steps .node{
+    position:absolute;top:0;left:0;width:9px;height:9px;border-radius:50%;
+    background:var(--bg);box-shadow:inset 0 0 0 1.5px var(--s4);
+    transition:background .45s var(--ease-io),box-shadow .45s var(--ease-io),transform .62s var(--ease-under);
+  }
+  .steps li[data-s=active] .node{background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft);transform:scale(1.06)}
+  .steps li[data-s=done] .node{background:var(--accent);box-shadow:inset 0 0 0 1.5px var(--accent)}
+  .steps .lab{font-size:12px;color:var(--fg3);transition:color .3s var(--ease-io);letter-spacing:.005em}
+  .steps li[data-s=active] .lab{color:var(--accent)}
+  .steps li[data-s=done] .lab{color:var(--fg2)}
+  .status{
+    font-size:13.5px;color:var(--fg2);min-height:21px;text-wrap:pretty;
+    font-variant-numeric:tabular-nums;
+  }
+  .rail-line{display:flex;align-items:baseline;gap:12px}
+  .rail-line .status{flex:1;min-width:0}
+  .status[data-k=ok]{color:var(--accent)}
+  .status[data-k=err]{color:var(--danger)}
+  .stepnum{font-size:11.5px;color:var(--fg3);letter-spacing:.02em;flex:none}
+  .tch{display:inline-block;white-space:pre;opacity:0;filter:blur(6px);transform:translateY(1.5px);
+       transition:opacity .09s var(--ease-io),filter .09s var(--ease-io),transform .09s var(--ease-io)}
+  .tch.in{opacity:1;filter:blur(0);transform:none}
+
+  /* ---------- 日志 ---------- */
+  .log{display:flex;flex-direction:column;min-height:0}
+  .log-head{
+    display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:11px;
+    background:var(--s1);color:var(--fg2);font-size:12.5px;font-weight:var(--w-ui);
+    transition:background .25s var(--ease-io),color .25s var(--ease-io);
+  }
+  .log-head:hover{background:var(--s2);color:var(--fg)}
+  .log-head .count{
+    min-width:22px;padding:0 6px;height:18px;border-radius:6px;background:var(--s3);
+    color:var(--fg3);font-size:11px;display:inline-grid;place-items:center;
+  }
+  .log-head .chev{margin-left:auto;color:var(--fg3);transition:transform .42s var(--ease-over)}
+  .log.open .log-head .chev{transform:rotate(180deg)}
+  .log-clip{display:grid;grid-template-rows:0fr;flex:1 1 0;min-height:0;transition:grid-template-rows .42s var(--ease-over)}
+  .log.open .log-clip{grid-template-rows:1fr}
+  .log-pane{overflow:hidden;min-height:0;height:100%;display:flex;flex-direction:column}
+  .log-body{
+    margin-top:8px;flex:1 1 0;min-height:0;
+    overflow:auto;padding:12px 14px;border-radius:12px;background:var(--s1);
+    font-family:var(--font-mono);font-size:12px;line-height:1.75;
+    color:var(--fg2);font-variant-numeric:tabular-nums;
+    white-space:pre-wrap;word-break:break-all;
+  }
+  .log-body .ln{animation:fadeIn .3s var(--ease-io);display:flex;gap:10px}
+  .ln .tag{flex:none;min-width:62px;color:var(--fg3);opacity:.9}
+  .ln .msg{flex:1;min-width:0}
+  .ln[data-k=err]{color:var(--danger)}
+  .ln[data-k=err] .tag{color:var(--danger);opacity:.75}
+  .ln[data-k=ok]{color:var(--accent)}
+  .ln[data-k=ok] .tag{color:var(--accent);opacity:.75}
+  .ln[data-k=warn]{color:var(--warn)}
+  .ln[data-k=warn] .tag{color:var(--warn);opacity:.8}
+  .log-body:empty::after{content:"尚无输出";color:var(--fg3)}
+
+  /* ---------- 底部 ---------- */
+  .foot{display:flex;align-items:center;gap:12px;font-size:11.5px;color:var(--fg3)}
+  .foot .spacer{flex:1}
+  .foot kbd{
+    font-family:var(--font-ui);font-size:11px;padding:1px 5px;border-radius:5px;
+    background:var(--s2);color:var(--fg2);
+  }
+
+  @keyframes pop{
+    0%{transform:scale(1)}
+    40%{transform:scale(1.06)}
+    100%{transform:scale(1)}
+  }
+  @keyframes tick{
+    0%{opacity:0;transform:scale(.4)}
+    55%{opacity:1;transform:scale(1.19)}
+    100%{opacity:1;transform:scale(1)}
+  }
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+  :focus-visible{outline:none;box-shadow:0 0 0 1px var(--accent),0 0 0 4px var(--accent-soft)}
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:.001s!important;transition-duration:.001s!important}
+    .tch{opacity:1;filter:none;transform:none}
+  }
+
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-thumb{background:var(--s4);border-radius:6px;
+    border:3px solid transparent;background-clip:content-box}
+  ::-webkit-scrollbar-thumb:hover{background:var(--fg3);background-clip:content-box}
+  ::-webkit-scrollbar-track{background:transparent}
+</style>
+</head>
+<body>
+<main class="shell">
+
+  <header class="head">
+    <div class="title-row">
+      <h1>Cursor 汉化</h1>
+      <span class="chip" id="chip" data-state="off"><span class="dot"></span><span id="chipText">检测中</span></span>
+      <span class="spacer" style="flex:1"></span>
+      <button class="icon-btn" id="revealBtn" title="在资源管理器中显示">
+        <svg class="i" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      </button>
+    </div>
+
+    <div class="meta">
+      <button class="path-btn" id="pathBtn" title="更改 Cursor 安装目录">
+        <svg class="i" viewBox="0 0 24 24"><path d="M4 7h6l2 2h8v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/></svg>
+        <span class="p mono" id="cursorDir">—</span>
+      </button>
+      <button class="icon-btn" id="copyBtn" title="复制路径">
+        <svg class="i" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M15 5.5A2.5 2.5 0 0 0 12.5 3H6a2.5 2.5 0 0 0-2.5 2.5V13"/></svg>
+      </button>
+    </div>
+
+    <div class="fold" id="editFold">
+      <div class="fold-in">
+        <div class="edit-row">
+          <input class="field" id="dirInput" spellcheck="false" placeholder="D:\Program Files\Cursor">
+          <button class="btn" id="saveDir">使用此目录</button>
+          <button class="btn ghost" id="autoDir">自动检测</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="notice" id="notice" hidden>
+    <svg class="i" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.2-2.9 7.6-7 9-4.1-1.4-7-4.8-7-9V6z"/></svg>
+    <span id="noticeText">写入需要管理员权限</span>
+    <span class="spacer"></span>
+    <button id="noticeAdmin">以管理员身份重启</button>
+  </div>
+
+  <section class="actions">
+    <button class="act primary" data-act="inject">
+      <span class="act-top"><svg class="i" viewBox="0 0 24 24"><path d="M12 4v9"/><path d="m8.5 9.5 3.5 3.5 3.5-3.5"/><path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>启动汉化</span>
+      <span class="act-sub">安装语言包并注入翻译</span>
+      <span class="tick"><svg class="i" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7"/></svg></span>
+    </button>
+    <button class="act" data-act="restore">
+      <span class="act-top"><svg class="i" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.6-5.9"/><path d="M4 4v4h4"/></svg><span id="restoreLabel">取消汉化</span></span>
+      <span class="act-sub">从备份恢复工作台文件</span>
+      <span class="tick"><svg class="i" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7"/></svg></span>
+    </button>
+    <button class="act" data-act="fix">
+      <span class="act-top"><svg class="i" viewBox="0 0 24 24"><path d="M12 3.5 4.5 7v5.5c0 4 3.1 7.2 7.5 8.5 4.4-1.3 7.5-4.5 7.5-8.5V7z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg>修复校验</span>
+      <span class="act-sub">解决「安装已损坏」提示</span>
+      <span class="tick"><svg class="i" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7"/></svg></span>
+    </button>
+  </section>
+
+  <section class="rail">
+    <ol class="steps" id="steps">
+      <li data-s="idle"><span class="node"></span><span class="lab">语言包</span></li>
+      <li data-s="idle"><span class="node"></span><span class="lab">桥接</span></li>
+      <li data-s="idle"><span class="node"></span><span class="lab">注入</span></li>
+      <li data-s="idle"><span class="node"></span><span class="lab">校验</span></li>
+    </ol>
+    <div class="rail-line">
+      <p class="status" id="status">准备就绪</p>
+      <span class="stepnum num" id="stepNum"></span>
+    </div>
+  </section>
+
+  <section class="log open" id="log">
+    <button class="log-head" id="logToggle" aria-expanded="true">
+      <span>运行日志</span>
+      <span class="count num" id="logCount">0</span>
+      <svg class="i chev" viewBox="0 0 24 24"><path d="m6 9.5 6 6 6-6"/></svg>
+    </button>
+    <div class="log-clip">
+      <div class="log-pane"><pre class="log-body" id="logBody"></pre></div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span><kbd>Ctrl</kbd> + <kbd>Enter</kbd> 启动汉化</span>
+    <span class="spacer"></span>
+    <span class="mono" id="version">v1.0.0</span>
+  </footer>
+
+</main>
+
+<script>
+(() => {
+  "use strict";
+  const $ = (id) => document.getElementById(id);
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const ACTIONS = { inject: "启动汉化", restore: "取消汉化", fix: "修复校验" };
+  const STEPS = { inject: ["语言包", "桥接", "注入", "校验"], restore: ["恢复"], fix: ["校验"] };
+  const KEYWORD = { inject: "正在汉化", restore: "正在恢复", fix: "正在校验" };
+
+  let api = null;
+  let running = false;
+  let armed = false;
+  let armTimer = 0;
+  let pollTimer = 0;
+  let logCount = 0;
+  let currentAction = "";
+  let info = {};
+
+  /* ---------- 微交互工具 ---------- */
+
+  function typeStatus(text) {
+    const el = $("status");
+    el.textContent = "";
+    if (reduce) { el.textContent = text; return; }
+    const chars = [...text];
+    chars.forEach((ch, i) => {
+      const span = document.createElement("span");
+      span.className = "tch";
+      span.textContent = ch;
+      span.style.transitionDelay = (i * 30) + "ms";
+      el.appendChild(span);
+      requestAnimationFrame(() => span.classList.add("in"));
+    });
+  }
+
+  function popChip() {
+    const chip = $("chip");
+    chip.classList.remove("pop");
+    void chip.offsetWidth;
+    chip.classList.add("pop");
+  }
+
+  function flashTick(act) {
+    const tick = document.querySelector(`.act[data-act="${act}"] .tick`);
+    if (!tick) return;
+    tick.classList.remove("show");
+    void tick.offsetWidth;
+    tick.classList.add("show");
+    setTimeout(() => tick.classList.remove("show"), 2500);   // 反馈自熄
+  }
+
+  function flashCopy(ok) {
+    const btn = $("copyBtn");
+    const original = btn.innerHTML;
+    btn.innerHTML = ok
+      ? '<svg class="i" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7"/></svg>'
+      : '<svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>';
+    setTimeout(() => { btn.innerHTML = original; }, 2500);   // 反馈自熄
+  }
+
+  /* ---------- 渲染 ---------- */
+
+  function setChip(state, text) {
+    const chip = $("chip");
+    chip.dataset.state = state;
+    $("chipText").textContent = text;
+    popChip();
+  }
+
+  function setNotice(visible, text) {
+    $("notice").hidden = !visible;
+    if (text) $("noticeText").textContent = text;
+  }
+
+  function setSteps(labels, activeIndex, done) {
+    const list = $("steps");
+    list.innerHTML = "";
+    labels.forEach((label, i) => {
+      const li = document.createElement("li");
+      const state = done || i < activeIndex ? "done" : (i === activeIndex ? "active" : "idle");
+      li.dataset.s = state;
+      li.innerHTML = '<span class="node"></span>';
+      const lab = document.createElement("span");
+      lab.className = "lab";
+      lab.textContent = label;
+      li.appendChild(lab);
+      list.appendChild(li);
+    });
+  }
+
+  function appendLog(line) {
+    const body = $("logBody");
+    const kind = line.startsWith("[错误]") || line.startsWith("[失败]")
+      ? "err"
+      : line.startsWith("[完成]") || line.startsWith("[注入]") || line.startsWith("[恢复]")
+        ? "ok"
+        : line.startsWith("[警告]") ? "warn" : "info";
+    const row = document.createElement("div");
+    row.className = "ln";
+    row.dataset.k = kind;
+    const match = line.match(/^\[([^\]]+)\]\s*([\s\S]*)$/);
+    if (match) {
+      const tag = document.createElement("span");
+      tag.className = "tag";
+      tag.textContent = match[1];
+      const msg = document.createElement("span");
+      msg.className = "msg";
+      msg.textContent = match[2];
+      row.append(tag, msg);
+    } else {
+      const msg = document.createElement("span");
+      msg.className = "msg";
+      msg.textContent = line;
+      row.append(msg);
+    }
+    body.appendChild(row);
+    while (body.children.length > 400) body.removeChild(body.firstChild);
+    logCount += 1;
+    $("logCount").textContent = logCount;
+    if ($("log").classList.contains("open")) body.scrollTop = body.scrollHeight;
+  }
+
+  function applyDescribe(data) {
+    info = data;
+    $("version").textContent = "v" + data.version;
+    $("cursorDir").textContent = data.found ? data.cursorDir : "未找到 Cursor 安装目录";
+    $("cursorDir").title = data.cursorDir || "";
+    $("dirInput").value = data.cursorDir || "";
+
+    if (!data.found) {
+      setChip("missing", "未找到 Cursor");
+      setNotice(false);
+    } else if (data.injected) {
+      setChip("on", "已汉化");
+      setNotice(false);
+    } else {
+      setChip("off", "未汉化");
+      setNotice(false);
+    }
+
+    if (data.found && !data.writable && !data.admin) {
+      setNotice(true, "写入 " + data.cursorDir + " 需要管理员权限");
+    }
+  }
+
+  /* ---------- 动作 ---------- */
+
+  function setBusy(busy) {
+    running = busy;
+    document.querySelectorAll(".act").forEach((el) => { el.disabled = busy; });
+  }
+
+  async function run(action) {
+    if (running || !api) return;
+    if (action === "restore" && !armed) {
+      armed = true;
+      $("restoreLabel").textContent = "再次点击确认";
+      clearTimeout(armTimer);
+      armTimer = setTimeout(() => {                    // 反馈自熄
+        armed = false;
+        $("restoreLabel").textContent = "取消汉化";
+      }, 3000);
+      return;
+    }
+    armed = false;
+    $("restoreLabel").textContent = "取消汉化";
+
+    const started = await api.start(action).catch((e) => ({ ok: false, error: String(e) }));
+    if (!started.ok) {
+      typeStatus(started.error || "无法启动");
+      $("status").dataset.k = "err";
+      return;
+    }
+    currentAction = action;
+    setBusy(true);
+    setSteps(STEPS[action], -1, false);
+    $("stepNum").textContent = "1/" + STEPS[action].length;
+    typeStatus(KEYWORD[action] + "…");
+    $("status").dataset.k = "";
+    document.querySelector(`.act[data-act="${action}"] .tick`)?.classList.remove("show");
+    if (action === "restore") $("log").classList.add("open");
+    $("logToggle").setAttribute("aria-expanded", "true");
+    clearInterval(pollTimer);
+    pollTimer = setInterval(poll, 120);
+    poll();
+  }
+
+  async function poll() {
+    let data;
+    try {
+      data = await api.drain();
+    } catch (e) {
+      clearInterval(pollTimer);
+      pollTimer = 0;
+      setBusy(false);
+      typeStatus("与后端通信中断");
+      $("status").dataset.k = "err";
+      return;
+    }
+    data.lines.forEach(appendLog);
+    if (data.running) {
+      const labels = data.steps && data.steps.length ? data.steps : STEPS[data.action] || [];
+      if (labels.length) {
+        setSteps(labels, Math.max(0, data.step - 1), false);
+        $("stepNum").textContent = Math.min(data.step || 1, labels.length) + "/" + labels.length;
+      }
+      return;
+    }
+    const result = data.result;
+    if (!result) return;
+    clearInterval(pollTimer);
+    pollTimer = 0;
+    setBusy(false);
+
+    const fresh = await api.describe();
+    applyDescribe(fresh);
+    setSteps(STEPS[result.action] || STEPS.inject, 99, true);
+    $("stepNum").textContent = "";
+
+    if (result.ok) {
+      flashTick(result.action);
+      typeStatus(ACTIONS[result.action] + "完成");
+      $("status").dataset.k = "ok";
+    } else {
+      typeStatus(result.error ? ACTIONS[result.action] + "失败：" + result.error
+                              : ACTIONS[result.action] + "失败，请查看运行日志");
+      $("status").dataset.k = "err";
+      $("log").classList.add("open");
+      $("logToggle").setAttribute("aria-expanded", "true");
+    }
+  }
+
+  /* ---------- 事件绑定 ---------- */
+
+  function bind() {
+    document.querySelectorAll(".act").forEach((el) => {
+      el.addEventListener("click", () => run(el.dataset.act));
+    });
+
+    $("logToggle").addEventListener("click", () => {
+      const open = $("log").classList.toggle("open");
+      $("logToggle").setAttribute("aria-expanded", String(open));
+      if (open) { const b = $("logBody"); b.scrollTop = b.scrollHeight; }
+    });
+
+    $("pathBtn").addEventListener("click", () => {
+      const fold = $("editFold");
+      fold.classList.toggle("open");
+      if (fold.classList.contains("open")) $("dirInput").focus();
+    });
+
+    $("saveDir").addEventListener("click", async () => {
+      const res = await api.set_install_dir($("dirInput").value);
+      if (!res.ok) { typeStatus(res.error); return; }
+      $("editFold").classList.remove("open");
+      applyDescribe(await api.describe());
+      typeStatus("已切换安装目录");
+    });
+
+    $("autoDir").addEventListener("click", async () => {
+      await api.set_install_dir("");
+      $("editFold").classList.remove("open");
+      applyDescribe(await api.describe());
+      typeStatus("已重新检测");
+    });
+
+    $("copyBtn").addEventListener("click", async () => {
+      const text = $("cursorDir").textContent;
+      let ok = false;
+      try {
+        await navigator.clipboard.writeText(text);
+        ok = true;
+      } catch (e) {
+        const area = document.createElement("textarea");
+        area.value = text;
+        document.body.appendChild(area);
+        area.select();
+        ok = document.execCommand("copy");
+        area.remove();
+      }
+      flashCopy(ok);
+    });
+
+    $("revealBtn").addEventListener("click", () => api.reveal("workbench"));
+    $("noticeAdmin").addEventListener("click", () => api.relaunch_admin());
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        if (armed) { armed = false; $("restoreLabel").textContent = "取消汉化"; }
+        else if ($("editFold").classList.contains("open")) $("editFold").classList.remove("open");
+        else if ($("log").classList.contains("open")) $("logToggle").click();
+      }
+      if (event.key === "Enter" && (event.ctrlKey || event.metaKey)) run("inject");
+    });
+  }
+
+  /* ---------- 启动 ---------- */
+
+  async function boot() {
+    setSteps(STEPS.inject, -1, false);
+    typeStatus("正在检测 Cursor 安装目录…");
+
+    if (!window.pywebview?.api) {
+      await new Promise((resolve) => {
+        window.addEventListener("pywebviewready", resolve, { once: true });
+        setTimeout(resolve, 1200);
+      });
+    }
+
+    if (window.pywebview?.api) {
+      api = window.pywebview.api;
+    } else if (new URLSearchParams(location.search).has("preview")) {
+      api = mockApi();                                  // 仅用于浏览器预览调试
+    } else {
+      typeStatus("界面与后端未连接");
+      return;
+    }
+
+    bind();
+    try {
+      applyDescribe(await api.describe());
+      typeStatus("准备就绪");
+    } catch (e) {
+      typeStatus("读取状态失败");
+      $("status").dataset.k = "err";
+    }
+  }
+
+  /* 浏览器预览用的假后端（exe 内不会走这里） */
+  function mockApi() {
+    const delays = (ms, value) => new Promise((r) => setTimeout(() => r(value), ms));
+    let lines = [], running = false, result = null, step = 0;
+    const script = [
+      "[步骤 1/4] 安装/更新官方简体中文语言包...",
+      "[语言包] Cursor 内置 VS Code 版本: 1.128.0",
+      "[语言包] Extension 'VSCode-language-pack-zh-hans.vsix' was successfully installed.",
+      "[步骤 2/4] 更新 Cursor 私有扩展翻译桥接...",
+      "[步骤 3/4] 创建备份并写入脚本...",
+      "[备份] 已创建备份: workbench.html.bak",
+      "[主词典] 已加载 2609 条（localization/Core_Dictionary.json）",
+      "[写入] 脚本已写入: Cursor_Localization.js",
+      "[校验] JS 语法检查通过（node --check）",
+      "[步骤 4/4] 注入 HTML 引用...",
+      "[注入] 已在 workbench.html 中注入脚本引用",
+      "[校验] 已更新 product.json 中 6 项 checksum",
+      "[托盘] 已替换 4 处系统托盘菜单文案",
+      "[完成] 语言包安装与汉化注入成功！"
+    ];
+    const state = { version: "1.0.0", cursorDir: "D:\\Program Files (x86)\\Cursor", found: true,
+      injected: true, admin: false, writable: true, running: false, userDir: "", workbench: "" };
+    return {
+      describe: () => delays(180, { ...state }),
+      drain() {
+        if (!running) {
+          const r = result; result = null;
+          return delays(0, { lines: [], running: false, result: r, step, action: "inject", steps: STEPS.inject });
+        }
+        const batch = lines.splice(0, 2);
+        if (lines.length === 0) {
+          running = false;
+          result = { action: currentAction, ok: true, error: "", injected: true };
+        }
+        step = batch.length ? Math.min(4, step + (batch[0].includes("步骤") ? 1 : 0)) : step;
+        return delays(0, { lines: batch, running, result: null, step: Math.max(1, step), action: currentAction, steps: STEPS.inject });
+      },
+      start(action) { currentAction = action; lines = script.slice(); running = true; step = 1; return delays(120, { ok: true }); },
+      set_install_dir: () => delays(120, { ok: true }),
+      reveal: () => delays(0, { ok: true }),
+      relaunch_admin: () => delays(0, { ok: true })
+    };
+  }
+
+  boot();
+})();
+</script>
+</body>
+</html>
