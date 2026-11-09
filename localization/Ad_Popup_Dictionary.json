@@ -287,6 +287,7 @@
     ["briefly", "简短地"],
     ["files", "个文件"],
     ["available tools", "可用工具"],
-    ["Exploring available tools", "正在探索可用工具"]
+    ["Exploring available tools", "正在探索可用工具"],
+    ["Just now", "刚刚"]
   ]
 }
