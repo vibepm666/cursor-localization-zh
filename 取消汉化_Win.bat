@@ -1,4 +1,4 @@
-@echo off
+﻿@echo off
 setlocal EnableExtensions EnableDelayedExpansion
 chcp 65001 >nul 2>&1
 cd /d "%~dp0"
@@ -28,7 +28,7 @@ set "WORKBENCH_HTML=!CURSOR_INSTALL_DIR!\resources\app\out\vs\code\electron-sand
 if not exist "!HANHUA_SCRIPT!" goto :NoScript
 if not exist "!WORKBENCH_HTML!" goto :NoWorkbench
 
-call :CheckPython
+call :ResolvePython
 if errorlevel 1 call :WaitKey & exit /b 1
 
 findstr /c:"%INJECTION_MARKER_NEW%" "!WORKBENCH_HTML!" >nul 2>&1
@@ -46,7 +46,7 @@ if /i not "%CONFIRM%"=="Y" if /i not "%CONFIRM%"=="YES" goto :UserCancelled
 
 echo.
 echo [执行] 正在恢复原始文件...
-python "!HANHUA_SCRIPT!" --restore
+"!PYTHON_CMD!" "!HANHUA_SCRIPT!" --restore
 if errorlevel 1 goto :RestoreFailed
 
 echo.
@@ -108,32 +108,48 @@ set "PFX86=%PROGRAMFILES(X86)%"
 if not defined CURSOR_INSTALL_DIR if exist "%LOCALAPPDATA%\Programs\Cursor\Cursor.exe" if exist "%LOCALAPPDATA%\Programs\Cursor\resources\app" set "CURSOR_INSTALL_DIR=%LOCALAPPDATA%\Programs\Cursor"
 if not defined CURSOR_INSTALL_DIR if exist "%PROGRAMFILES%\Cursor\Cursor.exe" if exist "%PROGRAMFILES%\Cursor\resources\app" set "CURSOR_INSTALL_DIR=%PROGRAMFILES%\Cursor"
 if not defined CURSOR_INSTALL_DIR if exist "!PFX86!\Cursor\Cursor.exe" if exist "!PFX86!\Cursor\resources\app" set "CURSOR_INSTALL_DIR=!PFX86!\Cursor"
+if not defined CURSOR_INSTALL_DIR if exist "D:\Program Files\cursor\Cursor.exe" if exist "D:\Program Files\cursor\resources\app" set "CURSOR_INSTALL_DIR=D:\Program Files\cursor"
+if not defined CURSOR_INSTALL_DIR if exist "D:\Program Files\Cursor\Cursor.exe" if exist "D:\Program Files\Cursor\resources\app" set "CURSOR_INSTALL_DIR=D:\Program Files\Cursor"
 exit /b 0
 
-:CheckPython
-where python >nul 2>&1
-if errorlevel 1 (
-    echo [错误] 未找到 python 命令，恢复脚本需要 Python 3 环境。
-    call :ShowPythonInstallTip
-    exit /b 1
+:ResolvePython
+set "PYTHON_CMD="
+for %%V in (Python314 Python313 Python312 Python311 Python310) do (
+    if not defined PYTHON_CMD if exist "C:\%%V\python.exe" set "PYTHON_CMD=C:\%%V\python.exe"
+    if not defined PYTHON_CMD if exist "%LOCALAPPDATA%\Programs\Python\%%V\python.exe" set "PYTHON_CMD=%LOCALAPPDATA%\Programs\Python\%%V\python.exe"
+    if not defined PYTHON_CMD if exist "%ProgramFiles%\%%V\python.exe" set "PYTHON_CMD=%ProgramFiles%\%%V\python.exe"
 )
-for /f "delims=" %%P in ('where python 2^>nul') do (
-    echo %%P | findstr /i /c:"Microsoft\WindowsApps" /c:"microsoft\windowsapps" >nul 2>&1
-    if not errorlevel 1 (
-        echo [错误] 检测到 Windows Store 的 Python 占位程序，无法运行恢复脚本。
-        echo [路径] %%P
-        call :ShowPythonInstallTip
-        exit /b 1
+if not defined PYTHON_CMD (
+    for /f "delims=" %%P in ('where python 2^>nul') do (
+        echo %%P | findstr /i /c:"Microsoft\WindowsApps" /c:"microsoft\windowsapps" >nul 2>&1
+        if errorlevel 1 (
+            set "PYTHON_CMD=%%P"
+            goto :PythonResolved
+        )
     )
-    goto :PythonPathOk
 )
-:PythonPathOk
-python --version >nul 2>&1
-if errorlevel 1 (
-    echo [错误] python 命令无法正常运行，请安装真正的 Python 3。
+if not defined PYTHON_CMD (
+    where py >nul 2>&1
+    if not errorlevel 1 (
+        for /f "delims=" %%P in ('py -3 -c "import sys; print(sys.executable)" 2^>nul') do (
+            echo %%P | findstr /i /c:"Microsoft\WindowsApps" /c:"microsoft\windowsapps" >nul 2>&1
+            if errorlevel 1 set "PYTHON_CMD=%%P"
+        )
+    )
+)
+:PythonResolved
+if not defined PYTHON_CMD (
+    echo [错误] 未找到可用的 Python 3，恢复脚本无法运行。
     call :ShowPythonInstallTip
     exit /b 1
 )
+"!PYTHON_CMD!" --version >nul 2>&1
+if errorlevel 1 (
+    echo [错误] Python 无法正常运行: !PYTHON_CMD!
+    call :ShowPythonInstallTip
+    exit /b 1
+)
+echo [信息] Python: !PYTHON_CMD!
 exit /b 0
 
 :ShowPythonInstallTip
