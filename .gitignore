@@ -14,3 +14,4 @@ _t.js
 _Cursor_Localization_preview.js
 .DS_Store
 .build-venv/
+_*.png
