@@ -284,6 +284,15 @@
 
     function FanYi_Cursor_SheZhi_BiaoQian(root) {
         if (!root) return;
+        var attrEls = root.querySelectorAll(
+            'input[placeholder], input[aria-label], textarea[placeholder], textarea[aria-label], ' +
+            'button[title], button[aria-label], [data-placeholder], [aria-placeholder], ' +
+            '[title], [aria-label]'
+        );
+        for (var a = 0; a < attrEls.length; a++) {
+            if (attrEls[a].closest && attrEls[a].closest('.monaco-editor .view-lines')) continue;
+            FanYi_ShuXing(attrEls[a]);
+        }
         var labels = root.querySelectorAll(
             '.cursor-settings-cell-label, .cursor-settings-section-header-title, ' +
             '[class*="cursor-settings"] h1, [class*="cursor-settings"] h2, [class*="cursor-settings"] h3, ' +
