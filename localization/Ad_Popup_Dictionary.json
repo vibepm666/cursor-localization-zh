@@ -266,6 +266,12 @@
     ["Approval required to run:", "需要批准运行："],
     ["Approval required to run", "需要批准运行"],
     ["Accept", "接受"],
-    ["Reject", "拒绝"]
+    ["Reject", "拒绝"],
+    ["Revert files to this message?", "恢复文件到此消息？"],
+    ["Revert files to this message", "恢复文件到此消息"],
+    ["Later messages in this chat will be removed. File changes after this message can be reverted so they match, or kept as they are.", "此聊天中的后续消息将被删除。此消息之后的文件更改可以恢复为与此消息一致，或保持原样。"],
+    ["Later messages in this chat will be removed. File changes after this message can be reverted so they match, or kept as they are", "此聊天中的后续消息将被删除。此消息之后的文件更改可以恢复为与此消息一致，或保持原样"],
+    ["Keep Files", "保留文件"],
+    ["Revert Files", "恢复文件"]
   ]
 }
