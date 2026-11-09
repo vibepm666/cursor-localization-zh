@@ -272,6 +272,9 @@
     ["Later messages in this chat will be removed. File changes after this message can be reverted so they match, or kept as they are.", "此聊天中的后续消息将被删除。此消息之后的文件更改可以恢复为与此消息一致，或保持原样。"],
     ["Later messages in this chat will be removed. File changes after this message can be reverted so they match, or kept as they are", "此聊天中的后续消息将被删除。此消息之后的文件更改可以恢复为与此消息一致，或保持原样"],
     ["Keep Files", "保留文件"],
-    ["Revert Files", "恢复文件"]
+    ["Revert Files", "恢复文件"],
+    ["Exploring", "正在探索"],
+    ["searches", "次搜索"],
+    ["Planning next moves", "规划下一步操作"]
   ]
 }
