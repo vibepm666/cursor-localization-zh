@@ -6,6 +6,18 @@
 
 ## [Unreleased]
 
+（下次改动的记录写在这里）
+
+---
+
+## [1.0.1] — 2026-11-09
+
+### 仓库整理
+- 开发工具集中到 `tools/`：`check_stale_entries.py`、`validate_dictionary.py`（原 `localization/tools/`）、`verify_build.py`（原 `localization/tools/_verify_build.py`）、`Cursor_Setting_Lookup.js`
+- 对外发布的图文说明移到 `docs/`（`使用说明.md` / `.html`），README 保持为唯一入口文档
+- README 新增「目录结构」「开发」两节，并说明根目录文件为何不能移动（脚本按 `%~dp0`、引擎按 `__file__` 相对定位）
+- `tools/check_stale_entries.py` 补齐跨盘符安装目录探测，与引擎保持一致（此前装在 D 盘会直接报「未找到 Cursor」）
+
 ### 修复
 - **图形界面图标**：去掉「汉」字形，改为无字形纯色标记（16px 下不再糊成一团）
 - **阶段轨**：末端多余的连接线已去掉，日志空状态改为居中提示文案

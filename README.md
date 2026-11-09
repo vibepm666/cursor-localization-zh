@@ -24,6 +24,8 @@ Cursor 官方目前尚未提供中文界面或汉化包。常见做法是安装 
 - **维护成本低**：Cursor 小版本更新后若有个别位置变回英文，再运行一次启动脚本即可，一般无需重装软件。
 - **其它说明**：日常点得到的界面大多已是中文；个别菜单、动态文案或新版本新增词条可能仍为英文，可在词典中补充后重新注入。Agent 对话与模型生成内容不属于界面汉化范围。
 
+> 面向站外发布的图文版见 [docs/使用说明.md](docs/使用说明.md)。
+
 ## 界面截图
 
 <img width="2002" height="1360" alt="Cursor exe_20260604_000934" src="https://github.com/user-attachments/assets/b043419d-3ab1-4d26-a36a-9618694df310" />
@@ -113,6 +115,26 @@ export CURSOR_USER_DATA_DIR="$HOME/Library/Application Support/Cursor"
 | `CURSOR_INSTALL_DIR` | 安装根目录（含 `Cursor.exe` 或 `Cursor.app`） |
 | `CURSOR_USER_DATA_DIR` | 用户数据目录（默认 `%APPDATA%\Cursor` 或 macOS `~/Library/Application Support/Cursor`） |
 
+## 目录结构
+
+```
+.
+├── 启动汉化_Win.bat / 取消汉化_Win.bat / 修复校验_Win.bat   # Windows 入口（双击）
+├── 启动汉化_Mac.sh / 取消汉化_Mac.sh / 修复校验_Mac.sh      # macOS / Linux 入口
+├── Cursor_Localization_Tool.py       # 引擎：注入 / 恢复 / 语言包 / 校验值
+├── VSCode-language-pack-zh-hans.vsix # 官方语言包（引擎按同级目录查找）
+├── localization/                     # 词典与注入运行时
+│   ├── Core_Dictionary.json          # 主词典
+│   ├── Pattern_Dictionary.json       # 动态文案正则
+│   └── runtime/                      # 注入进 Cursor 的 JS
+├── gui/                              # 图形界面版（exe 源码 + 打包脚本）
+├── tools/                            # 开发工具（校验、检测、查找原文）
+├── docs/                             # 对外发布的图文说明
+└── README.md / CHANGELOG.md
+```
+
+> 根目录的脚本、引擎、`localization/`、`VSCode-language-pack-zh-hans.vsix` 必须保持同级：批处理按 `%~dp0`、引擎按 `__file__` 相对定位，移动会破坏「下载 ZIP 后双击即用」。
+
 ## 文件说明
 
 | 文件 | 说明 |
@@ -131,11 +153,12 @@ export CURSOR_USER_DATA_DIR="$HOME/Library/Application Support/Cursor"
 | `VSCode-language-pack-zh-hans.vsix` | 官方简体中文语言包（根目录；版本不匹配时自动从市场下载覆盖） |
 | `启动汉化_Win.bat` / `取消汉化_Win.bat` | Windows 快捷脚本 |
 | `启动汉化_Mac.sh` / `取消汉化_Mac.sh` | macOS / Linux 快捷脚本 |
-| `Cursor_Setting_Lookup.js` | 辅助查找设置页英文原文 |
-| `check_stale_entries.py` | 过期条目检测脚本（扫描 Cursor 源码，找出字典中已失效的翻译） |
-| `gui/app.py` | 图形界面宿主（pywebview + WebView2，桥接引擎） |
-| `gui/ui/index.html` | 图形界面（单文件 HTML/CSS/JS，深浅色自适应） |
-| `gui/build.py` | 构建 `CursorHanhua.exe`：`python gui/build.py` |
+| `gui/` | 图形界面版：`app.py` 宿主、`ui/index.html` 界面、`build.py` 打包脚本 |
+| `tools/validate_dictionary.py` | 词典校验（重复 key、空值、正则语法） |
+| `tools/verify_build.py` | 生成 JS 前的断言自检（片段、关键词表、市场懒加载） |
+| `tools/check_stale_entries.py` | 过期条目检测（扫描 Cursor 源码，找出已失效的翻译） |
+| `tools/Cursor_Setting_Lookup.js` | 查找设置页英文原文（Node.js） |
+| `docs/使用说明.md` / `.html` | 面向站外发布的图文说明 |
 
 ## 维护翻译
 
@@ -153,24 +176,24 @@ export CURSOR_USER_DATA_DIR="$HOME/Library/Application Support/Cursor"
 校验词典（可选）：
 
 ```bash
-python localization/tools/validate_dictionary.py
+python tools/validate_dictionary.py
 ```
 
 **注意**：中文译文中不要使用全角引号 `""`，以免生成的 JS 报错。
 
 ### 过期条目检测（可选）
 
-Cursor 版本更新后，部分旧翻译可能已失效（原文改了或删了）。运行 `check_stale_entries.py` 可自动扫描 Cursor 安装目录下的源码，找出字典中匹配不到的条目。
+Cursor 版本更新后，部分旧翻译可能已失效（原文改了或删了）。运行 `tools/check_stale_entries.py` 可自动扫描 Cursor 安装目录下的源码，找出字典中匹配不到的条目。
 
 ```bash
 # 检测所有字典
-python check_stale_entries.py
+python tools/check_stale_entries.py
 
 # 只检测指定字典（Core / AdPopup / Partial / Dropdown / Tray）
-python check_stale_entries.py --dict Core
+python tools/check_stale_entries.py --dict Core
 
 # 输出 JSON 报告
-python check_stale_entries.py --json stale-report.json
+python tools/check_stale_entries.py --json stale-report.json
 ```
 
 **说明**：
@@ -213,6 +236,21 @@ localStorage.setItem('Cursor_Localization_Market_Online_Translate', '1')  // 开
 6. 同步更新 `product.json` 中的文件校验值（避免「安装损坏」提示）
 
 取消汉化（`--restore`）会恢复备份文件，**不会卸载**已安装的语言包扩展。
+
+## 开发
+
+| 任务 | 命令 |
+| --- | --- |
+| 校验词典 | `python tools/validate_dictionary.py` |
+| 注入 JS 断言自检 | `python tools/verify_build.py` |
+| 过期条目检测 | `python tools/check_stale_entries.py` |
+| 查找设置项英文原文 | `node tools/Cursor_Setting_Lookup.js --key <key>` |
+| 构建图形界面 exe | `python gui/build.py` → `dist/CursorHanhua.exe` |
+| 预览界面 | 浏览器打开 `gui/ui/index.html?preview=1`（内置假后端，不碰真实文件） |
+
+打包在 `.build-venv` 精简环境里进行（只装 `pyinstaller` + `pywebview`）。若直接用 Anaconda 打包，会把 numpy/pandas 一起塞进 exe，体积从 12 MB 涨到 298 MB。
+
+界面改动后需重新执行 `python gui/build.py`，exe 内的 `gui/ui/index.html` 是构建时拷贝的副本。
 
 ## 常见问题
 
