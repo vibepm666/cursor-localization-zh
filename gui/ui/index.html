@@ -165,7 +165,7 @@
     transition:background .45s var(--ease-io);
   }
   .steps li:first-child::before{left:4px}
-  .steps li:last-child::before{right:4px}
+  .steps li:last-child::before{display:none}
   .steps li[data-s=active]::before{background:color-mix(in srgb,var(--accent) 45%,var(--s3))}
   .steps li[data-s=done]::before{background:var(--accent)}
   .steps .node{
@@ -224,7 +224,11 @@
   .ln[data-k=ok] .tag{color:var(--accent);opacity:.75}
   .ln[data-k=warn]{color:var(--warn)}
   .ln[data-k=warn] .tag{color:var(--warn);opacity:.8}
-  .log-body:empty::after{content:"尚无输出";color:var(--fg3)}
+  .log-body:empty{display:grid;place-items:center;text-align:center}
+  .log-body:empty::after{
+    content:"运行任一操作后，这里会输出引擎日志";
+    font-family:var(--font-ui);font-size:12.5px;color:var(--fg3);text-wrap:pretty;
+  }
 
   /* ---------- 底部 ---------- */
   .foot{display:flex;align-items:center;gap:12px;font-size:11.5px;color:var(--fg3)}
@@ -699,7 +703,7 @@
       "[托盘] 已替换 4 处系统托盘菜单文案",
       "[完成] 语言包安装与汉化注入成功！"
     ];
-    const state = { version: "1.0.0", cursorDir: "D:\\Program Files (x86)\\Cursor", found: true,
+    const state = { version: "1.0.1", cursorDir: "D:\\Program Files (x86)\\Cursor", found: true,
       injected: true, admin: false, writable: true, running: false, userDir: "", workbench: "" };
     return {
       describe: () => delays(180, { ...state }),
