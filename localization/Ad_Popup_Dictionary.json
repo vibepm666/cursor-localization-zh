@@ -275,6 +275,12 @@
     ["Revert Files", "恢复文件"],
     ["Exploring", "正在探索"],
     ["searches", "次搜索"],
-    ["Planning next moves", "规划下一步操作"]
+    ["Planning next moves", "规划下一步操作"],
+    ["Edited", "编辑了"],
+    ["Thought", "思考"],
+    ["Ran", "运行了"],
+    ["Explored", "探索了"],
+    ["search", "次搜索"],
+    ["search)", "次搜索）"]
   ]
 }
