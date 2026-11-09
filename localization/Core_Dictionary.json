@@ -8061,6 +8061,14 @@
         [
           "New Agent",
           "新建智能体"
+        ],
+        [
+          "Git History",
+          "Git 历史"
+        ],
+        [
+          "Show File History",
+          "显示文件历史"
         ]
       ]
     },
