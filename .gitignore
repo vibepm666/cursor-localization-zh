@@ -16,3 +16,4 @@ _Cursor_Localization_preview.js
 .build-venv/
 _*.png
 stale-report.json
+.skill

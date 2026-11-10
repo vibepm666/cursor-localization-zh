@@ -85,7 +85,7 @@ Windows 双击 `取消汉化_Win.bat`；Mac / Linux 运行 `取消汉化_Mac.sh`
 **Windows**：Cursor 装在非默认路径时，用记事本打开 `启动汉化_Win.bat`（取消汉化时改 `取消汉化_Win.bat`），在 `cd /d "%~dp0"` 后面增加一行：
 
 ```bat
-set CURSOR_INSTALL_DIR=D:\Program Files\cursor
+set "CURSOR_INSTALL_DIR=D:\Program Files\cursor"
 ```
 
 路径需指向**含 `Cursor.exe` 的安装文件夹**。若用户数据目录也不在默认位置，可额外设置（一般不用改）：
@@ -261,7 +261,7 @@ localStorage.setItem('Cursor_Localization_Market_Online_Translate', '1')  // 开
 - **执行脚本找不到 Cursor**：脚本会自动检查 `%LOCALAPPDATA%\Programs\Cursor`、`%ProgramFiles%\Cursor`、`%ProgramFiles(x86)%\Cursor`，以及 C、D、E、F、G、H 盘下的 `Program Files\Cursor`、`Program Files (x86)\Cursor`、`Cursor`、`Programs\Cursor`。若仍未找到（例如装在自定义目录），用记事本打开 `启动汉化_Win.bat`（取消汉化时改 `取消汉化_Win.bat`），在 `cd /d "%~dp0"` 后面增加一行，指定 Cursor 安装目录，保存后重新运行启动脚本。
 
 ```bat
-set CURSOR_INSTALL_DIR=D:\Program Files\cursor
+set "CURSOR_INSTALL_DIR=D:\Program Files\cursor"
 ```
 
 保存时请用记事本「另存为」并保持 **ANSI** 编码与 **Windows(CRLF)** 换行，否则 cmd 会解析出错。

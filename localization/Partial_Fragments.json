@@ -359,6 +359,26 @@
       "您可以为 Auto 模式配置 Shell、MCP 和 Fetch 白名单。不过，即使不配置这些，Auto 也能正常工作"
     ],
     [
+      "You can configure Shell, MCP, Fetch, and Read allowlists for Auto mode. However, Auto works well without these.",
+      "您可以为 Auto 模式配置 Shell、MCP、Fetch 和 Read 白名单。不过，即使不配置这些，Auto 也能正常工作。"
+    ],
+    [
+      "You can configure Shell, MCP, Fetch, and Read allowlists for Auto mode. However, Auto works well without these",
+      "您可以为 Auto 模式配置 Shell、MCP、Fetch 和 Read 白名单。不过，即使不配置这些，Auto 也能正常工作"
+    ],
+    [
+      "Agent will ask for approval before running tools.",
+      "智能体在运行工具前会请求批准。"
+    ],
+    [
+      "Agent will ask for approval before running tools",
+      "智能体在运行工具前会请求批准"
+    ],
+    [
+      "or *:* for all tools from all servers",
+      "或 *:* 表示所有服务器的所有工具"
+    ],
+    [
       "New Messages",
       "新消息"
     ],
@@ -757,6 +777,118 @@
     [
       "Not set",
       "未设置"
+    ],
+    [
+      "Always Run",
+      "始终运行"
+    ],
+    [
+      "Modifying system registry settings and virtual memory paging files requires explicit user authorization.",
+      "修改系统注册表设置和虚拟内存分页文件需要用户明确授权。"
+    ],
+    [
+      "Modifying system registry settings and virtual memory paging files requires explicit user authorization",
+      "修改系统注册表设置和虚拟内存分页文件需要用户明确授权"
+    ],
+    [
+      "Change run mode",
+      "更改运行模式"
+    ],
+    [
+      "Automatically run operations after you approv",
+      "批准后自动运行操作"
+    ],
+    [
+      "Automatically run operations that Auto-review",
+      "自动运行通过自动审查的操作"
+    ],
+    [
+      "Automatically run all operations without asking",
+      "自动运行所有操作而无需询问"
+    ],
+    [
+      "You have not yet added a folder to the workspace.",
+      "您尚未向工作区添加文件夹。"
+    ],
+    [
+      "You have not yet added a folder to the workspace",
+      "您尚未向工作区添加文件夹"
+    ],
+    [
+      "Open Folder",
+      "打开文件夹"
+    ],
+    [
+      "You can also manage Privacy Mode in the",
+      "您也可以在 中管理隐私模式"
+    ],
+    [
+      "Privacy Mode",
+      "隐私模式"
+    ],
+    [
+      "This edits a file outside your workspace.",
+      "这将编辑工作区外的文件。"
+    ],
+    [
+      "This edits a file outside your workspace",
+      "这将编辑工作区外的文件"
+    ],
+    [
+      "This creates a file outside your workspace.",
+      "这将创建工作区外的文件。"
+    ],
+    [
+      "This creates a file outside your workspace",
+      "这将创建工作区外的文件"
+    ],
+    [
+      "You can change this behavior in",
+      "您可以在 中更改此行为"
+    ],
+    [
+      "Choose how Agents run tools like command execution, MCP, and file writes.",
+      "选择智能体如何运行工具（如命令执行、MCP 和文件写入）。"
+    ],
+    [
+      "Choose how Agents run tools like command execution, MCP, and file writes",
+      "选择智能体如何运行工具（如命令执行、MCP 和文件写入）"
+    ],
+    [
+      "Learn more",
+      "了解更多"
+    ],
+    [
+      "Read Access",
+      "读取权限"
+    ],
+    [
+      "Control whether agents can read files outside the workspace without approval",
+      "控制智能体是否可以未经批准读取工作区外的文件"
+    ],
+    [
+      "Read Allowlist",
+      "读取白名单"
+    ],
+    [
+      "File paths and glob patterns agents can read without approval",
+      "智能体可以未经批准读取的文件路径和 glob 模式"
+    ],
+    [
+      "Add paths or globs (for example, /tmp/*)",
+      "添加路径或 glob 模式（例如 /tmp/*）"
+    ],
+    [
+      "Done • Gallery page modification",
+      "完成 • 图库页面修改"
+    ],
+    [
+      "Open Cursor to view the agent's output.",
+      "打开 Cursor 查看智能体的输出。"
+    ],
+    [
+      "Open Cursor to view the agent's output",
+      "打开 Cursor 查看智能体的输出"
     ]
   ]
 }
