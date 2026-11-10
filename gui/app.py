@@ -16,7 +16,7 @@ import sys
 import threading
 import traceback
 
-APP_VERSION = "1.0.1"
+APP_VERSION = "1.0.2"
 APP_TITLE = "Cursor 汉化"
 
 # 源码运行：gui/ 的上级目录；打包运行：PyInstaller 解包目录 _MEIPASS
