@@ -294,6 +294,7 @@
     ["Read", "读取了"],
     ["Added to-do", "已添加待办事项"],
     ["Navigated to", "导航到"],
-    ["Updating to-do list", "正在更新待办事项列表"]
+    ["Updating to-do list", "正在更新待办事项列表"],
+    ["Grepping", "正在搜索"]
   ]
 }
