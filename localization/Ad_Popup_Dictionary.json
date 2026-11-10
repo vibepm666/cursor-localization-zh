@@ -296,6 +296,7 @@
     ["Navigated to", "导航到"],
     ["Updating to-do list", "正在更新待办事项列表"],
     ["Grepping", "正在搜索"],
-    ["Run code unsafe", "不安全地运行代码"]
+    ["Run code unsafe", "不安全地运行代码"],
+    ["Chat context summarized", "聊天上下文已摘要"]
   ]
 }
