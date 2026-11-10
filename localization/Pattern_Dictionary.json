@@ -1216,6 +1216,21 @@
       "regex": "^Grepped$",
       "flags": "i",
       "replacement": "已搜索"
+    },
+    {
+      "regex": "^(\\d+) searches$",
+      "flags": "i",
+      "replacement": "$1 次搜索"
+    },
+    {
+      "regex": "^(\\d+) search$",
+      "flags": "i",
+      "replacement": "$1 次搜索"
+    },
+    {
+      "regex": "^Chat context summarized$",
+      "flags": "i",
+      "replacement": "聊天上下文已摘要"
     }
   ]
 }
