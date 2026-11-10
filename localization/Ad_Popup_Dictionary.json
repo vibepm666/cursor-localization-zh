@@ -290,6 +290,7 @@
     ["Exploring available tools", "正在探索可用工具"],
     ["Just now", "刚刚"],
     ["Grepped", "搜索了"],
-    ["command", "命令"]
+    ["command", "命令"],
+    ["Read", "读取了"]
   ]
 }
