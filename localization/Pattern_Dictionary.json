@@ -1201,6 +1201,21 @@
       "regex": "^([\\d,.]+(?:K|M)?)\\s+out of\\s+([\\d,.]+(?:K|M)?)\\s+tokens$",
       "flags": "i",
       "replacement": "$1 / $2 token"
+    },
+    {
+      "regex": "^Added (\\d+) to-dos?$",
+      "flags": "i",
+      "replacement": "已添加 $1 个待办事项"
+    },
+    {
+      "regex": "^Completed (\\d+) of (\\d+)$",
+      "flags": "i",
+      "replacement": "已完成 $1 / $2"
+    },
+    {
+      "regex": "^Grepped$",
+      "flags": "i",
+      "replacement": "已搜索"
     }
   ]
 }
