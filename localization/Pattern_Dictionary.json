@@ -1231,6 +1231,16 @@
       "regex": "^Chat context summarized$",
       "flags": "i",
       "replacement": "聊天上下文已摘要"
+    },
+    {
+      "regex": "^Thought (\\d+)s$",
+      "flags": "i",
+      "replacement": "思考 $1 秒"
+    },
+    {
+      "regex": "^Thought (\\d+)m (\\d+)s$",
+      "flags": "i",
+      "replacement": "思考 $1 分 $2 秒"
     }
   ]
 }
