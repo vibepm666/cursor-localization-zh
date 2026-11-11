@@ -310,6 +310,7 @@
     ["We have this limit in place to prevent abuse.", "我们设置此限制以防止滥用。"],
     ["We have this limit in place to prevent abuse", "我们设置此限制以防止滥用"],
     ["Please let us know if you believe this is a mistake.", "如果您认为这是误判，请告知我们。"],
-    ["Please let us know if you believe this is a mistake", "如果您认为这是误判，请告知我们"]
+    ["Please let us know if you believe this is a mistake", "如果您认为这是误判，请告知我们"],
+    ["Searched files", "已搜索文件"]
   ]
 }
