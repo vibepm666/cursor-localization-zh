@@ -1469,6 +1469,22 @@
     [
       "the agent and send the message",
       "智能体并发送消息"
+    ],
+    [
+      "Remote",
+      "远程"
+    ],
+    [
+      "Search repos, cloud environments...",
+      "搜索仓库、云端环境..."
+    ],
+    [
+      "Search remote repos...",
+      "搜索远程仓库..."
+    ],
+    [
+      "No repos",
+      "无仓库"
     ]
   ]
 }

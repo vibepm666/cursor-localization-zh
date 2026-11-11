@@ -297,6 +297,9 @@
     ["Updating to-do list", "正在更新待办事项列表"],
     ["Grepping", "正在搜索"],
     ["Run code unsafe", "不安全地运行代码"],
-    ["Chat context summarized", "聊天上下文已摘要"]
+    ["Chat context summarized", "聊天上下文已摘要"],
+    ["Chat could not be loaded", "聊天记录无法加载"],
+    ["The chat data may have been deleted or is unavailable", "聊天数据可能已被删除或不可用"],
+    ["The chat data may have been deleted or is unavailable.", "聊天数据可能已被删除或不可用。"]
   ]
 }
