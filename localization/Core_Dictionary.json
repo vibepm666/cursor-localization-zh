@@ -8805,6 +8805,22 @@
           "计划、构建，输入 / 调用命令，输入 @ 添加上下文"
         ],
         [
+          "Plan, Build, / for skills, @ for context",
+          "计划、构建，输入 / 调用技能，输入 @ 添加上下文"
+        ],
+        [
+          "Start from scratch",
+          "从头开始"
+        ],
+        [
+          "Build from a design",
+          "从设计稿构建"
+        ],
+        [
+          "Turn a frame into working UI in this repo",
+          "将设计稿转换为此仓库中的可用界面"
+        ],
+        [
           "Ask, learn, brainstorm",
           "提问、学习、头脑风暴"
         ],
