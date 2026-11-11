@@ -1266,6 +1266,21 @@
       "regex": "^Waiting up to (\\d+)m for shell$",
       "flags": "i",
       "replacement": "等待 shell 最多 $1 分钟"
+    },
+    {
+      "regex": "^Waited (\\d+)m (\\d+)s$",
+      "flags": "i",
+      "replacement": "等待 $1 分 $2 秒"
+    },
+    {
+      "regex": "^Waited (\\d+)s$",
+      "flags": "i",
+      "replacement": "等待 $1 秒"
+    },
+    {
+      "regex": "^Waited (\\d+)m$",
+      "flags": "i",
+      "replacement": "等待 $1 分钟"
     }
   ]
 }
