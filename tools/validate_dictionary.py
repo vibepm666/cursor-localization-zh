@@ -5,7 +5,7 @@ import os
 import re
 import sys
 
-ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CORE = os.path.join(ROOT, "localization", "Core_Dictionary.json")
 PATTERN = os.path.join(ROOT, "localization", "Pattern_Dictionary.json")
 

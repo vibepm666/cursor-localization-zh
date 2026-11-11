@@ -5,12 +5,12 @@ Cursor 汉化字典过期条目检测工具
       找不到的条目即为可能过期的翻译。
 
 用法：
-  python check_stale_entries.py                    检测所有字典
-  python check_stale_entries.py --dict Core       只检测 Core_Dictionary
-  python check_stale_entries.py --dict AdPopup    只检测 Ad_Popup_Dictionary
-  python check_stale_entries.py --dict Partial    只检测 Partial_Fragments
-  python check_stale_entries.py --dict Dropdown   只检测 Dropdown_Fragments
-  python check_stale_entries.py --json output.json  输出 JSON 报告
+  python tools/check_stale_entries.py                    检测所有字典
+  python tools/check_stale_entries.py --dict Core       只检测 Core_Dictionary
+  python tools/check_stale_entries.py --dict AdPopup    只检测 Ad_Popup_Dictionary
+  python tools/check_stale_entries.py --dict Partial    只检测 Partial_Fragments
+  python tools/check_stale_entries.py --dict Dropdown   只检测 Dropdown_Fragments
+  python tools/check_stale_entries.py --json output.json  输出 JSON 报告
 """
 
 import os
@@ -22,15 +22,19 @@ import argparse
 
 # ============ 配置 ============
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-LOCALIZATION_DIR = os.path.join(SCRIPT_DIR, "localization")
+ROOT_DIR = os.path.dirname(SCRIPT_DIR)
+LOCALIZATION_DIR = os.path.join(ROOT_DIR, "localization")
 
-# Cursor 安装目录候选
+# Cursor 安装目录候选（与 Cursor_Localization_Tool.py 保持一致：含其他盘符）
 CURSOR_PATHS = [
     r"C:\Program Files\Cursor",
     r"C:\Program Files (x86)\Cursor",
     os.path.join(os.environ.get("LOCALAPPDATA", ""), "Programs", "cursor"),
     os.path.join(os.environ.get("LOCALAPPDATA", ""), "Programs", "Cursor"),
 ]
+for _PanFu in ("C", "D", "E", "F", "G", "H"):
+    for _ZiMuLu in (r"Program Files\Cursor", r"Program Files (x86)\Cursor", r"Cursor", r"Programs\Cursor"):
+        CURSOR_PATHS.append(os.path.join(_PanFu + ":\\", _ZiMuLu))
 
 # 要扫描的文件扩展名
 SCAN_EXTENSIONS = {".js", ".json", ".html", ".ts", ".tsx"}

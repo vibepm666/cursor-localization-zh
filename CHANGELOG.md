@@ -6,8 +6,55 @@
 
 ## [Unreleased]
 
+（下次改动的记录写在这里）
+
+---
+
+## [1.0.2] — 2026-11-10
+
+### 同步上游
+- 合并 [vibepm666/cursor-localization-zh](https://github.com/vibepm666/cursor-localization-zh) 的 23 个提交（2026-11-07 ~ 11-10）
+- 词典新增 **68 条**：
+
+| 模块 | 数量 |
+|------|------|
+| 运行模式 / 白名单说明（含 Read） | ~14 |
+| 终端命令审批弹窗 | ~5 |
+| 工作区空状态 / 工作区外文件提示 | ~8 |
+| 隐私模式短片段 | ~2 |
+| 发送模式下拉菜单（Steer / 排队发送） | ~6 |
+| 智能体运行状态与步骤、恢复文件确认弹窗 | ~27 |
+| 相对时间 / Just now / Git 历史右键菜单 | ~6 |
+
+- 移除 `Partial_Fragments.json` 中与正则重复的相对时间条目，统一由正则处理
+- 上游新增汉化包维护 skill 文档（后从 git 追踪中移除），本仓库继续忽略 `.skill`
+- 解决合并冲突：保留本仓库更完整的「`.bat` 闪退 / 找不到安装目录」排查条目，并采用上游 `set "CURSOR_INSTALL_DIR=..."` 的引号写法
+
+### 发行
+- 图形界面版本号更新至 **1.0.2**，重新构建并发布 `CursorHanhua.exe`
+
+---
+
+## [1.0.1] — 2026-11-09
+
+### 仓库整理
+- 开发工具集中到 `tools/`：`check_stale_entries.py`、`validate_dictionary.py`（原 `localization/tools/`）、`verify_build.py`（原 `localization/tools/_verify_build.py`）、`Cursor_Setting_Lookup.js`
+- 对外发布的图文说明移到 `docs/`（`使用说明.md` / `.html`），README 保持为唯一入口文档
+- README 新增「目录结构」「开发」两节，并说明根目录文件为何不能移动（脚本按 `%~dp0`、引擎按 `__file__` 相对定位）
+- `tools/check_stale_entries.py` 补齐跨盘符安装目录探测，与引擎保持一致（此前装在 D 盘会直接报「未找到 Cursor」）
+
+### 修复
+- **图形界面图标**：去掉「汉」字形，改为无字形纯色标记（16px 下不再糊成一团）
+- **阶段轨**：末端多余的连接线已去掉，日志空状态改为居中提示文案
+- **Windows 批处理脚本无法双击运行**：`.bat` 原为 UTF-8 + LF 换行，cmd 解析时会丢字、把 `call :Label` 等拆成非法命令。现统一改为 **GBK(cp936) + CRLF**，`chcp` 改为 `936`，并显式设置 `PYTHONIOENCODING=gbk` 以保证 Python 输出不乱码
+- **检测不到非默认盘符的安装目录**：如 `D:\Program Files (x86)\Cursor`。批处理新增 `:DetectCursorOtherDrives`，`Cursor_Localization_Tool.py` 的 `CaiCe_Cursor_AnZhuang_LuJing()` 新增跨盘符候选扫描（C~H 盘 × `Program Files` / `Program Files (x86)` / `Cursor` / `Programs`）
+- **`修复校验_Win.bat` 必然失败**：它不传 `CURSOR_INSTALL_DIR`，Python 回退到脚本上级目录并报「未找到 product.json」。安装目录自动定位修复后已可正常执行
+
+### 文档更新
+- README / 使用说明补充「双击 `.bat` 闪退、乱码」与「找不到安装目录」的排查说明
+
 ### 新增
-- 过期条目检测脚本 `check_stale_entries.py`：自动扫描 Cursor 源码，找出字典中已失效的翻译
+- **图形界面版**（`gui/`）：单文件 `CursorHanhua.exe`，PyInstaller 打包 + Edge WebView2 渲染，免安装、免 Python。提供启动汉化 / 取消汉化 / 修复校验，实时日志、自动定位安装目录、无写权限时一键提权；`python gui/build.py` 可重新构建
 
 ### 补充翻译（2026-11-07 ~ 11-08）
 按功能模块分类，共补充约 **50 条**：

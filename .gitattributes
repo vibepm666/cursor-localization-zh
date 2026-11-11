@@ -1,0 +1,7 @@
+# Windows 批处理必须以 CRLF 换行存储：cmd 按字节解析，LF 会导致切行错位、命令被拆散。
+# 用 -text 让行尾保持工作区原样，保证 clone 与「Download ZIP」拿到的都是 CRLF。
+*.bat -text
+*.cmd -text
+
+# macOS / Linux 脚本保持 LF
+*.sh text eol=lf

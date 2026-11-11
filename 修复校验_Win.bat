@@ -1,6 +1,7 @@
 @echo off
 setlocal EnableExtensions EnableDelayedExpansion
-chcp 65001 >nul 2>&1
+chcp 936 >nul 2>&1
+set "PYTHONIOENCODING=gbk"
 cd /d "%~dp0"
 
 set "EXIT_CODE=1"

@@ -1,4 +1,8 @@
 __pycache__/
+build/
+dist/
+CursorHanhua.spec
+selfcheck.json
 _lookup_tmp*.py
 *.py[cod]
 *.bak
@@ -9,4 +13,7 @@ product.json
 _t.js
 _Cursor_Localization_preview.js
 .DS_Store
+.build-venv/
+_*.png
+stale-report.json
 .skill

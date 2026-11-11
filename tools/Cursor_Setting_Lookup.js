@@ -38,9 +38,9 @@ function parseArgs(argv) {
 
 function printHelp() {
   console.log(`Usage:
-  node Cursor_Setting_Lookup.js --key "terminal.integrated.tabs.enabled"
-  node Cursor_Setting_Lookup.js --text "Automatically index any new folders"
-  node Cursor_Setting_Lookup.js --cursor-root "D:\\\\Codes\\\\cursor" --key "terminal.integrated.windowsEnableConpty"
+  node tools/Cursor_Setting_Lookup.js --key "terminal.integrated.tabs.enabled"
+  node tools/Cursor_Setting_Lookup.js --text "Automatically index any new folders"
+  node tools/Cursor_Setting_Lookup.js --cursor-root "D:\\\\Codes\\\\cursor" --key "terminal.integrated.windowsEnableConpty"
 
 Options:
   --cursor-root <path>   Cursor install root, default: CURSOR_INSTALL_DIR or parent folder
