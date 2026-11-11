@@ -300,6 +300,16 @@
     ["Chat context summarized", "聊天上下文已摘要"],
     ["Chat could not be loaded", "聊天记录无法加载"],
     ["The chat data may have been deleted or is unavailable", "聊天数据可能已被删除或不可用"],
-    ["The chat data may have been deleted or is unavailable.", "聊天数据可能已被删除或不可用。"]
+    ["The chat data may have been deleted or is unavailable.", "聊天数据可能已被删除或不可用。"],
+    ["Too many free trials.", "免费试用次数过多。"],
+    ["Too many free trial accounts on this machine.", "本机已使用过多免费试用账户。"],
+    ["Too many free trial accounts on this machine", "本机已使用过多免费试用账户"],
+    ["on this machine", "在本机"],
+    ["Please upgrade to pro.", "请升级到 Pro。"],
+    ["Please upgrade to pro", "请升级到 Pro"],
+    ["We have this limit in place to prevent abuse.", "我们设置此限制以防止滥用。"],
+    ["We have this limit in place to prevent abuse", "我们设置此限制以防止滥用"],
+    ["Please let us know if you believe this is a mistake.", "如果您认为这是误判，请告知我们。"],
+    ["Please let us know if you believe this is a mistake", "如果您认为这是误判，请告知我们"]
   ]
 }
