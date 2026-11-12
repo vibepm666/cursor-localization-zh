@@ -8873,6 +8873,14 @@
           "可控制和扩展智能体循环——输入 /create-hook 开始使用"
         ],
         [
+          "Debug mode reproduces and solves your most difficult bugs - hit shift+tab twice to get started",
+          "调试模式可复现并解决最棘手的 bug——按两次 Shift+Tab 开始使用"
+        ],
+        [
+          "reproduces and solves your most difficult bugs - hit shift+tab twice to get started",
+          "可复现并解决最棘手的 bug——按两次 Shift+Tab 开始使用"
+        ],
+        [
           "Reject, suggest, follow up?",
           "拒绝、建议、继续跟进？"
         ],
@@ -11059,6 +11067,14 @@
         [
           "Use automations to save time on repetitive tasks with always-on agents",
           "使用自动化处理重复性任务，借助始终在线的智能体节省时间"
+        ],
+        [
+          "Use /ask to research your codebase before starting code changes",
+          "使用 /ask 在开始改动代码前先调研代码库"
+        ],
+        [
+          "research your codebase before starting code changes",
+          "在开始改动代码前先调研代码库"
         ],
         [
           "Add MCP tools...",
