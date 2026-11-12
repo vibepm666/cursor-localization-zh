@@ -5475,6 +5475,46 @@
         [
           "Version: preview",
           "版本：预览版"
+        ],
+        [
+          "SpaceXAI's most powerful model, built for complex coding and knowledge work.",
+          "SpaceXAI 最强大的模型，专为复杂编码与知识工作而构建。"
+        ],
+        [
+          "SpaceXAI's most powerful model, built for complex coding and knowledge work",
+          "SpaceXAI 最强大的模型，专为复杂编码与知识工作而构建"
+        ],
+        [
+          "The predecessor to Grok 4.7, built for complex coding and knowledge work.",
+          "Grok 4.7 的前代版本，专为复杂编码与知识工作而构建。"
+        ],
+        [
+          "The predecessor to Grok 4.7, built for complex coding and knowledge work",
+          "Grok 4.7 的前代版本，专为复杂编码与知识工作而构建"
+        ],
+        [
+          "Google's most capable model. Great for complex software engineering, long agentic coding tasks, and document-heavy work.",
+          "Google 最强模型。非常适合复杂软件工程、长时智能体编码任务以及文档密集型工作。"
+        ],
+        [
+          "Google's most capable model. Great for complex software engineering, long agentic coding tasks, and document-heavy work",
+          "Google 最强模型。非常适合复杂软件工程、长时智能体编码任务以及文档密集型工作"
+        ],
+        [
+          "Google's latest Flash model. Fast and cost-efficient for everyday agentic coding.",
+          "Google 最新 Flash 模型。速度快、成本效益高，适合日常智能体编码。"
+        ],
+        [
+          "Google's latest Flash model. Fast and cost-efficient for everyday agentic coding",
+          "Google 最新 Flash 模型。速度快、成本效益高，适合日常智能体编码"
+        ],
+        [
+          "OpenAI's flagship GPT-5.6 model. Strongest agentic coding, biology, and cybersecurity capabilities, with a new max reasoning effort.",
+          "OpenAI 旗舰 GPT-5.6 模型。具备最强的智能体编码、生物学与网络安全能力，采用全新最高推理强度。"
+        ],
+        [
+          "OpenAI's flagship GPT-5.6 model. Strongest agentic coding, biology, and cybersecurity capabilities, with a new max reasoning effort",
+          "OpenAI 旗舰 GPT-5.6 模型。具备最强的智能体编码、生物学与网络安全能力，采用全新最高推理强度"
         ]
       ]
     },
@@ -10861,10 +10901,6 @@
         [
           "Problems",
           "问题"
-        ],
-        [
-          "Hide \"Problems\"",
-          "隐藏「问题」"
         ],
         [
           "Cursor Code Completion",
