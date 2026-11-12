@@ -11115,6 +11115,14 @@
         [
           "Search Skills for User...",
           "搜索用户技能..."
+        ],
+        [
+          "Search repos, cloud environments...",
+          "搜索仓库、云端环境..."
+        ],
+        [
+          "Search remote repos...",
+          "搜索远程仓库..."
         ]
       ]
     }
