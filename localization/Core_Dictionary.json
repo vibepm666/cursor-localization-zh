@@ -5157,6 +5157,18 @@
           "Cursor Enterprise 团队可配置 IAM 角色，无需任何 Access Keys 即可访问 Bedrock。"
         ],
         [
+          "Use AWS Bedrock",
+          "使用 AWS Bedrock"
+        ],
+        [
+          "Use Azure OpenAI",
+          "使用 Azure OpenAI"
+        ],
+        [
+          "Enter API key",
+          "输入 API 密钥"
+        ],
+        [
           "Turn Off Anthropic Key",
           "关闭 Anthropic 密钥"
         ],
