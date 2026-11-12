@@ -315,6 +315,9 @@
     ["Used", "已使用"],
     ["Waited for shell", "等待 shell"],
     ["Summarizing chat context", "正在摘要聊天上下文"],
-    ["Summarization stopped", "已停止摘要"]
+    ["Summarization stopped", "已停止摘要"],
+    ["Meet Grok Bot", "认识 Grok Bot"],
+    ["AI teammates you can give real work to", "可交付实际工作的 AI 队友"],
+    ["Get Grok Bot", "获取 Grok Bot"]
   ]
 }
