@@ -1,0 +1,10 @@
+{
+  "description": "workbench bundle 内受控重建组件的固定字面量替换。注入脚本无法覆盖（React/tiptap 重建节点后回写英文），同托盘菜单机制直接改源码 bundle 字符串。仅收录可唯一定位、DOM 翻译拦不住的文案。",
+  "files": [
+    "out/vs/workbench/workbench.glass.main.js",
+    "out/vs/workbench/workbench.desktop.main.js"
+  ],
+  "replacements": [
+    ["return\"Plan, Build, / for skills, @ for context\"", "return\"计划、构建，输入 / 调用技能，输入 @ 添加上下文\""]
+  ]
+}

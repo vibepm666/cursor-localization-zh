@@ -114,6 +114,7 @@ export CURSOR_USER_DATA_DIR="$HOME/Library/Application Support/Cursor"
 | `localization/Pattern_Dictionary.json` | 动态文本正则替换规则 |
 | `localization/Ad_Popup_Dictionary.json` | 左下角推广 / 通知弹窗词典 |
 | `localization/Plugin_Marketplace_Dictionary.json` | 插件市场专用词典（注入后首次进入市场页才加载到内存） |
+| `localization/Bundle_Replacements.json` | workbench bundle 内受控重建组件的固定字面量替换（同托盘机制，直接改源码字符串） |
 | `VSCode-language-pack-zh-hans.vsix` | 官方简体中文语言包（根目录；版本不匹配时自动从市场下载覆盖） |
 | `启动汉化_Win.bat` / `取消汉化_Win.bat` | Windows 快捷脚本 |
 | `启动汉化_Mac.sh` / `取消汉化_Mac.sh` | macOS / Linux 快捷脚本 |
@@ -130,6 +131,7 @@ export CURSOR_USER_DATA_DIR="$HOME/Library/Application Support/Cursor"
 | 动态文案（含数字等） | `localization/Pattern_Dictionary.json` | `patterns`: `{regex, flags, replacement}` |
 | 插件市场 | `localization/Plugin_Marketplace_Dictionary.json` | `pluginNames`、`descriptionFragments` 等字段 |
 | 广告弹窗 | `localization/Ad_Popup_Dictionary.json` | `entries`: `[英文, 中文]` |
+| 受控重建组件占位符 | `localization/Bundle_Replacements.json` | `files`（相对 app 根目录）+ `replacements`: `[源码片段, 中文片段]` |
 
 若词典仍放在项目根目录（旧版路径），程序也会自动识别；新路径优先。
 

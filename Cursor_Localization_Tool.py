@@ -751,6 +751,7 @@ def HuoQu_Main_JS_LuJing():
 
 
 TRAY_DICTIONARY_FILE = os.path.join(LOCALIZATION_DIR, "Tray_Dictionary.json")
+BUNDLE_REPLACEMENTS_FILE = os.path.join(LOCALIZATION_DIR, "Bundle_Replacements.json")
 
 
 def DuQu_TuoPan_TiHuan():
@@ -828,6 +829,101 @@ def HuiFu_TuoPan_HanHua():
         print(f"[托盘] 无法还原 main.js: {CuoWu}")
         return False
     print(f"[托盘] 已还原 {CiShu} 处系统托盘菜单文案")
+    return True
+
+
+def DuQu_Bundle_TiHuan():
+    """读取 bundle 字面量替换表。返回 (目标文件相对路径列表, [[en, zh], ...])。"""
+    if not os.path.isfile(BUNDLE_REPLACEMENTS_FILE):
+        return [], []
+    with open(BUNDLE_REPLACEMENTS_FILE, "r", encoding="utf-8") as WenJian:
+        ShuJu = json.load(WenJian)
+    WenJianLieBiao = ShuJu.get("files") or []
+    TiHuan = []
+    for Xiang in ShuJu.get("replacements") or []:
+        if isinstance(Xiang, (list, tuple)) and len(Xiang) >= 2 and Xiang[0] and Xiang[1]:
+            TiHuan.append([str(Xiang[0]), str(Xiang[1])])
+    return [str(x) for x in WenJianLieBiao], TiHuan
+
+
+def YingYong_Bundle_TiHuan(NeiRong, TiHuan, FanXiang=False):
+    """在 bundle 文本上应用或还原字面量替换。返回 (新文本, 替换条目数)。"""
+    CiShu = 0
+    for YingWen, ZhongWen in TiHuan:
+        Yuan, MuBiao = (ZhongWen, YingWen) if FanXiang else (YingWen, ZhongWen)
+        if Yuan not in NeiRong:
+            continue
+        NeiRong = NeiRong.replace(Yuan, MuBiao)
+        CiShu += 1
+    return NeiRong, CiShu
+
+
+def HuoQu_Bundle_LuJing(XiangDuiLuJing):
+    """把 bundle 相对路径拼为 app 资源目录下的绝对路径。"""
+    GenMuLu = HuoQu_App_GenMuLu_LuJing(CURSOR_AN_ZHUANG_LU_JING)
+    return os.path.join(GenMuLu, *XiangDuiLuJing.replace("/", os.sep).split(os.sep))
+
+
+def ZhuRu_Bundle_HanHua():
+    """替换 workbench bundle 内受控重建组件的固定英文文案。"""
+    WenJianLieBiao, TiHuan = DuQu_Bundle_TiHuan()
+    if not TiHuan:
+        return False
+    ZongCiShu = 0
+    for XiangDui in WenJianLieBiao:
+        LuJing = HuoQu_Bundle_LuJing(XiangDui)
+        if not os.path.isfile(LuJing):
+            continue
+        try:
+            NeiRong, HuanHang = DuQu_WenBen_BaoLiu_HuanHang(LuJing)
+        except OSError as CuoWu:
+            print(f"[bundle] 无法读取 {os.path.basename(LuJing)}: {CuoWu}")
+            continue
+        XinWenBen, CiShu = YingYong_Bundle_TiHuan(NeiRong, TiHuan, FanXiang=False)
+        if CiShu == 0:
+            continue
+        try:
+            XieRu_WenBen_BaoLiu_HuanHang(LuJing, XinWenBen, HuanHang)
+        except PermissionError:
+            print(f"[错误] 无法写入 {os.path.basename(LuJing)}：权限不足（bundle 汉化需要写安装目录）")
+            TiShi_JiaoYan_QuanXian_BuZu(LuJing)
+            return False
+        except OSError as CuoWu:
+            print(f"[错误] 无法写入 {os.path.basename(LuJing)}: {CuoWu}")
+            continue
+        ZongCiShu += CiShu
+        print(f"[bundle] {os.path.basename(LuJing)} 已替换 {CiShu} 处字面量")
+    if ZongCiShu:
+        print(f"[bundle] 共替换 {ZongCiShu} 处 bundle 文案")
+    else:
+        print("[bundle] 未匹配到 bundle 英文文案（Cursor 版本可能已改结构），跳过")
+    return True
+
+
+def HuiFu_Bundle_HanHua():
+    """把 bundle 内被替换的中文文案还原为英文。"""
+    WenJianLieBiao, TiHuan = DuQu_Bundle_TiHuan()
+    if not TiHuan:
+        return False
+    ZongCiShu = 0
+    for XiangDui in WenJianLieBiao:
+        LuJing = HuoQu_Bundle_LuJing(XiangDui)
+        if not os.path.isfile(LuJing):
+            continue
+        try:
+            NeiRong, HuanHang = DuQu_WenBen_BaoLiu_HuanHang(LuJing)
+        except OSError:
+            continue
+        XinWenBen, CiShu = YingYong_Bundle_TiHuan(NeiRong, TiHuan, FanXiang=True)
+        if CiShu == 0:
+            continue
+        try:
+            XieRu_WenBen_BaoLiu_HuanHang(LuJing, XinWenBen, HuanHang)
+        except OSError:
+            continue
+        ZongCiShu += CiShu
+    if ZongCiShu:
+        print(f"[bundle] 已还原 {ZongCiShu} 处 bundle 文案")
     return True
 
 
@@ -1601,6 +1697,8 @@ def HuiFu_YuanShi():
 
     HuiFu_TuoPan_HanHua()
 
+    HuiFu_Bundle_HanHua()
+
     HuiFu_JiaoYan_Zhi()
 
     ShanChu_SuoYou_ZhuRu_JS()
@@ -1662,6 +1760,7 @@ def ZhuChengXu():
         XieRu_FanYi_JS()
         ShanChu_JiuBan_JS()
         ZhuRu_TuoPan_HanHua()
+        ZhuRu_Bundle_HanHua()
         GengXin_JiaoYan_Zhi()
         print("\n[完成] 语言包与脚本已更新！请完全退出并重启 Cursor 生效。")
         return
@@ -1674,6 +1773,8 @@ def ZhuChengXu():
     print("[步骤 4/4] 注入 HTML 引用...")
     ZhuRu_HTML()
     ZhuRu_TuoPan_HanHua()
+    ZhuRu_Bundle_HanHua()
+    GengXin_JiaoYan_Zhi()
 
     print("\n" + "=" * 60)
     print("  [完成] 语言包安装与汉化注入成功！")
