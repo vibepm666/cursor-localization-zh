@@ -1,0 +1,16 @@
+{
+  "description": "Composer 欢迎页 / 命令引导提示横条专用翻译（Use /xxx to ... 等整句）。修改后重新运行 Cursor_Localization_Tool.py 注入生效。命令名（/review、/create-skill 等）保留英文不译。",
+  "updatedAt": "2026-11-13",
+  "entries": [
+    ["Use /review for an agentic code review of your changes", "使用 /review 对你的改动进行智能体代码审查"],
+    ["Skills help you customize Cursor for your workflows - use /create-skill to get started", "技能可帮助你按工作流定制 Cursor——使用 /create-skill 开始"],
+    ["Use /create-rule to control agent behavior through system-level instructions", "使用 /create-rule 通过系统级指令控制智能体行为"],
+    ["Use /in-cloud to start a subagent in its own cloud VM, keeping your local workspace free", "使用 /in-cloud 在独立云端 VM 中启动子智能体，不占用本地工作区"],
+    ["Use /add-plugin to install a plugin from the Cursor marketplace", "使用 /add-plugin 从 Cursor 市场安装插件"],
+    ["Use /create-skill to customize Cursor for your workflows", "使用 /create-skill 按你的工作流定制 Cursor"],
+    ["Create a project to give agents a shared assignment and track their progress in one place", "创建项目，为智能体提供共享任务，并在一处跟踪其进度"],
+    ["Steer a running agent without stopping it - set New Messages to Send Immediately in your agent settings", "在不停止运行中智能体的前提下引导它——在智能体设置中将「新消息」设为「立即发送」"],
+    ["Ask mode uses read-only agents to research your codebase - hit shift+tab to get started", "询问模式使用只读智能体调研你的代码库——按 Shift+Tab 开始使用"],
+    ["Messages sent while Cursor is working can steer it mid-run without interrupting - turn it on under New Messages in agent settings", "Cursor 工作期间发送的消息可在运行中引导它而不打断——在智能体设置的「新消息」下开启"]
+  ]
+}

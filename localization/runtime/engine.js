@@ -2,6 +2,23 @@
     // SECTION 2: 翻译引擎
     // ================================================================
 
+    // 词典 key 常带 Markdown 反引号包裹命令名（如 Use `/babysit` to ...），
+    // 而 DOM 渲染会去掉反引号、命令拆成独立 chip（Use /babysit to ...）。
+    // 这里为含反引号的 key 派生一份无反引号副本，保证无反引号的 DOM 文本也能命中。
+    (function Derive_FanYinHao_FuBen() {
+        if (typeof FanYi_CiDian === 'undefined' || !FanYi_CiDian) return;
+        var fuBen = new Map();
+        FanYi_CiDian.forEach(function (zh, en) {
+            if (typeof en === 'string' && en.indexOf('`') >= 0) {
+                var plain = en.replace(/`/g, '');
+                if (plain && !FanYi_CiDian.has(plain) && !fuBen.has(plain)) {
+                    fuBen.set(plain, zh);
+                }
+            }
+        });
+        fuBen.forEach(function (zh, plain) { FanYi_CiDian.set(plain, zh); });
+    })();
+
     // __PARTIAL_FRAGMENTS_BLOCK__
 
     var TiaoGuo_XuanZeQi = '.monaco-editor, .overflow-guard, .view-lines, .editor-scrollable, .inputarea, .rename-input, .explorer-viewlet, [id="workbench.view.explorer"]';

@@ -8445,6 +8445,10 @@
         [
           "Open chat history",
           "打开聊天历史"
+        ],
+        [
+          "Open Tabs",
+          "打开的标签页"
         ]
       ]
     },
@@ -10715,6 +10719,38 @@
         [
           "This model provider is not supported in your region. Visit https://cursor.com/docs/account/regions for more information",
           "此模型提供商在您所在的地区不受支持。请访问 https://cursor.com/docs/account/regions 了解更多信息"
+        ],
+        [
+          "Create Project",
+          "创建项目"
+        ],
+        [
+          "Create a focused chat where Agents coordinate work",
+          "创建一个聚焦的聊天，供智能体协作完成工作"
+        ],
+        [
+          "Create a New Canvas",
+          "创建新画布"
+        ],
+        [
+          "Build a dashboard, document, or other artifact",
+          "构建仪表盘、文档或其他产物"
+        ],
+        [
+          "New Canvas",
+          "新建画布"
+        ],
+        [
+          "Create new canvas",
+          "创建新画布"
+        ],
+        [
+          "Setting up project",
+          "正在设置项目"
+        ],
+        [
+          "Tracks the decisions, agent work, and follow-through needed to move New Project forward.",
+          "记录推进项目所需的决策、智能体工作与后续跟进。"
         ]
       ]
     },

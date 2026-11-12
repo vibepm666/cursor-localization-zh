@@ -267,6 +267,7 @@ KUO_ZHAN_FAN_YI_QIAO_JIE = {
 JIAO_BEN_MU_LU = os.path.dirname(os.path.abspath(__file__))
 AD_POPUP_DICTIONARY_FILE = "Ad_Popup_Dictionary.json"
 PLUGIN_MARKETPLACE_DICTIONARY_FILE = "Plugin_Marketplace_Dictionary.json"
+HINTS_DICTIONARY_FILE = "Hints_Dictionary.json"
 LOCALIZATION_DIR = os.path.join(JIAO_BEN_MU_LU, "localization")
 CORE_DICTIONARY_FILE = os.path.join(LOCALIZATION_DIR, "Core_Dictionary.json")
 PATTERN_DICTIONARY_FILE = os.path.join(LOCALIZATION_DIR, "Pattern_Dictionary.json")
@@ -353,6 +354,55 @@ def ShengCheng_GuangGao_TanChuang_HeBing_JS():
         var guanggao = {Json_WenBen};
         for (var gi = 0; gi < guanggao.length; gi++) {{
             FanYi_CiDian.set(guanggao[gi][0], guanggao[gi][1]);
+        }}
+    }})();
+"""
+
+
+def DuQu_Hints_CiDian():
+    """读取 composer 引导/命令提示横条专用词典。"""
+    LuJing = HuoQu_CiDian_WenJian_LuJing(HINTS_DICTIONARY_FILE)
+    if not os.path.exists(LuJing):
+        print(f"[引导提示] 未找到 {HuoQu_CiDian_XianDui_LuJing(LuJing)}，跳过合并")
+        return {}
+
+    try:
+        with open(LuJing, 'r', encoding='utf-8') as WenJian:
+            ShuJu = json.load(WenJian)
+    except Exception as CuoWu:
+        print(f"[引导提示] 读取 {LuJing} 失败: {CuoWu}")
+        return {}
+
+    Entries = ShuJu.get("entries", [])
+    HeBing = {}
+    if isinstance(Entries, dict):
+        HeBing = {str(K): str(V) for K, V in Entries.items() if K and V}
+    elif isinstance(Entries, list):
+        for Xiang in Entries:
+            if isinstance(Xiang, (list, tuple)) and len(Xiang) >= 2:
+                YingWen, ZhongWen = str(Xiang[0]), str(Xiang[1])
+                if YingWen and ZhongWen:
+                    HeBing[YingWen] = ZhongWen
+    return HeBing
+
+
+def ShengCheng_Hints_HeBing_JS():
+    """生成将引导提示横条词典合并进 FanYi_CiDian 的 JavaScript 片段。"""
+    Entries = DuQu_Hints_CiDian()
+    if not Entries:
+        return ""
+
+    TiaoMu = [[YingWen, ZhongWen] for YingWen, ZhongWen in Entries.items()]
+    Json_WenBen = json.dumps(TiaoMu, ensure_ascii=False, separators=(',', ':'))
+    WenJian_BiaoShi = HuoQu_CiDian_XianDui_LuJing(
+        HuoQu_CiDian_WenJian_LuJing(HINTS_DICTIONARY_FILE)
+    )
+    return f"""
+    // 来自 {WenJian_BiaoShi}（composer 引导/命令提示横条）
+    (function() {{
+        var hints = {Json_WenBen};
+        for (var hi = 0; hi < hints.length; hi++) {{
+            FanYi_CiDian.set(hints[hi][0], hints[hi][1]);
         }}
     }})();
 """
@@ -687,6 +737,10 @@ def ShengCheng_JS_DaiMa():
     GuangGao_HeBing = ShengCheng_GuangGao_TanChuang_HeBing_JS()
     if GuangGao_HeBing:
         BuFen.append(GuangGao_HeBing.rstrip())
+
+    Hints_HeBing = ShengCheng_Hints_HeBing_JS()
+    if Hints_HeBing:
+        BuFen.append(Hints_HeBing.rstrip())
 
     MoShi_CiDian = DuQu_MoShi_CiDian()
     BuFen.append(ShengCheng_MoShi_FanYi_JS(MoShi_CiDian).rstrip())
@@ -1169,6 +1223,12 @@ def XieRu_FanYi_JS():
         print(
             f"[广告弹窗] 已合并 {len(GuangGao_TiaoMu)} 条"
             f"（{HuoQu_CiDian_XianDui_LuJing(HuoQu_CiDian_WenJian_LuJing(AD_POPUP_DICTIONARY_FILE))}）"
+        )
+    Hints_TiaoMu = DuQu_Hints_CiDian()
+    if Hints_TiaoMu:
+        print(
+            f"[引导提示] 已合并 {len(Hints_TiaoMu)} 条"
+            f"（{HuoQu_CiDian_XianDui_LuJing(HuoQu_CiDian_WenJian_LuJing(HINTS_DICTIONARY_FILE))}）"
         )
     Chajian_ShuJu = DuQu_Chajian_ShiChang_CiDian()
     if Chajian_ShuJu:
