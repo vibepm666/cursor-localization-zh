@@ -8857,6 +8857,18 @@
           "处理已明确添加的文件（无工具）"
         ],
         [
+          "Put it on a live link anyone can open",
+          "将其发布为任何人都能打开的实时链接"
+        ],
+        [
+          "Hooks let you control and extend the agent loop - use /create-hook to get started",
+          "可控制和扩展智能体循环——输入 /create-hook 开始使用"
+        ],
+        [
+          "let you control and extend the agent loop - use /create-hook to get started",
+          "可控制和扩展智能体循环——输入 /create-hook 开始使用"
+        ],
+        [
           "Reject, suggest, follow up?",
           "拒绝、建议、继续跟进？"
         ],
