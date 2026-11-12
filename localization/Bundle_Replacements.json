@@ -5,6 +5,7 @@
     "out/vs/workbench/workbench.desktop.main.js"
   ],
   "replacements": [
-    ["return\"Plan, Build, / for skills, @ for context\"", "return\"计划、构建，输入 / 调用技能，输入 @ 添加上下文\""]
+    ["return\"Plan, Build, / for skills, @ for context\"", "return\"计划、构建，输入 / 调用技能，输入 @ 添加上下文\""],
+    ["\"Plan, Build, / for skills, @ for context\"", "\"计划、构建，输入 / 调用技能，输入 @ 添加上下文\""]
   ]
 }
