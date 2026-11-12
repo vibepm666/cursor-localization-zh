@@ -1296,6 +1296,21 @@
       "regex": "^It resets in (\\d+) minutes?\\.?$",
       "flags": "i",
       "replacement": "将于 $1 分钟后重置。"
+    },
+    {
+      "regex": "^for (\\d+)m (\\d+)s$",
+      "flags": "i",
+      "replacement": "$1 分 $2 秒"
+    },
+    {
+      "regex": "^for (\\d+)s$",
+      "flags": "i",
+      "replacement": "$1 秒"
+    },
+    {
+      "regex": "^for (\\d+)m$",
+      "flags": "i",
+      "replacement": "$1 分钟"
     }
   ]
 }
