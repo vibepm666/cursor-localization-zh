@@ -120,9 +120,6 @@ export CURSOR_USER_DATA_DIR="$HOME/Library/Application Support/Cursor"
 | `启动汉化_Win.bat` / `取消汉化_Win.bat` | Windows 快捷脚本 |
 | `启动汉化_Mac.sh` / `取消汉化_Mac.sh` | macOS / Linux 快捷脚本 |
 | `Cursor_Setting_Lookup.js` | 辅助查找设置页英文原文 |
-| `.skill/cursor-localization/check_stale_entries.py` | 过期条目检测脚本（本地 skill 工具，扫描 Cursor 源码找出字典中已失效的翻译；`.skill` 目录不随仓库分发） |
-| `.skill/cursor-localization/find_untranslated.py` | 未翻译条目静态扫描（本地 skill 工具，从 bundle 英文字面量找词典未收录候选） |
-| `.skill/cursor-localization/find_untranslated_dom.py` | 未翻译条目运行时 DOM 抓取（本地 skill 工具，生成 DevTools Console snippet 抓当前页面英文） |
 
 ## 维护翻译
 
@@ -146,63 +143,6 @@ python localization/tools/validate_dictionary.py
 ```
 
 **注意**：中文译文中不要使用全角引号 `""`，以免生成的 JS 报错。
-
-### 过期条目检测（可选）
-
-Cursor 版本更新后，部分旧翻译可能已失效（原文改了或删了）。运行 `.skill/cursor-localization/check_stale_entries.py` 可自动扫描 Cursor 安装目录下的源码，找出字典中匹配不到的条目。
-
-```bash
-# 检测所有字典
-python .skill/cursor-localization/check_stale_entries.py
-
-# 只检测指定字典（Core / AdPopup / Partial / Dropdown / Tray）
-python .skill/cursor-localization/check_stale_entries.py --dict Core
-
-# 输出 JSON 报告
-python .skill/cursor-localization/check_stale_entries.py --json stale-report.json
-```
-
-**说明**：
-- 自动定位 Cursor 安装目录（支持 `CURSOR_INSTALL_DIR` 环境变量覆盖）
-- 扫描 `resources/app/out/` 下所有 JS/JSON/HTML 文件 + `main.js`
-- 智能引号归一化（`' ' " "` → 普通引号），减少误报
-- 短条目（< 3 字符）自动跳过，避免误报
-- 检测结果分为「确认过期」和「疑似过期（需人工确认）」两类
-
-**常见误报**：
-- 带换行符/特殊符号的菜单项（如 `New Agent (Ctrl+N)\n[Alt] Replace Agent`）
-- 刚从截图新增的条目（源码中可能因空格、标点差异未精确匹配，实际仍有效）
-- `Tray_Dictionary` 中的代码片段（若 Cursor 改版托盘结构，需重新截图确认）
-
-### 未翻译条目扫描（可选）
-
-反向于过期检测：从界面 / 源码里找出词典尚未收录的英文候选，减少纯靠手动截图收集的工作量。两个工具互补，均在 `.skill/cursor-localization/`（本地 skill，不随仓库分发）。
-
-**静态 bundle 扫描**（离线，覆盖本地源码文案）：
-
-```bash
-# 只扫 workbench 主 bundle，打印候选
-python .skill/cursor-localization/find_untranslated.py --workbench-only
-
-# 输出 JSON 报告
-python .skill/cursor-localization/find_untranslated.py --json scan-report.json
-```
-
-**运行时 DOM 抓取**（覆盖远程下发 / 动态拼接 / 受控重建文案，如欢迎页横条）：
-
-```bash
-# 1. 按最新词典生成 DevTools Console snippet
-python .skill/cursor-localization/find_untranslated_dom.py snippet
-
-# 2. 「帮助 → 切换开发者工具」打开 DevTools，Console 粘贴 dom_scrape_snippet.js 运行
-#    结果下载为 cursor_untranslated.json；Electron 下可能弹另存为对话框，
-#    同时 JSON 已复制到剪贴板，可直接从剪贴板存文件
-
-# 3. 二次过滤导出的 JSON
-python .skill/cursor-localization/find_untranslated_dom.py report cursor_untranslated.json
-```
-
-**局限**：静态扫描扫不到远程下发文案，也无法自动剔除 VS Code 原生文案；两类工具输出均为候选，需人工复核后再补进词典。词典增删后需重跑 `snippet` 重新内嵌比对集合。
 
 ### 市场页可选开关（开发者工具控制台）
 
