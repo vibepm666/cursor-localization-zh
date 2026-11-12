@@ -124,10 +124,6 @@
         ],
         [
           "No changes to review",
-          "没有可审查的更改"
-        ],
-        [
-          "No changes to review",
           "暂无可审查的更改"
         ],
         [
@@ -1395,14 +1391,6 @@
         [
           "System Notifications",
           "系统通知"
-        ],
-        [
-          "System Tray Icon",
-          "系统任务栏图标"
-        ],
-        [
-          "Show system notifications when Agent completes or needs attention",
-          "当 Agent 完成或需要关注时显示系统通知"
         ],
         [
           "Warning Notifications",
@@ -2989,10 +2977,6 @@
         [
           "GitHub Pull Requests",
           "GitHub Pull 请求"
-        ],
-        [
-          "Review PRs, fix CI, address comments, and more directly from Cursor",
-          "直接在 Cursor 中审查 PR、修复 CI、回复评论等"
         ],
         [
           "Connect Slack",
@@ -8537,10 +8521,6 @@
           "切换主侧边栏可见性"
         ],
         [
-          "Primary Side Bar",
-          "主侧边栏"
-        ],
-        [
           "Customize Sidebar",
           "自定义侧边栏"
         ],
@@ -10489,10 +10469,6 @@
         [
           "Coordinate long-horizon tasks with delegated subagents",
           "通过委派子智能体协调长期任务"
-        ],
-        [
-          "Create detailed plans for accomplishing tasks",
-          "创建完成任务所需的详细计划"
         ],
         [
           "Create structured plans with implementation steps",
