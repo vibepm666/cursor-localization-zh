@@ -11,6 +11,8 @@
     ["Create a project to give agents a shared assignment and track their progress in one place", "创建项目，为智能体提供共享任务，并在一处跟踪其进度"],
     ["Steer a running agent without stopping it - set New Messages to Send Immediately in your agent settings", "在不停止运行中智能体的前提下引导它——在智能体设置中将「新消息」设为「立即发送」"],
     ["Ask mode uses read-only agents to research your codebase - hit shift+tab to get started", "询问模式使用只读智能体调研你的代码库——按 Shift+Tab 开始使用"],
-    ["Messages sent while Cursor is working can steer it mid-run without interrupting - turn it on under New Messages in agent settings", "Cursor 工作期间发送的消息可在运行中引导它而不打断——在智能体设置的「新消息」下开启"]
+    ["Messages sent while Cursor is working can steer it mid-run without interrupting - turn it on under New Messages in agent settings", "Cursor 工作期间发送的消息可在运行中引导它而不打断——在智能体设置的「新消息」下开启"],
+    ["After long sessions, use /split-to-prs to turn your work into small, reviewable PR", "长时间工作后，使用 /split-to-prs 把你的改动拆成便于评审的小 PR"],
+    ["Use @browser to inspect page elements, view console logs, and analyze network traffic", "使用 @browser 检查页面元素、查看控制台日志并分析网络流量"]
   ]
 }
