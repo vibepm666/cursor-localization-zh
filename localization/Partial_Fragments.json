@@ -889,6 +889,14 @@
     [
       "Open Cursor to view the agent's output",
       "打开 Cursor 查看智能体的输出"
+    ],
+    [
+      "reached. It resets in",
+      "已达。将于"
+    ],
+    [
+      "reached.",
+      "已达。"
     ]
   ]
 }

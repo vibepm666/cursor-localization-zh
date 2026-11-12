@@ -1281,6 +1281,21 @@
       "regex": "^Waited (\\d+)m$",
       "flags": "i",
       "replacement": "等待 $1 分钟"
+    },
+    {
+      "regex": "^It resets in (\\d+) days?\\.?$",
+      "flags": "i",
+      "replacement": "将于 $1 天后重置。"
+    },
+    {
+      "regex": "^It resets in (\\d+) hours?\\.?$",
+      "flags": "i",
+      "replacement": "将于 $1 小时后重置。"
+    },
+    {
+      "regex": "^It resets in (\\d+) minutes?\\.?$",
+      "flags": "i",
+      "replacement": "将于 $1 分钟后重置。"
     }
   ]
 }
