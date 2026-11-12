@@ -194,7 +194,9 @@ python .skill/cursor-localization/find_untranslated.py --json scan-report.json
 # 1. 按最新词典生成 DevTools Console snippet
 python .skill/cursor-localization/find_untranslated_dom.py snippet
 
-# 2. 在 Cursor DevTools Console 粘贴 dom_scrape_snippet.js 运行，下载 cursor_untranslated.json
+# 2. 「帮助 → 切换开发者工具」打开 DevTools，Console 粘贴 dom_scrape_snippet.js 运行
+#    结果下载为 cursor_untranslated.json；Electron 下可能弹另存为对话框，
+#    同时 JSON 已复制到剪贴板，可直接从剪贴板存文件
 
 # 3. 二次过滤导出的 JSON
 python .skill/cursor-localization/find_untranslated_dom.py report cursor_untranslated.json
