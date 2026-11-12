@@ -313,6 +313,8 @@
     ["Please let us know if you believe this is a mistake", "如果您认为这是误判，请告知我们"],
     ["Searched files", "已搜索文件"],
     ["Used", "已使用"],
-    ["Waited for shell", "等待 shell"]
+    ["Waited for shell", "等待 shell"],
+    ["Summarizing chat context", "正在摘要聊天上下文"],
+    ["Summarization stopped", "已停止摘要"]
   ]
 }
