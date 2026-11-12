@@ -4251,6 +4251,26 @@
         [
           "Enabled by Run Everything Auto-Run Mode: Agent bypasses approval prompts for tools including Web Search",
           "由“全部运行”自动运行模式启用：智能体会跳过包括网页搜索在内的工具审批提示"
+        ],
+        [
+          "Choose which source configures this MCP server.",
+          "选择用于配置此 MCP 服务器的来源。"
+        ],
+        [
+          "Environments",
+          "环境"
+        ],
+        [
+          "Enable or disable individual tools.",
+          "启用或禁用单个工具。"
+        ],
+        [
+          "Reads",
+          "读取"
+        ],
+        [
+          "Open config",
+          "打开配置"
         ]
       ]
     },

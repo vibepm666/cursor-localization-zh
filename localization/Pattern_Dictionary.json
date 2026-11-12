@@ -1311,6 +1311,16 @@
       "regex": "^for (\\d+)m$",
       "flags": "i",
       "replacement": "$1 分钟"
+    },
+    {
+      "regex": "^(\\d+) sources?$",
+      "flags": "i",
+      "replacement": "$1 个来源"
+    },
+    {
+      "regex": "^Configure (.+)$",
+      "flags": "i",
+      "replacement": "配置 $1"
     }
   ]
 }
