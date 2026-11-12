@@ -2753,6 +2753,7 @@
             ['Edit selected code', '编辑所选代码'],
             ['Ask quick question', '快速提问'],
             ['Plan, Build, / for commands, @ for context', '计划、构建，输入 / 调用命令，输入 @ 添加上下文'],
+            ['Plan, Build, / for skills, @ for context', '计划、构建，输入 / 调用技能，输入 @ 添加上下文'],
             ['Ask, learn, brainstorm', '提问、学习、头脑风暴'],
             ['Ask questions without making changes...', '在不修改代码的情况下提问...'],
             ['Ask questions without making changes', '在不修改代码的情况下提问'],
