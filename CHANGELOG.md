@@ -9,6 +9,7 @@
 ### 新增
 - 过期条目检测脚本 `check_stale_entries.py`：自动扫描 Cursor 源码，找出字典中已失效的翻译
 - bundle 字面量替换通道：针对 React/tiptap 受控重建、注入脚本无法覆盖的组件，直接替换 workbench bundle 固定文案（`Bundle_Replacements.json`，可一键还原）
+- 未翻译条目扫描工具：静态 bundle 字面量扫描 + 运行时 DOM 抓取两套，输出词典未收录的英文候选（本地 skill 工具，不随仓库分发）
 
 ### 补充翻译（2026-11-13）
 按功能模块分类，共补充 **25 条**：
