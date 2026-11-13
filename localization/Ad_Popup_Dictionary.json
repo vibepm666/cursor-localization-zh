@@ -318,6 +318,8 @@
     ["Summarization stopped", "已停止摘要"],
     ["Meet Grok Bot", "认识 Grok Bot"],
     ["AI teammates you can give real work to", "可交付实际工作的 AI 队友"],
-    ["Get Grok Bot", "获取 Grok Bot"]
+    ["Get Grok Bot", "获取 Grok Bot"],
+    ["Continue your upgrade in the browser.", "请在浏览器中继续完成升级。"],
+    ["Continue your upgrade in the browser", "请在浏览器中继续完成升级"]
   ]
 }
