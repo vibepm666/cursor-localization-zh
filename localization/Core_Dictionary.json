@@ -369,8 +369,16 @@
           "升级以解锁高级模型"
         ],
         [
+          "Upgrade to unlock more models",
+          "升级以解锁更多模型"
+        ],
+        [
           "Premium models are only available on paid plans.",
           "高级模型仅在付费计划中可用。"
+        ],
+        [
+          "More models are only available on paid plans.",
+          "更多模型仅在付费计划中可用。"
         ],
         [
           "Upgrade to Pro now",
@@ -851,6 +859,10 @@
         [
           "Theme",
           "主题"
+        ],
+        [
+          "Shortcuts",
+          "快捷键"
         ],
         [
           "Keyboard Shortcuts",
@@ -9517,6 +9529,10 @@
         [
           "You're approaching your usage limit",
           "您的用量即将达到上限"
+        ],
+        [
+          "Get Cursor for iOS",
+          "在 iOS 上获取 Cursor"
         ],
         [
           "Get Cursor Pro for more Agent usage, unlimited Tab, and more.",
