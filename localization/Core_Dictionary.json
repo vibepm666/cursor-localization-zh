@@ -365,6 +365,10 @@
           "升级到专业版"
         ],
         [
+          "Upgrade to Premium",
+          "升级到高级版"
+        ],
+        [
           "Upgrade to unlock premium models",
           "升级以解锁高级模型"
         ],
@@ -3929,6 +3933,10 @@
           "重新启动时继续被中断的智能体"
         ],
         [
+          "Continue interrupted Agents",
+          "继续中断的智能体"
+        ],
+        [
           "When Cursor closes while an agent is working, pick the agent back up the next time you open Cursor.",
           "若 Cursor 关闭时智能体仍在工作，下次打开时将继续该智能体。"
         ],
@@ -5275,6 +5283,10 @@
         [
           "Effort",
           "强度"
+        ],
+        [
+          "Cycle Effort",
+          "切换强度"
         ],
         [
           "Max",
@@ -10309,6 +10321,10 @@
         [
           "Configure MCP servers for this agent to use as tools",
           "为此智能体配置用作工具的 MCP 服务器"
+        ],
+        [
+          "Configure MCPs in your Cursor Settings to give agents access to tools and data",
+          "在 Cursor 设置中配置 MCPs，为智能体提供工具和数据访问权限"
         ],
         [
           "Browser Menu",
