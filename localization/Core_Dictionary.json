@@ -273,6 +273,26 @@
           "用量限额重置于"
         ],
         [
+          "Grok and Composer Usage",
+          "Grok 与 Composer 用量"
+        ],
+        [
+          "Non-Grok usage and usage beyond limits consumes additional usage.",
+          "非 Grok 用量以及超出限额的部分将消耗额外用量。"
+        ],
+        [
+          "Non-Grok usage and usage beyond limits consumes additional usage",
+          "非 Grok 用量以及超出限额的部分将消耗额外用量"
+        ],
+        [
+          "Cursor, Grok Bot, Grok, and X in one plan, with more coding usage.",
+          "Cursor、Grok Bot、Grok 和 X 共用一个计划，包含更多编码用量。"
+        ],
+        [
+          "Cursor, Grok Bot, Grok, and X in one plan, with more coding usage",
+          "Cursor、Grok Bot、Grok 和 X 共用一个计划，包含更多编码用量"
+        ],
+        [
           "Resets",
           "重置"
         ],
@@ -8108,6 +8128,10 @@
         ],
         [
           "Outline",
+          "大纲"
+        ],
+        [
+          "OUTLINE",
           "大纲"
         ],
         [
