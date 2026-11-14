@@ -10219,6 +10219,142 @@
           "命令中心"
         ],
         [
+          "Menu Bar",
+          "菜单栏"
+        ],
+        [
+          "Toggle Menu Bar",
+          "切换菜单栏"
+        ],
+        [
+          "Activity Bar",
+          "活动栏"
+        ],
+        [
+          "Show Status Bar",
+          "显示状态栏"
+        ],
+        [
+          "Editor Layout",
+          "编辑器布局"
+        ],
+        [
+          "Agent Layout",
+          "智能体布局"
+        ],
+        [
+          "New &&Agent",
+          "新建智能体(&A)"
+        ],
+        [
+          "New &&Browser",
+          "新建浏览器(&B)"
+        ],
+        [
+          "New &&Terminal",
+          "新建终端(&T)"
+        ],
+        [
+          "Open &&Folder",
+          "打开文件夹(&F)"
+        ],
+        [
+          "Open &&IDE",
+          "打开 IDE(&I)"
+        ],
+        [
+          "E&&xit",
+          "退出(&X)"
+        ],
+        [
+          "&&Files",
+          "文件(&F)"
+        ],
+        [
+          "&&Changes",
+          "更改(&C)"
+        ],
+        [
+          "&&Browser",
+          "浏览器(&B)"
+        ],
+        [
+          "&&Terminal",
+          "终端(&T)"
+        ],
+        [
+          "&&Status Bar",
+          "状态栏(&S)"
+        ],
+        [
+          "&&Minimap",
+          "缩略图(&M)"
+        ],
+        [
+          "&&Zoom In",
+          "放大(&Z)"
+        ],
+        [
+          "Zoom &&Out",
+          "缩小(&O)"
+        ],
+        [
+          "&&Reset Zoom",
+          "重置缩放(&R)"
+        ],
+        [
+          "&&About Cursor",
+          "关于 Cursor(&A)"
+        ],
+        [
+          "&&Command Palette",
+          "命令面板(&C)"
+        ],
+        [
+          "&&Keyboard Shortcuts",
+          "键盘快捷方式(&K)"
+        ],
+        [
+          "&&Settings",
+          "设置(&S)"
+        ],
+        [
+          "Install &&Update",
+          "安装更新(&U)"
+        ],
+        [
+          "Report &&Issue",
+          "报告问题(&I)"
+        ],
+        [
+          "Restart to &&Update",
+          "重启以更新(&U)"
+        ],
+        [
+          "View &&License",
+          "查看许可证(&L)"
+        ],
+        [
+          "Use in Agents Window",
+          "在智能体窗口中使用"
+        ],
+        [
+          "Open or Focus Agents Window",
+          "打开或聚焦智能体窗口"
+        ],
+        [
+          "Open or Focus Agents Window (Glass)",
+          "打开或聚焦智能体窗口 (Glass)"
+        ],
+        [
+          "Open Agents Window and Create Project",
+          "打开智能体窗口并创建项目"
+        ],
+        [
+          "New Agent with Context",
+          "使用上下文新建智能体"
+        ],
+        [
           "Check for Updates",
           "检查更新"
         ],
@@ -10453,6 +10589,70 @@
         [
           "New Project",
           "新建项目"
+        ],
+        [
+          "Start a new project",
+          "开始新项目"
+        ],
+        [
+          "Move to project",
+          "移至项目"
+        ],
+        [
+          "Move this chat into a project",
+          "将此对话移入项目"
+        ],
+        [
+          "Keep your subagents' work organized",
+          "让子智能体的工作保持有序"
+        ],
+        [
+          "Keep the conversation going in a project, with tasks and PRs organized in one place.",
+          "在项目中继续对话，任务与 PR 集中在一处管理。"
+        ],
+        [
+          "A new project picks up this chat's work. The chat moves in with its full history.",
+          "新项目会承接此对话的工作。对话将连同完整历史一起移入。"
+        ],
+        [
+          "Start parallel work in a project",
+          "在项目中启动并行工作"
+        ],
+        [
+          "Start in a project to keep tasks and PRs organized in one place.",
+          "从项目开始，让任务与 PR 集中在一处管理。"
+        ],
+        [
+          "Keep your next steps organized",
+          "让后续步骤保持有序"
+        ],
+        [
+          "Keep your important chats organized",
+          "让重要对话保持有序"
+        ],
+        [
+          "Keep your favorite chats organized",
+          "让收藏的对话保持有序"
+        ],
+        [
+          "Keep related chats together",
+          "将相关对话集中在一起"
+        ],
+        [
+          "Keep your parallel work organized",
+          "让并行工作保持有序"
+        ],
+        [
+          "Keep your local and cloud agents together",
+          "将本地与云端智能体集中管理"
+        ],
+        [
+          "Keep long conversations on track",
+          "让长对话保持正轨"
+        ],
+        [
+          "Pick up where you left off",
+          "从上次离开的地方继续"
         ],
         [
           "Projects",

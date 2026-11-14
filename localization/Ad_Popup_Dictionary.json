@@ -1,6 +1,6 @@
 {
   "description": "Cursor 左下角通知/推广弹窗（Notification Toast）专用翻译。修改后重新运行 Cursor_Localization_Tool.py 注入生效。",
-  "updatedAt": "2026-07-15",
+  "updatedAt": "2026-11-14",
   "entries": [
     ["Automations in the Agents Window", "智能体窗口中的自动化"],
     ["Save Time on Repetitive Tasks", "节省重复任务时间"],
@@ -180,6 +180,22 @@
     ["Background agents only work in folders with a git repository. Please open a folder that contains a git repository to use this feature.", "后台智能体仅在包含 Git 仓库的文件夹中可用。请打开包含 Git 仓库的文件夹以使用此功能。"],
     ["Please open a folder to use background agents.", "请打开文件夹以使用后台智能体。"],
     ["Please open a folder to use background agents", "请打开文件夹以使用后台智能体"],
-    ["Review my code", "审查我的代码"]
+    ["Review my code", "审查我的代码"],
+    ["Keep your subagents' work organized", "让子智能体的工作保持有序"],
+    ["Keep the conversation going in a project, with tasks and PRs organized in one place.", "在项目中继续对话，任务与 PR 集中在一处管理。"],
+    ["Move to project", "移至项目"],
+    ["Move this chat into a project", "将此对话移入项目"],
+    ["A new project picks up this chat's work. The chat moves in with its full history.", "新项目会承接此对话的工作。对话将连同完整历史一起移入。"],
+    ["Start a new project", "开始新项目"],
+    ["Start parallel work in a project", "在项目中启动并行工作"],
+    ["Start in a project to keep tasks and PRs organized in one place.", "从项目开始，让任务与 PR 集中在一处管理。"],
+    ["Keep your next steps organized", "让后续步骤保持有序"],
+    ["Keep your important chats organized", "让重要对话保持有序"],
+    ["Keep your favorite chats organized", "让收藏的对话保持有序"],
+    ["Keep related chats together", "将相关对话集中在一起"],
+    ["Keep your parallel work organized", "让并行工作保持有序"],
+    ["Keep your local and cloud agents together", "将本地与云端智能体集中管理"],
+    ["Keep long conversations on track", "让长对话保持正轨"],
+    ["Pick up where you left off", "从上次离开的地方继续"]
   ]
 }

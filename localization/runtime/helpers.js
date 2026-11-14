@@ -388,7 +388,10 @@
             if (typeof TiaoGuo_XuanZeQi === 'string' && el.closest(TiaoGuo_XuanZeQi)) return true;
             if (el.closest('.monaco-editor, .monaco-diff-editor, .monaco-component, .ui-code-block, .cm-editor, .cm-content, pre, code, .view-line, .sticky-widget, .code-view, .code-line, .code-content, .simple-code-render, .monaco-tokenized-source, [class*="ui-default-diff"], [class*="ui-default-code"], [data-component="embedded-file-viewer"], [data-streamdown="code-block-body"]')) return true;
             if (el.closest('webview')) return true;
-            if (el.closest('.menubar, [role="menubar"], .menubar-menu-title, .menubar-menu-button')) return true;
+            if (el.closest(
+                '.menubar, [role="menubar"], .menubar-menu-title, .menubar-menu-button, ' +
+                '[data-component="glass-in-app-menubar"], [data-component="gallery-glass-in-app-menubar"]'
+            )) return true;
             if (el.matches && el.matches(
                 '.view-lines, .editor-scrollable, .overflow-guard, .inputarea, .margin, .minimap'
             )) return true;

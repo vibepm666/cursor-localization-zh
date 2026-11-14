@@ -89,13 +89,18 @@
         return changed ? result : null;
     }
 
+    // Glass 应用内顶部菜单栏（Agents Window）根选择器
+    var Glass_DingBu_CaiDan_XuanZeQi =
+        '[data-component="glass-in-app-menubar"], [data-component="gallery-glass-in-app-menubar"]';
+
     // 判断元素是否位于菜单或菜单栏内
     function Shi_CaiDan_QuYu(el) {
         if (!el) return false;
         try {
             return !!(el.closest(
                 '.monaco-menu, .monaco-menu-container, .context-view, [role="menu"], [role="menubar"], ' +
-                '.ui-menu, .ui-menu__layout, .ui-menu__content, .ui-slash-menu, .ui-slash-menu__content'
+                '.ui-menu, .ui-menu__layout, .ui-menu__content, .ui-slash-menu, .ui-slash-menu__content, ' +
+                Glass_DingBu_CaiDan_XuanZeQi
             ));
         } catch (e) { return false; }
     }
@@ -388,13 +393,14 @@
         ['Paste', '粘贴']
     ];
 
-    // 顶部菜单栏标题
+    // 顶部菜单栏标题（含 Glass 应用内菜单：File / Edit / View / Help）
     var DingBu_CaiDan_HINTS = [
         ['File', '文件'],
         ['Edit', '编辑'],
         ['Selection', '选择'],
-        ['View', '查看'],
+        ['View', '视图'],
         ['Go', '转到'],
+        ['Run', '运行'],
         ['Terminal', '终端'],
         ['Help', '帮助']
     ];
@@ -771,6 +777,22 @@
             );
             for (var i = 0; i < items.length; i++) FanYi_ShuXing(items[i]);
         } catch (e1) {}
+        // Glass 下拉项常把助记符拆成 before/letter/after，需按整项 textContent 翻译
+        try {
+            var glassLetters = root.querySelectorAll('.glass-ujl8zx');
+            for (var g = 0; g < glassLetters.length; g++) {
+                var letterEl = glassLetters[g];
+                var host = letterEl.parentElement;
+                if (!host) continue;
+                var full = GuiYiHua_WenBen(host.textContent || '');
+                if (!full || /[\u4e00-\u9fff]/.test(full)) continue;
+                var gtr = ChaZhao_CaiDan_ZhuanYong(full);
+                if (gtr && gtr !== full) {
+                    CaiDan_ZhengZaiXie = true;
+                    try { XieRu_Glass_ZhuJiFu_BiaoQian(host, gtr); } finally { CaiDan_ZhengZaiXie = false; }
+                }
+            }
+        } catch (eGlass) {}
         var walker;
         try {
             walker = (root.ownerDocument || document).createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
@@ -795,7 +817,8 @@
             try {
                 var menus = root.querySelectorAll(
                     '.context-view, .monaco-menu-container, .monaco-menu, [role="menu"], ' +
-                    '.ui-menu, .ui-menu__layout, .ui-menu__content, .ui-slash-menu, .ui-slash-menu__content'
+                    '.ui-menu, .ui-menu__layout, .ui-menu__content, .ui-slash-menu, .ui-slash-menu__content, ' +
+                    Glass_DingBu_CaiDan_XuanZeQi
                 );
                 for (var i = 0; i < menus.length; i++) tianJia(menus[i]);
             } catch (e) {}
@@ -2086,20 +2109,43 @@
         } catch (e) { return false; }
     }
 
-    // 判断节点是否位于顶部菜单栏
+    // 判断节点是否位于顶部菜单栏（含 Glass 应用内菜单栏）
     function JieDian_You_DingBu_CaiDan(node) {
         if (!node || node.nodeType !== Node.ELEMENT_NODE) return false;
         if (node.classList) {
             if (node.classList.contains('menubar') ||
                 node.classList.contains('menubar-menu-button') ||
                 node.classList.contains('menubar-menu-title') ||
-                node.classList.contains('titlebar')) return true;
+                node.classList.contains('titlebar') ||
+                node.classList.contains('glass-titlebar') ||
+                node.classList.contains('glass-in-app-menubar')) return true;
         }
         try {
+            if (node.getAttribute && (
+                node.getAttribute('data-component') === 'glass-in-app-menubar' ||
+                node.getAttribute('data-component') === 'gallery-glass-in-app-menubar'
+            )) return true;
             return !!(node.closest && node.closest(
-                '.menubar, [role="menubar"], .titlebar, .part.titlebar, .menubar-menu-button, .menubar-menu-title'
+                '.menubar, [role="menubar"], .titlebar, .part.titlebar, .menubar-menu-button, .menubar-menu-title, ' +
+                '.glass-titlebar, ' + Glass_DingBu_CaiDan_XuanZeQi
             ));
         } catch (e) { return false; }
+    }
+
+    // 判断元素是否属于 Glass / 经典顶部菜单标题区域，可安全写回助记符结构
+    function Shi_DingBu_CaiDan_BiaoTi_YuanSu(el) {
+        if (!el || el.nodeType !== 1) return false;
+        try {
+            if (el.classList && (
+                el.classList.contains('menubar-menu-title') ||
+                el.classList.contains('menubar-menu-button')
+            )) return true;
+            if (el.closest && el.closest(
+                '.menubar-menu-title, .menubar-menu-button, [role="menubar"], ' + Glass_DingBu_CaiDan_XuanZeQi
+            )) return true;
+            if (el.closest && el.closest(Glass_DingBu_CaiDan_XuanZeQi) && el.tagName === 'BUTTON') return true;
+        } catch (e) {}
+        return false;
     }
 
     // 判断节点是否是或包含斜杠提及菜单
@@ -2407,6 +2453,40 @@
         return true;
     }
 
+    // Glass 菜单助记符：before + .glass-ujl8zx(letter) + after，合并为整句译文
+    function XieRu_Glass_ZhuJiFu_BiaoQian(el, text) {
+        if (!el || text == null || el.nodeType !== 1) return false;
+        var letter = null;
+        try { letter = el.querySelector && el.querySelector('.glass-ujl8zx'); } catch (e) {}
+        if (!letter) return false;
+        try {
+            var written = false;
+            var child = el.firstChild;
+            while (child) {
+                var next = child.nextSibling;
+                if (child === letter) {
+                    try { letter.textContent = ''; } catch (e2) {}
+                } else if (child.nodeType === 3) {
+                    if (!written) {
+                        child.nodeValue = text;
+                        written = true;
+                    } else {
+                        child.nodeValue = '';
+                    }
+                } else if (child.nodeType === 1) {
+                    try { child.textContent = ''; } catch (e3) {}
+                }
+                child = next;
+            }
+            if (!written) {
+                el.insertBefore((el.ownerDocument || document).createTextNode(text), letter);
+            }
+            return true;
+        } catch (e4) {
+            return false;
+        }
+    }
+
     // 只改写已有文本节点，避免拆掉 React 子节点
     function XieRu_YuanSu_WenBen(el, text) {
         if (!el || text == null) return false;
@@ -2427,14 +2507,10 @@
             child = child.nextSibling;
         }
         if (youYuanSuWen) {
-            var shiDingBuBiaoTi = false;
-            try {
-                shiDingBuBiaoTi = !!(el.classList && (
-                    el.classList.contains('menubar-menu-title') ||
-                    el.classList.contains('menubar-menu-button')
-                )) || !!(el.closest && el.closest('.menubar-menu-title, [role="menubar"]'));
-            } catch (e2) {}
-            if (shiDingBuBiaoTi) return XieRu_ZhuJiFu_CaiDan_BiaoQian(el, text);
+            if (Shi_DingBu_CaiDan_BiaoTi_YuanSu(el)) {
+                if (XieRu_ZhuJiFu_CaiDan_BiaoQian(el, text)) return true;
+                return XieRu_Glass_ZhuJiFu_BiaoQian(el, text);
+            }
             return false;
         }
         if (!target) return false;
@@ -2461,10 +2537,7 @@
                 '.ui-menu, .ui-menu__content, .ui-slash-menu, [role="listbox"]'
             );
             if (caiDan) {
-                var shiDingBuBiaoTi = !!(el.classList && (
-                    el.classList.contains('menubar-menu-title') ||
-                    el.classList.contains('menubar-menu-button')
-                )) || !!(el.closest && el.closest('.menubar-menu-title'));
+                var shiDingBuBiaoTi = Shi_DingBu_CaiDan_BiaoTi_YuanSu(el);
                 var clsName = el.className ? String(el.className) : '';
                 var shiBiaoQian = !!(el.classList && (
                     el.classList.contains('action-label') ||
@@ -2480,7 +2553,8 @@
                     '[role="menuitem"], [role="option"], a.action-menu-item, li.action-item, ' +
                     '.ui-menu__row, .ui-menu__item, [class*="ui-menu__item"]'
                 ));
-                if (!shiDingBuBiaoTi && !shiBiaoQian && !(shiYeZi && shiCaiDanXiang)) return false;
+                var shiGlassZhuJiFu = !!(el.querySelector && el.querySelector('.glass-ujl8zx'));
+                if (!shiDingBuBiaoTi && !shiBiaoQian && !(shiYeZi && shiCaiDanXiang) && !shiGlassZhuJiFu) return false;
             }
         } catch (e) {}
         var parent = el.parentElement;
@@ -3872,7 +3946,7 @@
         var norm = GuiYiHua_WenBen(text || '');
         if (!norm) return null;
         if (/^运行(\([A-Za-z]\))?$/.test(norm)) return null;
-        var m = /^(File|Edit|Selection|View|Go|Terminal|Help)(?:\s*\(([A-Za-z])\))?$/.exec(norm);
+        var m = /^(File|Edit|Selection|View|Go|Run|Terminal|Help)(?:\s*\(([A-Za-z])\))?$/.exec(norm);
         if (!m) return null;
         var zh = null;
         for (var i = 0; i < DingBu_CaiDan_HINTS.length; i++) {
@@ -3885,26 +3959,68 @@
         return m[2] ? (zh + '(' + m[2] + ')') : zh;
     }
 
+    // 收集经典与 Glass 顶部菜单栏根节点
+    function ShouJi_DingBu_CaiDan_Tiao() {
+        var out = [];
+        var seen = typeof Set !== 'undefined' ? new Set() : null;
+        function tianJia(node) {
+            if (!node || (seen && seen.has(node))) return;
+            if (seen) seen.add(node);
+            out.push(node);
+        }
+        try {
+            var classic = document.querySelectorAll(
+                '.menubar, [role="menubar"], .titlebar .menubar, .part.titlebar [role="menubar"]'
+            );
+            for (var i = 0; i < classic.length; i++) tianJia(classic[i]);
+        } catch (e) {}
+        try {
+            var glass = document.querySelectorAll(Glass_DingBu_CaiDan_XuanZeQi);
+            for (var g = 0; g < glass.length; g++) tianJia(glass[g]);
+        } catch (e2) {}
+        return out;
+    }
+
+    // 写回顶部菜单标题（兼容经典助记符与 Glass 按钮）
+    function XieRu_DingBu_CaiDan_BiaoTi(titleEl, tr) {
+        if (!titleEl || !tr) return false;
+        if (XieRu_YuanSu_WenBen(titleEl, tr)) return true;
+        if (XieRu_Glass_ZhuJiFu_BiaoQian(titleEl, tr)) return true;
+        try {
+            var onlyText = titleEl.childNodes.length === 1 && titleEl.firstChild && titleEl.firstChild.nodeType === 3;
+            if (onlyText) return XieRu_WenBen_JieDian(titleEl.firstChild, tr);
+            if (!titleEl.querySelector || !titleEl.querySelector('*')) {
+                titleEl.textContent = tr;
+                return true;
+            }
+        } catch (e) {}
+        return false;
+    }
+
     // 翻译窗口顶部菜单栏的标题
     function XiuZheng_DingBu_CaiDanTiao() {
         if (ZhengZai_DingBu_FanYi) return;
         ZhengZai_DingBu_FanYi = true;
         try {
-            var bars;
-            try {
-                bars = document.querySelectorAll(
-                    '.menubar, [role="menubar"], .titlebar .menubar, .part.titlebar [role="menubar"]'
-                );
-            } catch (e) { return; }
+            var bars = ShouJi_DingBu_CaiDan_Tiao();
             if (!bars.length) return;
             var seen = new Set();
             for (var b = 0; b < bars.length; b++) {
                 var bar = bars[b];
                 if (!bar || seen.has(bar)) continue;
                 seen.add(bar);
+                var shiGlass = false;
+                try {
+                    var dc = bar.getAttribute && bar.getAttribute('data-component');
+                    shiGlass = dc === 'glass-in-app-menubar' || dc === 'gallery-glass-in-app-menubar';
+                } catch (e0) {}
                 var buttons;
                 try {
-                    buttons = bar.querySelectorAll('.menubar-menu-button, [role="menuitem"]');
+                    if (shiGlass) {
+                        buttons = bar.querySelectorAll('button[type="button"], button');
+                    } else {
+                        buttons = bar.querySelectorAll('.menubar-menu-button, [role="menuitem"]');
+                    }
                 } catch (e) { continue; }
                 if (!buttons.length) {
                     try { buttons = bar.querySelectorAll('.menubar-menu-title'); } catch (e2) { continue; }
@@ -3921,7 +4037,7 @@
                     if (/[\u4e00-\u9fff]/.test(raw)) continue;
                     var tr = JieXi_DingBu_CaiDan_BiaoQian(raw);
                     if (tr && tr !== raw) {
-                        try { XieRu_YuanSu_WenBen(titleEl, tr); } catch (e4) {}
+                        try { XieRu_DingBu_CaiDan_BiaoTi(titleEl, tr); } catch (e4) {}
                     }
                     try {
                         var aria = el.getAttribute && el.getAttribute('aria-label');
@@ -3972,10 +4088,10 @@
                 obs.observe(bar, { childList: true, subtree: true, characterData: true });
             } catch (e) {}
         }
-        // 扫描并绑定当前已有的顶部菜单栏
+        // 扫描并绑定当前已有的顶部菜单栏（含 Glass）
         function saoMiao() {
             try {
-                var bars = document.querySelectorAll('.menubar, [role="menubar"]');
+                var bars = ShouJi_DingBu_CaiDan_Tiao();
                 for (var i = 0; i < bars.length; i++) bangDing(bars[i]);
             } catch (e) {}
             PaiDui_DingBu_CaiDanTiao();
