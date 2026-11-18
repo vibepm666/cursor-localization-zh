@@ -1,6 +1,6 @@
 {
   "description": "系统托盘右键菜单。主进程 out/main.js 中的唯一标签替换，注入脚本无法覆盖原生菜单。",
-  "updatedAt": "2026-08-13",
+  "updatedAt": "2026-11-18",
   "replacements": [
     ["label:\"Recent Agents\"", "label:\"最近智能体\""],
     ["label:\"No recent agents\"", "label:\"暂无最近智能体\""],
@@ -11,6 +11,9 @@
     ["label:\"Settings\",click:()=>{this.trackEvent(\"tray.settings_opened\")", "label:\"设置\",click:()=>{this.trackEvent(\"tray.settings_opened\")"],
     ["label:\"Quit\",click:()=>{iS.quit()}", "label:\"退出\",click:()=>{iS.quit()}"],
     ["case\"in_progress\":return\"Running\"", "case\"in_progress\":return\"运行中\""],
-    ["case\"needs_attention\":return\"Needs attention\"", "case\"needs_attention\":return\"需要关注\""]
+    ["case\"needs_attention\":return\"Needs attention\"", "case\"needs_attention\":return\"需要关注\""],
+    ["label:\"Quit\",click:()=>{mh.quit()}", "label:\"退出\",click:()=>{mh.quit()}"],
+    ["label:e.newComposerActionLabel", "label:[\"New Chat\",\"New Agent\"].includes(e.newComposerActionLabel)?\"新建对话\":e.newComposerActionLabel"],
+    ["??\"New Agent\"", "??\"新建对话\""]
   ]
 }
