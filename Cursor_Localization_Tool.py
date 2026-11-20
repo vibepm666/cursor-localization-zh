@@ -1191,6 +1191,101 @@ def HuiFu_Bundle_HanHua():
     return True
 
 
+def HuoQu_Molten_MuLu_LuJing():
+    """返回 molten 渲染层资源目录的绝对路径（不存在则返回空串）。"""
+    GenMuLu = HuoQu_App_GenMuLu_LuJing(CURSOR_AN_ZHUANG_LU_JING)
+    return os.path.join(GenMuLu, "molten", "dist", "renderer", "assets")
+
+
+def DuQu_Bundle_MuLu_TiHuan():
+    """读取 bundle 目录级替换表：[(目录相对路径, [扩展名...], [[en, zh], ...]), ...]"""
+    if not os.path.isfile(BUNDLE_REPLACEMENTS_FILE):
+        return []
+    with open(BUNDLE_REPLACEMENTS_FILE, "r", encoding="utf-8") as WenJian:
+        ShuJu = json.load(WenJian)
+    TiHuan = []
+    for Xiang in ShuJu.get("dirReplacements") or []:
+        if isinstance(Xiang, (list, tuple)) and len(Xiang) >= 2 and Xiang[0] and Xiang[1]:
+            TiHuan.append([str(Xiang[0]), str(Xiang[1])])
+    MuLu = []
+    for Xiang in ShuJu.get("dirs") or []:
+        if isinstance(Xiang, dict) and Xiang.get("path"):
+            Kuozhan = [".js"]
+            if isinstance(Xiang.get("extensions"), list) and Xiang["extensions"]:
+                Kuozhan = [str(x) for x in Xiang["extensions"]]
+            MuLu.append((str(Xiang["path"]), Kuozhan))
+    return MuLu, TiHuan
+
+
+def ZhuRu_Molten_TiHuan():
+    """对 molten 渲染层资源目录内脚本应用字面量替换（文件名带哈希，需目录扫描）。"""
+    MuLu, TiHuan = DuQu_Bundle_MuLu_TiHuan()
+    if not MuLu or not TiHuan:
+        return True
+    GenMuLu = HuoQu_App_GenMuLu_LuJing(CURSOR_AN_ZHUANG_LU_JING)
+    ZongCiShu = 0
+    GaiWenJian = 0
+    for XiangDui, Kuozhan in MuLu:
+        MuLu_LuJing = os.path.join(GenMuLu, *XiangDui.replace("/", os.sep).split(os.sep))
+        if not os.path.isdir(MuLu_LuJing):
+            continue
+        for WenJianMing in sorted(os.listdir(MuLu_LuJing)):
+            if not any(WenJianMing.endswith(x) for x in Kuozhan):
+                continue
+            LuJing = os.path.join(MuLu_LuJing, WenJianMing)
+            try:
+                NeiRong, HuanHang = DuQu_WenBen_BaoLiu_HuanHang(LuJing)
+            except OSError:
+                continue
+            XinWenBen, CiShu = YingYong_Bundle_TiHuan(NeiRong, TiHuan, FanXiang=False)
+            if CiShu == 0:
+                continue
+            try:
+                XieRu_WenBen_BaoLiu_HuanHang(LuJing, XinWenBen, HuanHang)
+            except OSError as CuoWu:
+                print(f"[molten] 无法写入 {WenJianMing}: {CuoWu}")
+                continue
+            ZongCiShu += CiShu
+            GaiWenJian += 1
+    if ZongCiShu:
+        print(f"[molten] 共替换 {ZongCiShu} 处字面量，涉及 {GaiWenJian} 个文件")
+    else:
+        print("[molten] 未匹配到 molten 文案，跳过")
+    return True
+
+
+def HuiFu_Molten_TiHuan():
+    """把 molten 渲染层资源目录内的中文文案还原为英文。"""
+    MuLu, TiHuan = DuQu_Bundle_MuLu_TiHuan()
+    if not MuLu or not TiHuan:
+        return True
+    GenMuLu = HuoQu_App_GenMuLu_LuJing(CURSOR_AN_ZHUANG_LU_JING)
+    ZongCiShu = 0
+    for XiangDui, Kuozhan in MuLu:
+        MuLu_LuJing = os.path.join(GenMuLu, *XiangDui.replace("/", os.sep).split(os.sep))
+        if not os.path.isdir(MuLu_LuJing):
+            continue
+        for WenJianMing in sorted(os.listdir(MuLu_LuJing)):
+            if not any(WenJianMing.endswith(x) for x in Kuozhan):
+                continue
+            LuJing = os.path.join(MuLu_LuJing, WenJianMing)
+            try:
+                NeiRong, HuanHang = DuQu_WenBen_BaoLiu_HuanHang(LuJing)
+            except OSError:
+                continue
+            XinWenBen, CiShu = YingYong_Bundle_TiHuan(NeiRong, TiHuan, FanXiang=True)
+            if CiShu == 0:
+                continue
+            try:
+                XieRu_WenBen_BaoLiu_HuanHang(LuJing, XinWenBen, HuanHang)
+            except OSError:
+                continue
+            ZongCiShu += CiShu
+    if ZongCiShu:
+        print(f"[molten] 已还原 {ZongCiShu} 处文案")
+    return True
+
+
 # ============================================================
 # ★★★ 注入与恢复函数 ★★★
 # ============================================================
@@ -2117,6 +2212,8 @@ def HuiFu_YuanShi():
 
     HuiFu_Bundle_HanHua()
 
+    HuiFu_Molten_TiHuan()
+
     HuiFu_JiaoYan_Zhi()
 
     ShanChu_SuoYou_ZhuRu_JS()
@@ -2184,6 +2281,7 @@ def ZhuChengXu():
         ShanChu_JiuBan_JS()
         ZhuRu_TuoPan_HanHua()
         ZhuRu_Bundle_HanHua()
+        ZhuRu_Molten_TiHuan()
         GengXin_JiaoYan_Zhi()
         print("\n[完成] 语言包与脚本已更新！请完全退出并重启 Cursor 生效。")
         return
@@ -2199,6 +2297,7 @@ def ZhuChengXu():
     QueBao_NLS_HTML_ZhuRu()
     ZhuRu_TuoPan_HanHua()
     ZhuRu_Bundle_HanHua()
+    ZhuRu_Molten_TiHuan()
     GengXin_JiaoYan_Zhi()
 
     print("\n" + "=" * 60)

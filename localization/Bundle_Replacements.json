@@ -58,5 +58,18 @@
     ["\"Monthly spend limit\"", "\"每月额外用量上限\""],
     ["\"Monthly additional usage\"", "\"每月额外用量\""],
     ["\"Monthly usage\"", "\"每月用量\""]
+  ],
+  "dirs": [
+    {
+      "path": "molten/dist/renderer/assets",
+      "extensions": [".js"]
+    }
+  ],
+  "dirReplacements": [
+    ["% used", "% 已用"],
+    ["Monthly extra usage limit", "每月额外用量上限"],
+    ["Monthly spend limit", "每月额外用量上限"],
+    ["Credits expire after two years", "积分有效期为两年"],
+    ["Extra usage credits", "额外用量积分"]
   ]
 }
