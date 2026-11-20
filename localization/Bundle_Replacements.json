@@ -41,6 +41,8 @@
     ["\"The canvas will be deleted permanently.\"", "\"画布将被永久删除。\""],
     ["\"Anyone with the link will lose access. This action cannot be undone.\"", "\"任何持有链接的人都将失去访问权限。此操作无法撤销。\""],
     ["\"Delete Rule\"", "\"删除规则\""],
-    ["\"Delete automation\"", "\"删除自动化\""]
+    ["\"Delete automation\"", "\"删除自动化\""],
+    ["\"This Canvas isn't available on this machine\"", "\"此画布在此机器上不可用\""],
+    ["\"Browse Canvases\"", "\"浏览画布\""]
   ]
 }

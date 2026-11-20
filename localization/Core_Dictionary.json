@@ -11707,6 +11707,14 @@
         [
           "Move to trash",
           "移入回收站"
+        ],
+        [
+          "This Canvas isn't available on this machine",
+          "此画布在此机器上不可用"
+        ],
+        [
+          "Browse Canvases",
+          "浏览画布"
         ]
       ]
     }
