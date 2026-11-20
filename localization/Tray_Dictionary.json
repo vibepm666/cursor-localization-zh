@@ -13,6 +13,12 @@
     ["case\"in_progress\":return\"Running\"", "case\"in_progress\":return\"运行中\""],
     ["case\"needs_attention\":return\"Needs attention\"", "case\"needs_attention\":return\"需要关注\""],
     ["label:\"Quit\",click:()=>{mh.quit()}", "label:\"退出\",click:()=>{mh.quit()}"],
+    ["label:\"Quit\",click:()=>{Wf.quit()}", "label:\"退出\",click:()=>{Wf.quit()}"],
+    ["label:\"Show Count\",type:\"checkbox\"", "label:\"显示数量\",type:\"checkbox\""],
+    ["label:\"Log In\"", "label:\"登录\""],
+    ["label:\"Sign Up\"", "label:\"注册\""],
+    ["`${e} more unread`", "`${e} 条未读`"],
+    ["toolTip:r?\"Running\":e.status===\"error\"?\"Needs attention\":void 0", "toolTip:r?\"运行中\":e.status===\"error\"?\"需要关注\":void 0"],
     ["label:e.newComposerActionLabel", "label:[\"New Chat\",\"New Agent\"].includes(e.newComposerActionLabel)?\"新建对话\":e.newComposerActionLabel"],
     ["??\"New Agent\"", "??\"新建对话\""]
   ]
