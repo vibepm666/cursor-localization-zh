@@ -1053,6 +1053,50 @@ def ZhuRu_CaiDan_BiaoQian_HanHua():
     return True
 
 
+MENU_LOG_HOOK_MARKER = "CURSOR_L10N_MENU_LOG_HOOK2"
+
+
+def ZhuRu_Menu_ZhenDuan_Hook():
+    """给已有的 L10N_CAIDAN 套一层日志/大小写兜底，用于确认原生菜单是否走这条链路。"""
+    LuJing = HuoQu_Main_JS_LuJing()
+    if not os.path.isfile(LuJing):
+        return False
+    try:
+        NeiRong, HuanHang = DuQu_WenBen_BaoLiu_HuanHang(LuJing)
+    except OSError:
+        return False
+    if MENU_LOG_HOOK_MARKER in NeiRong:
+        return True
+    DaiMa = (
+        "\n// " + MENU_LOG_HOOK_MARKER + "\n"
+        ";try{\n"
+        "if(typeof L10N_CAIDAN===\"function\"){\n"
+        "var _L10N_ORIG=L10N_CAIDAN,_L10N_LINES=[],_L10N_LOWER=null;\n"
+        "function _L10N_LOW(_w){try{if(!_L10N_LOWER){_L10N_LOWER={};"
+        "for(var _k in L10N_MENU_ZIDIAN){_L10N_LOWER[String(_k).toLowerCase()]=L10N_MENU_ZIDIAN[_k];}}"
+        "return _L10N_LOWER[String(_w).toLowerCase()];}catch(_e){return null;}}\n"
+        "L10N_CAIDAN=function(_w){\n"
+        "var _o=_L10N_ORIG(_w);\n"
+        "try{\n"
+        "if(_o===_w&&typeof _w===\"string\"){var _k=String(_w).replace(/&&/g,\" \").replace(/\\s+/g,\" \").trim();"
+        "var _l=_L10N_LOW(_k);if(_l)_o=_l;}\n"
+        "if(_L10N_LINES.length<800){var _s=String(_w)+\" => \"+String(_o);"
+        "if(_L10N_LINES.indexOf(_s)<0){_L10N_LINES.push(_s);"
+        "gi.writeFileSync(pu.join(UG.tmpdir(),\"cursor_menu_labels.log\"),_L10N_LINES.join(\"\\n\"),\"utf8\");}}\n"
+        "}catch(_e){}\n"
+        "return _o;};\n"
+        "}\n"
+        "}catch(_e){}\n"
+    )
+    try:
+        XieRu_WenBen_BaoLiu_HuanHang(LuJing, NeiRong + DaiMa, HuanHang)
+    except OSError as CuoWu:
+        print(f"[菜单] 无法写入 main.js: {CuoWu}")
+        return False
+    print("[菜单] 已加装菜单标签日志/大小写兜底")
+    return True
+
+
 def DuQu_Bundle_TiHuan():
     if not os.path.isfile(BUNDLE_REPLACEMENTS_FILE):
         return [], []
@@ -2134,6 +2178,7 @@ def ZhuChengXu():
         QueBao_NLS_HTML_ZhuRu()
         ZhuRu_ZhenDuan_TongDao()
         ZhuRu_CaiDan_BiaoQian_HanHua()
+        ZhuRu_Menu_ZhenDuan_Hook()
         ShanChu_JiuBan_JS()
         ZhuRu_TuoPan_HanHua()
         ZhuRu_Bundle_HanHua()
