@@ -19,6 +19,13 @@
     ["\"View License\"", "\"查看许可证\""],
     ["\"Select All\"", "\"全选\""],
     ["\"Select ALL\"", "\"全选\""],
+    ["\"Select &&All\"", "\"全选\""],
+    ["title:O(2310,null)", "title:\"全选\""],
+    ["\"&&Zoom In\"", "\"放大\""],
+    ["\"Zoom &&Out\"", "\"缩小\""],
+    ["\"Zoom In\"", "\"放大\""],
+    ["\"Zoom Out\"", "\"缩小\""],
+    ["\"Reset Zoom\"", "\"重置缩放\""],
     ["\"Keyboard Shortcuts\"", "\"键盘快捷键\""],
     ["\"Command Palette\"", "\"命令面板\""],
     ["\"New Window\"", "\"新建窗口\""]

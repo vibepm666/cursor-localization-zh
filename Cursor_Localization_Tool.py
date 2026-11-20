@@ -1521,7 +1521,9 @@ def JiSuan_NLS_FanYi_SuoYin():
             HouXuan = HouXuan[2:]
         elif HouXuan.startswith("&"):
             HouXuan = HouXuan[1:]
-        HouXuan = HouXuan.strip()
+        # 助记符可能出现在词中间（如 Select &&All），统一剥离后再查词典
+        HouXuan = re.sub(r"&&", "", HouXuan)
+        HouXuan = re.sub(r"\s+", " ", HouXuan).strip()
         if not HouXuan or len(HouXuan) > 60:
             continue
         ZhongWen = CiDian.get(HouXuan)
