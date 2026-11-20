@@ -11715,6 +11715,38 @@
         [
           "Browse Canvases",
           "浏览画布"
+        ],
+        [
+          "Canvas couldn't load",
+          "画布加载失败"
+        ],
+        [
+          "Local Canvases couldn't load",
+          "本地画布加载失败"
+        ],
+        [
+          "Loading Canvas",
+          "正在加载画布"
+        ],
+        [
+          "Loading Canvases",
+          "正在加载画布列表"
+        ],
+        [
+          "Canvas bundle is unavailable",
+          "画布资源包不可用"
+        ],
+        [
+          "This canvas is too large to preview",
+          "此画布过大，无法预览"
+        ],
+        [
+          "This canvas can't be displayed",
+          "此画布无法显示"
+        ],
+        [
+          "Retry",
+          "重试"
         ]
       ]
     }

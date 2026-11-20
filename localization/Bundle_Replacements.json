@@ -43,6 +43,13 @@
     ["\"Delete Rule\"", "\"删除规则\""],
     ["\"Delete automation\"", "\"删除自动化\""],
     ["\"This Canvas isn't available on this machine\"", "\"此画布在此机器上不可用\""],
-    ["\"Browse Canvases\"", "\"浏览画布\""]
+    ["\"Browse Canvases\"", "\"浏览画布\""],
+    ["\"Local Canvases couldn't load\"", "\"本地画布加载失败\""],
+    ["\"Canvas couldn't load\"", "\"画布加载失败\""],
+    ["\"Canvas bundle is unavailable\"", "\"画布资源包不可用\""],
+    ["\"This canvas is too large to preview\"", "\"此画布过大，无法预览\""],
+    ["\"This canvas can't be displayed\"", "\"此画布无法显示\""],
+    ["\"Loading Canvas\"", "\"正在加载画布\""],
+    ["\"Loading Canvases\"", "\"正在加载画布列表\""]
   ]
 }
