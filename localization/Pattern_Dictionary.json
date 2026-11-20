@@ -1327,5 +1327,10 @@
       "flags": "i",
       "replacement": "已完成 $1"
     }
+    ,{
+      "regex": "^(\\d+)\\s*To-dos?$",
+      "flags": "i",
+      "replacement": "$1 条待办"
+    }
   ]
 }

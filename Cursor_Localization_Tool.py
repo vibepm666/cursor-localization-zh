@@ -223,6 +223,8 @@ CURSOR_SHU_JU_LU_JING = CaiCe_Cursor_ShuJu_LuJing()
 GONG_ZUO_TAI_HTML_MING = "workbench.html"  # workbench HTML 文件名
 LOCALIZATION_JS_FILE = "Cursor_Localization.js"  # 注入生成的翻译脚本
 LEGACY_LOCALIZATION_JS_FILE = "cursor_hanhua.js"  # 旧版脚本名（升级时清理）
+NLS_ZH_JS_FILE = "Cursor_NLS_Zh.js"  # 渲染进程 NLS 索引覆盖表（菜单等原生标签走这条通道）
+ZHEN_DUAN_MARKER = "CURSOR_L10N_DIAG_HOOK"  # main.js 中诊断 IPC 的标记注释
 INJECTION_MARKER_HTML = "<!-- CURSOR_LOCALIZATION_INJECTION -->"  # HTML 注入标记
 LEGACY_INJECTION_MARKER_HTML = "<!-- CURSOR_HANHUA_INJECTION -->"  # 旧版注入标记
 BEI_FEN_HOU_ZHUI = ".bak"  # 备份文件后缀
@@ -886,8 +888,172 @@ def HuiFu_TuoPan_HanHua():
     return True
 
 
+def ZhuRu_ZhenDuan_TongDao():
+    """在主进程注册 l10n 诊断 IPC，把渲染进程上报的菜单 DOM 实况写入临时文件。"""
+    LuJing = HuoQu_Main_JS_LuJing()
+    if not os.path.isfile(LuJing):
+        return False
+    try:
+        NeiRong, HuanHang = DuQu_WenBen_BaoLiu_HuanHang(LuJing)
+    except OSError:
+        return False
+    if ZHEN_DUAN_MARKER in NeiRong:
+        return True
+    DaiMa = (
+        "\n// " + ZHEN_DUAN_MARKER + "\n"
+        ";try{O_.ipcMain.on(\"vscode:l10n-diag\",function(_e,_t){"
+        "try{(gi.default||gi).writeFileSync((pu.default||pu).join((UG.default||UG).tmpdir(),"
+        "\"cursor_l10n_diag.json\"),String(_t),\"utf8\")}catch(_x){}})}catch(_y){}\n"
+    )
+    try:
+        XieRu_WenBen_BaoLiu_HuanHang(LuJing, NeiRong + DaiMa, HuanHang)
+    except OSError as CuoWu:
+        print(f"[诊断] 无法写入 main.js: {CuoWu}")
+        return False
+    print("[诊断] 已在 main.js 注册 l10n 诊断通道")
+    return True
+
+
+def YiChu_ZhenDuan_TongDao():
+    LuJing = HuoQu_Main_JS_LuJing()
+    if not os.path.isfile(LuJing):
+        return False
+    try:
+        NeiRong, HuanHang = DuQu_WenBen_BaoLiu_HuanHang(LuJing)
+    except OSError:
+        return False
+    if ZHEN_DUAN_MARKER not in NeiRong:
+        return False
+    Zhi = NeiRong.index("// " + ZHEN_DUAN_MARKER)
+    NeiRong = NeiRong[:Zhi].rstrip() + "\n"
+    try:
+        XieRu_WenBen_BaoLiu_HuanHang(LuJing, NeiRong, HuanHang)
+    except OSError:
+        return False
+    print("[诊断] 已移除 main.js 诊断通道")
+    return True
+
+
+MENU_HOOK_MARKER = "CURSOR_L10N_MENU_HOOK"  # main.js 原生菜单 label 翻译钩子
+MENU_PATCH_MARKER = "CURSOR_L10N_MENU_PATCH"  # mnemonicLabel 内的打点
+MENU_LABEL_ANCHOR = "mnemonicLabel(e){return tJ(e,!this.currentEnableMenuBarMnemonics)}"
+
+MENU_QIANZHUI_FANXIANG = {
+    "新建": "New", "打开": "Open", "选择": "Select", "查看": "View", "视图": "View",
+    "缩放": "Zoom", "重置": "Reset", "切换": "Toggle", "关闭": "Close",
+    "添加": "Add", "删除": "Delete", "显示": "Show", "隐藏": "Hide",
+    "运行": "Run", "转到": "Go", "插入": "Insert",
+}
+
+MENU_HUNHE_GU_DING = {
+    "新建 Agent": "新建智能体",
+    "打开 Folder": "打开文件夹",
+    "新建 Terminal": "新建终端",
+    "新建 Browser": "新建浏览器",
+    "新建 Folder": "新建文件夹",
+    "新建 Chat": "新建对话",
+    "选择 All": "全选",
+    "缩放 Out": "缩小",
+    "缩放 In": "放大",
+    "视图 License": "查看许可证",
+    "打开 IDE": "打开 IDE",
+    "固定 to workspace": "固定到工作区",
+    "取消固定 from workspace": "从工作区取消固定",
+}
+
+
+def ShengCheng_Menu_HanHua_DaiMa():
+    """生成主进程原生菜单 label 翻译代码块。"""
+    ZiDian = {}
+    for YingWen, ZhongWen in DuQu_Zhu_CiDian():
+        if not YingWen or not ZhongWen:
+            continue
+        if re.search(r"[\u4e00-\u9fff]", YingWen):
+            continue
+        if "{" in YingWen or "}" in YingWen:
+            continue
+        if len(YingWen) > 60:
+            continue
+        ZiDian.setdefault(YingWen, ZhongWen)
+    ZiDian_JS = json.dumps(ZiDian, ensure_ascii=False, separators=(",", ":"))
+    Qian_JS = json.dumps(MENU_QIANZHUI_FANXIANG, ensure_ascii=False, separators=(",", ":"))
+    Hun_JS = json.dumps(MENU_HUNHE_GU_DING, ensure_ascii=False, separators=(",", ":"))
+    return f"""
+// {MENU_HOOK_MARKER}
+var L10N_MENU_ZIDIAN = {ZiDian_JS};
+var L10N_MENU_QIANZHUI = {Qian_JS};
+var L10N_MENU_HUNHE = {Hun_JS};
+function L10N_CAIDAN(_w) {{
+    try {{
+        if (typeof _w !== "string" || !_w) return _w;
+        if (/[\\u4e00-\\u9fff]/.test(_w)) {{
+            if (L10N_MENU_HUNHE[_w]) return L10N_MENU_HUNHE[_w];
+            var _m = /^(新建|打开|选择|查看|视图|缩放|重置|切换|关闭|添加|删除|显示|隐藏|运行|转到|插入)[\\s:：]+([A-Za-z0-9].*)$/.exec(_w);
+            if (_m) {{
+                var _en = (L10N_MENU_QIANZHUI[_m[1]] || "") + " " + _m[2];
+                if (L10N_MENU_ZIDIAN[_en]) return L10N_MENU_ZIDIAN[_en];
+            }}
+            return _w;
+        }}
+        var _t = _w;
+        if (_t.slice(0, 2) === "&&") _t = _t.slice(2);
+        else if (_t.charAt(0) === "&") _t = _t.slice(1);
+        _t = _t.trim();
+        if (L10N_MENU_ZIDIAN[_t]) return L10N_MENU_ZIDIAN[_t];
+        return _w;
+    }} catch (_e) {{
+        return _w;
+    }}
+}}
+"""
+
+
+def ZhuRu_CaiDan_BiaoQian_HanHua():
+    """在 main.js 里给原生菜单标签接上词典翻译。"""
+    LuJing = HuoQu_Main_JS_LuJing()
+    if not os.path.isfile(LuJing):
+        print(f"[菜单] 未找到 main.js，跳过: {LuJing}")
+        return False
+    try:
+        NeiRong, HuanHang = DuQu_WenBen_BaoLiu_HuanHang(LuJing)
+    except OSError as CuoWu:
+        print(f"[菜单] 无法读取 main.js: {CuoWu}")
+        return False
+
+    GaiDong = False
+    if MENU_PATCH_MARKER not in NeiRong:
+        if MENU_LABEL_ANCHOR not in NeiRong:
+            print("[菜单] 未匹配到 mnemonicLabel，跳过（Cursor 版本可能已改结构）")
+            return False
+        Xin_Anchor = (
+            "mnemonicLabel(e){/* " + MENU_PATCH_MARKER + " */"
+            "try{e=L10N_CAIDAN(e)}catch(_l10n){}"
+            "return tJ(e,!this.currentEnableMenuBarMnemonics)}"
+        )
+        NeiRong = NeiRong.replace(MENU_LABEL_ANCHOR, Xin_Anchor, 1)
+        GaiDong = True
+
+    if MENU_HOOK_MARKER not in NeiRong:
+        NeiRong = NeiRong + "\n" + ShengCheng_Menu_HanHua_DaiMa()
+        GaiDong = True
+
+    if not GaiDong:
+        print("[菜单] 原生菜单标签钩子已存在，跳过")
+        return True
+
+    try:
+        XieRu_WenBen_BaoLiu_HuanHang(LuJing, NeiRong, HuanHang)
+    except PermissionError:
+        print("[错误] 无法写入 main.js：权限不足")
+        return False
+    except OSError as CuoWu:
+        print(f"[错误] 无法写入 main.js: {CuoWu}")
+        return False
+    print("[菜单] 已接入主进程原生菜单标签翻译")
+    return True
+
+
 def DuQu_Bundle_TiHuan():
-    """读取 bundle 字面量替换表。返回 (目标文件相对路径列表, [[en, zh], ...])。"""
     if not os.path.isfile(BUNDLE_REPLACEMENTS_FILE):
         return [], []
     with open(BUNDLE_REPLACEMENTS_FILE, "r", encoding="utf-8") as WenJian:
@@ -1165,7 +1331,7 @@ def ShanChu_JiuBan_JS():
 
 def ShanChu_SuoYou_ZhuRu_JS():
     """删除当前与旧版注入脚本文件"""
-    for WenJianMing in (LOCALIZATION_JS_FILE, LEGACY_LOCALIZATION_JS_FILE):
+    for WenJianMing in (LOCALIZATION_JS_FILE, LEGACY_LOCALIZATION_JS_FILE, NLS_ZH_JS_FILE):
         LuJing = os.path.join(HuoQu_GongZuoTai_LuJing(), WenJianMing)
         if os.path.exists(LuJing):
             os.remove(LuJing)
@@ -1264,6 +1430,152 @@ def ZhuRu_HTML():
 
     print(f"[注入] 已在 workbench.html 中注入脚本引用")
     GengXin_JiaoYan_Zhi()
+
+
+# ================================================================
+# NLS 索引覆盖表（渲染进程）
+# 顶部菜单栏下拉等原生风格标签不经过 DOM 文本节点，而是在渲染进程用
+# nls.localize(索引, 英文默认值) 解析后再序列化给主进程；英文默认值内联在
+# 打包产物里，语言包缺失时就会显示英文。这里在 workbench.js 执行前接管
+# globalThis._VSCODE_NLS_MESSAGES，用主词典按索引覆盖，官方语言包已有的
+# 中文优先保留。
+# ================================================================
+def HuoQu_Out_MuLu_LuJing():
+    """app/out 目录（workbench.html 向上五级，对应 resources/app/out）"""
+    LuJing = HuoQu_HTML_LuJing()
+    for _ in range(5):
+        LuJing = os.path.dirname(LuJing)
+    return LuJing
+
+
+def HuoQu_NLS_Messages_LuJing():
+    return os.path.join(HuoQu_Out_MuLu_LuJing(), "nls.messages.json")
+
+
+def JiSuan_NLS_FanYi_SuoYin():
+    """把 Core 词典按英文整句映射到 nls.messages.json 的索引，返回 [(索引, 中文)]。"""
+    LuJing = HuoQu_NLS_Messages_LuJing()
+    if not os.path.isfile(LuJing):
+        print(f"[警告] 未找到 nls.messages.json: {LuJing}")
+        return []
+    with open(LuJing, "r", encoding="utf-8") as WenJian:
+        NLS = json.load(WenJian)
+    CiDian = {}
+    for YingWen, ZhongWen in DuQu_Zhu_CiDian():
+        CiDian.setdefault(YingWen, ZhongWen)
+
+    JieGuo = []
+    for SuoYin, YingWen in enumerate(NLS):
+        if not isinstance(YingWen, str) or not YingWen:
+            continue
+        if re.search(r"[\u4e00-\u9fff]", YingWen):
+            continue
+        if "{" in YingWen or "}" in YingWen:
+            continue
+        HouXuan = YingWen
+        if HouXuan.startswith("&&"):
+            HouXuan = HouXuan[2:]
+        elif HouXuan.startswith("&"):
+            HouXuan = HouXuan[1:]
+        HouXuan = HouXuan.strip()
+        if not HouXuan or len(HouXuan) > 60:
+            continue
+        ZhongWen = CiDian.get(HouXuan)
+        if not ZhongWen or ZhongWen == HouXuan:
+            continue
+        JieGuo.append((SuoYin, ZhongWen))
+    return JieGuo
+
+
+def ShengCheng_NLS_Zh_JS_DaiMa():
+    SuoYin_Biao = JiSuan_NLS_FanYi_SuoYin()
+    Hang = ",\n".join(
+        f"        {SuoYin}: {_JS_ZhuanYi_ZiFuChuan(ZhongWen)}"
+        for SuoYin, ZhongWen in SuoYin_Biao
+    )
+    return f"""// 由 Cursor_Localization_Tool.py 生成：渲染进程 NLS 索引覆盖表
+// 在 workbench.js 执行前接管 globalThis._VSCODE_NLS_MESSAGES，
+// 让菜单等走 nls.localize(索引, 英文默认值) 的标签显示中文。
+(function () {{
+    'use strict';
+    var ZHI = {{
+{Hang}
+    }};
+    var YUAN = null;
+    var BAO = null;
+    function You_ZhongWen(WenBen) {{
+        return typeof WenBen === 'string' && /[\\u4e00-\\u9fff]/.test(WenBen);
+    }}
+    function Qu_DaiLi() {{
+        if (!YUAN) return ZHI;
+        if (!BAO) {{
+            try {{
+                BAO = new Proxy(YUAN, {{
+                    get: function (mubiao, Jian) {{
+                        if (typeof Jian !== 'string') return mubiao[Jian];
+                        if (Object.prototype.hasOwnProperty.call(mubiao, Jian) && You_ZhongWen(mubiao[Jian])) {{
+                            return mubiao[Jian];
+                        }}
+                        if (Object.prototype.hasOwnProperty.call(ZHI, Jian)) return ZHI[Jian];
+                        return mubiao[Jian];
+                    }}
+                }});
+            }} catch (e) {{
+                BAO = YUAN;
+            }}
+        }}
+        return BAO;
+    }}
+    try {{
+        Object.defineProperty(window, '_VSCODE_NLS_MESSAGES', {{
+            configurable: true,
+            get: function () {{ return Qu_DaiLi(); }},
+            set: function (Zhi) {{
+                YUAN = (Zhi && typeof Zhi === 'object' && Zhi.length) ? Zhi : null;
+                BAO = null;
+            }}
+        }});
+    }} catch (e) {{}}
+}})();
+"""
+
+
+def XieRu_NLS_Zh_JS():
+    """生成并写入 NLS 索引覆盖表脚本"""
+    LuJing_Js = os.path.join(HuoQu_GongZuoTai_LuJing(), NLS_ZH_JS_FILE)
+    SuoYin_Biao = JiSuan_NLS_FanYi_SuoYin()
+    if not SuoYin_Biao:
+        print("[NLS] 未匹配到可覆盖的索引，跳过")
+        return False
+    NeiRong = ShengCheng_NLS_Zh_JS_DaiMa()
+    with open(LuJing_Js, "w", encoding="utf-8", newline="\n") as WenJian:
+        WenJian.write(NeiRong)
+    print(f"[NLS] 已写入 {len(SuoYin_Biao)} 条索引覆盖: {LuJing_Js}")
+    JiaoYan_JS_YuFa(LuJing_Js)
+    return True
+
+
+def QueBao_NLS_HTML_ZhuRu():
+    """确保 workbench.html 在翻译脚本之前引用 NLS 覆盖表"""
+    LuJing_Html = HuoQu_HTML_LuJing()
+    NeiRong, HuanHang = DuQu_WenBen_BaoLiu_HuanHang(LuJing_Html)
+    BiaoJi = f'<script src="./{NLS_ZH_JS_FILE}">'
+    if BiaoJi in NeiRong:
+        return False
+    XinJu = f'\t<script src="./{NLS_ZH_JS_FILE}"></script>\n'
+    if INJECTION_MARKER_HTML in NeiRong:
+        NeiRong = NeiRong.replace(
+            INJECTION_MARKER_HTML,
+            INJECTION_MARKER_HTML + "\n" + XinJu.rstrip("\n"),
+            1,
+        )
+    elif '</body>' in NeiRong:
+        NeiRong = NeiRong.replace('</body>', f'</body>\n{XinJu}')
+    else:
+        NeiRong = NeiRong.replace('</html>', f'{XinJu}\n</html>')
+    XieRu_WenBen_BaoLiu_HuanHang(LuJing_Html, NeiRong, HuanHang)
+    print(f"[NLS] 已在 workbench.html 中引用 {NLS_ZH_JS_FILE}")
+    return True
 
 
 def GengXin_JiaoYan_Zhi():
@@ -1818,6 +2130,10 @@ def ZhuChengXu():
         print("\n[步骤 3/4] 脚本已注入，正在更新...")
         ShengJi_HTML_ZhuRu_If_Needed()
         XieRu_FanYi_JS()
+        XieRu_NLS_Zh_JS()
+        QueBao_NLS_HTML_ZhuRu()
+        ZhuRu_ZhenDuan_TongDao()
+        ZhuRu_CaiDan_BiaoQian_HanHua()
         ShanChu_JiuBan_JS()
         ZhuRu_TuoPan_HanHua()
         ZhuRu_Bundle_HanHua()
@@ -1829,9 +2145,11 @@ def ZhuChengXu():
     print("\n[步骤 3/4] 创建备份并写入脚本...")
     ChuangJian_BeiFen()
     XieRu_FanYi_JS()
+    XieRu_NLS_Zh_JS()
 
     print("[步骤 4/4] 注入 HTML 引用...")
     ZhuRu_HTML()
+    QueBao_NLS_HTML_ZhuRu()
     ZhuRu_TuoPan_HanHua()
     ZhuRu_Bundle_HanHua()
     GengXin_JiaoYan_Zhi()

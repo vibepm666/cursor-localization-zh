@@ -75,6 +75,10 @@
             return null;
         }
 
+        // 整句精确匹配优先：避免 "Select All" 被片段词典拆成「选择 All」
+        var zhengJu = ChaZhao_FanYi(text);
+        if (zhengJu && zhengJu !== text) return zhengJu;
+
         var result = TiHuan_SuiPian_LieBiao(text, DingXiang_SuiPian);
         if (result) return result;
 
@@ -1848,7 +1852,16 @@
             try {
                 if (node.parentElement && Shi_CaiDan_QuYu(node.parentElement) && !Shi_CaiDan_WenBen_JieDian(node)) continue;
             } catch (e) {}
-            var neo = TiHuan_SuiPian_LieBiao(node.textContent || '', fragments);
+            var yuanWen = node.textContent || '';
+            if (yuanWen && !/[\u4e00-\u9fff]/.test(yuanWen)) {
+                var zhengJu = ChaZhao_FanYi(yuanWen);
+                if (zhengJu && zhengJu !== yuanWen) {
+                    node.textContent = zhengJu;
+                    changed = true;
+                    continue;
+                }
+            }
+            var neo = TiHuan_SuiPian_LieBiao(yuanWen, fragments);
             if (neo && neo !== node.textContent) {
                 node.textContent = neo;
                 changed = true;
@@ -3548,6 +3561,11 @@
             node.textContent = tierOnly[trimmed.toLowerCase()];
             return;
         }
+        var zhengJuTr = ChaZhao_FanYi(text);
+        if (zhengJuTr && zhengJuTr !== text) {
+            node.textContent = zhengJuTr;
+            return;
+        }
         var result = text;
         for (var i = 0; i < XiaLa_MianBan_SuiPian.length; i++) {
             result = result.split(XiaLa_MianBan_SuiPian[i][0]).join(XiaLa_MianBan_SuiPian[i][1]);
@@ -3817,10 +3835,11 @@
     // 菜单深度兜底：菜单内文本节点按词典整句翻译
     // 用于未命中 .action-label / role=menuitem 等结构化容器的菜单（顶部菜单栏下拉、右键菜单）
     // ================================================================
-    var CaiDan_Shen_XuanZe = '[role="menu"],[role="menubar"],[role="menuitem"],[role="option"],' +
+    var CaiDan_Shen_XuanZe = '[role="menu"],[role="menubar"],[role="menuitem"],[role="option"],[role="dialog"],[role="listbox"],' +
         '.monaco-menu,.monaco-menu-container,.context-view,.ui-menu,.ui-menu__content,' +
         '.ui-menu__item,.action-label,.action-menu-item,.action-item,' +
-        '[class*="menu"],[class*="Menu"]';
+        '[class*="menu"],[class*="Menu"],[class*="popover"],[class*="Popover"],' +
+        '[class*="dropdown"],[class*="Dropdown"],[class*="overlay"],[class*="portal"],[class*="Portal"]';
 
     function FanYi_CaiDan_Shen_JieDian(root) {
         if (!root || !root.querySelectorAll) return;
@@ -3833,6 +3852,15 @@
         } catch (e) { return; }
         for (var g = 0; g < gens.length; g++) {
             var gen = gens[g];
+            if (!gen.__l10nDiag) {
+                gen.__l10nDiag = 1;
+                try {
+                    console.log('[L10N-DIAG] 菜单容器 class=',
+                        (gen.className && String(gen.className).slice(0, 90)) || gen.tagName,
+                        '| role=', gen.getAttribute && gen.getAttribute('role'),
+                        '| text=', (gen.textContent || '').replace(/\s+/g, ' ').slice(0, 140));
+                } catch (eLog) {}
+            }
             var walker;
             try {
                 walker = document.createTreeWalker(gen, NodeFilter.SHOW_TEXT, null);
@@ -3876,5 +3904,365 @@
             obs.observe(document.body, { childList: true, subtree: true });
         } catch (e) {}
         setTimeout(pao, 300);
+    }
+
+    // ================================================================
+    // 整页整句兜底：点击/快捷键时对全页文本做一次词典精确匹配
+    // 不依赖任何菜单容器类名，覆盖顶部菜单栏下拉、原生风格弹层等结构
+    // ================================================================
+    function FanYi_ZhengYe_ZhengJu() {
+        var gen = document.body;
+        if (!gen) return 0;
+        var walker;
+        try {
+            walker = document.createTreeWalker(gen, NodeFilter.SHOW_TEXT, null);
+        } catch (e) { return 0; }
+        var shu = 0;
+        var node;
+        while ((node = walker.nextNode())) {
+            var pel = node.parentElement;
+            if (!pel) continue;
+            try {
+                if (Shi_BianJiQi_QuYu(node)) continue;
+                if (pel.closest('input, textarea, [contenteditable="true"], .monaco-editor, ' +
+                        '.monaco-diff-editor, pre, code, .monaco-keybinding, .keybinding, .codicon')) continue;
+            } catch (e2) {}
+            var raw = node.textContent || '';
+            if (!raw || !raw.trim()) continue;
+            if (/[\u4e00-\u9fff]/.test(raw)) continue;
+            var trimmed = GuiYiHua_WenBen(raw).trim();
+            if (!trimmed || trimmed.length > 60) continue;
+            if (/^(Ctrl|Cmd|Alt|Shift|⌘|⌥|⇧|⌃)[+\-]?/.test(trimmed)) continue;
+            if (/[;{}<>\[\]|]/.test(trimmed)) continue;
+            var tr = ChaZhao_FanYi(raw) || ChaZhao_FanYi(trimmed);
+            if (!tr || tr === raw) continue;
+            var idx = raw.indexOf(trimmed);
+            if (idx < 0) continue;
+            node.textContent = raw.substring(0, idx) + tr + raw.substring(idx + trimmed.length);
+            shu++;
+        }
+        return shu;
+    }
+
+    function AnZhuang_ZhengYe_ZhengJu() {
+        if (window.__cursorZhengYe) return;
+        window.__cursorZhengYe = true;
+        var t1 = null, t2 = null;
+        function pao() { try { FanYi_ZhengYe_ZhengJu(); } catch (e) {} }
+        document.addEventListener('mousedown', function () {
+            if (t1) clearTimeout(t1);
+            if (t2) clearTimeout(t2);
+            t1 = setTimeout(pao, 90);
+            t2 = setTimeout(pao, 320);
+        }, true);
+        document.addEventListener('contextmenu', function () { setTimeout(pao, 90); }, true);
+        document.addEventListener('keydown', function (ev) {
+            if (ev.ctrlKey || ev.metaKey || ev.altKey) setTimeout(pao, 150);
+        }, true);
+        setTimeout(pao, 900);
+    }
+
+    // ================================================================
+    // 混合残留修正 + 持续整句兜底
+    // 菜单标签常被片段词典按单词拆断（New Agent → 新建 Agent、Select All → 选择 All）。
+    // 这里先把「Core 整句 → 套用片段词典后的结果」反推成一张修正表，
+    // 再配合持续扫描把英文/半汉化标签纠正为整句译文。
+    // ================================================================
+    var HunHe_FanYi_Biao = {};
+    // 已知半汉化残留（片段词典拆断后的实际产物）显式纠正
+    var HunHe_BuDing_Biao = {
+        '新建 Agent': '新建智能体',
+        '打开 Folder': '打开文件夹',
+        '新建 Terminal': '新建终端',
+        '新建 Browser': '新建浏览器',
+        '新建 Folder': '新建文件夹',
+        '选择 All': '全选',
+        '打开 Chat': '打开对话',
+        '新建 Chat': '新建对话',
+        '固定 to workspace': '固定到工作区',
+        '取消固定 from workspace': '从工作区取消固定',
+        '视图 License': '查看许可证',
+        '缩放 In': '放大'
+    };
+    var HunHe_Yi_GouJian = false;
+    var HunHe_GouJian_Pai = null;
+
+    function ChaRu_HunHe_PeiDui(en, zh) {
+        if (!en || !zh) return;
+        if (/[^\x00-\x7F]/.test(en)) return;
+        if (en.length > 40) return;
+        if (en.split(/\s+/).length > 5) return;
+        var lieBiao = [XiaLa_MianBan_SuiPian, DingXiang_SuiPian];
+        for (var i = 0; i < lieBiao.length; i++) {
+            var jieGuo;
+            try { jieGuo = TiHuan_SuiPian_LieBiao(en, lieBiao[i]); } catch (e) { continue; }
+            if (!jieGuo || jieGuo === en) continue;
+            if (!/[\u4e00-\u9fff]/.test(jieGuo)) continue;
+            if (HunHe_FanYi_Biao[jieGuo]) continue;
+            HunHe_FanYi_Biao[jieGuo] = zh;
+        }
+    }
+
+    function GouJian_HunHe_FanYi_Biao() {
+        if (HunHe_Yi_GouJian || HunHe_GouJian_Pai) return;
+        var quanBu = [];
+        try {
+            FanYi_CiDian.forEach(function (zh, en) { quanBu.push([en, zh]); });
+        } catch (e) { return; }
+        if (!quanBu.length) return;
+        var i = 0;
+        function bu() {
+            HunHe_GouJian_Pai = null;
+            var jieShu = Math.min(i + 120, quanBu.length);
+            for (; i < jieShu; i++) ChaRu_HunHe_PeiDui(quanBu[i][0], quanBu[i][1]);
+            if (i < quanBu.length) {
+                HunHe_GouJian_Pai = setTimeout(bu, 40);
+            } else {
+                HunHe_Yi_GouJian = true;
+            }
+        }
+        HunHe_GouJian_Pai = setTimeout(bu, 40);
+    }
+
+    function Shi_TiaoGuo_ChongSao_JieDian(node) {
+        var pel = node.parentElement;
+        if (!pel) return true;
+        try {
+            if (Shi_BianJiQi_QuYu(node)) return true;
+            if (pel.closest('input, textarea, [contenteditable="true"], .monaco-editor, .monaco-diff-editor, ' +
+                    'pre, code, .view-lines, .monaco-keybinding, .keybinding, .codicon, [role="textbox"]')) return true;
+        } catch (e) {}
+        return false;
+    }
+
+    // 菜单标签常被拆成多个文本节点（如 Zoom / Out、Select / All、New / Agent），
+    // 逐节点翻译会得到「缩放 Out」这类半汉化结果。这里按元素整句匹配后再回写，
+    // 保持图标节点不动。
+    function Shi_CaiDan_BiaoQian_RongQi(el) {
+        if (!el) return null;
+        try {
+            return el.closest('[role="menuitem"], .action-label, .action-menu-item, [class*="menu-item"], ' +
+                '[class*="MenuItem"], [class*="dropdown-item"], [class*="menu__item"], .menubar-menu-button span');
+        } catch (e) { return null; }
+    }
+
+    function ChongSao_YuanSu_ZhengJu(root) {
+        var gen = root || document.body;
+        if (!gen) return 0;
+        var rongQi;
+        try {
+            rongQi = gen.querySelectorAll(
+                '[role="menuitem"], .action-label, .action-menu-item, [class*="menu-item"], ' +
+                '[class*="MenuItem"], [class*="dropdown-item"], [class*="menu__item"]'
+            );
+        } catch (e) { return 0; }
+        var shu = 0;
+        for (var i = 0; i < rongQi.length; i++) {
+            var el = rongQi[i];
+            if (!el) continue;
+            try {
+                if (el.closest('input, textarea, [contenteditable="true"], .monaco-editor, pre, code, .view-lines')) continue;
+            } catch (e2) { continue; }
+            var quanWen = GuiYiHua_WenBen(el.textContent || '');
+            if (!quanWen || quanWen.length > 60) continue;
+            if (/[\u4e00-\u9fff]/.test(quanWen)) continue;
+            var tr = ChaZhao_FanYi(quanWen);
+            if (!tr || tr === quanWen) continue;
+            var wenBenJieDian = [];
+            try {
+                var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+                var n;
+                while ((n = walker.nextNode())) {
+                    if (n.textContent && n.textContent.trim()) wenBenJieDian.push(n);
+                }
+            } catch (e3) { continue; }
+            if (!wenBenJieDian.length) continue;
+            for (var k = 1; k < wenBenJieDian.length; k++) wenBenJieDian[k].textContent = '';
+            var yuanShi = wenBenJieDian[0].textContent;
+            var qian = yuanShi.match(/^\s*/)[0];
+            var hou = yuanShi.match(/\s*$/)[0];
+            wenBenJieDian[0].textContent = qian + tr + hou;
+            shu++;
+        }
+        return shu;
+    }
+
+    function TiHuan_RongQi_ZhengJu(el, tr) {
+        if (!el || !tr) return false;
+        var jieDian = [];
+        try {
+            var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+            var n;
+            while ((n = walker.nextNode())) {
+                if (n.parentElement && n.parentElement.classList && n.parentElement.classList.contains('codicon')) continue;
+                if (n.textContent && n.textContent.trim()) jieDian.push(n);
+            }
+        } catch (e) { return false; }
+        if (!jieDian.length) return false;
+        for (var k = 1; k < jieDian.length; k++) jieDian[k].textContent = '';
+        jieDian[0].textContent = tr;
+        return true;
+    }
+
+    function Shi_Duan_Dan_Ci(text) {
+        if (!text) return false;
+        var t = GuiYiHua_WenBen(text);
+        if (!t || t.length > 16) return false;
+        return !/\s/.test(t) || t.split(/\s+/).length <= 2;
+    }
+
+    function ZhengJu_ChongSao(root) {
+        var gen = root || document.body;
+        if (!gen) return 0;
+        var shuYuanSu = 0;
+        try { shuYuanSu = ChongSao_YuanSu_ZhengJu(gen); } catch (e0) {}
+        var walker;
+        try {
+            walker = document.createTreeWalker(gen, NodeFilter.SHOW_TEXT, null);
+        } catch (e) { return shuYuanSu; }
+        var shu = shuYuanSu;
+        var node;
+        while ((node = walker.nextNode())) {
+            if (Shi_TiaoGuo_ChongSao_JieDian(node)) continue;
+            var raw = node.textContent || '';
+            if (!raw || !raw.trim()) continue;
+            var zheng = GuiYiHua_WenBen(raw);
+            if (!zheng || zheng.length > 60) continue;
+            if (/^(Ctrl|Cmd|Alt|Shift|⌘|⌥|⇧|⌃|\+)/.test(zheng)) continue;
+            var youZhongWen = /[\u4e00-\u9fff]/.test(zheng);
+            if (youZhongWen) {
+                if (!/[A-Za-z]{2,}/.test(zheng)) continue;
+                var hunHe = HunHe_FanYi_Biao[zheng] || HunHe_BuDing_Biao[zheng];
+                if (!hunHe || hunHe === zheng) continue;
+                node.textContent = hunHe;
+                shu++;
+                continue;
+            }
+            if (/[;{}<>\[\]|=]/.test(zheng)) continue;
+            if (/^(https?:|[a-zA-Z]:\\|\/)/.test(zheng)) continue;
+            // 组合标签（多个文本节点拼成一个短语）优先按整体匹配，避免拆词
+            var pel = node.parentElement;
+            if (pel) {
+                var quanWen = '';
+                try { quanWen = GuiYiHua_WenBen(pel.textContent || ''); } catch (e3) {}
+                if (quanWen && quanWen !== zheng && quanWen.length <= 60) {
+                    var zhengTi = ChaZhao_FanYi(quanWen);
+                    if (zhengTi && zhengTi !== quanWen) {
+                        if (TiHuan_RongQi_ZhengJu(pel, zhengTi)) { shu++; }
+                        continue;
+                    }
+                    if (Shi_Duan_Dan_Ci(zheng)) continue;
+                }
+            }
+            var tr = ChaZhao_FanYi(zheng);
+            if (!tr || tr === zheng) continue;
+            var zhi = raw.indexOf(zheng);
+            if (zhi < 0) continue;
+            node.textContent = raw.substring(0, zhi) + tr + raw.substring(zhi + zheng.length);
+            shu++;
+        }
+        return shu;
+    }
+
+    function You_CaiDan_Zai_Chang() {
+        try {
+            return !!document.querySelector(
+                '.context-view, .monaco-menu, .monaco-menu-container, [role="menu"], [role="listbox"], ' +
+                '.monaco-select-box-dropdown-container, [class*="dropdown"], [class*="popover"], [class*="menu"]'
+            );
+        } catch (e) { return false; }
+    }
+
+    // 诊断通道：把菜单 DOM 实况经 preload IPC 写给主进程落盘，便于定位未汉化节点
+    function FaSong_CaiDan_ZhenDuan() {
+        try {
+            var vscode = window.vscode;
+            if (!vscode || !vscode.ipcRenderer) return;
+            var shuJu = {
+                time: new Date().toISOString(),
+                oracle: {
+                    NewAgent: ChaZhao_FanYi('New Agent'),
+                    OpenFolder: ChaZhao_FanYi('Open Folder'),
+                    ZoomOut: ChaZhao_FanYi('Zoom Out'),
+                    SelectAll: ChaZhao_FanYi('Select All'),
+                    Terminal: ChaZhao_FanYi('Terminal'),
+                    Files: ChaZhao_FanYi('Files'),
+                    Settings: ChaZhao_FanYi('Settings')
+                },
+                menubarButton: !!document.querySelector('.menubar-menu-button'),
+                zongYuanSu: document.querySelectorAll('*').length,
+                yingZiGen: (function () {
+                    var c = 0;
+                    try {
+                        var all = document.querySelectorAll('*');
+                        for (var i = 0; i < all.length && i < 4000; i++) {
+                            if (all[i].shadowRoot) c++;
+                        }
+                    } catch (e) {}
+                    return c;
+                })(),
+                houXuan: []
+            };
+            var jieDian = document.querySelectorAll(
+                '[role="menuitem"], .action-label, .action-menu-item, [class*="menu"], [class*="label"]'
+            );
+            for (var k = 0; k < jieDian.length && shuJu.houXuan.length < 30; k++) {
+                var el = jieDian[k];
+                var wen = GuiYiHua_WenBen(el.textContent || '');
+                if (!wen || wen.length > 50) continue;
+                if (!/Agent|Folder|Terminal|Browser|Out|All|Terminal/.test(wen)) continue;
+                var lian = [];
+                var fu = el;
+                for (var d = 0; d < 4 && fu; d++) {
+                    lian.push(fu.tagName + '.' + (fu.className && fu.className.length ? String(fu.className).slice(0, 60) : ''));
+                    fu = fu.parentElement;
+                }
+                shuJu.houXuan.push({
+                    wen: wen,
+                    biaoQian: el.tagName,
+                    lei: String(el.className || '').slice(0, 80),
+                    gen: (el.getRootNode() === document) ? 'document' : 'other',
+                    lian: lian,
+                    html: String(el.outerHTML || '').slice(0, 240)
+                });
+            }
+            vscode.ipcRenderer.send('vscode:l10n-diag', JSON.stringify(shuJu));
+        } catch (e) {}
+    }
+
+    try { window.__l10nDiag = FaSong_CaiDan_ZhenDuan; } catch (e) {}
+
+    function AnZhuang_ChiXu_ZhengJu() {
+        if (window.__cursorChiXuZhengJu) return;
+        window.__cursorChiXuZhengJu = true;
+        try { GouJian_HunHe_FanYi_Biao(); } catch (e) {}
+        var dai = null;
+        function pao() {
+            dai = null;
+            try { ZhengJu_ChongSao(document.body); } catch (e) {}
+        }
+        function yanShi() {
+            if (dai) return;
+            dai = setTimeout(pao, 60);
+        }
+        function maShang() { try { ZhengJu_ChongSao(document.body); } catch (e) {} }
+        document.addEventListener('mousedown', function () {
+            setTimeout(maShang, 120);
+            setTimeout(maShang, 400);
+            setTimeout(function () { try { FaSong_CaiDan_ZhenDuan(); } catch (e) {} }, 420);
+        }, true);
+        document.addEventListener('contextmenu', function () { setTimeout(maShang, 120); }, true);
+        document.addEventListener('keydown', function (ev) {
+            if (ev.ctrlKey || ev.metaKey || ev.altKey || ev.key === 'Escape') setTimeout(maShang, 180);
+        }, true);
+        try {
+            var obs = new MutationObserver(yanShi);
+            obs.observe(document.body, { childList: true, subtree: true, characterData: true });
+        } catch (e) {}
+        setInterval(function () {
+            if (!You_CaiDan_Zai_Chang()) return;
+            try { ZhengJu_ChongSao(document.body); } catch (e) {}
+        }, 400);
+        setTimeout(pao, 900);
     }
 

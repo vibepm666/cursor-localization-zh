@@ -20,6 +20,8 @@
         try { AnZhuang_LiuLanQi_Webview_GuanCha(); } catch (e) {}
         try { AnZhuang_CaiDan_DongTai_GuanCha(); } catch (e) {}
         try { AnZhuang_CaiDan_Shen_FanYi(); } catch (e) {}
+        try { AnZhuang_ZhengYe_ZhengJu(); } catch (e) {}
+        try { AnZhuang_ChiXu_ZhengJu(); } catch (e) {}
         try { AnZhuang_DingBu_CaiDan_GuanCha(); } catch (e) {}
         try { AnZhuang_FuZhu_ChuangKou_FanYi(); } catch (e) {}
 
