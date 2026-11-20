@@ -320,6 +320,17 @@
     ["AI teammates you can give real work to", "可交付实际工作的 AI 队友"],
     ["Get Grok Bot", "获取 Grok Bot"],
     ["Continue your upgrade in the browser.", "请在浏览器中继续完成升级。"],
-    ["Continue your upgrade in the browser", "请在浏览器中继续完成升级"]
+    ["Continue your upgrade in the browser", "请在浏览器中继续完成升级"],
+    ["Projects: AI Teammates inside Cursor", "Projects：Cursor 里的 AI 队友"],
+    ["One Orchestrator for All Your Work", "一个编排器，统筹你所有的工作"],
+    ["Projects break down tasks, delegate to subagents, and keep work moving for you.", "Projects 会拆分任务、委派给子智能体，并持续为你推进工作。"],
+    ["Projects break down tasks, delegate to subagents, and keep work moving for you", "Projects 会拆分任务、委派给子智能体，并持续为你推进工作"],
+    ["Run Local and Cloud Across Many Repos", "跨多个仓库运行本地与云端"],
+    ["Run local and cloud agents simultaneously and add repos and context as needed.", "同时运行本地与云端智能体，并按需添加仓库与上下文。"],
+    ["Run local and cloud agents simultaneously and add repos and context as needed", "同时运行本地与云端智能体，并按需添加仓库与上下文"],
+    ["Memory to Learn from You", "记忆：向你学习"],
+    ["Projects learn how you work to get smarter and more efficient over time.", "Projects 会学习你的工作方式，随时间变得更聪明、更高效。"],
+    ["Projects learn how you work to get smarter and more efficient over time", "Projects 会学习你的工作方式，随时间变得更聪明、更高效"],
+    ["Start a Project", "创建 Project"]
   ]
 }

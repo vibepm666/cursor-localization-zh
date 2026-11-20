@@ -1321,6 +1321,11 @@
       "regex": "^Configure (.+)$",
       "flags": "i",
       "replacement": "配置 $1"
+    },
+    {
+      "regex": "^Done (\\d+)$",
+      "flags": "i",
+      "replacement": "已完成 $1"
     }
   ]
 }

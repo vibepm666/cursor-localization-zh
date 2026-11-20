@@ -2675,6 +2675,58 @@
           "已连接到浏览器标签页"
         ],
         [
+          "Voice chat",
+          "语音对话"
+        ],
+        [
+          "Talk with your agents out loud. Turn this off to hide voice chat everywhere you use Cursor.",
+          "大声与智能体对话。关闭后，在你使用 Cursor 的所有位置都会隐藏语音对话。"
+        ],
+        [
+          "Talk with your agents out loud. Turn this off to hide voice chat everywhere you use Cursor",
+          "大声与智能体对话。关闭后，在你使用 Cursor 的所有位置都会隐藏语音对话"
+        ],
+        [
+          "Used in voice chats.",
+          "用于语音对话。"
+        ],
+        [
+          "Used in voice chats",
+          "用于语音对话"
+        ],
+        [
+          "Status Chimes",
+          "状态提示音"
+        ],
+        [
+          "Task Sent",
+          "任务已发送"
+        ],
+        [
+          "Plays when a task is sent.",
+          "任务发送时播放。"
+        ],
+        [
+          "Result Arrives",
+          "结果到达"
+        ],
+        [
+          "Plays when a result arrives after silence.",
+          "静默后收到结果时播放。"
+        ],
+        [
+          "Needs Decision",
+          "需要决策"
+        ],
+        [
+          "Plays when the agent needs a decision.",
+          "智能体需要决策时播放。"
+        ],
+        [
+          "Plays when an error occurs.",
+          "发生错误时播放。"
+        ],
+        [
           "Voice Mode",
           "语音模式"
         ],
@@ -2961,6 +3013,98 @@
         [
           "Last Used Windows",
           "上次使用的窗口"
+        ],
+        [
+          "Control local agents on this computer from the Cursor iOS app.",
+          "通过 Cursor iOS 应用控制此电脑上的本地智能体。"
+        ],
+        [
+          "This computer",
+          "此电脑"
+        ],
+        [
+          "Control local agents from your phone",
+          "从手机控制本地智能体"
+        ],
+        [
+          "Start, check, and reply to agents running on this computer. Needs Cursor open and the computer awake.",
+          "启动、查看并回复在此电脑上运行的智能体。需 Cursor 保持开启且电脑处于唤醒状态。"
+        ],
+        [
+          "Computer name",
+          "电脑名称"
+        ],
+        [
+          "How this computer appears in the iOS app.",
+          "此电脑在 iOS 应用中的显示方式。"
+        ],
+        [
+          "How this computer appears in the iOS app",
+          "此电脑在 iOS 应用中的显示方式"
+        ],
+        [
+          "Keep this computer awake",
+          "保持此电脑唤醒"
+        ],
+        [
+          "Stay connected to your phone while plugged in.",
+          "插电时保持与手机连接。"
+        ],
+        [
+          "Stay connected to your phone while plugged in",
+          "插电时保持与手机连接"
+        ],
+        [
+          "Paired devices",
+          "已配对设备"
+        ],
+        [
+          "No devices paired yet",
+          "暂未配对任何设备"
+        ],
+        [
+          "Scan a QR code with your iPhone camera to pair.",
+          "用 iPhone 相机扫描二维码进行配对。"
+        ],
+        [
+          "Pair a device",
+          "配对设备"
+        ],
+        [
+          "Other computers",
+          "其他电脑"
+        ],
+        [
+          "Turn on Remote Control when you sign in on another computer.",
+          "在其他电脑登录时自动开启远程控制。"
+        ],
+        [
+          "Turn on Remote Control when you sign in on another computer",
+          "在其他电脑登录时自动开启远程控制"
+        ],
+        [
+          "Disable on all of my computers",
+          "在所有电脑上禁用"
+        ],
+        [
+          "You can register again later.",
+          "你之后可以重新注册。"
+        ],
+        [
+          "Unregister all",
+          "全部取消注册"
+        ],
+        [
+          "Scan with your iPhone camera to open Cursor and pair.",
+          "用 iPhone 相机扫描以打开 Cursor 并完成配对。"
+        ],
+        [
+          "Don't have the app?",
+          "没有安装应用？"
+        ],
+        [
+          "Get it on the App Store",
+          "前往 App Store 获取"
         ],
         [
           "Remote Control",
@@ -6209,6 +6353,50 @@
           "完成"
         ],
         [
+          "In Progress",
+          "进行中"
+        ],
+        [
+          "More Models",
+          "更多模型"
+        ],
+        [
+          "Chats",
+          "对话"
+        ],
+        [
+          "Search chats...",
+          "搜索对话..."
+        ],
+        [
+          "Search keybindings...",
+          "搜索键位绑定..."
+        ],
+        [
+          "Search or enter URL...",
+          "搜索或输入 URL..."
+        ],
+        [
+          "Cursor Changelog",
+          "Cursor 更新日志"
+        ],
+        [
+          "Manage Origin Settings",
+          "管理 Origin 设置"
+        ],
+        [
+          "Coordinator effort",
+          "协调者强度"
+        ],
+        [
+          "A new Project's coordinator starts at this effort. You can change it in the chat's model picker.",
+          "新 Project 的协调者默认使用此强度。你可以在对话的模型选择器中修改。"
+        ],
+        [
+          "A new Project's coordinator starts at this effort. You can change it in the chat's model picker",
+          "新 Project 的协调者默认使用此强度。你可以在对话的模型选择器中修改"
+        ],
+        [
           "Loading...",
           "加载中..."
         ],
@@ -8880,6 +9068,42 @@
       "id": "command_palette",
       "title": "Command Palette",
       "entries": [
+        [
+          "Actions Palette",
+          "操作面板"
+        ],
+        [
+          "Cycle Instance Selector",
+          "循环切换实例选择器"
+        ],
+        [
+          "Focus Customize Search",
+          "聚焦自定义搜索"
+        ],
+        [
+          "Cycle Model Parameter",
+          "循环切换模型参数"
+        ],
+        [
+          "Next Palette Filter",
+          "下一个面板筛选"
+        ],
+        [
+          "Open Branch Selector",
+          "打开分支选择器"
+        ],
+        [
+          "Open Instance Selector",
+          "打开实例选择器"
+        ],
+        [
+          "Previous Palette Filter",
+          "上一个面板筛选"
+        ],
+        [
+          "New Agent (preserve editor panel)",
+          "新建智能体（保留编辑器面板）"
+        ],
         [
           "Search actions...",
           "搜索操作..."

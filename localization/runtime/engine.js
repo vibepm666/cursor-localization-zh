@@ -123,7 +123,11 @@
                 'a.action-menu-item, .action-item, [role="menuitem"], [role="option"], li.action-item, ' +
                 '.ui-menu__row, .ui-menu__item, [class*="ui-menu__item"]'
             );
-            if (!item) return false;
+            if (!item) {
+                // 兜底：菜单区域内未命中上述结构、但内容为纯英文短标签的文本节点也参与翻译
+                var rawTxt = (node.textContent || '').trim();
+                return rawTxt.length > 0 && rawTxt.length <= 60 && /^[A-Za-z0-9][A-Za-z0-9 \-_\/&:'.,()…]*$/.test(rawTxt);
+            }
             if (pel.querySelector && pel.querySelector('.codicon, .keybinding, .submenu-indicator, .action-label')) return false;
             return true;
         } catch (e) { return false; }
