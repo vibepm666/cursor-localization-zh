@@ -28,6 +28,19 @@
     ["\"Reset Zoom\"", "\"重置缩放\""],
     ["\"Keyboard Shortcuts\"", "\"键盘快捷键\""],
     ["\"Command Palette\"", "\"命令面板\""],
-    ["\"New Window\"", "\"新建窗口\""]
+    ["\"New Window\"", "\"新建窗口\""],
+    ["`Are you sure you want to delete \\u201C${t}\\u201D? This cannot be undone.`", "`确定要删除“${t}”吗？此操作无法撤销。`"],
+    ["Are you sure you want to delete \\u201C", "确定要删除“"],
+    ["\\u201D? This cannot be undone.", "”吗？此操作无法撤销。"],
+    ["`Are you sure you want to delete \"${e}\"?`", "`确定要删除“${e}”吗？`"],
+    ["`Are you sure you want to delete \"${t}\"?`", "`确定要删除“${t}”吗？`"],
+    ["\"? This action cannot be undone.", "”吗？此操作无法撤销。"],
+    ["Are you sure you want to delete \"", "确定要删除“"],
+    ["\"Are you sure you want to delete this comment?\"", "\"确定要删除这条评论吗？\""],
+    ["\"The canvas will be moved to the trash.\"", "\"画布将被移入回收站。\""],
+    ["\"The canvas will be deleted permanently.\"", "\"画布将被永久删除。\""],
+    ["\"Anyone with the link will lose access. This action cannot be undone.\"", "\"任何持有链接的人都将失去访问权限。此操作无法撤销。\""],
+    ["\"Delete Rule\"", "\"删除规则\""],
+    ["\"Delete automation\"", "\"删除自动化\""]
   ]
 }

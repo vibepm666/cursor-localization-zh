@@ -6137,7 +6137,7 @@
           "不保存"
         ],
         [
-          "Don\u2019t Save",
+          "Don’t Save",
           "不保存"
         ],
         [
@@ -9799,7 +9799,7 @@
           "不再询问"
         ],
         [
-          "Don\u2019t Ask Again",
+          "Don’t Ask Again",
           "不再询问"
         ],
         [
@@ -11521,8 +11521,8 @@
           "搜索远程仓库..."
         ]
       ]
-    }
-    ,{
+    },
+    {
       "id": "顶部菜单栏_远程与工作树",
       "title": "顶部菜单栏/远程/工作树",
       "entries": [
@@ -11559,8 +11559,8 @@
           "新建工作树"
         ]
       ]
-    }
-    ,{
+    },
+    {
       "id": "编辑器提示_运行调试与发布",
       "title": "编辑器提示/运行调试/发布",
       "entries": [
@@ -11585,8 +11585,8 @@
           "发布"
         ]
       ]
-    }
-    ,{
+    },
+    {
       "id": "计划卡片_待办清单",
       "title": "计划卡片/待办清单",
       "entries": [
@@ -11627,8 +11627,8 @@
           "添加待办"
         ]
       ]
-    }
-    ,{
+    },
+    {
       "id": "画布标签_桌面端",
       "title": "画布标签",
       "entries": [
@@ -11641,8 +11641,8 @@
           "画布："
         ]
       ]
-    }
-    ,{
+    },
+    {
       "id": "工作区标签_固定",
       "title": "工作区标签/固定",
       "entries": [
@@ -11661,6 +11661,52 @@
         [
           "Unpin from Workspace",
           "从工作区取消固定"
+        ]
+      ]
+    },
+    {
+      "id": "画布与删除确认",
+      "title": "画布与删除确认",
+      "entries": [
+        [
+          "The canvas will be moved to the trash.",
+          "画布将被移入回收站。"
+        ],
+        [
+          "The canvas will be deleted permanently.",
+          "画布将被永久删除。"
+        ],
+        [
+          "Anyone with the link will lose access. This action cannot be undone.",
+          "任何持有链接的人都将失去访问权限。此操作无法撤销。"
+        ],
+        [
+          "Are you sure you want to delete this comment?",
+          "确定要删除这条评论吗？"
+        ],
+        [
+          "Are you sure you want to delete",
+          "确定要删除"
+        ],
+        [
+          "This action cannot be undone.",
+          "此操作无法撤销。"
+        ],
+        [
+          "Delete Rule",
+          "删除规则"
+        ],
+        [
+          "Delete automation",
+          "删除自动化"
+        ],
+        [
+          "Delete Canvas",
+          "删除画布"
+        ],
+        [
+          "Move to trash",
+          "移入回收站"
         ]
       ]
     }
