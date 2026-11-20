@@ -3812,3 +3812,69 @@
             }
         }
     }
+
+    // ================================================================
+    // 菜单深度兜底：菜单内文本节点按词典整句翻译
+    // 用于未命中 .action-label / role=menuitem 等结构化容器的菜单（顶部菜单栏下拉、右键菜单）
+    // ================================================================
+    var CaiDan_Shen_XuanZe = '[role="menu"],[role="menubar"],[role="menuitem"],[role="option"],' +
+        '.monaco-menu,.monaco-menu-container,.context-view,.ui-menu,.ui-menu__content,' +
+        '.ui-menu__item,.action-label,.action-menu-item,.action-item,' +
+        '[class*="menu"],[class*="Menu"]';
+
+    function FanYi_CaiDan_Shen_JieDian(root) {
+        if (!root || !root.querySelectorAll) return;
+        var gens = [];
+        try {
+            var found = root.querySelectorAll(CaiDan_Shen_XuanZe);
+            for (var i = 0; i < found.length; i++) {
+                if (found[i] && found[i].querySelectorAll) gens.push(found[i]);
+            }
+        } catch (e) { return; }
+        for (var g = 0; g < gens.length; g++) {
+            var gen = gens[g];
+            var walker;
+            try {
+                walker = document.createTreeWalker(gen, NodeFilter.SHOW_TEXT, null);
+            } catch (e2) { continue; }
+            var node;
+            while ((node = walker.nextNode())) {
+                var pel = node.parentElement;
+                if (!pel) continue;
+                try {
+                    if (pel.closest('.keybinding, .monaco-keybinding, .submenu-indicator, .codicon')) continue;
+                    if (pel.classList && (pel.classList.contains('codicon') || pel.classList.contains('monaco-keybinding-key'))) continue;
+                } catch (e3) {}
+                var raw = node.textContent || '';
+                if (!raw || !raw.trim()) continue;
+                if (/[\u4e00-\u9fff]/.test(raw)) continue;
+                var trimmed = GuiYiHua_WenBen(raw).trim();
+                if (!trimmed || trimmed.length > 80) continue;
+                if (/^(Ctrl|Cmd|Alt|Shift|⌘|⌥|⇧|⌃)[+\-]?/.test(trimmed)) continue;
+                var tr = ChaZhao_FanYi(raw) || ChaZhao_FanYi(trimmed);
+                if (!tr || tr === raw) continue;
+                var idx = raw.indexOf(trimmed);
+                if (idx < 0) continue;
+                node.textContent = raw.substring(0, idx) + tr + raw.substring(idx + trimmed.length);
+            }
+        }
+    }
+
+    function AnZhuang_CaiDan_Shen_FanYi() {
+        if (window.__cursorCaiDanShen) return;
+        window.__cursorCaiDanShen = true;
+        var dai = null;
+        function pao() {
+            dai = null;
+            try { FanYi_CaiDan_Shen_JieDian(document.body); } catch (e) {}
+        }
+        try {
+            var obs = new MutationObserver(function () {
+                if (dai) return;
+                dai = setTimeout(pao, 120);
+            });
+            obs.observe(document.body, { childList: true, subtree: true });
+        } catch (e) {}
+        setTimeout(pao, 300);
+    }
+
