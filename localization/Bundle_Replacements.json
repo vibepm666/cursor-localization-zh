@@ -64,7 +64,19 @@
     ["\"Switched to Cursor Models. Other Models limit reached.\"", "\"已切换到 Cursor 模型，其他模型用量已达上限。\""],
     ["\"Switched to Auto, which provides significantly higher usage limits.\"", "\"已切换到 Auto，可用额度显著更高。\""],
     ["\"Auto has significantly higher usage limits\"", "\"Auto 拥有显著更高的可用额度\""],
-    ["\"Switch to Auto\"", "\"切换到 Auto\""]
+    ["\"Switch to Auto\"", "\"切换到 Auto\""],
+    [" search${t.searches===1?\"\":\"es\"}", " 次搜索"],
+    [" search${e.searches===1?\"\":\"es\"}", " 次搜索"],
+    [" fetch${t.fetches===1?\"\":\"es\"}", " 次抓取"],
+    [" fetch${e.fetches===1?\"\":\"es\"}", " 次抓取"],
+    [" director${o===1?\"y\":\"ies\"}", " 个目录"],
+    [" file${a===1?\"\":\"s\"}", " 个文件"],
+    ["\"1 file\"", "\"1 个文件\""],
+    [" tool${t===1?\"\":\"s\"}", " 个工具"],
+    [" tool${e===1?\"\":\"s\"}", " 个工具"],
+    [" browser action${s===1?\"\":\"s\"}", " 次浏览器操作"],
+    [" browser action${a===1?\"\":\"s\"}", " 次浏览器操作"],
+    ["text:\"lints\"", "text:\"检查\""]
   ],
   "dirs": [
     {
@@ -80,6 +92,14 @@
     ["Extra usage credits", "额外用量积分"],
     ["`Skipped switch to `", "`已跳过切换到 `"],
     ["`Switched to `", "`已切换到 `"],
-    ["`Switch to `", "`切换到 `"]
+    ["`Switch to `", "`切换到 `"],
+    [" search${e.searches===1?``:`es`}", " 次搜索"],
+    [" fetch${e.fetches===1?``:`es`}", " 次抓取"],
+    [" director${e===1?`y`:`ies`}", " 个目录"],
+    [" file${e===1?``:`s`}", " 个文件"],
+    ["`1 file`", "`1 个文件`"],
+    [" tool${e===1?``:`s`}", " 个工具"],
+    [" browser action${a===1?``:`s`}", " 次浏览器操作"],
+    ["text:`lints`", "text:`检查`"]
   ]
 }
