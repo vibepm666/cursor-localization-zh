@@ -57,7 +57,14 @@
     ["\"Monthly additional usage limit\"", "\"每月额外用量上限\""],
     ["\"Monthly spend limit\"", "\"每月额外用量上限\""],
     ["\"Monthly additional usage\"", "\"每月额外用量\""],
-    ["\"Monthly usage\"", "\"每月用量\""]
+    ["\"Monthly usage\"", "\"每月用量\""],
+    ["\"Skipped switch to \"", "\"已跳过切换到 \""],
+    ["\"Switched to \"", "\"已切换到 \""],
+    ["\"Switch to \"", "\"切换到 \""],
+    ["\"Switched to Cursor Models. Other Models limit reached.\"", "\"已切换到 Cursor 模型，其他模型用量已达上限。\""],
+    ["\"Switched to Auto, which provides significantly higher usage limits.\"", "\"已切换到 Auto，可用额度显著更高。\""],
+    ["\"Auto has significantly higher usage limits\"", "\"Auto 拥有显著更高的可用额度\""],
+    ["\"Switch to Auto\"", "\"切换到 Auto\""]
   ],
   "dirs": [
     {
@@ -70,6 +77,9 @@
     ["Monthly extra usage limit", "每月额外用量上限"],
     ["Monthly spend limit", "每月额外用量上限"],
     ["Credits expire after two years", "积分有效期为两年"],
-    ["Extra usage credits", "额外用量积分"]
+    ["Extra usage credits", "额外用量积分"],
+    ["`Skipped switch to `", "`已跳过切换到 `"],
+    ["`Switched to `", "`已切换到 `"],
+    ["`Switch to `", "`切换到 `"]
   ]
 }
